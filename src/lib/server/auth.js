@@ -195,6 +195,18 @@ export async function getUserSession(platform, cookies) {
 		return { error: tokenResult.error || "Invalid session token" };
 	}
 
+	const userId = tokenResult.payload.sub;
+	let profile = null;
+
+	// Try to get user profile from KV if available
+	if (platform?.env?.DATA_CACHE) {
+		try {
+			profile = await platform.env.DATA_CACHE.get(`user_profile:${userId}`, { type: "json" });
+		} catch (e) {
+			console.error("Error fetching user profile from KV:", e);
+		}
+	}
+
 	// Try to get session from KV cache
 	const sessionResult = await get_login_session(platform, sessionToken);
 	if (sessionResult.existed) {
@@ -203,7 +215,8 @@ export async function getUserSession(platform, cookies) {
 				sub: tokenResult.payload.sub,
 				email: tokenResult.payload.email,
 				nickname: tokenResult.payload.nickname,
-				roles: tokenResult.payload.roles || []
+				roles: tokenResult.payload.roles || [],
+				profile: profile
 			},
 			session: sessionResult.info
 		};
@@ -215,7 +228,8 @@ export async function getUserSession(platform, cookies) {
 			sub: tokenResult.payload.sub,
 			email: tokenResult.payload.email,
 			nickname: tokenResult.payload.nickname,
-			roles: tokenResult.payload.roles || []
+			roles: tokenResult.payload.roles || [],
+			profile: profile
 		},
 		session: { id: sessionToken }
 	};

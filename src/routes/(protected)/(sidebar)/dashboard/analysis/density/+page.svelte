@@ -447,16 +447,18 @@
 	<title>Dichte-Analyse - AEA Graph Visualization</title>
 </svelte:head>
 
-<div class="space-y-6 max-w-10xl mx-auto">
-	<div class="flex items-center justify-between">
+<div class="space-y-8 pb-12">
+	<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/50 pb-8">
 		<div>
-			<h1 class="text-3xl font-bold">Dichte-Analyse</h1>
-			<p class="text-muted-foreground mt-2">
+			<h1 class="text-4xl font-black tracking-tight">Dichte-Analyse</h1>
+			<p class="text-muted-foreground mt-2 text-lg">
 				Erstelle hochauflösende Dichtekarten basierend auf Gruppen-Positionen
 			</p>
 		</div>
 		{#if step > 1}
-			<Button variant="outline" onclick={reset}>Zurück zum Start</Button>
+			<Button variant="outline" onclick={reset} class="rounded-xl px-6">
+				Zurück zum Start
+			</Button>
 		{/if}
 	</div>
 
@@ -477,18 +479,18 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {#each AVAILABLE_PROJECTS as project}
                         <Card 
-                            class="cursor-pointer hover:border-[hsl(var(--accent-pro-100))] transition-all group"
+                            class="cursor-pointer hover:border-[hsl(var(--accent-pro-100))] transition-all group overflow-hidden bg-card/50 backdrop-blur-sm rounded-3xl"
                             onclick={() => selectProject(project)}
                         >
                             <CardHeader>
-                                <CardTitle class="capitalize group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">
+                                <CardTitle class="capitalize group-hover:text-[hsl(var(--accent-pro-100))] transition-colors text-xl">
                                     {project}
                                 </CardTitle>
                                 <CardDescription>Basis-Graph für die Analyse wählen</CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <div class="aspect-video bg-muted/50 rounded-lg flex items-center justify-center">
-                                    <span class="text-xs text-muted-foreground uppercase font-black tracking-widest">Vorschau</span>
+                                <div class="aspect-video bg-muted/30 rounded-2xl flex items-center justify-center group-hover:bg-[hsl(var(--accent-pro-100))]/10 transition-colors">
+                                    <span class="text-[10px] text-muted-foreground uppercase font-black tracking-[0.3em] group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">Vorschau</span>
                                 </div>
                             </CardContent>
                         </Card>

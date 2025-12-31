@@ -20,6 +20,7 @@ export async function load({ cookies, platform }) {
 			email: sessionResult.user.email,
 			nickname: sessionResult.user.nickname,
 			roles: sessionResult.user.roles,
+			profile: sessionResult.user.profile,
 			role: isAdmin(sessionResult.user.roles) ? "admin" : "user"
 		},
 		session: sessionResult.session

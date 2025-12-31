@@ -106,11 +106,11 @@ While most configuration is handled in `svelte.config.js`, you may need to set u
 The core logic resides in `src/assets/scripts/index.js`. The `GraphVisualization` class manages the entire D3 lifecycle.
 
 ### Key Methods & Improvements
-- `constructor()`: Initializes the canvas and zoom behavior. Now includes a **retry mechanism** to ensure the canvas element is fully mounted before initialization.
+- `constructor()`: Initializes the canvas and zoom behavior. Now supports **multi-instance rendering** by accepting a `canvasId`, allowing multiple independent graphs to coexist on the same page.
 - `loadData()`: Fetches JSON data. Now **awaits physics simulation** (`nodes.json`) to prevent rendering nodes without positions.
-- `render()`: The primary draw loop. Updated with **coordinate safety checks** to skip nodes with invalid (NaN) positions, preventing the camera from breaking in projects with large coordinate spaces like `ldk_la`.
-- `findNodeAt(event)`: Handles hit detection. Uses `transform.invert` for precise coordinate mapping and scales the detection threshold based on zoom level (`8 / transform.k`) for consistent selection.
-- `centerGraph()`: Automatically centers the view. Now calculates the center based only on nodes with valid positions.
+- `render()`: The primary draw loop. Updated with **coordinate safety checks** to skip nodes with invalid (NaN) positions.
+- `setTransform(transform)`: New method to programmatically update the zoom/pan state, facilitating synchronization between multiple graph instances.
+- `destroy()`: Properly cleans up event listeners and stops physics simulations to prevent memory leaks in multi-window environments.
 
 ### Interactivity & Event Handling
 The graph engine now features a unified event handling system:
@@ -239,12 +239,13 @@ Users can create groups of nodes:
 3. **Persistence**: Groups are saved to `localStorage` (or Auth0 metadata if logged in).
 4. **Export**: Groups can be exported as JSON for sharing.
 
-### Context Menu
-The `ContextMenu.svelte` component provides quick access to actions:
-- Focus: Centers the camera on the node.
-- Highlight: Dims the rest of the graph.
-- Details: Opens the detail panel.
-- PDF: Opens the associated document.
+### Advanced Density Analysis
+The platform features a sophisticated density analysis tool for comparing node groups:
+1. **Multi-Window Visualization**: Compare multiple groups simultaneously in a responsive grid layout.
+2. **Synchronized Viewports**: Zooming and panning in one window is automatically synchronized across all active analysis windows.
+3. **Global Parameter Control**: A unified control panel manages parameters (radius, opacity, visualization type) for all windows in real-time.
+4. **Hybrid Overlay**: Combines density heatmaps (SVG-based) with live Force-Graph overlays (Canvas-based) for deep contextual analysis.
+5. **High-Fidelity Export**: Capture the entire analysis state, including both the density map and the force-graph overlay, as high-resolution PNG images.
 
 ---
 
@@ -331,6 +332,10 @@ The `wrangler.toml` or Cloudflare dashboard settings should point the build outp
 ### `aea-view-action`
 - **Detail**: `{ action, nodeId }`
 - **Trigger**: Reset view, Center on node, or Highlight node.
+
+### `aea-graph-zoom`
+- **Detail**: `{ transform, sourceId }`
+- **Trigger**: Dispatched during zooming/panning to synchronize multiple graph and map instances. The `sourceId` prevents infinite feedback loops.
 
 ---
 

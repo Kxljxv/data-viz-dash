@@ -1,0 +1,1 @@
+- **Body Scroll**: Scroll is locked on the `<body>` element when the drawer is open.

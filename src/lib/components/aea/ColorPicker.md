@@ -1,0 +1,1 @@
+  - Clear labels for Hex and RGB inputs.

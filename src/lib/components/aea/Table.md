@@ -1,0 +1,1 @@
+- Responsive container automatically handles overflow-x.

@@ -1,0 +1,1 @@
+- **Contrast**: High contrast text colors for readability on glass backgrounds.

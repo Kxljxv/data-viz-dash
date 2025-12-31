@@ -1,0 +1,1 @@
+- High contrast is maintained in the `neon` and `glass` styles for readability.

@@ -1,0 +1,1 @@
+  - `aria-expanded` reflects the open state.

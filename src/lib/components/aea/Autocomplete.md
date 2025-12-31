@@ -1,0 +1,1 @@
+- **Screen Readers**: Provides feedback via ARIA attributes on state changes.

@@ -1,0 +1,1 @@
+- Tooltips and feedback text provide visual confirmation for sighted users.

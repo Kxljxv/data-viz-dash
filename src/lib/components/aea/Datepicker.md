@@ -1,0 +1,1 @@
+  - Precise `aria-label` for navigation buttons and days.

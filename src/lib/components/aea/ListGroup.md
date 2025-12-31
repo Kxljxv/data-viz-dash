@@ -1,0 +1,1 @@
+- Active items use `aria-selected` or `aria-current` where appropriate.

@@ -1,0 +1,1 @@
+  - High-contrast focus states for navigation clarity.

@@ -1,0 +1,1 @@
+- Keyboard navigable using Tab and Enter/Space.

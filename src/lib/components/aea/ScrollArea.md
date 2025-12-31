@@ -1,0 +1,1 @@
+- **Blur**: 4px for glass track.

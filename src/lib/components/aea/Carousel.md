@@ -1,0 +1,1 @@
+- `var(--accent-pro-100)` for active dot indicators.

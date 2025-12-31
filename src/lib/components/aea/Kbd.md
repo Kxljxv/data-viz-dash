@@ -1,0 +1,1 @@
+- High contrast text ensures readability against glassmorphic backgrounds.

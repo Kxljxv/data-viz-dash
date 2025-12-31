@@ -1,0 +1,1 @@
+- **Motion**: Respects `prefers-reduced-motion` via the global `style.css` animations.

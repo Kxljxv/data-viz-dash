@@ -1,0 +1,1 @@
+- **Motion**: Respects `prefers-reduced-motion` for slide-in animations.

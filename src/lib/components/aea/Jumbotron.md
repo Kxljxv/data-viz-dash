@@ -1,0 +1,1 @@
+- **Motion**: Animations respect `prefers-reduced-motion` settings.

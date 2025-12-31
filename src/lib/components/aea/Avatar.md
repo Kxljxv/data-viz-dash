@@ -1,0 +1,1 @@
+- Fallback text is centered and clearly legible.

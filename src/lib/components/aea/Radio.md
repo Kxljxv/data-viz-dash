@@ -1,0 +1,1 @@
+- High contrast indicators ensure selection state is clearly visible.

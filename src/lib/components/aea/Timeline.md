@@ -1,0 +1,1 @@
+- **Contrast**: High-contrast markers and text for clear visibility.

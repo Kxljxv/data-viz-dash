@@ -1,0 +1,18 @@
+import { Tooltip as TooltipPrimitive } from "bits-ui";
+import Root from "./tooltip.svelte";
+import Content from "./tooltip-content.svelte";
+import Trigger from "./tooltip-trigger.svelte";
+
+const Provider = TooltipPrimitive.Provider;
+
+export {
+	Root,
+	Content,
+	Trigger,
+	Provider,
+	//
+	Root as Tooltip,
+	Content as TooltipContent,
+	Trigger as TooltipTrigger,
+	Provider as TooltipProvider,
+};

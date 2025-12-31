@@ -1,0 +1,1 @@
+- It is recommended to wrap skeletons in a container with `aria-busy="true"` until the content loads.

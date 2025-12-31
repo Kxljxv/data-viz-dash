@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Checkbox Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-section {
+            padding: 2.5rem;
+            background-color: hsla(var(--bg-100) / 0.2);
+            border-radius: 2rem;
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            backdrop-filter: blur(4px);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Checkbox Controls</h1>
+            <p class="text-[hsl(var(--text-500))]">Cyberpunk-Lite styled multi-selection inputs.</p>
+        </header>
+
+        <!-- Base Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Base Variation</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="aea-checkbox-container">
+                        <input type="checkbox" class="aea-checkbox-input">
+                        <span class="aea-checkbox-box">
+                            <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span class="aea-checkbox-label text-sm uppercase tracking-widest">Enable_Data_Stream</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="aea-checkbox-container">
+                        <input type="checkbox" class="aea-checkbox-input" checked>
+                        <span class="aea-checkbox-box">
+                            <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span class="aea-checkbox-label text-sm uppercase tracking-widest">Active_Protocol_Alpha</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industrial Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Industrial / Angular</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="aea-checkbox-container aea-checkbox-industrial">
+                        <input type="checkbox" class="aea-checkbox-input">
+                        <span class="aea-checkbox-box">
+                            <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span class="aea-checkbox-label text-sm uppercase tracking-widest">Hardwired_Connection</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="aea-checkbox-container aea-checkbox-industrial">
+                        <input type="checkbox" class="aea-checkbox-input" checked>
+                        <span class="aea-checkbox-box">
+                            <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span class="aea-checkbox-label text-sm uppercase tracking-widest">Manual_Override_Engaged</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- HUD Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Technical HUD Integration</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <label class="aea-checkbox-container aea-checkbox-hud">
+                    <input type="checkbox" class="aea-checkbox-input" checked>
+                    <span class="aea-checkbox-box">
+                        <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <div class="flex flex-col">
+                        <span class="aea-checkbox-label">Neural_Link</span>
+                        <span class="text-[8px] opacity-40 uppercase tracking-tighter">Status: SYNCED</span>
+                    </div>
+                </label>
+
+                <label class="aea-checkbox-container aea-checkbox-hud">
+                    <input type="checkbox" class="aea-checkbox-input">
+                    <span class="aea-checkbox-box">
+                        <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <div class="flex flex-col">
+                        <span class="aea-checkbox-label">Encryption_Key</span>
+                        <span class="text-[8px] opacity-40 uppercase tracking-tighter">Status: PENDING</span>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+        <!-- Disabled States -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">System Offline (Disabled)</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="aea-checkbox-container">
+                        <input type="checkbox" class="aea-checkbox-input" disabled>
+                        <span class="aea-checkbox-box">
+                            <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span class="aea-checkbox-label text-sm uppercase tracking-widest opacity-40">Unauthorized_Access_Point</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="aea-checkbox-container">
+                        <input type="checkbox" class="aea-checkbox-input" checked disabled>
+                        <span class="aea-checkbox-box">
+                            <svg class="aea-checkbox-check" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span class="aea-checkbox-label text-sm uppercase tracking-widest opacity-40">Protocol_LOCKED</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Color Picker - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-100));
+            color: hsl(var(--text-100));
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-section {
+            margin-bottom: 4rem;
+        }
+        .demo-card {
+            background-color: hsla(var(--bg-200) / 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-top: 1rem;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .label-technical {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: hsl(var(--text-500));
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .preview-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 1rem;
+            background-color: #ff4500;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+            transition: all 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2 text-[hsl(var(--text-100))]">Color Picker</h1>
+        <p class="text-[hsl(var(--text-200))] max-w-2xl">
+            A high-precision HSV color picker designed for technical interfaces. Features glassmorphic panels, 
+            real-time hex/rgb updates, and a "control room" aesthetic.
+        </p>
+    </header>
+
+    <div class="max-w-4xl space-y-12">
+        <!-- 1. Inline Picker -->
+        <section class="demo-section">
+            <span class="label-technical">Inline Component</span>
+            <div class="demo-card">
+                <div class="flex gap-8 items-start">
+                    <!-- Picker -->
+                    <div class="aea-color-picker" data-color="#3b82f6" id="inline-picker">
+                        <div class="aea-color-picker-saturation">
+                            <div class="aea-color-picker-saturation-white">
+                                <div class="aea-color-picker-saturation-black"></div>
+                            </div>
+                            <div class="aea-color-picker-reticle"></div>
+                        </div>
+                        
+                        <div class="aea-color-picker-hue">
+                            <div class="aea-color-picker-hue-handle"></div>
+                        </div>
+
+                        <div class="aea-color-picker-controls">
+                            <div class="aea-color-picker-swatch"></div>
+                            <div class="aea-color-picker-inputs">
+                                <div class="aea-color-picker-hex-wrap">
+                                    <input type="text" class="aea-color-picker-input-hex" spellcheck="false">
+                                </div>
+                                <div class="aea-color-picker-rgb">
+                                    <input type="text" class="aea-color-picker-input-rgb" data-rgb="r" title="Red">
+                                    <input type="text" class="aea-color-picker-input-rgb" data-rgb="g" title="Green">
+                                    <input type="text" class="aea-color-picker-input-rgb" data-rgb="b" title="Blue">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Preview -->
+                    <div class="flex flex-col items-center gap-4">
+                        <span class="label-technical">Live Preview</span>
+                        <div id="live-preview-box" class="preview-box"></div>
+                        <code id="live-hex-code" class="text-xs opacity-50">#3B82F6</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Popover Trigger -->
+        <section class="demo-section">
+            <span class="label-technical">Popover Variant</span>
+            <div class="demo-card">
+                <div class="relative inline-block">
+                    <button id="popover-trigger" class="w-12 h-12 rounded-full border-2 border-white/20 shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95" style="background-color: #ec4899;">
+                        <span class="sr-only">Choose color</span>
+                    </button>
+                    
+                    <div id="popover-container" class="aea-color-picker-popover">
+                        <div class="aea-color-picker" data-color="#ec4899">
+                            <div class="aea-color-picker-saturation">
+                                <div class="aea-color-picker-saturation-white">
+                                    <div class="aea-color-picker-saturation-black"></div>
+                                </div>
+                                <div class="aea-color-picker-reticle"></div>
+                            </div>
+                            
+                            <div class="aea-color-picker-hue">
+                                <div class="aea-color-picker-hue-handle"></div>
+                            </div>
+
+                            <div class="aea-color-picker-controls">
+                                <div class="aea-color-picker-swatch"></div>
+                                <div class="aea-color-picker-inputs">
+                                    <div class="aea-color-picker-hex-wrap">
+                                        <input type="text" class="aea-color-picker-input-hex" spellcheck="false">
+                                    </div>
+                                    <div class="aea-color-picker-rgb">
+                                        <input type="text" class="aea-color-picker-input-rgb" data-rgb="r">
+                                        <input type="text" class="aea-color-picker-input-rgb" data-rgb="g">
+                                        <input type="text" class="aea-color-picker-input-rgb" data-rgb="b">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-[hsl(var(--text-500))]">Click the circle to toggle the picker.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js" type="module"></script>
+    <script type="module">
+        import { ColorPicker } from './script.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Live Preview Sync
+            const inlinePickerEl = document.getElementById('inline-picker');
+            const previewBox = document.getElementById('live-preview-box');
+            const hexCode = document.getElementById('live-hex-code');
+
+            inlinePickerEl.addEventListener('aea-color-change', (e) => {
+                const { hex } = e.detail;
+                previewBox.style.backgroundColor = hex;
+                previewBox.style.boxShadow = `0 0 20px ${hex}44`;
+                hexCode.textContent = hex.toUpperCase();
+            });
+
+            // Popover Toggle
+            const trigger = document.getElementById('popover-trigger');
+            const popover = document.getElementById('popover-container');
+
+            trigger.addEventListener('click', (e) => {
+                popover.classList.toggle('aea-open');
+                e.stopPropagation();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!popover.contains(e.target) && e.target !== trigger) {
+                    popover.classList.remove('aea-open');
+                }
+            });
+
+            // Sync trigger color
+            const popoverPickerEl = popover.querySelector('.aea-color-picker');
+            popoverPickerEl.addEventListener('aea-color-change', (e) => {
+                trigger.style.backgroundColor = e.detail.hex;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards & Containers - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 3rem;
+            color: hsl(var(--text-100));
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Cards & Containers</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Standardized containers for grouping information and creating UI hierarchy.
+        </p>
+    </header>
+
+    <section class="mb-16">
+        <h2 class="section-title">Base Variants</h2>
+        <div class="demo-grid">
+            <!-- Standard Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Standard Card</h3>
+                    <p class="card-subtitle">Static Information</p>
+                </div>
+                <div class="card-body">
+                    <p class="font-modern-dense">
+                        A solid surface for clear data presentation. Uses the standard panel background color without transparency.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn-base btn-secondary btn-sm">Dismiss</button>
+                </div>
+            </div>
+
+            <!-- Glass Card -->
+            <div class="card card-glass">
+                <div class="card-header">
+                    <h3 class="card-title">Glass Card</h3>
+                    <p class="card-subtitle">Floating Context</p>
+                </div>
+                <div class="card-body">
+                    <p class="font-modern-dense">
+                        Leverages <code class="bg-black/20 px-1 rounded">backdrop-blur</code> and semi-transparency. Perfect for overlays and sidebars.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn-base btn-primary btn-sm">Confirm</button>
+                </div>
+            </div>
+
+            <!-- Interactive Card -->
+            <div class="card card-glass card-interactive">
+                <div class="card-header">
+                    <h3 class="card-title">Interactive Card</h3>
+                    <p class="card-subtitle">Clickable Element</p>
+                </div>
+                <div class="card-body">
+                    <p class="font-modern-dense">
+                        Reacts to hover with a subtle lift, border glow, and shadow intensity. Used for selectable nodes or list items.
+                    </p>
+                </div>
+                <div class="card-footer flex justify-between items-center">
+                    <span class="text-xs font-modern-dense text-[hsl(var(--text-500))]">ID: #AEA-001</span>
+                    <button class="btn-base btn-ghost btn-sm">View Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-16">
+        <h2 class="section-title">Accent Variants</h2>
+        <div class="demo-grid">
+            <!-- Brand Accent -->
+            <div class="card card-glass card-accent-brand">
+                <div class="card-header">
+                    <h3 class="card-title">Brand Highlight</h3>
+                    <p class="card-subtitle text-[hsl(var(--accent-brand))]">Priority Action</p>
+                </div>
+                <div class="card-body">
+                    <p class="font-modern-dense">A top-border accent using the main brand color. Useful for highlighting the primary path.</p>
+                </div>
+            </div>
+
+            <!-- Success Accent -->
+            <div class="card card-glass card-accent-success">
+                <div class="card-header">
+                    <h3 class="card-title">Success Status</h3>
+                    <p class="card-subtitle text-[hsl(var(--success-000))]">Validation Passed</p>
+                </div>
+                <div class="card-body">
+                    <p class="font-modern-dense">Indicates a positive result, a "Supporter" node, or a completed process.</p>
+                </div>
+            </div>
+
+            <!-- Danger Accent -->
+            <div class="card card-glass card-accent-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Critical Alert</h3>
+                    <p class="card-subtitle text-[hsl(var(--danger-000))]">Attention Required</p>
+                </div>
+                <div class="card-body">
+                    <p class="font-modern-dense">Used for destructive actions, errors, or "Antrag" nodes that require intervention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-16">
+        <h2 class="section-title">Dense Layouts</h2>
+        <div class="demo-grid">
+            <!-- Compact Card -->
+            <div class="card card-glass">
+                <div class="p-4">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-[hsl(var(--accent-secondary-100))] flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <span class="px-2 py-1 rounded text-[10px] font-bold bg-white/10 text-white uppercase tracking-wider">Draft</span>
+                    </div>
+                    <h4 class="font-serif text-lg text-white mb-1">Project Proposal.pdf</h4>
+                    <p class="font-modern-dense text-sm text-[hsl(var(--text-400))] mb-4">Last modified 2 hours ago by System</p>
+                    <div class="flex gap-2">
+                        <button class="btn-base btn-primary btn-sm flex-1">Open</button>
+                        <button class="btn-base btn-outline btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

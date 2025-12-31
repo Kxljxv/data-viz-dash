@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bars - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background-color: hsla(var(--bg-100) / 0.3);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(12px);
+        }
+        .demo-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .label-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'ModernDense', sans-serif;
+            font-size: 0.875rem;
+            color: hsl(var(--text-200));
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Progress Bars</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            High-contrast visual indicators for task completion and data processing states.
+        </p>
+    </header>
+
+    <!-- Basic States -->
+    <section>
+        <h2 class="section-title">Basic States</h2>
+        <div class="demo-container">
+            <!-- Determinate -->
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>Determinate (Brand)</span>
+                    <span>65%</span>
+                </div>
+                <div class="aea-progress aea-progress-md">
+                    <div id="prog-1" class="aea-progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;"></div>
+                </div>
+            </div>
+
+            <!-- Success -->
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>Success State</span>
+                    <span>100%</span>
+                </div>
+                <div class="aea-progress aea-progress-md">
+                    <div class="aea-progress-bar aea-progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <!-- Indeterminate -->
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>Indeterminate (Scanning)</span>
+                </div>
+                <div class="aea-progress aea-progress-md aea-progress-indeterminate">
+                    <div class="aea-progress-bar aea-progress-bar-info" role="progressbar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variants & Sizes -->
+    <section>
+        <h2 class="section-title">Variants & Sizes</h2>
+        <div class="demo-container">
+            <!-- Striped & Animated -->
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>Striped & Animated</span>
+                    <span>Active</span>
+                </div>
+                <div class="aea-progress aea-progress-lg aea-progress-striped aea-progress-animated">
+                    <div class="aea-progress-bar bg-[hsl(var(--accent-brand))]" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                </div>
+            </div>
+
+            <!-- Small -->
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>Small Variant (sm)</span>
+                    <span>25%</span>
+                </div>
+                <div class="aea-progress aea-progress-sm">
+                    <div class="aea-progress-bar aea-progress-bar-danger" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                </div>
+            </div>
+
+            <!-- Large -->
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>Large Variant (lg)</span>
+                    <span>85%</span>
+                </div>
+                <div class="aea-progress aea-progress-lg">
+                    <div class="aea-progress-bar aea-progress-bar-info" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
+                </div>
+            </div>
+
+            <!-- Extra Large with Labels -->
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>XL with Internal Label</span>
+                </div>
+                <div class="aea-progress aea-progress-xl">
+                    <div class="aea-progress-bar font-bold text-[10px]" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                        50% COMPLETE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Control -->
+    <section>
+        <h2 class="section-title">Interactive Control</h2>
+        <div class="demo-container">
+            <div class="demo-row">
+                <div class="label-group">
+                    <span>Dynamic Update Demo</span>
+                    <span id="prog-val">0%</span>
+                </div>
+                <div class="aea-progress aea-progress-md">
+                    <div id="dynamic-bar" class="aea-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                </div>
+            </div>
+            <div class="flex gap-4 mt-4">
+                <button onclick="simulateProgress()" class="px-4 py-2 bg-[hsl(var(--accent-brand))] rounded-lg font-modern-dense text-sm hover:brightness-110 transition-all">
+                    Start Simulation
+                </div>
+                <button onclick="resetProgress()" class="px-4 py-2 bg-white/10 rounded-lg font-modern-dense text-sm hover:bg-white/20 transition-all">
+                    Reset
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
+    <script>
+        let interval;
+        function simulateProgress() {
+            let val = 0;
+            const bar = document.getElementById('dynamic-bar');
+            const label = document.getElementById('prog-val');
+            
+            clearInterval(interval);
+            interval = setInterval(() => {
+                val += Math.floor(Math.random() * 5) + 1;
+                if (val > 100) {
+                    val = 100;
+                    clearInterval(interval);
+                }
+                AEAProgress.update(bar, val);
+                label.textContent = val + '%';
+                
+                // Change color at 100%
+                if (val === 100) {
+                    bar.classList.add('aea-progress-bar-success');
+                } else {
+                    bar.classList.remove('aea-progress-bar-success');
+                }
+            }, 200);
+        }
+
+        function resetProgress() {
+            clearInterval(interval);
+            const bar = document.getElementById('dynamic-bar');
+            const label = document.getElementById('prog-val');
+            AEAProgress.update(bar, 0);
+            label.textContent = '0%';
+            bar.classList.remove('aea-progress-bar-success');
+        }
+    </script>
+</body>
+</html>

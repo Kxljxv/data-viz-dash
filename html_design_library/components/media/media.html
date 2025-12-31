@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Media Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .demo-section {
+            padding: 2rem;
+            background-color: hsla(var(--bg-100) / 0.2);
+            border-radius: 1.5rem;
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Media</h1>
+            <p class="text-[hsl(var(--text-500))]">Cyberpunk-Lite styled containers for images and video feeds.</p>
+        </header>
+
+        <div class="space-y-12">
+            <!-- Image Variations -->
+            <section class="demo-section">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Image Containers</h2>
+                <div class="demo-grid">
+                    <!-- Standard Frame -->
+                    <div class="space-y-4">
+                        <div class="aea-media-container aea-media-frame aspect-video">
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" alt="Retro Tech" class="aea-media-content">
+                        </div>
+                        <div class="flex justify-between items-center px-2">
+                            <span class="text-[10px] uppercase tracking-widest opacity-60">Glass Frame</span>
+                            <span class="text-[10px] font-mono opacity-40">IMG_082.SYS</span>
+                        </div>
+                    </div>
+
+                    <!-- Glitch Effect -->
+                    <div class="space-y-4">
+                        <div class="aea-media-container aea-media-glitch aspect-video">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="Microchip" class="aea-media-content">
+                            <div class="aea-media-overlay flex items-center justify-center">
+                                <span class="aea-hud-label text-[10px] bg-red-900/40 text-red-200 border border-red-500/30">SIGNAL_CORRUPTION</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center px-2">
+                            <span class="text-[10px] uppercase tracking-widest opacity-60">Glitch on Hover</span>
+                            <span class="text-[10px] font-mono opacity-40 text-red-400">UNSTABLE</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HUD & Technical -->
+            <section class="demo-section">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Technical Overlays</h2>
+                <div class="demo-grid">
+                    <!-- HUD Satellite -->
+                    <div class="space-y-4">
+                        <div class="aea-media-container aea-media-hud aspect-video">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Earth from space" class="aea-media-content">
+                            <div class="aea-media-overlay">
+                                <div class="flex justify-between items-start">
+                                    <span class="aea-hud-label">SAT_FEED_01</span>
+                                    <div class="flex flex-col items-end gap-1">
+                                        <span class="aea-hud-label bg-blue-900/40 text-blue-200">LIVE</span>
+                                        <span class="text-[8px] font-mono opacity-60">ZOOM: 450x</span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-end">
+                                    <div class="aea-hud-data">
+                                        <span>LAT: 52.5200</span>
+                                        <span>LNG: 13.4050</span>
+                                    </div>
+                                    <span class="text-[8px] font-mono opacity-40">REC [●] 00:42:15</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest opacity-60 block text-center">Satellite HUD</span>
+                    </div>
+
+                    <!-- Portrait Grid -->
+                    <div class="space-y-4">
+                        <div class="aea-media-container aea-media-frame aspect-portrait max-w-[280px] mx-auto">
+                            <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=2070&auto=format&fit=crop" alt="Code on screen" class="aea-media-content">
+                            <div class="aea-media-overlay">
+                                <span class="aea-hud-label">SOURCE_CODE</span>
+                                <div class="aea-hud-data flex-col gap-0 opacity-80">
+                                    <span>LINE: 1024</span>
+                                    <span>AUTH: AEA_ROOT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest opacity-60 block text-center">Portrait Technical</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Player -->
+            <section class="demo-section">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Video Stream</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="aea-media-container aea-media-hud aspect-video group" id="video-player">
+                        <video class="aea-media-content" id="main-video" poster="https://images.unsplash.com/photo-1510511459019-5dee997dd1db?q=80&w=2070&auto=format&fit=crop">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-1010-large.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- HUD Elements -->
+                        <div class="aea-media-overlay transition-opacity duration-300 group-hover:opacity-40">
+                            <div class="flex justify-between items-start">
+                                <span class="aea-hud-label">STREAM_ID: 0x94F</span>
+                                <span class="aea-hud-label bg-green-900/40 text-green-200 border-green-500/30">ENCRYPTED</span>
+                            </div>
+                        </div>
+
+                        <!-- Custom Controls -->
+                        <div class="aea-video-controls">
+                            <button class="aea-video-btn" id="play-pause">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" id="play-icon"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" id="pause-icon" class="hidden"/></svg>
+                            </button>
+                            <div class="aea-video-progress" id="progress-container">
+                                <div class="aea-video-progress-fill" id="progress-fill"></div>
+                            </div>
+                            <span class="text-[10px] font-mono opacity-60 w-12" id="time-display">0:00</span>
+                            <button class="aea-video-btn">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center px-4">
+                        <div class="flex gap-2">
+                            <span class="aea-hud-label text-[8px]">H.264</span>
+                            <span class="aea-hud-label text-[8px]">1080P</span>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest opacity-60">Custom Technical Player</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>

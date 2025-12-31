@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modals - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 3rem;
+            color: hsl(var(--text-100));
+            min-height: 200vh;
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Modals</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            High-priority overlays for critical actions and detailed information.
+        </p>
+    </header>
+
+    <section class="mb-16">
+        <h2 class="section-title">Trigger Demos</h2>
+        <div class="demo-grid">
+            <button class="btn-base btn-primary btn-md" onclick="AEAModal.open('standardModal')">Standard Modal</button>
+            <button class="btn-base btn-secondary btn-md" onclick="AEAModal.open('largeModal')">Large Modal</button>
+            <button class="btn-base btn-outline btn-md" onclick="AEAModal.open('statusModal')">Status Modal</button>
+            <button class="btn-base btn-danger btn-md" onclick="AEAModal.open('deleteModal')">Danger Modal</button>
+        </div>
+    </section>
+
+    <!-- Modal Backdrop (Shared) -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        
+        <!-- Standard Modal -->
+        <div class="modal modal-md hidden" id="standardModal" role="dialog" aria-modal="true" aria-labelledby="standardTitle">
+            <div class="modal-header">
+                <h2 id="standardTitle" class="modal-title">System Update</h2>
+                <button class="btn-close" onclick="AEAModal.close()" aria-label="Close Modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-4">The AEA network visualization engine has been updated to version 2.4. This update includes improved glassmorphism rendering and faster node processing.</p>
+                <div class="card card-glass p-4 bg-white/5">
+                    <h4 class="font-serif text-white mb-2">Key Changes:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Optimized SVG rendering for 1000+ nodes.</li>
+                        <li>New HSL-based dynamic theming system.</li>
+                        <li>Accessibility improvements for keyboard users.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-base btn-secondary btn-md" onclick="AEAModal.close()">Later</button>
+                <button class="btn-base btn-primary btn-md" data-autofocus onclick="AEAModal.close()">Acknowledge</button>
+            </div>
+        </div>
+
+        <!-- Large Modal -->
+        <div class="modal modal-lg hidden" id="largeModal" role="dialog" aria-modal="true" aria-labelledby="largeTitle">
+            <div class="modal-header">
+                <h2 id="largeTitle" class="modal-title">Node Configuration</h2>
+                <button class="btn-close" onclick="AEAModal.close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-modern-dense text-xs uppercase tracking-widest text-[hsl(var(--text-400))] mb-4">Appearance</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-1">Accent Color</label>
+                                <div class="flex gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-[hsl(var(--accent-brand))] cursor-pointer ring-2 ring-white"></div>
+                                    <div class="w-8 h-8 rounded-full bg-[hsl(var(--accent-secondary-100))] cursor-pointer"></div>
+                                    <div class="w-8 h-8 rounded-full bg-[hsl(var(--success-100))] cursor-pointer"></div>
+                                    <div class="w-8 h-8 rounded-full bg-[hsl(var(--danger-100))] cursor-pointer"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-1">Node Radius</label>
+                                <input type="range" class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-modern-dense text-xs uppercase tracking-widest text-[hsl(var(--text-400))] mb-4">Metadata</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between py-2 border-b border-white/5">
+                                <span class="text-[hsl(var(--text-400))]">Created By:</span>
+                                <span>Admin</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-white/5">
+                                <span class="text-[hsl(var(--text-400))]">Last Modified:</span>
+                                <span>2025-12-22</span>
+                            </div>
+                            <div class="flex justify-between py-2">
+                                <span class="text-[hsl(var(--text-400))]">Stability Index:</span>
+                                <span class="text-[hsl(var(--success-000))]">98.4%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-base btn-ghost btn-md" onclick="AEAModal.close()">Cancel</button>
+                <button class="btn-base btn-primary btn-md" onclick="AEAModal.close()">Save Changes</button>
+            </div>
+        </div>
+
+        <!-- Status Modal (Success) -->
+        <div class="modal modal-sm modal-accent-success hidden" id="statusModal" role="dialog" aria-modal="true">
+            <div class="modal-body text-center pt-12">
+                <div class="w-20 h-20 rounded-full bg-[hsl(var(--success-100)/0.1)] text-[hsl(var(--success-100))] flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h2 class="modal-title mb-2">Export Complete</h2>
+                <p class="font-modern-dense text-[hsl(var(--text-400))]">Your graph data has been successfully exported to AEA-Visuals.json</p>
+            </div>
+            <div class="modal-footer justify-center bg-transparent border-none pb-8">
+                <button class="btn-base btn-primary btn-md w-32" onclick="AEAModal.close()">Great</button>
+            </div>
+        </div>
+
+        <!-- Danger Modal -->
+        <div class="modal modal-sm modal-accent-danger hidden" id="deleteModal" role="dialog" aria-modal="true">
+            <div class="modal-header border-none">
+                <h2 class="modal-title text-xl">Delete Node?</h2>
+                <button class="btn-close" onclick="AEAModal.close()">&times;</button>
+            </div>
+            <div class="modal-body py-0">
+                <p>This action cannot be undone. All associated links to this node will also be permanently removed from the graph database.</p>
+            </div>
+            <div class="modal-footer border-none pt-0 pb-8">
+                <button class="btn-base btn-ghost btn-md" onclick="AEAModal.close()">Keep Node</button>
+                <button class="btn-base btn-danger btn-md" onclick="AEAModal.close()">Delete Permanently</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

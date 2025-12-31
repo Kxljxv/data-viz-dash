@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA PDF Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .demo-controls {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+        .demo-btn {
+            padding: 0.75rem 1.5rem;
+            background: hsla(var(--bg-200) / 0.8);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .demo-btn:hover {
+            background: hsla(var(--bg-300) / 1);
+            border-color: hsla(var(--accent-brand) / 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">PDF Viewer</h1>
+            <p class="text-[hsl(var(--text-500))]">High-fidelity document visualization with glassmorphic controls and system integration.</p>
+        </header>
+
+        <div class="demo-controls">
+            <button class="demo-btn" onclick="openModal()">Open Modal Viewer</button>
+            <button class="demo-btn" onclick="loadError()">Trigger Load Error</button>
+            <button class="demo-btn" onclick="toggleSidebar()">Toggle Sidebar View</button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Inline Variation -->
+            <div class="space-y-4">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))]">Inline Viewer</h2>
+                <div id="inline-pdf-viewer" class="aea-pdf-viewer" style="height: 600px;">
+                    <div class="aea-pdf-toolbar">
+                        <div class="aea-pdf-title">Antrag_51_BDK.pdf</div>
+                        <div class="aea-pdf-actions">
+                            <button class="aea-pdf-btn" title="Zoom Out">➖</button>
+                            <button class="aea-pdf-btn" title="Zoom In">➕</button>
+                            <button class="aea-pdf-btn aea-pdf-accent" title="Download">💾</button>
+                        </div>
+                    </div>
+                    <div class="aea-pdf-content">
+                        <iframe src="" class="aea-pdf-iframe"></iframe>
+                        <div class="aea-pdf-overlay">
+                            <div class="aea-pdf-loader"></div>
+                            <div class="text-xs uppercase tracking-widest text-[hsl(var(--text-500))]">Initialisiere Dokumenten-Stream...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Features -->
+            <div class="space-y-6">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))]">System Features</h2>
+                
+                <div class="p-6 bg-[hsl(var(--bg-200)/0.3)] rounded-2xl border border-white/5 space-y-4">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">🛡️</div>
+                        <div>
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-1">Sandboxed Rendering</h3>
+                            <p class="text-xs text-[hsl(var(--text-500))] leading-relaxed">Documents are rendered in a secure, isolated environment to prevent system-level exploits.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">🌫️</div>
+                        <div>
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-1">Glassmorphic Overlay</h3>
+                            <p class="text-xs text-[hsl(var(--text-500))] leading-relaxed">Dynamic backdrop blur ensures controls remain legible over complex document backgrounds.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500">📱</div>
+                        <div>
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-1">Adaptive Layout</h3>
+                            <p class="text-xs text-[hsl(var(--text-500))] leading-relaxed">Automatically switches between modal, sidebar, and full-screen modes based on viewport size.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Variation (Hidden by default) -->
+    <div id="system-pdf-viewer" class="aea-pdf-viewer aea-pdf-modal" style="display: none;">
+        <div class="aea-pdf-toolbar">
+            <div class="aea-pdf-title">System_Details_V2.pdf</div>
+            <div class="aea-pdf-actions">
+                <button class="aea-pdf-btn" title="Zoom Out">➖</button>
+                <button class="aea-pdf-btn" title="Zoom In">➕</button>
+                <button class="aea-pdf-btn aea-pdf-accent" title="Download">💾</button>
+                <button class="aea-pdf-btn aea-pdf-danger" title="Close" onclick="closeModal()">✖</button>
+            </div>
+        </div>
+        <div class="aea-pdf-content">
+            <iframe src="" class="aea-pdf-iframe"></iframe>
+            <div class="aea-pdf-overlay">
+                <div class="aea-pdf-loader"></div>
+                <div class="text-xs uppercase tracking-widest text-[hsl(var(--text-500))]">Initialisiere Dokumenten-Stream...</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { PDFViewer } from './script.js';
+
+        let viewer;
+        document.addEventListener('DOMContentLoaded', () => {
+            viewer = new PDFViewer('system-pdf-viewer');
+        });
+
+        window.openModal = () => {
+            viewer.show();
+            viewer.load('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', 'System_Details_V2.pdf');
+        };
+
+        window.closeModal = () => {
+            document.getElementById('system-pdf-viewer').style.display = 'none';
+        };
+
+        window.loadError = () => {
+            viewer.show();
+            // This URL is known to trigger ERR_BLOCKED_BY_RESPONSE or similar on many setups
+            viewer.load('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', 'Blocked_Resource.pdf');
+        };
+
+        window.toggleSidebar = () => {
+            const inlineViewer = document.querySelector('.aea-pdf-viewer:not(.aea-pdf-modal)');
+            inlineViewer.classList.toggle('aea-pdf-sidebar');
+            if (inlineViewer.classList.contains('aea-pdf-sidebar')) {
+                inlineViewer.style.position = 'fixed';
+                inlineViewer.style.right = '0';
+                inlineViewer.style.top = '0';
+                inlineViewer.style.width = '400px';
+                inlineViewer.style.height = '100vh';
+                inlineViewer.style.zIndex = '100';
+            } else {
+                inlineViewer.style.position = 'relative';
+                inlineViewer.style.width = '100%';
+                inlineViewer.style.height = '600px';
+            }
+        };
+    </script>
+</body>
+</html>

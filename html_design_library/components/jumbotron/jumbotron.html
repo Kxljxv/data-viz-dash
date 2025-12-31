@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Jumbotron - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60 2.1% 18.4%); /* Surface 1 */
+            color: hsl(48 33.3% 97.1%); /* Primary Text */
+            min-height: 100vh;
+        }
+        .demo-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+        }
+        .section-label {
+            font-family: 'ModernDense', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: hsl(var(--accent-brand));
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Centered Hero -->
+    <section class="demo-section">
+        <div class="section-label">Centered Hero (Standard)</div>
+        <div class="aea-jumbotron aea-jumbotron-glass py-24 md:py-32">
+            <div class="container mx-auto px-6 aea-jumbotron-content flex flex-col items-center text-center">
+                <h1 class="aea-jumbotron-title">Connect the Dots <br> of Human History</h1>
+                <p class="aea-jumbotron-subtitle">
+                    Explore complex networks of historical figures, political motions, and societal shifts in an interactive, high-performance graph environment.
+                </p>
+                <div class="aea-jumbotron-actions">
+                    <button class="aea-button aea-button-primary">Start Exploring</button>
+                    <button class="aea-button aea-button-secondary">View Showcase</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Split Hero with Visual -->
+    <section class="demo-section">
+        <div class="section-label">Split Hero with Visual Element</div>
+        <div class="aea-jumbotron aea-jumbotron-split py-24">
+            <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="aea-jumbotron-content flex flex-col">
+                    <h1 class="aea-jumbotron-title">Next-Gen <br> Visualization</h1>
+                    <p class="aea-jumbotron-subtitle">
+                        Our node-based engine handles thousands of entities with ease, providing real-time insights and beautiful glassmorphic interfaces.
+                    </p>
+                    <div class="aea-jumbotron-actions">
+                        <button class="aea-button aea-button-primary">Get Started</button>
+                        <button class="aea-button aea-button-secondary">Read Docs</button>
+                    </div>
+                </div>
+                <div class="aea-jumbotron-visual flex items-center justify-center">
+                    <!-- Placeholder for actual visual/graph -->
+                    <div class="text-[hsl(var(--text-500))] font-modern-dense text-xl uppercase tracking-widest">
+                        Interactive Graph Preview
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Minimal Hero -->
+    <section class="demo-section">
+        <div class="section-label">Minimal Hero</div>
+        <div class="aea-jumbotron py-20">
+            <div class="container mx-auto px-6 aea-jumbotron-content text-center">
+                <h1 class="aea-jumbotron-title" style="font-size: 3rem;">Ready to Dive In?</h1>
+                <p class="aea-jumbotron-subtitle mx-auto">
+                    Join the AEA project and help us map the intricate web of global governance.
+                </p>
+                <div class="aea-jumbotron-actions">
+                    <button class="aea-button aea-button-primary">Create Account</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toasts - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background-color: hsla(var(--bg-100) / 0.3);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Toasts</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Corner-floating notifications for transient system feedback.
+        </p>
+    </header>
+
+    <section>
+        <h2 class="section-title">Spawn Variants</h2>
+        <div class="demo-container">
+            <button onclick="spawnToast('success')" class="px-6 py-3 bg-[hsl(var(--success-100))] text-white rounded-xl font-modern-dense hover:brightness-110 transition-all">
+                Success Toast
+            </button>
+            <button onclick="spawnToast('error')" class="px-6 py-3 bg-[hsl(var(--danger-100))] text-white rounded-xl font-modern-dense hover:brightness-110 transition-all">
+                Error Toast
+            </button>
+            <button onclick="spawnToast('info')" class="px-6 py-3 bg-[hsl(var(--accent-secondary-100))] text-white rounded-xl font-modern-dense hover:brightness-110 transition-all">
+                Info Toast
+            </button>
+            <button onclick="spawnToast('warning')" class="px-6 py-3 bg-[hsl(var(--accent-brand))] text-white rounded-xl font-modern-dense hover:brightness-110 transition-all">
+                Warning Toast
+            </button>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Special Actions</h2>
+        <div class="demo-container">
+            <button onclick="spawnPersistent()" class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-modern-dense hover:bg-white/10 transition-all">
+                Persistent Toast
+            </button>
+            <button onclick="AEAToasts.clearAll()" class="px-6 py-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl font-modern-dense hover:bg-red-500/20 transition-all">
+                Clear All
+            </button>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
+    <script>
+        function spawnToast(type) {
+            const data = {
+                success: { title: "Success", message: "Data has been synchronized with the main node.", type: "success" },
+                error: { title: "Error", message: "Failed to establish connection to the remote server.", type: "error" },
+                info: { title: "Information", message: "New updates are available for your current workspace.", type: "info" },
+                warning: { title: "Warning", message: "High latency detected on the active link.", type: "warning" }
+            };
+            AEAToasts.show(data[type]);
+        }
+
+        function spawnPersistent() {
+            AEAToasts.show({
+                title: "Manual Dismiss",
+                message: "This toast will stay until you close it or clear all.",
+                type: "info",
+                duration: 0
+            });
+        }
+    </script>
+</body>
+</html>

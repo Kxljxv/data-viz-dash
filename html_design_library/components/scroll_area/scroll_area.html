@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Scroll Area - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-100));
+            color: hsl(var(--text-100));
+            padding: 2rem;
+            font-family: 'ModernDense', sans-serif;
+        }
+        .demo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .scroll-content {
+            padding: 1rem;
+            background: linear-gradient(to bottom, hsla(var(--accent-brand) / 0.1), transparent);
+            height: 1000px;
+        }
+        .horizontal-content {
+            width: 2000px;
+            padding: 1rem;
+            background: linear-gradient(to right, hsla(var(--accent-secondary-100) / 0.1), transparent);
+        }
+    </style>
+</head>
+<body>
+    <header class="mb-12">
+        <h1 class="text-4xl font-bold mb-2">Scroll Area</h1>
+        <p class="text-xl text-[hsl(var(--text-300))]">Custom high-tech scrollbars for the AEA design system.</p>
+    </header>
+
+    <div class="demo-container">
+        <!-- Vertical Scroll Area -->
+        <section class="p-6 rounded-2xl bg-[hsla(var(--bg-200)/0.3)] border border-[hsla(var(--border-300)/0.1)]">
+            <h2 class="text-lg font-semibold mb-4 text-[hsl(var(--accent-brand))]">Vertical Scroll</h2>
+            <div class="aea-scroll-area aea-scroll-area-v h-64 border border-[hsla(var(--border-300)/0.1)] rounded-xl">
+                <div class="scroll-content">
+                    <p class="mb-4">This container uses <code>.aea-scroll-area-v</code>.</p>
+                    <p class="mb-4">Scroll down to see the custom thumb.</p>
+                    <div class="space-y-4">
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 1</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 2</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 3</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 4</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 5</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 6</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 7</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 8</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horizontal Scroll Area -->
+        <section class="p-6 rounded-2xl bg-[hsla(var(--bg-200)/0.3)] border border-[hsla(var(--border-300)/0.1)]">
+            <h2 class="text-lg font-semibold mb-4 text-[hsl(var(--accent-secondary-100))]">Horizontal Scroll</h2>
+            <div class="aea-scroll-area aea-scroll-area-h border border-[hsla(var(--border-300)/0.1)] rounded-xl">
+                <div class="horizontal-content">
+                    <p class="mb-4">This container uses <code>.aea-scroll-area-h</code>.</p>
+                    <div class="flex gap-4">
+                        <div class="w-64 h-32 bg-white/5 rounded-lg flex-shrink-0 flex items-center justify-center">Card 1</div>
+                        <div class="w-64 h-32 bg-white/5 rounded-lg flex-shrink-0 flex items-center justify-center">Card 2</div>
+                        <div class="w-64 h-32 bg-white/5 rounded-lg flex-shrink-0 flex items-center justify-center">Card 3</div>
+                        <div class="w-64 h-32 bg-white/5 rounded-lg flex-shrink-0 flex items-center justify-center">Card 4</div>
+                        <div class="w-64 h-32 bg-white/5 rounded-lg flex-shrink-0 flex items-center justify-center">Card 5</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Glassmorphic Scroll Area -->
+        <section class="p-6 rounded-2xl bg-[hsla(var(--bg-200)/0.3)] border border-[hsla(var(--border-300)/0.1)]">
+            <h2 class="text-lg font-semibold mb-4 text-[hsl(var(--success-100))]">Glass Track</h2>
+            <div class="aea-scroll-area aea-scroll-area-v aea-scroll-area-glass h-64 border border-[hsla(var(--border-300)/0.1)] rounded-xl">
+                <div class="scroll-content">
+                    <p class="mb-4">This container uses <code>.aea-scroll-area-glass</code>.</p>
+                    <div class="space-y-4">
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 1</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 2</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 3</div>
+                        <div class="h-20 bg-white/5 rounded-lg flex items-center justify-center">Content Block 4</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-[hsla(var(--border-300)/0.1)] text-[hsl(var(--text-400))]">
+        <p>Part of the AEA Design System • Modern Technical Aesthetic</p>
+    </footer>
+</body>
+</html>

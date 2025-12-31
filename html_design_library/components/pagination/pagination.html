@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Pagination - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60 2.1% 18.4%); /* Surface 1 */
+            color: hsl(48 33.3% 97.1%); /* Primary Text */
+            padding: 4rem 2rem;
+            min-height: 100vh;
+        }
+        .demo-section {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background-color: hsla(var(--bg-200) / 0.5);
+            border-radius: 1.5rem;
+            border: 1px solid hsla(var(--border-300) / 0.1);
+        }
+        .demo-title {
+            font-family: 'Serif', serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid hsl(var(--accent-brand));
+            padding-left: 1rem;
+        }
+        .demo-label {
+            font-family: 'ModernDense', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            color: hsl(var(--text-500));
+            margin-bottom: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="demo-section">
+        <h2 class="demo-title">Basic Pagination</h2>
+        
+        <div class="space-y-8">
+            <div>
+                <span class="demo-label">Standard State</span>
+                <nav class="aea-pagination" aria-label="Page navigation">
+                    <ul class="aea-pagination-list">
+                        <li><a href="#" class="aea-pagination-item aea-pagination-disabled" aria-disabled="true">&larr; Prev</a></li>
+                        <li><a href="#" class="aea-pagination-item aea-pagination-active" aria-current="page">1</a></li>
+                        <li><a href="#" class="aea-pagination-item">2</a></li>
+                        <li><a href="#" class="aea-pagination-item">3</a></li>
+                        <li><span class="aea-pagination-ellipsis">...</span></li>
+                        <li><a href="#" class="aea-pagination-item aea-pagination-desktop-only">12</a></li>
+                        <li><a href="#" class="aea-pagination-item">Next &rarr;</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div>
+                <span class="demo-label">Mid-Page Selection</span>
+                <nav class="aea-pagination" aria-label="Page navigation">
+                    <ul class="aea-pagination-list">
+                        <li><a href="#" class="aea-pagination-item">&larr; Prev</a></li>
+                        <li><a href="#" class="aea-pagination-item aea-pagination-desktop-only">1</a></li>
+                        <li><span class="aea-pagination-ellipsis aea-pagination-desktop-only">...</span></li>
+                        <li><a href="#" class="aea-pagination-item">4</a></li>
+                        <li><a href="#" class="aea-pagination-item aea-pagination-active" aria-current="page">5</a></li>
+                        <li><a href="#" class="aea-pagination-item">6</a></li>
+                        <li><span class="aea-pagination-ellipsis">...</span></li>
+                        <li><a href="#" class="aea-pagination-item aea-pagination-desktop-only">12</a></li>
+                        <li><a href="#" class="aea-pagination-item">Next &rarr;</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2 class="demo-title">Glass Variation</h2>
+        
+        <div class="space-y-8">
+            <div>
+                <span class="demo-label">Enhanced Glassmorphism</span>
+                <nav class="aea-pagination aea-pagination-glass" aria-label="Page navigation">
+                    <ul class="aea-pagination-list">
+                        <li><a href="#" class="aea-pagination-item">&larr;</a></li>
+                        <li><a href="#" class="aea-pagination-item">1</a></li>
+                        <li><a href="#" class="aea-pagination-item aea-pagination-active">2</a></li>
+                        <li><a href="#" class="aea-pagination-item">3</a></li>
+                        <li><a href="#" class="aea-pagination-item">&rarr;</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2 class="demo-title">Interactive Logic</h2>
+        <span class="demo-label">Click to switch pages (Simulation)</span>
+        
+        <nav id="interactive-pagination" class="aea-pagination" aria-label="Interactive Page navigation">
+            <ul class="aea-pagination-list">
+                <li><button class="aea-pagination-item" id="prev-btn">&larr; Prev</button></li>
+                <li><button class="aea-pagination-item aea-pagination-active" data-page="1">1</button></li>
+                <li><button class="aea-pagination-item" data-page="2">2</button></li>
+                <li><button class="aea-pagination-item" data-page="3">3</button></li>
+                <li><button class="aea-pagination-item" data-page="4">4</button></li>
+                <li><button class="aea-pagination-item" data-page="5">5</button></li>
+                <li><button class="aea-pagination-item" id="next-btn">Next &rarr;</button></li>
+            </ul>
+        </nav>
+        
+        <div id="status-display" class="mt-4 text-center font-['ModernDense'] text-sm text-[hsl(var(--text-500))]">
+            Current Page: <span id="current-page-val" class="text-[hsl(var(--accent-brand))]">1</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

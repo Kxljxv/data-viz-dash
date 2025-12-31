@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popovers - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+            min-height: 200vh; /* Allow scrolling for test */
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            padding: 6rem;
+            background-color: hsla(var(--bg-100) / 0.3);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(12px);
+        }
+        .trigger-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: hsla(var(--bg-200) / 0.5);
+            border: 1px solid hsla(var(--border-300) / 0.2);
+            border-radius: 0.75rem;
+            font-family: 'ModernDense', sans-serif;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .trigger-btn:hover {
+            background-color: hsla(var(--accent-brand) / 0.2);
+            border-color: hsl(var(--accent-brand));
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Popovers</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Rich interactive overlays for contextual data and actions.
+        </p>
+    </header>
+
+    <section>
+        <h2 class="section-title">Positioning</h2>
+        <div class="demo-container">
+            <button class="trigger-btn" onclick="demoShowPopover(this, 'top')">Popover Top</button>
+            <button class="trigger-btn" onclick="demoShowPopover(this, 'bottom')">Popover Bottom</button>
+            <button class="trigger-btn" onclick="demoShowPopover(this, 'left')">Popover Left</button>
+            <button class="trigger-btn" onclick="demoShowPopover(this, 'right')">Popover Right</button>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Rich Content</h2>
+        <div class="demo-container">
+            <button class="trigger-btn" onclick="demoShowRichPopover(this)">Rich Content Demo</button>
+            <button class="trigger-btn" onclick="demoShowActionPopover(this)">Actions Demo</button>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
+    <script>
+        function demoShowPopover(el, pos) {
+            AEAPopover.show(el, {
+                title: `Position: ${pos.toUpperCase()}`,
+                content: `This popover is anchored to the ${pos} of the trigger element. It will auto-flip if it hits the viewport edge.`,
+                position: pos
+            });
+        }
+
+        function demoShowRichPopover(el) {
+            AEAPopover.show(el, {
+                title: "Node Information",
+                content: `
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-bold text-white">Power Supply Alpha</div>
+                                <div class="text-xs text-gray-400">Status: Operational</div>
+                            </div>
+                        </div>
+                        <p class="text-xs leading-relaxed">The main power grid for the northern sector. Currently operating at 87% efficiency with no reported failures in the last 48 hours.</p>
+                        <div class="grid grid-cols-2 gap-2 mt-1">
+                            <div class="p-2 rounded bg-white/5 border border-white/10 text-[10px]">
+                                <span class="block text-gray-500">LOAD</span>
+                                <span class="font-mono text-orange-400">1.21 GW</span>
+                            </div>
+                            <div class="p-2 rounded bg-white/5 border border-white/10 text-[10px]">
+                                <span class="block text-gray-500">TEMP</span>
+                                <span class="font-mono text-blue-400">42°C</span>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                position: 'top'
+            });
+        }
+
+        function demoShowActionPopover(el) {
+            AEAPopover.show(el, {
+                title: "Confirm Action",
+                content: "Are you sure you want to initialize the system reset? This process is irreversible and will disconnect all active nodes.",
+                footer: `
+                    <button class="px-3 py-1 text-xs rounded hover:bg-white/5 transition-all" onclick="AEAPopover.hide()">Cancel</button>
+                    <button class="px-3 py-1 text-xs rounded bg-red-500/20 text-red-400 border border-red-500/30 hover:bg-red-500/30 transition-all">Reset System</button>
+                `,
+                position: 'bottom'
+            });
+        }
+    </script>
+</body>
+</html>

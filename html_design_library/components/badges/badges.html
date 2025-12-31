@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badges - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .demo-card {
+            background-color: hsla(var(--bg-100) / 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Badges</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Small status indicators and metadata labels for quick identification.
+        </p>
+    </header>
+
+    <!-- Solid Variants -->
+    <section class="mb-16">
+        <h2 class="section-title">Solid Variants</h2>
+        <div class="demo-row">
+            <span class="badge badge-brand">Brand</span>
+            <span class="badge badge-info">Info</span>
+            <span class="badge badge-success">Success</span>
+            <span class="badge badge-warning">Warning</span>
+            <span class="badge badge-danger">Danger</span>
+            <span class="badge badge-neutral">Neutral</span>
+        </div>
+        <div class="demo-row">
+            <span class="badge badge-pill badge-brand">Pill Brand</span>
+            <span class="badge badge-pill badge-info">Pill Info</span>
+            <span class="badge badge-pill badge-success">Pill Success</span>
+            <span class="badge badge-pill badge-warning">Pill Warning</span>
+            <span class="badge badge-pill badge-danger">Pill Danger</span>
+            <span class="badge badge-pill badge-neutral">Pill Neutral</span>
+        </div>
+    </section>
+
+    <!-- Outline Variants -->
+    <section class="mb-16">
+        <h2 class="section-title">Outline Variants</h2>
+        <div class="demo-row">
+            <span class="badge badge-outline badge-brand">Outline Brand</span>
+            <span class="badge badge-outline badge-info">Outline Info</span>
+            <span class="badge badge-outline badge-success">Outline Success</span>
+            <span class="badge badge-outline badge-danger">Outline Danger</span>
+            <span class="badge badge-outline badge-neutral">Outline Neutral</span>
+        </div>
+    </section>
+
+    <!-- Soft (Glass) Variants -->
+    <section class="mb-16">
+        <h2 class="section-title">Soft (Glassmorphic) Variants</h2>
+        <p class="text-sm text-[hsl(var(--text-400))] mb-4">Recommended for the "Cyberpunk-Lite" aesthetic, providing depth without visual weight.</p>
+        <div class="demo-row">
+            <span class="badge badge-soft badge-brand">Soft Brand</span>
+            <span class="badge badge-soft badge-info">Soft Info</span>
+            <span class="badge badge-soft badge-success">Soft Success</span>
+            <span class="badge badge-soft badge-danger">Soft Danger</span>
+            <span class="badge badge-soft badge-neutral">Soft Neutral</span>
+        </div>
+        <div class="demo-row">
+            <span class="badge badge-pill badge-soft badge-brand">Soft Pill Brand</span>
+            <span class="badge badge-pill badge-soft badge-info">Soft Pill Info</span>
+            <span class="badge badge-pill badge-soft badge-success">Soft Pill Success</span>
+            <span class="badge badge-pill badge-soft badge-danger">Soft Pill Danger</span>
+        </div>
+    </section>
+
+    <!-- Integration Examples -->
+    <section class="mb-16">
+        <h2 class="section-title">Contextual Examples</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Button with Badge -->
+            <div class="demo-card">
+                <h3 class="font-serif text-xl mb-4">Inside Buttons</h3>
+                <div class="flex gap-4">
+                    <button class="btn-base btn-primary btn-md">
+                        Notifications
+                        <span class="badge badge-pill bg-white/20 text-white ml-2">12</span>
+                    </button>
+                    <button class="btn-base btn-secondary btn-md">
+                        Messages
+                        <span class="badge badge-pill badge-brand ml-2">New</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- List Item with Badge -->
+            <div class="demo-card">
+                <h3 class="font-serif text-xl mb-4">Inside Lists</h3>
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <div class="list-group-content">
+                            <span class="list-group-title">Central Node Alpha</span>
+                            <span class="list-group-subtitle">Cluster: Security-01</span>
+                        </div>
+                        <span class="badge badge-soft badge-success">Active</span>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="list-group-content">
+                            <span class="list-group-title">Edge Relay Beta</span>
+                            <span class="list-group-subtitle">Cluster: Comms-04</span>
+                        </div>
+                        <span class="badge badge-soft badge-danger">Offline</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card with Badge -->
+            <div class="demo-card">
+                <h3 class="font-serif text-xl mb-4">Inside Cards</h3>
+                <div class="card card-glass p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="badge badge-outline badge-info">Document v2.1</span>
+                        <span class="badge badge-soft badge-brand">High Priority</span>
+                    </div>
+                    <h4 class="card-title">System Analysis Report</h4>
+                    <p class="text-sm text-[hsl(var(--text-400))] mt-2">Comprehensive review of the node-link distribution across the southern hemisphere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete & Search - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+            min-height: 100vh;
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            max-width: 600px;
+            margin: 0 auto 6rem;
+        }
+        .demo-card {
+            background-color: hsla(var(--bg-100) / 0.3);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+        }
+        .card-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: hsl(var(--text-400));
+            margin-bottom: 1.5rem;
+        }
+        #debug-log {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 1rem;
+            font-family: monospace;
+            font-size: 0.75rem;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .log-entry {
+            margin-bottom: 0.25rem;
+            color: hsl(var(--accent-brand));
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12 text-center">
+        <h1 class="text-4xl font-serif mb-2">Autocomplete & Search</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            High-performance search with glassmorphism, categorisation, and keyboard navigation.
+        </p>
+    </header>
+
+    <div class="demo-container">
+        <div class="demo-card">
+            <span class="card-label">Global Search Demo</span>
+            
+            <div class="aea-autocomplete" id="demo-search">
+                <div class="aea-autocomplete-wrapper">
+                    <svg class="aea-autocomplete-search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" class="aea-autocomplete-input" placeholder="Search for delegates, motions, or groups...">
+                    <button class="aea-autocomplete-clear" aria-label="Clear search">
+                        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="aea-autocomplete-results" role="listbox">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div id="debug-log">
+                <div class="text-[hsla(var(--text-400)/0.5)] italic">Search logs will appear here...</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="max-w-4xl mx-auto">
+        <h2 class="section-title">Key Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h3 class="font-modern-dense text-lg text-[hsl(var(--accent-brand))] mb-2">Grouping & Categorisation</h3>
+                <p class="text-sm text-[hsl(var(--text-400))]">Organise results into logical sections with custom icons and meta-information for better scanability.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h3 class="font-modern-dense text-lg text-[hsl(var(--accent-brand))] mb-2">Smart Highlighting</h3>
+                <p class="text-sm text-[hsl(var(--text-400))]">Automatically highlights matching characters in the result labels to provide instant visual feedback.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h3 class="font-modern-dense text-lg text-[hsl(var(--accent-brand))] mb-2">Full A11y Support</h3>
+                <p class="text-sm text-[hsl(var(--text-400))]">Complete keyboard navigation (Arrows, Enter, Esc, Tab) and ARIA roles for screen readers.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                <h3 class="font-modern-dense text-lg text-[hsl(var(--accent-brand))] mb-2">Performance Optimized</h3>
+                <p class="text-sm text-[hsl(var(--text-400))]">Built-in debouncing to minimize logic overhead and high-performance CSS animations for the results panel.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
+    <script>
+        // Mock Data for Demo
+        const MOCK_DATA = [
+            { id: 1, label: 'Anja Weber', group: 'Delegates', meta: 'Delegate • Hamburg', value: 'delegate-1', icon: '<svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>' },
+            { id: 2, label: 'Bernd Müller', group: 'Delegates', meta: 'Delegate • Berlin', value: 'delegate-2', icon: '<svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>' },
+            { id: 3, label: 'Christian Schmidt', group: 'Delegates', meta: 'Delegate • Munich', value: 'delegate-3', icon: '<svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>' },
+            { id: 4, label: 'Antrag zur Digitalisierung', group: 'Motions', meta: 'Motion • #1242', value: 'motion-1', icon: '<svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>' },
+            { id: 5, label: 'Klimaschutz Initiative', group: 'Motions', meta: 'Motion • #1355', value: 'motion-2', icon: '<svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>' },
+            { id: 6, label: 'Arbeitsgruppe Bildung', group: 'Groups', meta: 'Group • 12 Members', value: 'group-1', icon: '<svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>' },
+            { id: 7, label: 'Landesverband NRW', group: 'Groups', meta: 'Group • 45 Members', value: 'group-2', icon: '<svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>' },
+        ];
+
+        const searchEl = document.getElementById('demo-search');
+        const logEl = document.getElementById('debug-log');
+
+        const addLog = (msg) => {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            logEl.prepend(entry);
+        };
+
+        // Listen for search events to provide filtered results
+        searchEl.addEventListener('aea-autocomplete-search', (e) => {
+            const query = e.detail.query.toLowerCase();
+            addLog(`Searching for: "${query}"`);
+
+            // Filter data
+            const filtered = MOCK_DATA.filter(item => 
+                item.label.toLowerCase().includes(query) || 
+                item.group.toLowerCase().includes(query)
+            );
+
+            // Group the filtered results
+            const groups = filtered.reduce((acc, item) => {
+                if (!acc[item.group]) acc[item.group] = [];
+                acc[item.group].push(item);
+                return acc;
+            }, {});
+
+            // Render results back into the component
+            AEAAutocomplete.renderResults(searchEl, groups, query);
+        });
+
+        // Listen for selection events
+        searchEl.addEventListener('aea-autocomplete-select', (e) => {
+            addLog(`Selected: ${e.detail.label} (${e.detail.value})`);
+        });
+    </script>
+</body>
+</html>

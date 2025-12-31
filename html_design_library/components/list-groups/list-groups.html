@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Groups - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 3rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            max-width: 500px;
+            margin-bottom: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">List Groups</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Structured vertical collections for technical data and navigation.
+        </p>
+    </header>
+
+    <section class="demo-container">
+        <h2 class="section-title">Standard List</h2>
+        <ul class="list-group" role="list">
+            <li class="list-group-item" role="listitem">System Status: Online</li>
+            <li class="list-group-item" role="listitem">Database Version: 4.2.0</li>
+            <li class="list-group-item" role="listitem">Active Connections: 1,024</li>
+            <li class="list-group-item" role="listitem">Security Level: High</li>
+        </ul>
+    </section>
+
+    <section class="demo-container">
+        <h2 class="section-title">Interactive Iconic List</h2>
+        <ul class="list-group" id="interactiveList" role="list">
+            <!-- Node A -->
+            <li class="list-group-item list-group-item-interactive active" role="listitem" tabindex="0">
+                <div class="list-group-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <div class="list-group-content">
+                    <span class="list-group-title">Antrag #772-B</span>
+                    <span class="list-group-subtitle">Environmental Protection Standards</span>
+                </div>
+                <div class="list-group-actions">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[hsl(var(--accent-brand)/0.2)] text-[hsl(var(--accent-brand))] uppercase tracking-wider">Priority</span>
+                </div>
+            </li>
+            <!-- Node B -->
+            <li class="list-group-item list-group-item-interactive" role="listitem" tabindex="0">
+                <div class="list-group-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <div class="list-group-content">
+                    <span class="list-group-title">Supporter Group A</span>
+                    <span class="list-group-subtitle">15 Linked Entities</span>
+                </div>
+                <div class="list-group-actions">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-white/5 text-[hsl(var(--text-400))] uppercase tracking-wider">Stable</span>
+                </div>
+            </li>
+            <!-- Node C -->
+            <li class="list-group-item list-group-item-interactive" role="listitem" tabindex="0">
+                <div class="list-group-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                </div>
+                <div class="list-group-content">
+                    <span class="list-group-title">Document Reference</span>
+                    <span class="list-group-subtitle">PDF-Archive-2025.pdf</span>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class="demo-container">
+        <h2 class="section-title">Flush Rich List (Inside Card)</h2>
+        <div class="card card-glass">
+            <div class="card-header">
+                <h3 class="card-title text-base">Recent Activity</h3>
+            </div>
+            <ul class="list-group list-group-flush" role="list">
+                <li class="list-group-item">
+                    <div class="list-group-content">
+                        <span class="list-group-title text-sm">Graph Exported</span>
+                        <span class="list-group-subtitle text-[10px]">Today, 14:20</span>
+                    </div>
+                    <div class="list-group-actions">
+                        <span class="w-2 h-2 rounded-full bg-[hsl(var(--success-100))]"></span>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="list-group-content">
+                        <span class="list-group-title text-sm">New Node Added</span>
+                        <span class="list-group-subtitle text-[10px]">Today, 09:15</span>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="list-group-content">
+                        <span class="list-group-title text-sm">Backup Scheduled</span>
+                        <span class="list-group-subtitle text-[10px]">Yesterday, 23:00</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AEAListGroup.init('interactiveList', {
+                onSelect: (item) => {
+                    const title = item.querySelector('.list-group-title').textContent;
+                    console.log(`Selected: ${title}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

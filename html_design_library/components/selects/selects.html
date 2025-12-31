@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Inputs - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+            min-height: 100vh;
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+        .demo-card {
+            background-color: hsla(var(--bg-100) / 0.3);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+        }
+        .card-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: hsl(var(--text-400));
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Select Inputs</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            High-quality custom select components with search, keyboard support, and glassmorphism.
+        </p>
+    </header>
+
+    <section>
+        <h2 class="section-title">Variants</h2>
+        <div class="demo-grid">
+            <!-- Standard Select -->
+            <div class="demo-card">
+                <span class="card-label">Standard Select</span>
+                <div class="aea-select" id="select-standard">
+                    <button class="aea-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="aea-select-trigger-value">Choose an option</span>
+                        <svg class="aea-select-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="aea-select-menu" role="listbox">
+                        <div class="aea-select-option" role="option" data-value="opt1">Option 1</div>
+                        <div class="aea-select-option" role="option" data-value="opt2">Option 2</div>
+                        <div class="aea-select-option" role="option" data-value="opt3">Option 3</div>
+                        <div class="aea-select-option" role="option" data-value="opt4">Option 4</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select with Icons -->
+            <div class="demo-card">
+                <span class="card-label">With Icons</span>
+                <div class="aea-select" id="select-icons">
+                    <button class="aea-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="aea-select-trigger-value">Select Node Type</span>
+                        <svg class="aea-select-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="aea-select-menu" role="listbox">
+                        <div class="aea-select-option" role="option" data-value="person">
+                            <svg class="aea-select-option-icon text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <span class="aea-select-option-label">Person</span>
+                        </div>
+                        <div class="aea-select-option" role="option" data-value="motion">
+                            <svg class="aea-select-option-icon text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span class="aea-select-option-label">Antrag</span>
+                        </div>
+                        <div class="aea-select-option" role="option" data-value="group">
+                            <svg class="aea-select-option-icon text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span class="aea-select-option-label">Gruppe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select with Search -->
+            <div class="demo-card">
+                <span class="card-label">Searchable Select</span>
+                <div class="aea-select" id="select-searchable">
+                    <button class="aea-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="aea-select-trigger-value">Find a Delegate...</span>
+                        <svg class="aea-select-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="aea-select-menu" role="listbox">
+                        <div class="aea-select-search-container">
+                            <input type="text" class="aea-select-search" placeholder="Search delegates...">
+                        </div>
+                        <div class="aea-select-option" role="option" data-value="d1">Anja Weber</div>
+                        <div class="aea-select-option" role="option" data-value="d2">Bernd Müller</div>
+                        <div class="aea-select-option" role="option" data-value="d3">Christian Schmidt</div>
+                        <div class="aea-select-option" role="option" data-value="d4">Daniela Fischer</div>
+                        <div class="aea-select-option" role="option" data-value="d5">Erik Wagner</div>
+                        <div class="aea-select-option" role="option" data-value="d6">Felicitas Schulz</div>
+                        <div class="aea-select-option" role="option" data-value="d7">Gregor Becker</div>
+                        <div class="aea-select-option" role="option" data-value="d8">Hannah Hoffmann</div>
+                        <div class="aea-select-no-results" style="display: none;">No results found</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Usage Example</h2>
+        <div class="demo-card max-w-lg mx-auto">
+            <div class="space-y-4">
+                <div>
+                    <label class="card-label">Display Mode</label>
+                    <div class="aea-select" id="display-mode">
+                        <button class="aea-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="aea-select-trigger-value">Cluster View</span>
+                            <svg class="aea-select-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="aea-select-menu" role="listbox">
+                            <div class="aea-select-option is-selected" role="option" data-value="cluster" aria-selected="true">Cluster View</div>
+                            <div class="aea-select-option" role="option" data-value="hierarchical">Hierarchical View</div>
+                            <div class="aea-select-option" role="option" data-value="radial">Radial View</div>
+                            <div class="aea-select-option" role="option" data-value="matrix">Matrix View</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="debug-output" class="p-4 rounded-xl bg-black/20 border border-white/5 font-mono text-xs text-[hsl(var(--accent-brand))]">
+                    Select a value to see changes here...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./script.js"></script>
+    <script>
+        // Listen for changes
+        document.querySelectorAll('.aea-select').forEach(select => {
+            select.addEventListener('aea-select-change', (e) => {
+                const debug = document.getElementById('debug-output');
+                if (debug) {
+                    debug.textContent = `Event: aea-select-change\nValue: ${e.detail.value}\nLabel: ${e.detail.label}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

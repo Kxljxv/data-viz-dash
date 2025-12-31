@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Component: Buttons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-[hsl(var(--bg-000))] text-[hsl(var(--text-000))] min-h-screen p-8 font-modern-dense">
+
+    <div class="max-w-4xl mx-auto space-y-12">
+        
+        <!-- Header -->
+        <header class="border-b border-[hsl(var(--text-500)/0.2)] pb-6">
+            <h1 class="font-serif text-3xl mb-2">Buttons</h1>
+            <p class="text-[hsl(var(--text-200))]">Primary interactive elements for triggering actions.</p>
+        </header>
+
+        <!-- Playground -->
+        <section class="space-y-6">
+            <h2 class="text-xs font-bold text-[hsl(var(--text-500))] uppercase tracking-widest">Variants</h2>
+            
+            <div class="p-8 rounded-2xl bg-[hsl(var(--bg-100))] border border-[hsla(var(--border-300)/0.1)] flex flex-wrap gap-4 items-center">
+                <!-- Primary -->
+                <button class="btn-base btn-primary btn-md">
+                    Primary Action
+                </button>
+
+                <!-- Secondary -->
+                <button class="btn-base btn-secondary btn-md">
+                    Secondary
+                </button>
+
+                <!-- Outline -->
+                <button class="btn-base btn-outline btn-md">
+                    Outline
+                </button>
+
+                <!-- Ghost -->
+                <button class="btn-base btn-ghost btn-md">
+                    Ghost
+                </button>
+
+                <!-- Danger -->
+                <button class="btn-base btn-danger btn-md">
+                    Delete
+                </button>
+            </div>
+        </section>
+
+        <!-- Sizes -->
+        <section class="space-y-6">
+            <h2 class="text-xs font-bold text-[hsl(var(--text-500))] uppercase tracking-widest">Sizes</h2>
+            
+            <div class="p-8 rounded-2xl bg-[hsl(var(--bg-100))] border border-[hsla(var(--border-300)/0.1)] flex flex-wrap gap-4 items-center">
+                <button class="btn-base btn-primary btn-sm">Small</button>
+                <button class="btn-base btn-primary btn-md">Default</button>
+                <button class="btn-base btn-primary btn-lg">Large</button>
+            </div>
+        </section>
+
+        <!-- States -->
+        <section class="space-y-6">
+            <h2 class="text-xs font-bold text-[hsl(var(--text-500))] uppercase tracking-widest">States (Disabled)</h2>
+            
+            <div class="p-8 rounded-2xl bg-[hsl(var(--bg-100))] border border-[hsla(var(--border-300)/0.1)] flex flex-wrap gap-4 items-center">
+                <button class="btn-base btn-primary btn-md" disabled>Primary Disabled</button>
+                <button class="btn-base btn-secondary btn-md" disabled>Secondary Disabled</button>
+            </div>
+        </section>
+
+        <!-- With Icons -->
+        <section class="space-y-6">
+            <h2 class="text-xs font-bold text-[hsl(var(--text-500))] uppercase tracking-widest">With Icons</h2>
+            
+            <div class="p-8 rounded-2xl bg-[hsl(var(--bg-100))] border border-[hsla(var(--border-300)/0.1)] flex flex-wrap gap-4 items-center">
+                <button class="btn-base btn-primary btn-md gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    <span>Add New</span>
+                </button>
+
+                <button class="btn-base btn-secondary btn-md gap-2">
+                    <span>Settings</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

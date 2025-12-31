@@ -1,6 +1,13 @@
-<script>
+<script lang="ts">
 	import { cn } from "$lib/utils.js";
-
+	interface Props {
+		ref?: any;
+		class?: string;
+		variant?: "default" | "glass";
+		interactive?: boolean;
+		children?: import('svelte').Snippet;
+		[key: string]: any;
+	}
 	let {
 		ref = $bindable(null),
 		class: className = undefined,
@@ -8,7 +15,7 @@
 		interactive = false,
 		children,
 		...restProps
-	} = $props();
+	}: Props = $props();
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->

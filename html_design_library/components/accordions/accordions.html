@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordions - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            max-width: 800px;
+            margin-bottom: 5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Accordions</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Collapsible content sections for progressive disclosure.
+        </p>
+    </header>
+
+    <!-- Standard Accordion (Single Open) -->
+    <section class="demo-container">
+        <h2 class="section-title">Standard (Single Open)</h2>
+        <div class="accordion-group" id="standardAccordion">
+            <!-- Section 1 -->
+            <div class="accordion-item active" id="item-1">
+                <button class="accordion-header" aria-expanded="true" aria-controls="content-1">
+                    <span class="accordion-title">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        System Overview
+                    </span>
+                    <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="accordion-content-wrapper" id="content-1">
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            The AEA system utilizes a decentralized graph architecture to manage neural nodes and their interconnections. This view provides a high-level summary of active clusters and their operational status.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="accordion-item" id="item-2">
+                <button class="accordion-header" aria-expanded="false" aria-controls="content-2">
+                    <span class="accordion-title">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        Security Protocols
+                    </span>
+                    <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="accordion-content-wrapper" id="content-2">
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Multi-layer encryption is applied to all edge communications. Unauthorized access attempts are automatically logged and quarantined within the secure sandbox environment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="accordion-item" id="item-3">
+                <button class="accordion-header" aria-expanded="false" aria-controls="content-3">
+                    <span class="accordion-title">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Maintenance Logs
+                    </span>
+                    <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="accordion-content-wrapper" id="content-3">
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Last full system sync completed at 04:00 UTC. No critical errors detected in the last 72 hours of continuous operation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Open Accordion -->
+    <section class="demo-container">
+        <h2 class="section-title">Allow Multiple Open</h2>
+        <div class="accordion-group" id="multiAccordion">
+            <div class="accordion-item" id="multi-1">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">Filter Options</span>
+                    <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Advanced search filters for granular node selection.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id="multi-2">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">Display Settings</span>
+                    <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Configure UI elements, density, and color themes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flush Accordion -->
+    <section class="demo-container">
+        <h2 class="section-title">Flush (Borderless)</h2>
+        <div class="accordion-group accordion-flush" id="flushAccordion">
+            <div class="accordion-item" id="flush-1">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">Connection Details</span>
+                    <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Detailed list of all incoming and outgoing connections for this node.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id="flush-2">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">Metadata</span>
+                    <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="accordion-content-wrapper">
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Raw JSON attributes and system-level tags.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AEAAccordion.init('standardAccordion', { allowMultiple: false });
+            AEAAccordion.init('multiAccordion', { allowMultiple: true });
+            AEAAccordion.init('flushAccordion', { allowMultiple: false });
+        });
+    </script>
+</body>
+</html>

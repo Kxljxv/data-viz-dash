@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA File Upload Status - Cyberpunk-Lite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60 2.1% 18.4%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        /* Demo specific background to simulate graph visualization behind */
+        .demo-bg-pattern {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle at 2px 2px, hsla(var(--text-500) / 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-bg-pattern"></div>
+
+    <div id="upload-demo-root" class="aea-upload-container">
+        <!-- Drop Zone -->
+        <div class="aea-drop-zone" id="aea-drop-zone" tabindex="0" role="button" aria-label="Upload files">
+            <input type="file" id="aea-file-input" class="hidden" multiple aria-hidden="true">
+            <span class="aea-drop-zone-icon">📁</span>
+            <div class="aea-drop-zone-text">
+                Drag & drop files here<br>
+                <span class="aea-drop-zone-subtext">or click to browse from your device</span>
+            </div>
+        </div>
+
+        <!-- File List Container -->
+        <div class="aea-file-list" id="aea-file-list" aria-live="polite">
+            <!-- File items will be injected here via JavaScript -->
+            
+            <!-- Example of an active upload (for visual reference during development) -->
+            <div class="aea-file-item">
+                <div class="aea-file-header">
+                    <div class="aea-file-info">
+                        <span class="aea-file-name">network_structure_v2.json</span>
+                        <span class="aea-file-meta">2.4 MB • 45%</span>
+                    </div>
+                    <div class="aea-file-actions">
+                        <button class="aea-file-btn" title="Cancel">✕</button>
+                    </div>
+                </div>
+                <div class="aea-progress-container">
+                    <div class="aea-progress-bar" style="width: 45%;"></div>
+                </div>
+                <div class="aea-file-status-text">Uploading...</div>
+            </div>
+
+            <!-- Example of a success state -->
+            <div class="aea-file-item aea-success">
+                <div class="aea-file-header">
+                    <div class="aea-file-info">
+                        <span class="aea-file-name">delegate_list_2023.csv</span>
+                        <span class="aea-file-meta">156 KB • Complete</span>
+                    </div>
+                    <div class="aea-file-actions">
+                        <button class="aea-file-btn aea-danger" title="Remove">🗑️</button>
+                    </div>
+                </div>
+                <div class="aea-progress-container">
+                    <div class="aea-progress-bar" style="width: 100%;"></div>
+                </div>
+                <div class="aea-file-status-text">Success</div>
+            </div>
+
+            <!-- Example of an error state -->
+            <div class="aea-file-item aea-error">
+                <div class="aea-file-header">
+                    <div class="aea-file-info">
+                        <span class="aea-file-name">large_dataset_corrupted.zip</span>
+                        <span class="aea-file-meta">Error: File too large</span>
+                    </div>
+                    <div class="aea-file-actions">
+                        <button class="aea-file-btn" title="Retry">🔄</button>
+                        <button class="aea-file-btn aea-danger" title="Remove">🗑️</button>
+                    </div>
+                </div>
+                <div class="aea-progress-container">
+                    <div class="aea-progress-bar" style="width: 100%;"></div>
+                </div>
+                <div class="aea-file-status-text">Failed</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            color: hsl(var(--text-100));
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+        }
+        .main-content {
+            flex: 1;
+            padding: 4rem;
+            margin-left: 280px; /* Match default sidebar width */
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .is-mini-sidebar + .main-content {
+            margin-left: 80px;
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0 !important;
+                padding: 2rem;
+            }
+        }
+        .demo-section {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+        .code-block {
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            color: hsla(var(--text-400) / 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="aea-sidebar">
+        <div class="aea-sidebar-header">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-[hsl(var(--accent-brand))] flex items-center justify-center text-white font-bold">A</div>
+                <span class="aea-sidebar-logo font-serif text-xl tracking-tight">AEA Design</span>
+            </div>
+            <button class="aea-sidebar-toggle" aria-label="Toggle Sidebar">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                </svg>
+            </button>
+        </div>
+
+        <nav class="aea-sidebar-inner">
+            <div class="aea-sidebar-group">
+                <div class="aea-sidebar-group-header">
+                    <span class="aea-sidebar-group-title">Main Navigation</span>
+                    <svg class="aea-sidebar-group-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="aea-sidebar-group-content">
+                    <a href="#dashboard" class="aea-sidebar-item is-active" data-tooltip="Dashboard">
+                        <svg class="aea-sidebar-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <span class="aea-sidebar-label">Dashboard</span>
+                    </a>
+                    <a href="#graph" class="aea-sidebar-item" data-tooltip="Network Graph">
+                        <svg class="aea-sidebar-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002 2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                        <span class="aea-sidebar-label">Network Graph</span>
+                    </a>
+                    <a href="#nodes" class="aea-sidebar-item" data-tooltip="Nodes Explorer">
+                        <svg class="aea-sidebar-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                        <span class="aea-sidebar-label">Nodes Explorer</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="aea-sidebar-group">
+                <div class="aea-sidebar-group-header">
+                    <span class="aea-sidebar-group-title">Data & Analysis</span>
+                    <svg class="aea-sidebar-group-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="aea-sidebar-group-content">
+                    <a href="#reports" class="aea-sidebar-item" data-tooltip="Reports">
+                        <svg class="aea-sidebar-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <span class="aea-sidebar-label">Reports</span>
+                    </a>
+                    <a href="#settings" class="aea-sidebar-item" data-tooltip="Settings">
+                        <svg class="aea-sidebar-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="aea-sidebar-label">Settings</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="aea-sidebar-footer">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-white/10 flex-shrink-0 flex items-center justify-center overflow-hidden border border-white/20">
+                    <svg class="w-6 h-6 text-white/50" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </div>
+                <div class="flex-1 min-w-0 aea-sidebar-label">
+                    <p class="text-sm font-bold truncate">Kolja Weber</p>
+                    <p class="text-xs text-[hsla(var(--text-400)/0.6)] truncate">Administrator</p>
+                </div>
+                <button class="p-2 hover:bg-white/5 rounded-lg text-[hsla(var(--text-400)/0.6)] hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="demo-section">
+            <h1 class="text-4xl font-serif mb-4">Sidebar Navigation</h1>
+            <p class="text-lg text-[hsl(var(--text-400))] font-modern-dense mb-8">
+                A professional-grade navigation system with glassmorphic depth, responsive behavior, and mini-mode persistence.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+                    <h3 class="text-xl font-modern-dense text-[hsl(var(--accent-brand))] mb-4">Mini Sidebar Persistence</h3>
+                    <p class="text-sm text-[hsl(var(--text-400))] mb-4">
+                        The sidebar state (full vs mini) is automatically saved to `localStorage`, ensuring a consistent experience across page reloads.
+                    </p>
+                    <div class="code-block">
+                        // AEASidebar state saved!<br>
+                        localStorage.getItem('aea-sidebar-mini');
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+                    <h3 class="text-xl font-modern-dense text-[hsl(var(--accent-brand))] mb-4">Responsive Transitions</h3>
+                    <p class="text-sm text-[hsl(var(--text-400))] mb-4">
+                        On mobile ( < 768px), the sidebar transforms into an off-canvas drawer with a blurred backdrop.
+                    </p>
+                    <button onclick="AEASidebar.toggleMobile()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm transition-all md:hidden">
+                        Open Mobile Menu
+                    </button>
+                    <p class="text-xs text-white/30 mt-4 hidden md:block italic">Resize window to see mobile behavior.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="text-2xl font-serif mb-6">Interaction Events</h2>
+            <div class="p-8 rounded-3xl bg-black/40 border border-white/5">
+                <p class="text-sm text-[hsl(var(--text-400))] mb-4">
+                    The sidebar dispatches custom events whenever its state changes. This allows the main content area (like a D3 graph) to recalculate its viewport.
+                </p>
+                <div id="event-log" class="font-monospace text-xs text-[hsl(var(--accent-brand))] p-4 bg-black/60 rounded-xl h-32 overflow-y-auto">
+                    <div class="opacity-30">Listening for aea-sidebar-resize events...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+    <script>
+        // Adjust main content margin based on sidebar state
+        window.addEventListener('aea-sidebar-resize', (e) => {
+            const body = document.body;
+            const log = document.getElementById('event-log');
+            
+            if (e.detail.isMini) {
+                body.classList.add('is-mini-sidebar');
+            } else {
+                body.classList.remove('is-mini-sidebar');
+            }
+
+            const entry = document.createElement('div');
+            entry.className = 'mb-1';
+            entry.textContent = `[${new Date().toLocaleTimeString()}] Event: aea-sidebar-resize | Width: ${e.detail.width}px`;
+            log.prepend(entry);
+        });
+
+        // Initialize state on load
+        if (localStorage.getItem('aea-sidebar-mini') === 'true') {
+            document.body.classList.add('is-mini-sidebar');
+        }
+
+        // Handle navigation clicks for demo
+        document.querySelectorAll('.aea-sidebar-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = item.getAttribute('href');
+                AEASidebar.setActive(href);
+            });
+        });
+    </script>
+</body>
+</html>

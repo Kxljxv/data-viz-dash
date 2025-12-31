@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawer (Sheet) - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 3rem;
+            color: hsl(var(--text-100));
+            min-height: 200vh; /* Allow scrolling to test fixed positioning */
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Drawer (Sheet)</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Side-sliding panels for secondary navigation, settings, and details.
+        </p>
+    </header>
+
+    <section class="mb-16">
+        <h2 class="section-title">Examples</h2>
+        <div class="flex gap-4">
+            <button class="btn-base btn-primary btn-md" onclick="openDrawer('rightDrawer')">Open Right Drawer</button>
+            <button class="btn-base btn-secondary btn-md" onclick="openDrawer('leftDrawer')">Open Left Drawer</button>
+        </div>
+    </section>
+
+    <!-- Right Drawer -->
+    <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeAllDrawers()"></div>
+    
+    <div class="drawer drawer-right" id="rightDrawer">
+        <div class="drawer-header">
+            <h3 class="drawer-title">Node Details</h3>
+            <button class="btn-close" onclick="closeAllDrawers()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div class="space-y-6">
+                <div class="card card-glass p-4">
+                    <h4 class="card-title text-base mb-2">Metadata</h4>
+                    <div class="space-y-2 font-modern-dense text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-[hsl(var(--text-400))]">ID:</span>
+                            <span class="text-white">#AEA-772-B</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-[hsl(var(--text-400))]">Type:</span>
+                            <span class="text-[hsl(var(--accent-secondary-100))]">Antrag</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-[hsl(var(--text-400))]">Created:</span>
+                            <span class="text-white">2025-12-20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-modern-dense text-xs uppercase tracking-widest text-[hsl(var(--text-400))] mb-3">Description</h4>
+                    <p class="font-modern-dense text-sm leading-relaxed text-[hsl(var(--text-200))]">
+                        This node represents a legislative proposal regarding environmental protection standards. It is currently linked to 15 supporter nodes and 3 conflicting proposals.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-modern-dense text-xs uppercase tracking-widest text-[hsl(var(--text-400))] mb-3">Linked Actions</h4>
+                    <div class="space-y-2">
+                        <button class="btn-base btn-outline btn-sm w-full justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                            View Graph Neighbors
+                        </button>
+                        <button class="btn-base btn-outline btn-sm w-full justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="drawer-footer">
+            <button class="btn-base btn-primary btn-md w-full">Hervorheben</button>
+        </div>
+    </div>
+
+    <!-- Left Drawer -->
+    <div class="drawer drawer-left" id="leftDrawer">
+        <div class="drawer-header">
+            <h3 class="drawer-title">Navigation</h3>
+            <button class="btn-close" onclick="closeAllDrawers()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <nav class="space-y-1">
+                <a href="#" class="flex items-center px-4 py-3 rounded-xl bg-[hsl(var(--accent-brand)/0.1)] text-[hsl(var(--accent-brand))] font-modern-dense">
+                    <span class="mr-3">🏠</span> Dashboard
+                </a>
+                <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-[hsl(var(--text-200))] font-modern-dense transition-colors">
+                    <span class="mr-3">🕸️</span> Graph View
+                </a>
+                <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-[hsl(var(--text-200))] font-modern-dense transition-colors">
+                    <span class="mr-3">📁</span> Documents
+                </a>
+                <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-white/5 text-[hsl(var(--text-200))] font-modern-dense transition-colors">
+                    <span class="mr-3">⚙️</span> Settings
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function openDrawer(id) {
+            document.getElementById('drawerBackdrop').classList.add('active');
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        }
+
+        function closeAllDrawers() {
+            document.getElementById('drawerBackdrop').classList.remove('active');
+            document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
+            document.body.style.overflow = ''; // Restore scroll
+        }
+
+        // Handle ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAllDrawers();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Timelines - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-100));
+            color: hsl(var(--text-100));
+            padding: 2rem;
+            font-family: 'ModernDense', sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 4rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="mb-12">
+            <h1 class="text-4xl font-bold mb-2">Timelines</h1>
+            <p class="text-xl text-[hsl(var(--text-300))]">Chronological event display with Cyberpunk-Lite aesthetic.</p>
+        </header>
+
+        <!-- Basic Timeline -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-8 text-[hsl(var(--accent-brand))]">Standard Timeline</h2>
+            <div class="aea-timeline">
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-brand"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">Today, 22:55</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Node Connection Established</h3>
+                        <p class="text-[hsl(var(--text-300))]">Direct uplink to #N-4096 verified. Signal strength: 98%.</p>
+                    </div>
+                </div>
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-info"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">Yesterday, 14:20</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Metadata Synchronization</h3>
+                        <p class="text-[hsl(var(--text-300))]">Updated 1,240 node attributes from the central registry.</p>
+                    </div>
+                </div>
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-success"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">20 Dec 2023</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Security Patch Applied</h3>
+                        <p class="text-[hsl(var(--text-300))]">Encryption protocols upgraded to v4.2. All sessions re-authenticated.</p>
+                    </div>
+                </div>
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-danger"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">18 Dec 2023</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Unauthorized Access Attempt</h3>
+                        <p class="text-[hsl(var(--text-300))]">IP 192.168.1.15 blocked after 5 failed authentication attempts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alternating Timeline -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-8 text-[hsl(var(--accent-secondary-100))]">Alternating Timeline (Desktop)</h2>
+            <div class="aea-timeline aea-timeline-alternating">
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-brand"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">Phase 4</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Neural Integration</h3>
+                        <p class="text-[hsl(var(--text-300))]">Finalizing the bridge between graph data and cognitive mapping.</p>
+                    </div>
+                </div>
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-info"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">Phase 3</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Visual Optimization</h3>
+                        <p class="text-[hsl(var(--text-300))]">Implementing glassmorphic UI components and high-performance animations.</p>
+                    </div>
+                </div>
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-success"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">Phase 2</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Data Structuring</h3>
+                        <p class="text-[hsl(var(--text-300))]">Establishing the D3.js force-directed graph foundation.</p>
+                    </div>
+                </div>
+                <div class="aea-timeline-item">
+                    <div class="aea-timeline-marker aea-timeline-marker-brand"></div>
+                    <div class="aea-timeline-content">
+                        <time class="aea-timeline-date">Phase 1</time>
+                        <h3 class="text-lg font-bold text-[hsl(var(--text-100))]">Concept Architecture</h3>
+                        <p class="text-[hsl(var(--text-300))]">Initial design specs for the AEA technical environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 pt-8 border-t border-[hsla(var(--border-300)/0.1)] text-[hsl(var(--text-400))]">
+            <p>Part of the AEA Design System • Modern Technical Aesthetic</p>
+        </footer>
+    </div>
+</body>
+</html>

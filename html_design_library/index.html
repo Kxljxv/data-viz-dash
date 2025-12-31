@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Design Library - Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+        }
+
+        body {
+            background-color: hsl(var(--bg-000));
+            color: hsl(var(--text-100));
+            font-family: 'ModernDense', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .docs-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Glassmorphism */
+        .docs-sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: hsla(var(--bg-100) / 0.8);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid hsla(var(--border-300) / 0.1);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .docs-main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            max-width: 1400px;
+        }
+
+        .docs-header {
+            position: sticky;
+            top: 0;
+            background: hsla(var(--bg-000) / 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 40;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            margin-bottom: 3rem;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: hsla(var(--text-500) / 0.2);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: hsla(var(--text-500) / 0.4);
+        }
+
+        /* Component Card Hover */
+        .comp-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .comp-card:hover {
+            transform: translateY(-4px);
+            border-color: hsla(var(--accent-brand) / 0.4);
+            box-shadow: 0 10px 30px -10px hsla(var(--accent-brand) / 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .docs-sidebar {
+                transform: translateX(-100%);
+            }
+            .docs-main {
+                margin-left: 0;
+            }
+            .docs-sidebar.active {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="custom-scrollbar">
+
+    <div class="docs-layout">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar p-6" id="main-sidebar">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-8 h-8 bg-[hsl(var(--accent-brand))] rounded-lg flex items-center justify-center font-bold text-white shadow-[0_0_15px_hsla(var(--accent-brand)/0.4)]">
+                    A
+                </div>
+                <h1 class="font-serif text-xl tracking-tight">AEA Library</h1>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto custom-scrollbar space-y-8" id="sidebar-nav">
+                <!-- Navigation groups will be injected here -->
+            </nav>
+
+            <div class="mt-auto pt-6 border-t border-[hsla(var(--border-300)/0.1)]">
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-[hsla(var(--bg-200)/0.4)] border border-[hsla(var(--border-300)/0.05)]">
+                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-[hsl(var(--text-500))]">System v1.4.2 Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-main">
+            <!-- Mobile Toggle -->
+            <button id="sidebar-toggle" class="lg:hidden fixed bottom-6 right-6 z-[60] w-12 h-12 rounded-full bg-[hsl(var(--accent-brand))] text-white shadow-xl flex items-center justify-center">
+                ☰
+            </button>
+
+            <header class="docs-header flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <nav class="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[hsl(var(--text-500))]" aria-label="Breadcrumb">
+                        <span class="hover:text-[hsl(var(--text-200))] cursor-pointer">Library</span>
+                        <span>/</span>
+                        <span class="text-[hsl(var(--text-100))]">Overview</span>
+                    </nav>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <!-- Search Field -->
+                    <div class="relative w-64">
+                        <input type="text" id="comp-search" placeholder="Search components..." 
+                               class="w-full bg-[hsla(var(--bg-200)/0.5)] border border-[hsla(var(--border-300)/0.1)] rounded-xl px-4 py-2 text-xs focus:ring-2 focus:ring-[hsla(var(--accent-brand)/0.3)] focus:border-[hsla(var(--accent-brand)/0.4)] transition-all outline-none">
+                        <span class="absolute right-3 top-2 opacity-30 text-xs">⌘K</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[hsla(var(--bg-200)/0.5)] transition-colors" title="Settings">⚙️</button>
+                        <button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[hsla(var(--bg-200)/0.5)] transition-colors" title="Help">❓</button>
+                    </div>
+                </div>
+            </header>
+
+            <section id="hero" class="mb-16">
+                <div class="p-12 rounded-3xl bg-gradient-to-br from-[hsla(var(--bg-100)/0.8)] to-[hsla(var(--bg-200)/0.4)] border border-[hsla(var(--border-300)/0.1)] relative overflow-hidden">
+                    <div class="relative z-10 max-w-2xl">
+                        <span class="inline-block px-3 py-1 rounded-full bg-[hsla(var(--accent-brand)/0.1)] text-[hsl(var(--accent-brand))] text-[10px] font-bold uppercase tracking-widest mb-4 border border-[hsla(var(--accent-brand)/0.2)]">
+                            System Documentation
+                        </span>
+                        <h2 class="text-5xl font-serif mb-6 leading-tight">Modern Technical Interface System</h2>
+                        <p class="text-[hsl(var(--text-400))] text-lg leading-relaxed mb-8">
+                            A high-performance design library built for data-heavy applications. Cyberpunk-Lite aesthetic with glassmorphism, functional minimalism, and WCAG AA compliance.
+                        </p>
+                        <div class="flex gap-4">
+                            <button class="px-6 py-3 bg-[hsl(var(--accent-brand))] text-white rounded-xl text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all shadow-lg shadow-orange-900/20">
+                                Get Started
+                            </button>
+                            <button class="px-6 py-3 bg-transparent border border-[hsla(var(--border-300)/0.2)] text-[hsl(var(--text-200))] rounded-xl text-sm font-bold uppercase tracking-wider hover:bg-[hsla(var(--bg-200)/0.4)] transition-all">
+                                Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Abstract Background Elements -->
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-[hsl(var(--accent-brand))] opacity-[0.03] rounded-full blur-[100px]"></div>
+                    <div class="absolute bottom-0 right-0 p-8 opacity-10 grayscale pointer-events-none">
+                        <div class="text-8xl font-serif">AEA</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="p-6 rounded-2xl bg-[hsla(var(--bg-100)/0.5)] border border-[hsla(var(--border-300)/0.1)] flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500 text-xl">🟢</div>
+                    <div>
+                        <div class="text-2xl font-serif" id="count-done">0</div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-[hsl(var(--text-500))]">Components Ready</div>
+                    </div>
+                </div>
+                <div class="p-6 rounded-2xl bg-[hsla(var(--bg-100)/0.5)] border border-[hsla(var(--border-300)/0.1)] flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl">🟡</div>
+                    <div>
+                        <div class="text-2xl font-serif" id="count-progress">0</div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-[hsl(var(--text-500))]">In Development</div>
+                    </div>
+                </div>
+                <div class="p-6 rounded-2xl bg-[hsla(var(--bg-100)/0.5)] border border-[hsla(var(--border-300)/0.1)] flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 text-xl">🔴</div>
+                    <div>
+                        <div class="text-2xl font-serif" id="count-pending">0</div>
+                        <div class="text-[10px] uppercase tracking-widest font-bold text-[hsl(var(--text-500))]">Pending Implementation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Component Grid -->
+            <div id="component-sections" class="space-y-16">
+                <!-- Sections and component cards will be injected here -->
+            </div>
+
+            <footer class="mt-24 pt-12 border-t border-[hsla(var(--border-300)/0.1)] pb-12 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 bg-[hsl(var(--text-500))] rounded flex items-center justify-center font-bold text-[hsl(var(--bg-000))] text-[10px]">A</div>
+                    <span class="text-xs font-serif opacity-50">AEA Design System © 2025</span>
+                </div>
+                <nav class="flex gap-8">
+                    <a href="design_approaches.md" class="text-[10px] uppercase tracking-widest font-bold text-[hsl(var(--text-500))] hover:text-[hsl(var(--accent-brand))] transition-colors">Design Approaches</a>
+                    <a href="technical_approaches.md" class="text-[10px] uppercase tracking-widest font-bold text-[hsl(var(--text-500))] hover:text-[hsl(var(--accent-brand))] transition-colors">Technical Specs</a>
+                    <a href="component_list.md" class="text-[10px] uppercase tracking-widest font-bold text-[hsl(var(--text-500))] hover:text-[hsl(var(--accent-brand))] transition-colors">Inventory</a>
+                </nav>
+            </footer>
+        </main>
+    </div>
+
+    <script src="docs-script.js"></script>
+</body>
+</html>

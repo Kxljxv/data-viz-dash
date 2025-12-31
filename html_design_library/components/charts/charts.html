@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Charts Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-section {
+            padding: 2.5rem;
+            background-color: hsla(var(--bg-100) / 0.2);
+            border-radius: 2rem;
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            backdrop-filter: blur(4px);
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Technical Data Visualization</h1>
+            <p class="text-[hsl(var(--text-500))]">High-performance D3.js integrated charts with Cyberpunk-Lite aesthetics.</p>
+        </header>
+
+        <!-- Network Graph -->
+        <section class="demo-section">
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))]">Network Graph</h2>
+                    <p class="text-sm opacity-60 mt-1">Force-directed connection map with collision detection.</p>
+                </div>
+                <div class="flex gap-2">
+                    <span class="aea-hud-label text-[8px] bg-blue-900/40 text-blue-200">ZOOM_ENABLED</span>
+                    <span class="aea-hud-label text-[8px] bg-green-900/40 text-green-200">D3_V7</span>
+                </div>
+            </div>
+            <div id="network-chart" class="aea-chart-container"></div>
+        </section>
+
+        <!-- Waveform Feeds -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Real-time Data Feeds</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div id="waveform-brand" class="aea-chart-container !min-h-[250px]"></div>
+                    <div class="flex justify-between items-center px-2">
+                        <span class="text-[10px] uppercase tracking-widest opacity-60">System Throughput</span>
+                        <span class="text-[10px] font-mono opacity-40">FEED_A // STABLE</span>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div id="waveform-info" class="aea-chart-container !min-h-[250px]"></div>
+                    <div class="flex justify-between items-center px-2">
+                        <span class="text-[10px] uppercase tracking-widest opacity-60">Node Connectivity</span>
+                        <span class="text-[10px] font-mono opacity-40">FEED_B // OSCILLATING</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Metadata Footer -->
+        <footer class="mt-12 pt-8 border-t border-[hsla(var(--border-300)/0.1)] flex justify-between items-center">
+            <div class="aea-hud-data text-[10px] opacity-40">
+                <span>RENDER_ENGINE: D3_SVG</span>
+                <span>INTERPOLATION: MONOTONE_X</span>
+            </div>
+            <div class="flex gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[hsl(var(--accent-brand))]"></div>
+                    <span class="text-[8px] uppercase tracking-widest opacity-60">Primary Action</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-[hsl(var(--accent-info))]"></div>
+                    <span class="text-[8px] uppercase tracking-widest opacity-60">Info Stream</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module">
+        import { NetworkChart, WaveformChart } from './script.js';
+
+        // Mock Data for Network
+        const networkData = {
+            nodes: [
+                { id: "Root_Node", type: "brand" },
+                { id: "Antrag_01", type: "info" },
+                { id: "Antrag_02", type: "info" },
+                { id: "Supporter_A", type: "brand" },
+                { id: "Supporter_B", type: "brand" },
+                { id: "Supporter_C", type: "brand" },
+                { id: "External_API", type: "info" }
+            ],
+            links: [
+                { source: "Root_Node", target: "Antrag_01" },
+                { source: "Root_Node", target: "Antrag_02" },
+                { source: "Antrag_01", target: "Supporter_A" },
+                { source: "Antrag_01", target: "Supporter_B" },
+                { source: "Antrag_02", target: "Supporter_C" },
+                { source: "Supporter_A", target: "External_API" }
+            ]
+        };
+
+        // Mock Data for Waveform
+        const generateWaveform = (count, variance) => {
+            return Array.from({ length: count }, (_, i) => ({
+                date: new Date(Date.now() - (count - i) * 3600000),
+                value: 40 + Math.random() * variance + Math.sin(i / 5) * 20
+            }));
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Network
+            new NetworkChart('#network-chart', networkData, { height: 400 });
+
+            // Initialize Waveforms
+            new WaveformChart('#waveform-brand', generateWaveform(20, 30), {
+                color: 'hsl(var(--accent-brand))'
+            });
+            new WaveformChart('#waveform-info', generateWaveform(20, 50), {
+                color: 'hsl(var(--accent-info))'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Stepper Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        @font-face {
+            font-family: 'ModernDense';
+            src: url('../../fonts/ModernDense.ttf') format('truetype');
+        }
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-5xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Stepper</h1>
+            <p class="text-[hsl(var(--text-500))]">Multi-step process visualization with Cyberpunk-Lite aesthetics.</p>
+        </header>
+
+        <div class="space-y-16">
+            <!-- Horizontal Stepper -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Horizontal Layout</h2>
+                <div class="p-10 bg-[hsla(var(--bg-100)/0.4)] backdrop-blur-md border border-[hsla(var(--border-300)/0.1)] rounded-3xl">
+                    <div class="aea-stepper aea-stepper-horizontal" id="horizontal-stepper">
+                        <div class="aea-step aea-step-completed" data-step="1">
+                            <div class="aea-step-marker">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div class="aea-step-content">
+                                <h3 class="aea-step-title">Source</h3>
+                                <p class="aea-step-desc">Select data origin</p>
+                            </div>
+                        </div>
+                        <div class="aea-step-line"></div>
+                        <div class="aea-step aea-step-active" data-step="2">
+                            <div class="aea-step-marker">2</div>
+                            <div class="aea-step-content">
+                                <h3 class="aea-step-title">Transform</h3>
+                                <p class="aea-step-desc">Apply node logic</p>
+                            </div>
+                        </div>
+                        <div class="aea-step-line"></div>
+                        <div class="aea-step" data-step="3">
+                            <div class="aea-step-marker">3</div>
+                            <div class="aea-step-content">
+                                <h3 class="aea-step-title">Export</h3>
+                                <p class="aea-step-desc">Generate output</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 flex justify-center gap-4">
+                        <button class="px-6 py-2 bg-[hsla(var(--bg-300)/0.5)] border border-[hsla(var(--border-300)/0.2)] rounded-xl text-xs uppercase tracking-widest hover:bg-[hsla(var(--bg-300)/0.8)] transition-all" onclick="prevStep('horizontal-stepper')">Back</button>
+                        <button class="px-6 py-2 bg-[hsl(var(--accent-brand))] rounded-xl text-xs uppercase tracking-widest font-bold shadow-lg shadow-[hsla(var(--accent-brand)/0.2)] hover:scale-105 active:scale-95 transition-all" onclick="nextStep('horizontal-stepper')">Continue</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vertical Stepper -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Vertical Layout</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="p-10 bg-[hsla(var(--bg-100)/0.4)] backdrop-blur-md border border-[hsla(var(--border-300)/0.1)] rounded-3xl">
+                        <div class="aea-stepper aea-stepper-vertical" id="vertical-stepper">
+                            <div class="aea-step aea-step-completed">
+                                <div class="aea-step-marker">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div class="aea-step-line"></div>
+                                <div class="aea-step-content">
+                                    <h3 class="aea-step-title">User Profile</h3>
+                                    <p class="aea-step-desc text-[10px]">Verified identity</p>
+                                </div>
+                            </div>
+                            <div class="aea-step aea-step-active">
+                                <div class="aea-step-marker">2</div>
+                                <div class="aea-step-line"></div>
+                                <div class="aea-step-content">
+                                    <h3 class="aea-step-title">Security Check</h3>
+                                    <p class="aea-step-desc text-[10px]">Biometric scan pending</p>
+                                </div>
+                            </div>
+                            <div class="aea-step">
+                                <div class="aea-step-marker">3</div>
+                                <div class="aea-step-line"></div>
+                                <div class="aea-step-content">
+                                    <h3 class="aea-step-title">Final Access</h3>
+                                    <p class="aea-step-desc text-[10px]">Granting permissions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Variation -->
+                    <div class="p-10 bg-[hsla(var(--bg-100)/0.4)] backdrop-blur-md border border-[hsla(var(--border-300)/0.1)] rounded-3xl">
+                        <h3 class="text-[10px] uppercase tracking-widest opacity-40 mb-8">Technical Schematic</h3>
+                        <div class="aea-stepper aea-stepper-vertical aea-stepper-tech">
+                            <div class="aea-step aea-step-completed">
+                                <div class="aea-step-marker">01</div>
+                                <div class="aea-step-line"></div>
+                                <div class="aea-step-content">
+                                    <h3 class="aea-step-title">Core.init()</h3>
+                                </div>
+                            </div>
+                            <div class="aea-step aea-step-active">
+                                <div class="aea-step-marker">02</div>
+                                <div class="aea-step-line"></div>
+                                <div class="aea-step-content">
+                                    <h3 class="aea-step-title">Node.link()</h3>
+                                </div>
+                            </div>
+                            <div class="aea-step">
+                                <div class="aea-step-marker">03</div>
+                                <div class="aea-step-line"></div>
+                                <div class="aea-step-content">
+                                    <h3 class="aea-step-title">Graph.render()</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple demo controls
+        function nextStep(id) {
+            const stepper = document.getElementById(id);
+            const steps = stepper.querySelectorAll('.aea-step');
+            const lines = stepper.querySelectorAll('.aea-step-line');
+            let activeIdx = -1;
+
+            steps.forEach((step, idx) => {
+                if (step.classList.contains('aea-step-active')) activeIdx = idx;
+            });
+
+            if (activeIdx < steps.length - 1) {
+                steps[activeIdx].classList.remove('aea-step-active');
+                steps[activeIdx].classList.add('aea-step-completed');
+                steps[activeIdx].querySelector('.aea-step-marker').innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>';
+                
+                steps[activeIdx + 1].classList.add('aea-step-active');
+            }
+        }
+
+        function prevStep(id) {
+            const stepper = document.getElementById(id);
+            const steps = stepper.querySelectorAll('.aea-step');
+            let activeIdx = -1;
+
+            steps.forEach((step, idx) => {
+                if (step.classList.contains('aea-step-active')) activeIdx = idx;
+            });
+
+            if (activeIdx > 0) {
+                steps[activeIdx].classList.remove('aea-step-active');
+                steps[activeIdx - 1].classList.remove('aea-step-completed');
+                steps[activeIdx - 1].classList.add('aea-step-active');
+                steps[activeIdx - 1].querySelector('.aea-step-marker').textContent = activeIdx;
+            }
+        }
+    </script>
+</body>
+</html>

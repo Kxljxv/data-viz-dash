@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Timepicker - Cyberpunk-Lite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60 2.1% 18.4%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            color: hsl(48 33.3% 97.1%);
+            font-family: 'ModernDense', sans-serif;
+        }
+
+        /* Demo specific background to simulate graph visualization behind */
+        .demo-bg-pattern {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle at 2px 2px, hsla(var(--text-500) / 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .demo-container {
+            background-color: hsla(var(--bg-100) / 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid hsla(var(--border-300) / 0.2);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-bg-pattern"></div>
+
+    <div class="demo-container">
+        <h2 class="text-2xl font-serif mb-6 text-[hsl(var(--text-100))]">Time Selection</h2>
+        
+        <div class="space-y-6">
+            <div id="timepicker-demo-1" class="aea-timepicker-container">
+                <label class="block text-[10px] font-bold text-[hsl(var(--text-500))] uppercase tracking-widest mb-2">Meeting Time</label>
+                <div class="aea-timepicker-input-wrapper">
+                    <input type="text" 
+                           class="w-full bg-[hsla(var(--bg-300)/0.5)] border border-[hsla(var(--border-300)/0.2)] rounded-xl px-4 py-3 text-sm font-['ModernDense'] text-[hsl(var(--text-100))] focus:outline-none focus:border-[hsl(var(--accent-brand)/0.5)] transition-all cursor-pointer" 
+                           placeholder="Select time..." 
+                           readonly
+                           aria-haspopup="listbox"
+                           aria-expanded="false">
+                    <span class="absolute right-4 text-[hsl(var(--text-500))] pointer-events-none">🕒</span>
+                </div>
+            </div>
+
+            <div id="timepicker-demo-2" class="aea-timepicker-container">
+                <label class="block text-[10px] font-bold text-[hsl(var(--text-500))] uppercase tracking-widest mb-2">Departure</label>
+                <div class="aea-timepicker-input-wrapper">
+                    <input type="text" 
+                           class="w-full bg-[hsla(var(--bg-300)/0.5)] border border-[hsla(var(--border-300)/0.2)] rounded-xl px-4 py-3 text-sm font-['ModernDense'] text-[hsl(var(--text-100))] focus:outline-none focus:border-[hsl(var(--accent-brand)/0.5)] transition-all cursor-pointer" 
+                           placeholder="14:30" 
+                           value="14:30"
+                           readonly
+                           aria-haspopup="listbox"
+                           aria-expanded="false">
+                    <span class="absolute right-4 text-[hsl(var(--text-500))] pointer-events-none">🕒</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-[hsla(var(--border-300)/0.1)]">
+            <p class="text-[10px] text-[hsl(var(--text-500))] leading-relaxed">
+                <span class="font-bold text-[hsl(var(--text-200))]">Note:</span> 
+                Dual-column selection for rapid input. Click outside to close. Use arrow keys for keyboard navigation.
+            </p>
+        </div>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

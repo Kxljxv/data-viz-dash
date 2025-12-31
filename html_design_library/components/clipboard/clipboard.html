@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Clipboard - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-100));
+            color: hsl(var(--text-100));
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-section {
+            margin-bottom: 4rem;
+        }
+        .demo-card {
+            background-color: hsla(var(--bg-200) / 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+        .label-technical {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: hsl(var(--text-500));
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2 text-[hsl(var(--text-100))]">Clipboard</h1>
+        <p class="text-[hsl(var(--text-200))] max-w-2xl">
+            A utility component for copying data to the user's clipboard. Features high-contrast success states, 
+            glassmorphic tooltips, and robust fallback mechanisms for different environments.
+        </p>
+    </header>
+
+    <div class="max-w-4xl space-y-12">
+        <!-- 1. Input Group Variant -->
+        <section class="demo-section">
+            <span class="label-technical">Input Group Variant</span>
+            <div class="demo-card">
+                <div class="aea-clipboard-group">
+                    <input type="text" value="https://aea.network/graph/bdk-51-analysis" readonly class="aea-clipboard-input">
+                    <button class="aea-clipboard-btn" aria-label="Copy Link">
+                        <svg class="aea-icon-copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        <svg class="aea-icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="aea-clipboard-feedback">Copied!</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Standalone Icon Variant -->
+        <section class="demo-section">
+            <span class="label-technical">Standalone Icon Trigger</span>
+            <div class="demo-card flex items-center gap-6">
+                <div class="flex flex-col">
+                    <span class="text-xs opacity-50 mb-1">Node ID: 0x8F2D...9A12</span>
+                    <div class="flex items-center gap-3">
+                        <code class="text-sm bg-black/20 px-2 py-1 rounded border border-white/5">0x8F2D4E1B9A12</code>
+                        <button class="aea-clipboard-btn" data-aea-clipboard-value="0x8F2D4E1B9A12" aria-label="Copy ID">
+                            <svg class="aea-icon-copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <svg class="aea-icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="aea-clipboard-feedback">ID Copied</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Inline Context Variant -->
+        <section class="demo-section">
+            <span class="label-technical">Inline Inline Variant</span>
+            <div class="demo-card">
+                <p class="text-sm text-[hsl(var(--text-200))] leading-relaxed">
+                    The visualization data can be exported in 
+                    <span class="aea-clipboard-inline">
+                        <button class="aea-clipboard-btn" data-aea-clipboard-value="JSON format string" aria-label="Copy JSON">
+                            <svg class="aea-icon-copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <svg class="aea-icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="aea-clipboard-feedback">JSON Copied</span>
+                        </button>
+                    </span>
+                    JSON format or shared directly via the 
+                    <span class="aea-clipboard-inline">
+                        <button class="aea-clipboard-btn" data-aea-clipboard-value="https://aea.network/share/xyz" aria-label="Copy Share Link">
+                            <svg class="aea-icon-copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <svg class="aea-icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="aea-clipboard-feedback">Link Copied</span>
+                        </button>
+                    </span>
+                    secure share link.
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. Error State Simulation -->
+        <section class="demo-section">
+            <span class="label-technical">Edge Case: Empty Value</span>
+            <div class="demo-card">
+                <div class="aea-clipboard-group">
+                    <input type="text" placeholder="Empty value test..." class="aea-clipboard-input">
+                    <button class="aea-clipboard-btn" aria-label="Copy Link">
+                        <svg class="aea-icon-copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        <svg class="aea-icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="aea-clipboard-feedback">Copied!</span>
+                    </button>
+                </div>
+                <p class="text-[10px] text-[hsl(var(--text-500))] mt-3">Note: Clicking with empty input will log a warning in the console.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>

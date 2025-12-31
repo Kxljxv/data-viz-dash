@@ -12,10 +12,12 @@
     let isDeleting = $state(null); // ID of the analysis being deleted
 
     async function fetchAnalyses() {
+        console.log('#problems_and_diagnostics [SavedAnalysesOverview.fetchAnalyses] starting fetch...');
         isLoading = true;
         error = null;
         try {
             const response = await fetch('/api/saved-analysis');
+            console.log('#problems_and_diagnostics [SavedAnalysesOverview.fetchAnalyses] response status:', response.status);
             if (!response.ok) throw new Error('Fehler beim Laden der Analysen');
             const data = await response.json();
             const serverAnalyses = data.analyses || [];

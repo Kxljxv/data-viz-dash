@@ -40,6 +40,7 @@ The project is designed with a focus on:
 The platform is built on a modern, cutting-edge web stack:
 
 ### Frontend
+- **TypeScript**: The project is being migrated to TypeScript for improved type safety and developer experience. Strict mode is enabled for new code, with a staged migration strategy for existing JavaScript files.
 - **Svelte 5**: The next generation of Svelte, utilizing "Runes" for reactive state management. This project uses `$state`, `$derived`, `$props`, and `$effect` for ultra-efficient UI updates.
 - **SvelteKit**: The official framework for building Svelte apps, providing file-based routing, server-side rendering (SSR), and optimized build pipelines.
 - **D3.js (Data-Driven Documents)**: Used for the mathematical heavy lifting of the graph visualization, including force simulations, zoom behavior, and coordinate mapping.
@@ -103,12 +104,16 @@ While most configuration is handled in `svelte.config.js`, you may need to set u
 ---
 
 ## 5. Graph Engine Deep Dive
-The core logic resides in `src/assets/scripts/index.js`. The `GraphVisualization` class manages the entire D3 lifecycle.
+The core logic resides in `src/lib/components/graph/GraphVisualization.ts`. The `GraphVisualization` class manages the entire D3 lifecycle and is fully typed.
 
 ### Key Methods & Improvements
 - `constructor()`: Initializes the canvas and zoom behavior. Now supports **multi-instance rendering** by accepting a `canvasId`, allowing multiple independent graphs to coexist on the same page.
 - `loadData()`: Fetches JSON data. Now **awaits physics simulation** (`nodes.json`) to prevent rendering nodes without positions.
 - `render()`: The primary draw loop. Updated with **coordinate safety checks** to skip nodes with invalid (NaN) positions.
+- `computeCentrality()`: **New in v2.0**. Implements graph analysis metrics:
+    - **Degree Centrality**: Simple count of direct connections.
+    - **Closeness Centrality**: Measures how "central" a node is based on shortest paths to all other nodes (BFS-based).
+    - **Betweenness Centrality**: Implements **Brandes' algorithm** for undirected graphs to identify bridge nodes that control information flow.
 - `setTransform(transform)`: New method to programmatically update the zoom/pan state, facilitating synchronization between multiple graph instances.
 - `destroy()`: Properly cleans up event listeners and stops physics simulations to prevent memory leaks in multi-window environments.
 
@@ -305,16 +310,21 @@ The `wrangler.toml` is configured to:
 │   └── data/               # Project-specific JSON data
 ├── src/
 │   ├── assets/
-│   │   └── scripts/        # D3 Graph Engine (index.js)
+│   │   └── scripts/        # Legacy D3 Graph Engine
 │   ├── lib/
 │   │   ├── auth.svelte.js  # Auth0 logic
 │   │   ├── i18n.svelte.js  # Translation logic
+│   │   ├── types/          # TypeScript interfaces (graph.ts)
 │   │   ├── components/     # UI Components
+│   │   │   ├── graph/      # Typed Graph Engine (GraphVisualization.ts)
+│   │   │   └── ui/         # Shadcn components (Typed Svelte 5)
 │   │   └── design_library/ # Foundation elements
 │   ├── routes/             # SvelteKit pages
 │   ├── app.css             # Global styles & Tailwind
-│   └── app.html            # HTML template
+│   ├── app.html            # HTML template
+│   └── app.d.ts            # Type definitions
 ├── svelte.config.js        # SvelteKit & Alias config
+├── tsconfig.json           # TypeScript configuration
 ├── tailwind.config.js      # Tailwind theme config
 └── package.json            # Dependencies & Scripts
 ```
@@ -338,6 +348,10 @@ The `wrangler.toml` is configured to:
 ### `aea-graph-zoom`
 - **Detail**: `{ transform, sourceId }`
 - **Trigger**: Dispatched during zooming/panning to synchronize multiple graph and map instances. The `sourceId` prevents infinite feedback loops.
+
+### `aea-centrality-computed`
+- **Detail**: `{ nodes: Array<{ id, degree, closeness, betweenness }> }`
+- **Trigger**: Dispatched after the graph engine completes its centrality analysis. Used to update the UI with relative importance metrics for each node.
 
 ---
 
@@ -438,11 +452,12 @@ The global stylesheet.
 - Defines the HSL variable system for theming.
 - Contains custom scrollbar styles and global transition rules.
 
-##### `src/assets/scripts/index.js` (The Heart)
+##### `src/lib/components/graph/GraphVisualization.ts` (The Heart)
 This file contains the `GraphVisualization` class.
 - **Data Loading**: Fetches `data.json` and `nodes.json` using the Fetch API.
 - **D3 Integration**: Sets up the force simulation, zoom behavior, and canvas rendering.
 - **Event Bus**: Dispatches and listens for Custom Events to communicate with Svelte components.
+- **Centrality Metrics**: Computes Degree, Closeness, and Betweenness centrality using advanced graph algorithms.
 - **Rendering**: Implements the `render()` loop that draws nodes and links to the Canvas.
 
 ##### `src/lib/auth.svelte.js`

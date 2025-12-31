@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            max-width: 800px;
+            margin-bottom: 5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Alerts</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Contextual feedback messages for system status and user actions.
+        </p>
+    </header>
+
+    <!-- Standard Variants -->
+    <section class="mb-16">
+        <h2 class="section-title">Standard Variants</h2>
+        <div class="demo-container">
+            <!-- Info -->
+            <div class="alert alert-info" role="alert">
+                <svg class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="alert-content">
+                    <span class="alert-title">System Update</span>
+                    <p class="alert-description">A new graph visualization engine is available. Refresh to apply changes.</p>
+                </div>
+                <button class="alert-close" aria-label="Dismiss">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Success -->
+            <div class="alert alert-success" role="alert">
+                <svg class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="alert-content">
+                    <span class="alert-title">Node Synchronized</span>
+                    <p class="alert-description">The selected cluster has been successfully synchronized with the central database.</p>
+                </div>
+                <button class="alert-close" aria-label="Dismiss">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Warning -->
+            <div class="alert alert-warning" role="alert">
+                <svg class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <div class="alert-content">
+                    <span class="alert-title">High Latency Detected</span>
+                    <p class="alert-description">Network connections to the southern edge nodes are experiencing significant delays.</p>
+                </div>
+                <button class="alert-close" aria-label="Dismiss">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Danger -->
+            <div class="alert alert-danger" role="alert">
+                <svg class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="alert-content">
+                    <span class="alert-title">Access Denied</span>
+                    <p class="alert-description">Critical failure: Unauthorized attempt to modify secure node parameters. System locked.</p>
+                </div>
+                <button class="alert-close" aria-label="Dismiss">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimal/Compact -->
+    <section class="mb-16">
+        <h2 class="section-title">Compact Mode</h2>
+        <div class="demo-container">
+            <div class="alert alert-info py-2" role="alert">
+                <svg class="alert-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p class="alert-description text-sm">Searching for disconnected nodes...</p>
+            </div>
+            <div class="alert alert-success py-2" role="alert">
+                <svg class="alert-icon w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="alert-description text-sm">All systems operational.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programmatic Controls -->
+    <section class="mb-16">
+        <h2 class="section-title">Programmatic Generation</h2>
+        <div class="flex gap-4 mb-8">
+            <button onclick="spawnAlert('info')" class="btn-base btn-secondary btn-md">Spawn Info</button>
+            <button onclick="spawnAlert('success')" class="btn-base btn-primary btn-md">Spawn Success</button>
+            <button onclick="spawnAlert('warning')" class="btn-base btn-outline btn-md">Spawn Warning</button>
+            <button onclick="spawnAlert('danger')" class="btn-base btn-danger btn-md">Spawn Error</button>
+        </div>
+        
+        <div id="alertStack" class="flex flex-col gap-4 max-w-[400px]">
+            <!-- Dynamic alerts will appear here -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AEAAlerts.init();
+        });
+
+        function spawnAlert(type) {
+            const titles = {
+                info: 'System Log',
+                success: 'Operation Complete',
+                warning: 'Resource Alert',
+                danger: 'Critical Failure'
+            };
+            const desc = {
+                info: 'New data entry detected in the buffer.',
+                success: 'The backup process finished successfully.',
+                warning: 'Memory usage exceeding 85% threshold.',
+                danger: 'Connection to primary database lost.'
+            };
+
+            AEAAlerts.show('alertStack', {
+                type: type,
+                title: titles[type],
+                description: desc[type],
+                autoHideMs: 5000
+            });
+        }
+    </script>
+</body>
+</html>

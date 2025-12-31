@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Checkbox Fields</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-section {
+            padding: 2.5rem;
+            background-color: hsla(var(--bg-100) / 0.2);
+            border-radius: 2rem;
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            backdrop-filter: blur(4px);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Checkbox Fields</h1>
+            <p class="text-[hsl(var(--text-500))]">Button-style toggles with integrated glowing indicators for high-impact control panels.</p>
+        </header>
+
+        <!-- Base Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Base Variation</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button class="aea-checkbox-field" aria-pressed="false" data-aea-indicator="success">
+                    <span class="aea-checkbox-field-label">System Labels</span>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+                <button class="aea-checkbox-field" aria-pressed="true" data-aea-indicator="success">
+                    <span class="aea-checkbox-field-label">Node Tooltips</span>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Indicator Colors -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Multi-Color Indicators</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button class="aea-checkbox-field" aria-pressed="true" data-aea-indicator="brand">
+                    <span class="aea-checkbox-field-label">Protocol Override</span>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+                <button class="aea-checkbox-field" aria-pressed="true" data-aea-indicator="info">
+                    <span class="aea-checkbox-field-label">Network Debug</span>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+                <button class="aea-checkbox-field" aria-pressed="false" data-aea-indicator="danger">
+                    <span class="aea-checkbox-field-label">Destructive Mode</span>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+                <button class="aea-checkbox-field" aria-pressed="false" data-aea-indicator="success">
+                    <span class="aea-checkbox-field-label">Auto_Sync</span>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Technical HUD Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Technical HUD Layout</h2>
+            <div class="space-y-4">
+                <button class="aea-checkbox-field aea-checkbox-field-hud" aria-pressed="true" data-aea-indicator="brand">
+                    <div class="flex flex-col items-start">
+                        <span class="aea-checkbox-field-label">Neural_Link_Alpha</span>
+                        <span class="text-[8px] opacity-40 tracking-tighter uppercase mt-1">Direct Memory Access Enabled</span>
+                    </div>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+
+                <button class="aea-checkbox-field aea-checkbox-field-hud" aria-pressed="false" data-aea-indicator="info">
+                    <div class="flex flex-col items-start">
+                        <span class="aea-checkbox-field-label">Encryption_Layer_02</span>
+                        <span class="text-[8px] opacity-40 tracking-tighter uppercase mt-1">Waiting for handshake...</span>
+                    </div>
+                    <div class="aea-checkbox-field-indicator"></div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Sidebar / Compact Group -->
+        <section class="demo-section max-w-xs">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Sidebar Grouping</h2>
+            <div class="flex flex-col gap-2 p-4 bg-black/20 rounded-2xl border border-white/5">
+                <button class="aea-checkbox-field py-2 px-3 rounded-lg" aria-pressed="true" data-aea-indicator="success">
+                    <span class="aea-checkbox-field-label text-[10px]">Show Edges</span>
+                    <div class="aea-checkbox-field-indicator scale-75"></div>
+                </button>
+                <button class="aea-checkbox-field py-2 px-3 rounded-lg" aria-pressed="false" data-aea-indicator="success">
+                    <span class="aea-checkbox-field-label text-[10px]">Show Clusters</span>
+                    <div class="aea-checkbox-field-indicator scale-75"></div>
+                </button>
+                <button class="aea-checkbox-field py-2 px-3 rounded-lg" aria-pressed="true" data-aea-indicator="success">
+                    <span class="aea-checkbox-field-label text-[10px]">Animate Links</span>
+                    <div class="aea-checkbox-field-indicator scale-75"></div>
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

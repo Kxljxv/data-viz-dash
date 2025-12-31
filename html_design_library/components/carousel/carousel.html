@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Carousel Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .aea-carousel-slide {
+            height: 400px;
+        }
+        .aea-carousel-slide img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Carousel</h1>
+            <p class="text-[hsl(var(--text-500))]">Responsive content sliders with Cyberpunk-Lite aesthetics and hardware-accelerated transitions.</p>
+        </header>
+
+        <div class="space-y-16">
+            <!-- Basic Carousel -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Basic Carousel</h2>
+                <div class="aea-carousel" id="basic-carousel" role="region" aria-roledescription="carousel">
+                    <div class="aea-carousel-viewport">
+                        <div class="aea-carousel-track">
+                            <div class="aea-carousel-slide aea-active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+                                <img src="https://picsum.photos/id/10/1000/400" alt="Cyberpunk architecture">
+                                <div class="aea-carousel-caption">
+                                    <h3>Neural Interface</h3>
+                                    <p>Direct mental link to the global data matrix.</p>
+                                </div>
+                            </div>
+                            <div class="aea-carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+                                <img src="https://picsum.photos/id/20/1000/400" alt="Neon city">
+                                <div class="aea-carousel-caption">
+                                    <h3>Neon District</h3>
+                                    <p>The heart of the digital underground.</p>
+                                </div>
+                            </div>
+                            <div class="aea-carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+                                <img src="https://picsum.photos/id/30/1000/400" alt="Tech laboratory">
+                                <div class="aea-carousel-caption">
+                                    <h3>Bio-Lab 7</h3>
+                                    <p>Advanced synthetic organ development.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="aea-carousel-prev" aria-label="Previous slide">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button class="aea-carousel-next" aria-label="Next slide">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+
+                    <div class="aea-carousel-indicators">
+                        <button class="aea-carousel-dot aea-active" aria-label="Go to slide 1"></button>
+                        <button class="aea-carousel-dot" aria-label="Go to slide 2"></button>
+                        <button class="aea-carousel-dot" aria-label="Go to slide 3"></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Center Mode Carousel -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Center Mode</h2>
+                <div class="aea-carousel aea-carousel-center" id="center-carousel" role="region" aria-roledescription="carousel">
+                    <div class="aea-carousel-viewport">
+                        <div class="aea-carousel-track">
+                            <div class="aea-carousel-slide" role="group" aria-roledescription="slide">
+                                <img src="https://picsum.photos/id/40/1000/400" alt="Data stream">
+                            </div>
+                            <div class="aea-carousel-slide aea-active" role="group" aria-roledescription="slide">
+                                <img src="https://picsum.photos/id/50/1000/400" alt="Robotic arm">
+                            </div>
+                            <div class="aea-carousel-slide" role="group" aria-roledescription="slide">
+                                <img src="https://picsum.photos/id/60/1000/400" alt="Circuit board">
+                            </div>
+                            <div class="aea-carousel-slide" role="group" aria-roledescription="slide">
+                                <img src="https://picsum.photos/id/70/1000/400" alt="Digital eye">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="aea-carousel-prev" aria-label="Previous slide">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button class="aea-carousel-next" aria-label="Next slide">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Autoplay with Progress -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Autoplay & Technical</h2>
+                <div class="aea-carousel" id="autoplay-carousel" role="region" aria-roledescription="carousel">
+                    <div class="aea-carousel-viewport">
+                        <div class="aea-carousel-track">
+                            <div class="aea-carousel-slide aea-active" role="group">
+                                <div class="w-full h-full bg-[hsla(var(--bg-100)/0.4)] flex items-center justify-center border border-[hsla(var(--border-300)/0.2)] rounded-2xl">
+                                    <div class="text-center p-8">
+                                        <div class="text-5xl font-bold text-[hsl(var(--accent-brand))] mb-4">88%</div>
+                                        <div class="text-sm uppercase tracking-widest opacity-60">System Stability</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aea-carousel-slide" role="group">
+                                <div class="w-full h-full bg-[hsla(var(--bg-100)/0.4)] flex items-center justify-center border border-[hsla(var(--border-300)/0.2)] rounded-2xl">
+                                    <div class="text-center p-8">
+                                        <div class="text-5xl font-bold text-[hsl(var(--accent-brand))] mb-4">1.2ms</div>
+                                        <div class="text-sm uppercase tracking-widest opacity-60">Latency Response</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aea-carousel-slide" role="group">
+                                <div class="w-full h-full bg-[hsla(var(--bg-100)/0.4)] flex items-center justify-center border border-[hsla(var(--border-300)/0.2)] rounded-2xl">
+                                    <div class="text-center p-8">
+                                        <div class="text-5xl font-bold text-[hsl(var(--accent-brand))] mb-4">99.9%</div>
+                                        <div class="text-sm uppercase tracking-widest opacity-60">Uptime Reliability</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="aea-carousel-indicators">
+                        <button class="aea-carousel-dot aea-active"></button>
+                        <button class="aea-carousel-dot"></button>
+                        <button class="aea-carousel-dot"></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script type="module">
+        import Carousel from './script.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Basic Carousel
+            new Carousel(document.getElementById('basic-carousel'));
+
+            // Center Mode Carousel
+            new Carousel(document.getElementById('center-carousel'), {
+                centerMode: true,
+                slidesToShow: 1.5,
+                gap: 20
+            });
+
+            // Autoplay Carousel
+            new Carousel(document.getElementById('autoplay-carousel'), {
+                autoplay: true,
+                autoplaySpeed: 3000
+            });
+        });
+    </script>
+</body>
+</html>

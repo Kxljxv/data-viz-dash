@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Button Group - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60 2.1% 18.4%); /* Surface 1 */
+            color: hsl(48 33.3% 97.1%); /* Primary Text */
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            font-family: 'ModernDense', sans-serif;
+        }
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .demo-section {
+            background: hsla(var(--bg-200) / 0.3);
+            backdrop-filter: blur(12px);
+            border: 1px solid hsla(var(--border-300) / 0.05);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-100));
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+        }
+        .demo-title::before {
+            content: '';
+            width: 4px;
+            height: 1.25rem;
+            background: hsl(var(--accent-brand));
+            margin-right: 1rem;
+            border-radius: 2px;
+        }
+        .demo-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: hsl(var(--text-500));
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="demo-container">
+        <header class="mb-12">
+            <h1 class="text-5xl font-bold mb-4 uppercase tracking-tighter text-[hsl(var(--text-100))]">Button Group</h1>
+            <p class="text-[hsl(var(--text-400))] max-w-2xl leading-relaxed">
+                A glassmorphic tray system for grouping related actions. Optimized for high-fidelity technical interfaces with clear state indication and smooth transitions.
+            </p>
+        </header>
+
+        <!-- 1. Text Only Variants -->
+        <section class="demo-section">
+            <h2 class="demo-title">Text Only Variants</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <span class="demo-label">Standard View Switcher</span>
+                    <div class="aea-button-group" role="group" aria-label="View switch">
+                        <button type="button" class="aea-button-group-item aea-active" aria-pressed="true">
+                            Graph
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                        <div class="aea-button-group-divider"></div>
+                        <button type="button" class="aea-button-group-item" aria-pressed="false">
+                            List
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                        <div class="aea-button-group-divider"></div>
+                        <button type="button" class="aea-button-group-item" aria-pressed="false">
+                            Timeline
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="demo-label">Time Range Selection</span>
+                    <div class="aea-button-group" role="group" aria-label="Time range">
+                        <button type="button" class="aea-button-group-item">1H <div class="aea-button-group-indicator"></div></button>
+                        <button type="button" class="aea-button-group-item aea-active">1D <div class="aea-button-group-indicator"></div></button>
+                        <button type="button" class="aea-button-group-item">1W <div class="aea-button-group-indicator"></div></button>
+                        <button type="button" class="aea-button-group-item">1M <div class="aea-button-group-indicator"></div></button>
+                        <button type="button" class="aea-button-group-item">ALL <div class="aea-button-group-indicator"></div></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Icon & Mixed Variants -->
+        <section class="demo-section">
+            <h2 class="demo-title">Icon & Mixed Variants</h2>
+            <div class="space-y-12">
+                <div>
+                    <span class="demo-label">Editor Controls (Icon Only)</span>
+                    <div class="aea-button-group" role="group" aria-label="Editor controls">
+                        <button type="button" class="aea-button-group-item aea-button-group-item-icon-only" aria-label="Align Left">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h10M4 18h16" /></svg>
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                        <button type="button" class="aea-button-group-item aea-button-group-item-icon-only aea-active" aria-label="Align Center">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M4 18h16" /></svg>
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                        <button type="button" class="aea-button-group-item aea-button-group-item-icon-only" aria-label="Align Right">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M10 12h10M4 18h16" /></svg>
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="demo-label">Mixed Content (Icon + Text)</span>
+                    <div class="aea-button-group" role="group" aria-label="Device preview">
+                        <button type="button" class="aea-button-group-item aea-active">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            Desktop
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                        <div class="aea-button-group-divider"></div>
+                        <button type="button" class="aea-button-group-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                            Mobile
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Vertical Variant -->
+        <section class="demo-section">
+            <h2 class="demo-title">Vertical Orientation</h2>
+            <div class="flex gap-16">
+                <div>
+                    <span class="demo-label">Tool Sidebar</span>
+                    <div class="aea-button-group aea-button-group-vertical" role="group" aria-label="Tools">
+                        <button type="button" class="aea-button-group-item aea-active">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>
+                            Select
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                        <button type="button" class="aea-button-group-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            Edit
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                        <div class="aea-button-group-divider"></div>
+                        <button type="button" class="aea-button-group-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                            Delete
+                            <div class="aea-button-group-indicator"></div>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <span class="demo-label">Usage Context</span>
+                    <p class="text-sm text-[hsl(var(--text-500))] leading-relaxed mt-2">
+                        Vertical groups are ideal for floating toolbars or side panels. The active indicator shifts to the left edge to maintain visual hierarchy while preserving the "Cyberpunk-Lite" glow effect.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive Toggle Logic
+        document.querySelectorAll('.aea-button-group-item').forEach(button => {
+            button.addEventListener('click', () => {
+                const group = button.closest('.aea-button-group');
+                
+                // Remove active state from all items in this group
+                group.querySelectorAll('.aea-button-group-item').forEach(btn => {
+                    btn.classList.remove('aea-active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+                
+                // Set active state for clicked item
+                button.classList.add('aea-active');
+                button.setAttribute('aria-pressed', 'true');
+            });
+        });
+    </script>
+</body>
+</html>

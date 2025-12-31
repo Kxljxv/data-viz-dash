@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicators - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .demo-card {
+            background-color: hsla(var(--bg-100) / 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .label {
+            font-family: 'ModernDense', sans-serif;
+            font-size: 0.75rem;
+            color: hsl(var(--text-400));
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Indicators</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Small status dots and pulsing animations for real-time system feedback.
+        </p>
+    </header>
+
+    <!-- Basic Dots -->
+    <section>
+        <h2 class="section-title">Static Dots</h2>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <span class="indicator-dot indicator-md indicator-brand"></span>
+                <span class="label">Brand</span>
+            </div>
+            <div class="demo-card">
+                <span class="indicator-dot indicator-md indicator-success"></span>
+                <span class="label">Success</span>
+            </div>
+            <div class="demo-card">
+                <span class="indicator-dot indicator-md indicator-danger"></span>
+                <span class="label">Danger</span>
+            </div>
+            <div class="demo-card">
+                <span class="indicator-dot indicator-md indicator-info"></span>
+                <span class="label">Info</span>
+            </div>
+            <div class="demo-card">
+                <span class="indicator-dot indicator-md indicator-neutral"></span>
+                <span class="label">Neutral</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pulsing Indicators -->
+    <section>
+        <h2 class="section-title">Pulsing Indicators</h2>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <div class="indicator indicator-md indicator-brand">
+                    <span class="indicator-dot"></span>
+                    <span class="indicator-pulse"></span>
+                </div>
+                <span class="label">Processing</span>
+            </div>
+            <div class="demo-card">
+                <div class="indicator indicator-md indicator-success">
+                    <span class="indicator-dot"></span>
+                    <span class="indicator-pulse"></span>
+                </div>
+                <span class="label">Online</span>
+            </div>
+            <div class="demo-card">
+                <div class="indicator indicator-md indicator-danger">
+                    <span class="indicator-dot"></span>
+                    <span class="indicator-pulse"></span>
+                </div>
+                <span class="label">Critical</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sizes -->
+    <section>
+        <h2 class="section-title">Size Variants</h2>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <span class="indicator-dot indicator-sm indicator-success"></span>
+                <span class="label">Small (6px)</span>
+            </div>
+            <div class="demo-card">
+                <span class="indicator-dot indicator-md indicator-success"></span>
+                <span class="label">Medium (10px)</span>
+            </div>
+            <div class="demo-card">
+                <span class="indicator-dot indicator-lg indicator-success"></span>
+                <span class="label">Large (14px)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contextual Overlays -->
+    <section>
+        <h2 class="section-title">Contextual Overlays</h2>
+        <div class="flex flex-wrap gap-8">
+            <!-- Avatar Overlay -->
+            <div class="relative w-16 h-16 rounded-2xl bg-[hsl(var(--bg-200))] flex items-center justify-center border border-[hsla(var(--border-300)/0.15)]">
+                <svg class="w-8 h-8 text-[hsl(var(--text-400))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <div class="indicator indicator-md indicator-success indicator-top-right">
+                    <span class="indicator-dot"></span>
+                    <span class="indicator-pulse"></span>
+                </div>
+            </div>
+
+            <!-- List Item Integration -->
+            <div class="card card-glass w-80 p-4">
+                <h3 class="font-serif text-lg mb-4">Node Cluster Status</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="font-modern-dense text-sm">Cluster Alpha-9</span>
+                        <div class="indicator indicator-sm indicator-success">
+                            <span class="indicator-dot"></span>
+                            <span class="indicator-pulse"></span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="font-modern-dense text-sm">Cluster Beta-2</span>
+                        <span class="indicator-dot indicator-sm indicator-neutral"></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="font-modern-dense text-sm">Cluster Gamma-X</span>
+                        <div class="indicator indicator-sm indicator-danger">
+                            <span class="indicator-dot"></span>
+                            <span class="indicator-pulse"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Navbar - Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-100));
+            color: hsl(var(--text-100));
+            min-height: 200vh; /* Enable scrolling for navbar effect */
+        }
+        .hero-section {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, hsla(var(--accent-brand) / 0.1), transparent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="aea-navbar">
+        <div class="aea-navbar-inner">
+            <a href="#" class="aea-navbar-brand">
+                <div class="w-8 h-8 bg-[hsl(var(--accent-brand))] rounded-lg flex items-center justify-center">
+                    <span class="text-white text-xs font-bold">A</span>
+                </div>
+                <span>AEA BDK</span>
+            </a>
+            
+            <ul class="aea-navbar-nav">
+                <li><a href="#" class="aea-navbar-link is-active">Dashboard</a></li>
+                <li><a href="#" class="aea-navbar-link">Graph Explorer</a></li>
+                <li><a href="#" class="aea-navbar-link">Documentation</a></li>
+                <li><a href="#" class="aea-navbar-link">Settings</a></li>
+            </ul>
+            
+            <div class="aea-navbar-actions">
+                <!-- Search Trigger -->
+                <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-[hsla(var(--text-400)/0.05)] text-[hsl(var(--text-400))] hover:text-[hsl(var(--accent-brand))] transition-colors" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                
+                <!-- Profile Placeholder -->
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[hsl(var(--accent-brand))] to-[hsl(var(--accent-secondary-100))] border border-[hsla(var(--always-white)/0.2)] cursor-pointer"></div>
+                
+                <!-- Mobile Toggle -->
+                <button class="aea-navbar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="aea-navbar-mobile">
+        <a href="#" class="aea-navbar-link is-active">Dashboard</a>
+        <a href="#" class="aea-navbar-link">Graph Explorer</a>
+        <a href="#" class="aea-navbar-link">Documentation</a>
+        <a href="#" class="aea-navbar-link">Settings</a>
+        
+        <div class="mt-auto p-6 bg-[hsla(var(--bg-200)/0.5)] rounded-2xl border border-[hsla(var(--border-300)/0.1)]">
+            <p class="text-sm text-[hsl(var(--text-400))] mb-2">Logged in as</p>
+            <p class="font-bold">admin_root</p>
+        </div>
+    </div>
+
+    <!-- Main Content for Scroll Demo -->
+    <main class="container mx-auto px-6 py-12">
+        <section class="hero-section mb-12">
+            <div class="text-center">
+                <h1 class="text-6xl font-bold mb-4 font-modern-dense">AEA Design System</h1>
+                <p class="text-2xl text-[hsl(var(--text-300))] max-w-2xl mx-auto">
+                    A high-performance, technical interface for complex data visualization and graph management.
+                </p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="h-64 bg-[hsla(var(--bg-200)/0.3)] border border-[hsla(var(--border-300)/0.1)] rounded-3xl p-8">
+                <h3 class="text-xl font-bold mb-4">Glassmorphic Header</h3>
+                <p class="text-[hsl(var(--text-300))]">The navbar uses advanced CSS backdrop filters to maintain context of the underlying data visualization while providing clear navigation.</p>
+            </div>
+            <div class="h-64 bg-[hsla(var(--bg-200)/0.3)] border border-[hsla(var(--border-300)/0.1)] rounded-3xl p-8">
+                <h3 class="text-xl font-bold mb-4">Responsive Logic</h3>
+                <p class="text-[hsl(var(--text-300))]">Seamlessly transitions from a dense desktop layout to a mobile-optimized drawer menu.</p>
+            </div>
+            <div class="h-64 bg-[hsla(var(--bg-200)/0.3)] border border-[hsla(var(--border-300)/0.1)] rounded-3xl p-8">
+                <h3 class="text-xl font-bold mb-4">Sticky Behavior</h3>
+                <p class="text-[hsl(var(--text-300))]">Scroll down to see the navbar gain elevation and additional visual definition.</p>
+            </div>
+        </div>
+
+        <div class="mt-24 space-y-24">
+            <div class="h-screen flex items-center justify-center bg-white/5 rounded-3xl">Section 1</div>
+            <div class="h-screen flex items-center justify-center bg-white/5 rounded-3xl">Section 2</div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

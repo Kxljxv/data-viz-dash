@@ -7,7 +7,7 @@
 	import { AlertCircle, CheckCircle2, Loader2, Download, Info, Eye, EyeOff, Save, FolderOpen, Trash2 } from "lucide-svelte";
     import * as Tooltip from "$components/ui/tooltip";
     import DensityMap from "$lib/components/analysis/DensityMap.svelte";
-    import GraphVisualizationModule from "$components/graph/GraphVisualization.js";
+    import GraphVisualizationModule from "$components/graph/GraphVisualization";
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
     import { page } from "$app/state";
@@ -86,11 +86,15 @@
     }
 
     // Save projects to server whenever savedProjects changes
+    let syncTimer;
     $effect(() => {
         if (savedProjects.length > 0) {
-            syncToServer(savedProjects);
-            // Still keep localStorage as a backup
-            localStorage.setItem('aea_density_projects', JSON.stringify(savedProjects));
+            clearTimeout(syncTimer);
+            syncTimer = setTimeout(() => {
+                syncToServer(savedProjects);
+                // Still keep localStorage as a backup
+                localStorage.setItem('aea_density_projects', JSON.stringify(savedProjects));
+            }, 1000);
         }
     });
 
@@ -222,8 +226,7 @@
                 
                 // Give time for canvas to mount
                 const timer = setTimeout(() => {
-                    const GraphClass = GraphVisualizationModule?.default || window.GraphVisualization;
-                    if (GraphClass) {
+                    if (GraphVisualization) {
                         // Clear previous instances
                         graphInstances.forEach(g => g?.destroy());
                         graphInstances = [];
@@ -232,7 +235,7 @@
                         const newInstances = [];
                         analysisResults.forEach((_, i) => {
                             const canvasId = `graph-canvas-${i}`;
-                            const instance = new GraphClass(selectedProject, canvasId);
+                            const instance = new GraphVisualization(selectedProject, canvasId);
                             instance.graphDimming = 1 - overlayOpacity;
                             newInstances.push(instance);
                         });
@@ -331,6 +334,8 @@
 	}
 
 	async function processDensity(groupJson, fileName) {
+		const startTime = performance.now();
+		console.log(`#problems_and_diagnostics [processDensity] starting for ${fileName} with ${groupJson.length} items`);
 		try {
             if (simulatedNodes.length === 0) {
                 error = "Keine Koordinaten-Daten für dieses Projekt geladen.";
@@ -346,21 +351,49 @@
                 return "";
             }))).filter(id => id.length > 0);
             
-            nodeIds.forEach(id => {
-                let node = simulatedNodes.find(n => n.id === id);
-                if (!node) {
-                    node = simulatedNodes.find(n => 
-                        n.id.includes(id) || 
-                        (n.label && n.label === id) ||
-                        (n.application_id && n.application_id === id)
-                    );
+            // Optimization: Create lookup maps for O(1) access
+            // This prevents the O(N*M) complexity of nested loops
+            const idMap = new Map();
+            const labelMap = new Map();
+            const appIdMap = new Map();
+            const lowerIdMap = new Map();
+            const lowerLabelMap = new Map();
+
+            // Populate maps once - O(N)
+            for (const n of simulatedNodes) {
+                if (n.id) {
+                    idMap.set(n.id, n);
+                    lowerIdMap.set(n.id.toLowerCase(), n);
                 }
+                if (n.label) {
+                    labelMap.set(n.label, n);
+                    lowerLabelMap.set(n.label.toLowerCase(), n);
+                }
+                if (n.application_id) {
+                    appIdMap.set(n.application_id, n);
+                }
+            }
+
+            // Process IDs - O(M)
+            nodeIds.forEach(id => {
+                // Priority 1: Exact ID match
+                let node = idMap.get(id);
+
+                // Priority 2: Exact Label or App ID match
+                if (!node) {
+                    node = labelMap.get(id) || appIdMap.get(id);
+                }
+
+                // Priority 3: Lowercase match
                 if (!node) {
                     const lowerId = id.toLowerCase();
-                    node = simulatedNodes.find(n => 
-                        n.id.toLowerCase() === lowerId || 
-                        (n.label && n.label.toLowerCase() === lowerId)
-                    );
+                    node = lowerIdMap.get(lowerId) || lowerLabelMap.get(lowerId);
+                }
+
+                // Priority 4: Partial match (Slowest, use as last resort)
+                // Only iterate if absolutely necessary
+                if (!node) {
+                    node = simulatedNodes.find(n => n.id && n.id.includes(id));
                 }
 
                 if (node && node.x !== undefined && node.y !== undefined) {

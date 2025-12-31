@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding-top: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin: 4rem 4rem 2rem 4rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-container {
+            padding: 0 4rem;
+            max-width: 1000px;
+        }
+        .banner-demo-box {
+            background-color: hsla(var(--bg-100) / 0.5);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Top Banner Example -->
+    <div class="banner banner-warning banner-fixed-top" id="topBanner">
+        <div class="banner-content">
+            <svg class="banner-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <div class="banner-text">
+                <span class="font-bold">System Maintenance:</span> The graph database will be offline for optimization in 45 minutes.
+            </div>
+        </div>
+        <div class="banner-actions">
+            <button class="btn-base btn-secondary btn-sm">Read Docs</button>
+            <button class="btn-close" data-banner-dismiss aria-label="Dismiss">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <header class="px-16 pt-12">
+        <h1 class="text-4xl font-serif mb-2">Banners</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            High-visibility messages fixed to the viewport edges or embedded within layouts.
+        </p>
+    </header>
+
+    <!-- Inline Variants -->
+    <section>
+        <h2 class="section-title">Inline Variants</h2>
+        <div class="demo-container">
+            <div class="banner-demo-box">
+                <div class="banner banner-info">
+                    <div class="banner-content">
+                        <svg class="banner-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="banner-text">New synchronization protocols are now active for the European cluster.</div>
+                    </div>
+                    <div class="banner-actions">
+                        <button class="btn-close" data-banner-dismiss aria-label="Dismiss">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-demo-box">
+                <div class="banner banner-success">
+                    <div class="banner-content">
+                        <svg class="banner-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="banner-text">Successfully processed 1.2 million node relationship updates.</div>
+                    </div>
+                    <div class="banner-actions">
+                        <button class="btn-close" data-banner-dismiss aria-label="Dismiss">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-demo-box">
+                <div class="banner banner-danger">
+                    <div class="banner-content">
+                        <svg class="banner-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="banner-text">Unauthorized access attempt detected from unknown IP. Firewall active.</div>
+                    </div>
+                    <div class="banner-actions">
+                        <button class="btn-base btn-danger btn-sm">Security Log</button>
+                        <button class="btn-close" data-banner-dismiss aria-label="Dismiss">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programmatic Generation -->
+    <section class="mb-32">
+        <h2 class="section-title">Programmatic Generation</h2>
+        <div class="demo-container">
+            <div class="flex gap-4">
+                <button onclick="spawnBanner('info')" class="btn-base btn-secondary btn-md">Show Info Banner</button>
+                <button onclick="spawnBanner('success')" class="btn-base btn-primary btn-md">Show Success Banner</button>
+                <button onclick="spawnBanner('warning')" class="btn-base btn-outline btn-md">Show Warning Banner</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fixed Bottom Example -->
+    <div class="banner banner-info banner-fixed-bottom">
+        <div class="banner-content">
+            <svg class="banner-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div class="banner-text">This application uses cookies to ensure you get the best experience on our graph network.</div>
+        </div>
+        <div class="banner-actions">
+            <button class="btn-base btn-primary btn-sm">Accept</button>
+            <button class="btn-close" data-banner-dismiss aria-label="Dismiss">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AEABanner.init();
+        });
+
+        function spawnBanner(type) {
+            const messages = {
+                info: 'System update: Node version 4.2.0 is now standard across all clusters.',
+                success: 'All graph data has been backed up to the secure secondary storage.',
+                warning: 'Latency threshold reached. Optimization recommended for better visualization performance.'
+            };
+
+            AEABanner.show({
+                type: type,
+                content: messages[type],
+                position: 'top',
+                sticky: true
+            });
+        }
+    </script>
+</body>
+</html>

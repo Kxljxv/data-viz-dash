@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinners - AEA Design Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(var(--bg-000));
+            padding: 4rem;
+            color: hsl(var(--text-100));
+        }
+        .section-title {
+            font-family: 'Serif', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: hsl(var(--text-000));
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .demo-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2.5rem;
+            background-color: hsla(var(--bg-100) / 0.3);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(12px);
+            transition: transform 0.2s;
+        }
+        .demo-card:hover {
+            transform: translateY(-4px);
+            background-color: hsla(var(--bg-100) / 0.4);
+        }
+        .demo-label {
+            font-family: 'ModernDense', sans-serif;
+            font-size: 0.875rem;
+            color: hsl(var(--text-400));
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-serif mb-2">Spinners</h1>
+        <p class="text-lg font-modern-dense text-[hsl(var(--text-400))]">
+            Lightweight, high-performance loading indicators for modern technical interfaces.
+        </p>
+    </header>
+
+    <!-- Basic Variants -->
+    <section>
+        <h2 class="section-title">Variants</h2>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-md aea-spinner-ring" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span class="demo-label">Ring (Default)</span>
+            </div>
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-md aea-spinner-orbit" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span class="demo-label">Orbit (Double)</span>
+            </div>
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-md aea-spinner-pulse" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span class="demo-label">Pulse</span>
+            </div>
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-dots text-[hsl(var(--accent-secondary-100))]" role="status">
+                    <span></span><span></span><span></span>
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <span class="demo-label">Dots</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sizes -->
+    <section>
+        <h2 class="section-title">Sizes</h2>
+        <div class="demo-grid">
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-sm aea-spinner-ring" role="status"></div>
+                <span class="demo-label">Small (sm)</span>
+            </div>
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-md aea-spinner-ring" role="status"></div>
+                <span class="demo-label">Medium (md)</span>
+            </div>
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-lg aea-spinner-ring" role="status"></div>
+                <span class="demo-label">Large (lg)</span>
+            </div>
+            <div class="demo-card">
+                <div class="aea-spinner aea-spinner-xl aea-spinner-ring" role="status"></div>
+                <span class="demo-label">Extra Large (xl)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contextual Examples -->
+    <section>
+        <h2 class="section-title">Contextual Use</h2>
+        <div class="flex flex-wrap gap-8">
+            <!-- Button Loading -->
+            <div class="p-8 bg-black/20 rounded-2xl border border-white/5 flex flex-col gap-4">
+                <h3 class="font-serif text-lg">Buttons</h3>
+                <button class="flex items-center gap-3 px-6 py-3 bg-[hsl(var(--accent-brand))] text-white rounded-xl font-modern-dense hover:brightness-110 transition-all">
+                    <div class="aea-spinner aea-spinner-sm aea-spinner-ring text-white"></div>
+                    Processing...
+                </button>
+                <button class="flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-modern-dense hover:bg-white/10 transition-all">
+                    <div class="aea-spinner aea-spinner-dots text-[hsl(var(--accent-secondary-100))]">
+                        <span></span><span></span><span></span>
+                    </div>
+                    Waiting
+                </button>
+            </div>
+
+            <!-- Full Panel Loading -->
+            <div class="flex-1 p-8 bg-black/20 rounded-2xl border border-white/5 min-h-[200px] flex flex-col items-center justify-center gap-4 relative">
+                <h3 class="absolute top-4 left-4 font-serif text-lg">Data Feed</h3>
+                <div class="aea-spinner aea-spinner-lg aea-spinner-orbit"></div>
+                <p class="font-modern-dense text-sm text-[hsl(var(--text-400))] animate-pulse">Synchronizing Node Graph...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Variants -->
+    <section class="mt-12">
+        <h2 class="section-title">Semantic Colors</h2>
+        <div class="flex gap-12 p-8 bg-black/20 rounded-2xl border border-white/5 justify-center">
+            <div class="aea-spinner aea-spinner-md aea-spinner-ring text-[hsl(var(--accent-brand))]"></div>
+            <div class="aea-spinner aea-spinner-md aea-spinner-ring text-[hsl(var(--success-100))]"></div>
+            <div class="aea-spinner aea-spinner-md aea-spinner-ring text-[hsl(var(--accent-secondary-100))]"></div>
+            <div class="aea-spinner aea-spinner-md aea-spinner-ring text-[hsl(var(--danger-100))]"></div>
+        </div>
+    </section>
+
+</body>
+</html>

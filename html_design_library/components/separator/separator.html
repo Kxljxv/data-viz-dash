@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Separator - Cyberpunk-Lite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60 2.1% 18.4%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            color: hsl(48 33.3% 97.1%);
+            font-family: 'ModernDense', sans-serif;
+        }
+
+        .demo-container {
+            background-color: hsla(var(--bg-100) / 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid hsla(var(--border-300) / 0.2);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: hsl(var(--text-500));
+            margin-bottom: 2rem;
+        }
+
+        .demo-box {
+            background: hsla(var(--bg-300) / 0.3);
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .v-demo {
+            display: flex;
+            height: 100px;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h2 class="text-2xl font-serif mb-8 text-[hsl(var(--text-100))]">Separators</h2>
+
+        <div class="demo-box">
+            <h3 class="section-title">Standard Horizontal</h3>
+            <p class="text-sm text-[hsl(var(--text-500))] mb-4">Faded ends for smooth integration.</p>
+            <hr class="aea-separator">
+            <p class="text-sm text-[hsl(var(--text-500))] mt-4">Section content follows...</p>
+        </div>
+
+        <div class="demo-box">
+            <h3 class="section-title">With Label</h3>
+            <div class="aea-separator-container">
+                <div class="aea-separator-label">Data Metrics</div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="p-4 bg-[hsla(var(--bg-100)/0.4)] rounded-lg text-center">
+                    <span class="block text-2xl font-bold">1.2k</span>
+                    <span class="text-[10px] text-[hsl(var(--text-500))] uppercase">Nodes</span>
+                </div>
+                <div class="p-4 bg-[hsla(var(--bg-100)/0.4)] rounded-lg text-center">
+                    <span class="block text-2xl font-bold">4.8k</span>
+                    <span class="text-[10px] text-[hsl(var(--text-500))] uppercase">Links</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h3 class="section-title">Technical Variant</h3>
+            <p class="text-xs text-[hsl(var(--text-500))] mb-2">Patterned line with anchor markers.</p>
+            <div class="aea-separator-tech">
+                <div class="aea-separator-tech-line"></div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h3 class="section-title">Neon & Vertical</h3>
+            <div class="flex flex-col gap-8">
+                <div>
+                    <p class="text-xs text-[hsl(var(--text-500))] mb-2">High-impact neon divider.</p>
+                    <div class="aea-separator-neon"></div>
+                </div>
+                
+                <div class="v-demo">
+                    <div class="text-center px-4">
+                        <span class="block text-lg">System</span>
+                        <span class="text-[10px] text-green-500">Active</span>
+                    </div>
+                    <div class="aea-separator-v"></div>
+                    <div class="text-center px-4">
+                        <span class="block text-lg">Uptime</span>
+                        <span class="text-[10px] text-[hsl(var(--text-500))]">99.9%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

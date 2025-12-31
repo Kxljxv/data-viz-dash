@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Radio Components</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+        .demo-section {
+            padding: 2.5rem;
+            background-color: hsla(var(--bg-100) / 0.2);
+            border-radius: 2rem;
+            border: 1px solid hsla(var(--border-300) / 0.1);
+            backdrop-filter: blur(4px);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+        .aea-radio-group-pulse {
+            animation: group-pulse 0.3s ease-out;
+        }
+        @keyframes group-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Radio Buttons</h1>
+            <p class="text-[hsl(var(--text-500))]">Mutually exclusive selection controls for technical interfaces and system configurations.</p>
+        </header>
+
+        <!-- Standard Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Standard Radios</h2>
+            <div class="aea-radio-group" role="radiogroup" aria-labelledby="std-label">
+                <span id="std-label" class="sr-only">Display Mode</span>
+                
+                <label class="aea-radio-container">
+                    <input type="radio" name="display-mode" value="2d" class="aea-radio-input" checked>
+                    <span class="aea-radio-circle"></span>
+                    <span class="aea-radio-label">2D Visualization</span>
+                </label>
+
+                <label class="aea-radio-container">
+                    <input type="radio" name="display-mode" value="3d" class="aea-radio-input">
+                    <span class="aea-radio-circle"></span>
+                    <span class="aea-radio-label">3D WebGL Engine</span>
+                </label>
+
+                <label class="aea-radio-container">
+                    <input type="radio" name="display-mode" value="vr" class="aea-radio-input" disabled>
+                    <span class="aea-radio-circle"></span>
+                    <span class="aea-radio-label">VR Immersion (Locked)</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- Button Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Button-Style Radios</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="radiogroup">
+                <label class="relative block">
+                    <input type="radio" name="node-type" value="antrag" class="aea-radio-input" checked>
+                    <div class="aea-radio-button">
+                        <span class="aea-radio-label ml-0">Antrag Nodes</span>
+                        <div class="aea-radio-indicator"></div>
+                    </div>
+                </label>
+
+                <label class="relative block">
+                    <input type="radio" name="node-type" value="person" class="aea-radio-input">
+                    <div class="aea-radio-button">
+                        <span class="aea-radio-label ml-0">Person Nodes</span>
+                        <div class="aea-radio-indicator"></div>
+                    </div>
+                </label>
+
+                <label class="relative block">
+                    <input type="radio" name="node-type" value="cluster" class="aea-radio-input">
+                    <div class="aea-radio-button">
+                        <span class="aea-radio-label ml-0">Cluster View</span>
+                        <div class="aea-radio-indicator"></div>
+                    </div>
+                </label>
+
+                <label class="relative block">
+                    <input type="radio" name="node-type" value="hybrid" class="aea-radio-input">
+                    <div class="aea-radio-button">
+                        <span class="aea-radio-label ml-0">Hybrid Mode</span>
+                        <div class="aea-radio-indicator"></div>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+        <!-- HUD Variation -->
+        <section class="demo-section">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Technical HUD Variations</h2>
+            <div class="space-y-4" role="radiogroup">
+                <label class="block">
+                    <input type="radio" name="security" value="high" class="aea-radio-input" checked>
+                    <div class="aea-radio-hud">
+                        <div class="aea-radio-hud-label">
+                            <span class="aea-radio-hud-title">High Security Protocol</span>
+                            <span class="aea-radio-hud-desc">Full encryption and multi-factor node verification enabled.</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="block">
+                    <input type="radio" name="security" value="standard" class="aea-radio-input">
+                    <div class="aea-radio-hud">
+                        <div class="aea-radio-hud-label">
+                            <span class="aea-radio-hud-title">Standard Access</span>
+                            <span class="aea-radio-hud-desc">Regular monitoring and session-based authentication.</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="block">
+                    <input type="radio" name="security" value="bypass" class="aea-radio-input">
+                    <div class="aea-radio-hud">
+                        <div class="aea-radio-hud-label">
+                            <span class="aea-radio-hud-title">Debug Bypass</span>
+                            <span class="aea-radio-hud-desc text-[hsl(var(--accent-danger))]">Warning: Security layers will be bypassed for testing.</span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+        <!-- Compact Sidebar Group -->
+        <section class="demo-section max-w-xs">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-8">Compact Sidebar Group</h2>
+            <div class="p-4 bg-black/20 rounded-2xl border border-white/5 space-y-1">
+                <label class="aea-radio-container py-2">
+                    <input type="radio" name="sidebar-opt" value="1" class="aea-radio-input" checked>
+                    <span class="aea-radio-circle scale-75"></span>
+                    <span class="aea-radio-label text-[10px]">Auto-Save Enabled</span>
+                </label>
+                <label class="aea-radio-container py-2">
+                    <input type="radio" name="sidebar-opt" value="2" class="aea-radio-input">
+                    <span class="aea-radio-circle scale-75"></span>
+                    <span class="aea-radio-label text-[10px]">Manual Sync Only</span>
+                </label>
+                <label class="aea-radio-container py-2">
+                    <input type="radio" name="sidebar-opt" value="3" class="aea-radio-input">
+                    <span class="aea-radio-circle scale-75"></span>
+                    <span class="aea-radio-label text-[10px]">Offline Cache Mode</span>
+                </label>
+            </div>
+        </section>
+
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

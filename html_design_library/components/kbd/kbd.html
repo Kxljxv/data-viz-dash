@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA KBD - Cyberpunk-Lite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            background-color: hsl(60 2.1% 18.4%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            color: hsl(48 33.3% 97.1%);
+            font-family: 'ModernDense', sans-serif;
+        }
+
+        .demo-container {
+            background-color: hsla(var(--bg-100) / 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid hsla(var(--border-300) / 0.2);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: hsl(var(--text-500));
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid hsla(var(--border-300) / 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .kbd-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kbd-label {
+            font-size: 0.875rem;
+            color: hsl(var(--text-200));
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h2 class="text-2xl font-serif mb-6 text-[hsl(var(--text-100))]">Keyboard Visualization</h2>
+
+        <div class="mb-8">
+            <h3 class="section-title">Standard Keys</h3>
+            <div class="kbd-row">
+                <span class="kbd-label">Single Key</span>
+                <kbd class="aea-kbd">A</kbd>
+            </div>
+            <div class="kbd-row">
+                <span class="kbd-label">Special Keys</span>
+                <div class="flex gap-1">
+                    <kbd class="aea-kbd">Shift</kbd>
+                    <kbd class="aea-kbd">Ctrl</kbd>
+                    <kbd class="aea-kbd">Enter</kbd>
+                    <kbd class="aea-kbd">Space</kbd>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <h3 class="section-title">Shortcuts</h3>
+            <div class="kbd-row">
+                <span class="kbd-label">Copy</span>
+                <div class="flex items-center gap-1">
+                    <kbd class="aea-kbd">Ctrl</kbd>
+                    <span class="text-xs opacity-50">+</span>
+                    <kbd class="aea-kbd">C</kbd>
+                </div>
+            </div>
+            <div class="kbd-row">
+                <span class="kbd-label">Command Palette</span>
+                <div class="flex items-center gap-1">
+                    <kbd class="aea-kbd">Ctrl</kbd>
+                    <span class="text-xs opacity-50">+</span>
+                    <kbd class="aea-kbd">Shift</kbd>
+                    <span class="text-xs opacity-50">+</span>
+                    <kbd class="aea-kbd">P</kbd>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <h3 class="section-title">Variations & Sizes</h3>
+            <div class="kbd-row">
+                <span class="kbd-label">Accent Variation</span>
+                <kbd class="aea-kbd aea-kbd-accent">Cmd</kbd>
+            </div>
+            <div class="kbd-row">
+                <span class="kbd-label">Small Size</span>
+                <kbd class="aea-kbd aea-kbd-sm">Esc</kbd>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="section-title">In-Text Example</h3>
+            <p class="text-sm text-[hsl(var(--text-500))] leading-relaxed">
+                Use <kbd class="aea-kbd aea-kbd-sm">W</kbd> <kbd class="aea-kbd aea-kbd-sm">A</kbd> <kbd class="aea-kbd aea-kbd-sm">S</kbd> <kbd class="aea-kbd aea-kbd-sm">D</kbd> to navigate the graph. Press <kbd class="aea-kbd aea-kbd-accent aea-kbd-sm">R</kbd> to reset view.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

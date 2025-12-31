@@ -5,7 +5,7 @@
     import StatusBar from '$components/graph/StatusBar.svelte';
     import ContextMenu from '$components/graph/ContextMenu.svelte';
     import '$assets/styles/style.css';
-    import GraphVisualizationModule from '$components/graph/GraphVisualization.js';
+    import GraphVisualizationModule from '$components/graph/GraphVisualization';
 
     let graphInstance = $state(null);
     let stats = $state({
@@ -46,9 +46,9 @@
             }
 
             // Use GraphVisualization from module or window
-            const GraphClass = GraphVisualizationModule?.default || window.GraphVisualization;
-            if (GraphClass) {
-                graphInstance = new GraphClass(stats.project);
+            if (GraphVisualization) {
+                // Initialize graph
+                graphInstance = new GraphVisualization(stats.project);
                 window.graph = graphInstance;
                 
                 // Sync initial stats if data already loaded

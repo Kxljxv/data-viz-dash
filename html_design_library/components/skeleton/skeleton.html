@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEA Skeleton Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        @font-face {
+            font-family: 'ModernDense';
+            src: url('../../fonts/ModernDense.ttf') format('truetype');
+        }
+        body {
+            background-color: hsl(60, 2.1%, 18.4%);
+            color: hsl(48, 33.3%, 97.1%);
+            font-family: 'ModernDense', sans-serif;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif mb-2">Skeleton</h1>
+            <p class="text-[hsl(var(--text-500))]">Loading state placeholders with Cyberpunk-Lite aesthetics.</p>
+        </header>
+
+        <div class="space-y-12">
+            <!-- Basic Shapes -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-6">Basic Shapes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="p-6 bg-[hsla(var(--bg-100)/0.4)] backdrop-blur-md border border-[hsla(var(--border-300)/0.1)] rounded-3xl">
+                        <h3 class="text-sm mb-6 opacity-70">Pulse Animation (Default)</h3>
+                        <div class="space-y-4">
+                            <div class="aea-skeleton aea-skeleton-circle aea-skeleton-pulse w-12 h-12"></div>
+                            <div class="aea-skeleton aea-skeleton-rect aea-skeleton-pulse w-full h-8"></div>
+                            <div class="aea-skeleton aea-skeleton-rect aea-skeleton-pulse w-2/3 h-8"></div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-[hsla(var(--bg-100)/0.4)] backdrop-blur-md border border-[hsla(var(--border-300)/0.1)] rounded-3xl">
+                        <h3 class="text-sm mb-6 opacity-70">Shimmer Animation</h3>
+                        <div class="space-y-4">
+                            <div class="aea-skeleton aea-skeleton-circle aea-skeleton-shimmer w-12 h-12"></div>
+                            <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-full h-8"></div>
+                            <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-2/3 h-8"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Text Blocks -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-6">Text Placeholders</h2>
+                <div class="p-6 bg-[hsla(var(--bg-100)/0.4)] backdrop-blur-md border border-[hsla(var(--border-300)/0.1)] rounded-3xl">
+                    <div class="max-w-xl space-y-2">
+                        <div class="aea-skeleton aea-skeleton-text aea-skeleton-shimmer w-full"></div>
+                        <div class="aea-skeleton aea-skeleton-text aea-skeleton-shimmer w-full"></div>
+                        <div class="aea-skeleton aea-skeleton-text aea-skeleton-shimmer w-3/4"></div>
+                        <div class="aea-skeleton aea-skeleton-text aea-skeleton-shimmer w-1/2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Complex Card Skeleton -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-6">Composite Components</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Profile Card -->
+                    <div class="p-6 bg-[hsla(var(--bg-100)/0.8)] backdrop-blur-xl border border-[hsla(var(--border-300)/0.2)] rounded-3xl shadow-2xl">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="aea-skeleton aea-skeleton-circle aea-skeleton-shimmer w-16 h-16"></div>
+                            <div class="flex-1 space-y-2">
+                                <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-3/4 h-5"></div>
+                                <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-1/2 h-3"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 mb-6">
+                            <div class="aea-skeleton aea-skeleton-text aea-skeleton-shimmer w-full"></div>
+                            <div class="aea-skeleton aea-skeleton-text aea-skeleton-shimmer w-full"></div>
+                            <div class="aea-skeleton aea-skeleton-text aea-skeleton-shimmer w-4/5"></div>
+                        </div>
+                        <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-full h-10"></div>
+                    </div>
+
+                    <!-- Media Card -->
+                    <div class="overflow-hidden bg-[hsla(var(--bg-100)/0.8)] backdrop-blur-xl border border-[hsla(var(--border-300)/0.2)] rounded-3xl shadow-2xl">
+                        <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-full h-48 rounded-none"></div>
+                        <div class="p-6 space-y-4">
+                            <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-2/3 h-6"></div>
+                            <div class="flex gap-2">
+                                <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-16 h-6"></div>
+                                <div class="aea-skeleton aea-skeleton-rect aea-skeleton-shimmer w-16 h-6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Styles -->
+            <section>
+                <h2 class="text-xs uppercase tracking-[0.2em] text-[hsl(var(--accent-brand))] mb-6">Technical Variations</h2>
+                <div class="p-6 bg-[hsla(var(--bg-100)/0.4)] backdrop-blur-md border border-[hsla(var(--border-300)/0.1)] rounded-3xl">
+                    <div class="space-y-6">
+                        <div class="aea-skeleton aea-skeleton-rect aea-skeleton-tech aea-skeleton-shimmer w-full h-16 flex items-center px-8">
+                            <span class="text-[10px] uppercase tracking-widest opacity-30">Loading System Data...</span>
+                        </div>
+                        <div class="aea-skeleton aea-skeleton-rect aea-skeleton-tech aea-skeleton-pulse w-full h-16 flex items-center px-8">
+                            <span class="text-[10px] uppercase tracking-widest opacity-30">Analyzing Network Nodes...</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Skeletons usually don't need script.js unless for complex visibility toggling -->
+</body>
+</html>

@@ -12,7 +12,8 @@ export async function GET({ platform, cookies }) {
     const kv = platform?.env?.DATA_CACHE;
 
     if (!kv) {
-        return json({ analyses: [] }); // Development fallback
+        console.warn("DATA_CACHE KV namespace not bound. Using empty list for development.");
+        return json({ analyses: [], warning: "KV_NOT_BOUND" });
     }
 
     try {
@@ -38,7 +39,11 @@ export async function POST({ request, platform, cookies }) {
         const kv = platform?.env?.DATA_CACHE;
 
         if (!kv) {
-            return json({ success: true, message: "Development mode: Data not persisted to KV" });
+            return json({ 
+                success: false, 
+                error: "KV_NOT_BOUND",
+                message: "Cloudflare KV 'DATA_CACHE' ist nicht konfiguriert. Daten können nicht dauerhaft gespeichert werden." 
+            }, { status: 503 });
         }
 
         const key = `user_analyses:${userId}`;

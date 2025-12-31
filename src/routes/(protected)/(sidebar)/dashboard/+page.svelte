@@ -4,7 +4,44 @@
 	import { goto } from "$app/navigation";
 	import { AVAILABLE_PROJECTS } from "$config";
 
+	import { FolderOpen, Clock, ArrowRight, Trash2 } from "lucide-svelte";
+	import { onMount } from "svelte";
+
 	let { data } = $props();
+	let savedAnalyses = $state([]);
+	let isLoading = $state(true);
+
+	onMount(async () => {
+		try {
+			const response = await fetch('/api/saved-analysis');
+			if (response.ok) {
+				const result = await response.json();
+				savedAnalyses = result.analyses || [];
+			}
+		} catch (e) {
+			console.error("Failed to load saved analyses", e);
+		} finally {
+			isLoading = false;
+		}
+	});
+
+	async function deleteAnalysis(id, event) {
+		event.stopPropagation();
+		if (!confirm("Analyse wirklich löschen?")) return;
+		
+		const updated = savedAnalyses.filter(a => a.id !== id);
+		savedAnalyses = updated;
+
+		try {
+			await fetch('/api/saved-analysis', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ analyses: updated })
+			});
+		} catch (e) {
+			console.error("Failed to delete analysis", e);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -59,6 +96,82 @@
 				</Button>
 			</CardContent>
 		</Card>
+	</div>
+
+	<div class="mt-8">
+		<div class="flex items-center justify-between mb-4">
+			<h2 class="text-2xl font-bold">Deine gespeicherten Analysen</h2>
+			{#if savedAnalyses.length > 0}
+				<Button variant="ghost" size="sm" onclick={() => goto("/dashboard/analysis/density")}>
+					Alle ansehen <ArrowRight class="ml-2 size-4" />
+				</Button>
+			{/if}
+		</div>
+
+		{#if isLoading}
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+				{#each Array(3) as _}
+					<Card class="animate-pulse">
+						<CardHeader class="h-24 bg-muted/50"></CardHeader>
+					</Card>
+				{/each}
+			</div>
+		{:else}
+			{#if savedAnalyses.length > 0}
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+					{#each savedAnalyses.slice(0, 3) as analysis}
+						<Card 
+							class="group cursor-pointer hover:border-[hsl(var(--accent-pro-100))] transition-all relative overflow-hidden"
+							onclick={() => goto(`/dashboard/analysis/density?load=${analysis.id}`)}
+						>
+							<CardHeader>
+								<div class="flex justify-between items-start">
+									<div class="flex items-center gap-2 text-[hsl(var(--accent-pro-100))]">
+										<FolderOpen class="size-4" />
+										<span class="text-xs font-bold uppercase tracking-wider">{analysis.selectedProject}</span>
+									</div>
+									<Button 
+										variant="ghost" 
+										size="icon" 
+										class="size-7 opacity-0 group-hover:opacity-100 transition-opacity text-destructive hover:text-destructive hover:bg-destructive/10"
+										onclick={(e) => deleteAnalysis(analysis.id, e)}
+									>
+										<Trash2 class="size-3.5" />
+									</Button>
+								</div>
+								<CardTitle class="text-lg group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">
+									{analysis.name}
+								</CardTitle>
+								<CardDescription class="flex items-center gap-1.5">
+									<Clock class="size-3" />
+									{new Date(analysis.timestamp).toLocaleDateString()}
+								</CardDescription>
+							</CardHeader>
+							<CardContent>
+								<div class="text-xs text-muted-foreground">
+									{analysis.analysisResults.length} Gruppe(n) analysiert
+								</div>
+							</CardContent>
+						</Card>
+					{/each}
+				</div>
+			{:else}
+				<Card class="border-dashed">
+					<CardContent class="flex flex-col items-center justify-center py-12 text-center">
+						<div class="size-12 rounded-full bg-muted flex items-center justify-center mb-4">
+							<FolderOpen class="size-6 text-muted-foreground" />
+						</div>
+						<h3 class="text-lg font-medium">Noch keine Analysen gespeichert</h3>
+						<p class="text-sm text-muted-foreground max-w-sm mt-1 mb-6">
+							Erstelle deine erste Dichte-Analyse, um sie hier für den schnellen Zugriff zu speichern.
+						</p>
+						<Button onclick={() => goto("/dashboard/analysis/density")}>
+							Analyse starten
+						</Button>
+					</CardContent>
+				</Card>
+			{/if}
+		{/if}
 	</div>
 
 	<div class="mt-8">

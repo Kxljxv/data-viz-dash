@@ -10,8 +10,9 @@
     import GraphVisualizationModule from "$components/graph/GraphVisualization.js";
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
+    import { page } from "$app/state";
 
-	let step = $state(1); // 1: Select Graph, 2: Upload group.json, 3: Result
+    let step = $state(1); // 1: Select Graph, 2: Upload group.json, 3: Result
 	let selectedProject = $state("");
 	let uploadFiles = $state([]);
 	let isProcessing = $state(false);
@@ -43,6 +44,15 @@
                 const data = await response.json();
                 if (data.analyses && data.analyses.length > 0) {
                     savedProjects = data.analyses;
+                    
+                    // Check if we should auto-load a specific project from URL
+                    const loadId = page.url.searchParams.get('load');
+                    if (loadId) {
+                        const projectToLoad = savedProjects.find(p => p.id === loadId);
+                        if (projectToLoad) {
+                            loadProject(projectToLoad);
+                        }
+                    }
                     return; // Successfully loaded from server
                 }
             }

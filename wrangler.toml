@@ -16,14 +16,14 @@ enabled = true
 # KV Namespaces for session storage
 [[kv_namespaces]]
 binding = "LOGIN_SESSION_CACHE"
-id = "placeholder-kv-id"  # Replace with actual KV namespace ID after creation
-preview_id = "placeholder-kv-id"
+id = "ae35743ad6a2445bbb364dbdfb438e56"
+preview_id = "ae35743ad6a2445bbb364dbdfb438e56"
 
 # KV Namespace for data caching (optional, for production)
 [[kv_namespaces]]
 binding = "DATA_CACHE"
-id = "placeholder-data-cache-id"  # Replace with actual KV namespace ID after creation
-preview_id = "placeholder-data-cache-id"
+id = "aaeb0d26bfef4fa2b688efede12a0603"
+preview_id = "aaeb0d26bfef4fa2b688efede12a0603"
 
 # To create KV namespaces:
 # npx wrangler kv:namespace create "LOGIN_SESSION_CACHE"

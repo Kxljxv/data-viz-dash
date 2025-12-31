@@ -4,7 +4,7 @@ import { AVAILABLE_PROJECTS } from '$config';
 // Import all project.yaml files at build time using Vite's glob import
 // We use a relative path from this file to the static/data directory
 const projectConfigs = import.meta.glob('../../../../../../static/data/*/project.yaml', { 
-    query: '?raw', 
+    as: 'raw', 
     eager: true 
 });
 

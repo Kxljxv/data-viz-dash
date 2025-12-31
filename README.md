@@ -280,18 +280,20 @@ The `src/lib/auth.svelte.js` file provides a reactive `$state` for the current u
 ## 13. Deployment & Infrastructure
 The project is optimized for Cloudflare Pages.
 
-### Build Process
+### Build & Deployment
 ```bash
 npm run build
 ```
-This command runs `vite build`, which:
-1. Bundles Svelte components.
-2. Minifies JavaScript and CSS.
-3. Optimizes assets.
-4. Generates a `dist` directory compatible with Cloudflare.
+This command runs `vite build` using the `@sveltejs/adapter-cloudflare`. The project is specifically configured for **Cloudflare Workers/Pages**:
+1.  **Serverless Compatibility**: All server-side routes are optimized to avoid Node.js-specific APIs (`fs`, `path`) that are unavailable in Workers.
+2.  **Static Data Handling**: Project configurations and metadata are imported at build-time using Vite's `import.meta.glob`, ensuring high performance and zero-config deployment.
+3.  **Wrangler Configuration**: The `wrangler.toml` includes `nodejs_compat` flags to support modern cryptographic and async-context features.
 
 ### Cloudflare Configuration
-The `wrangler.toml` or Cloudflare dashboard settings should point the build output directory to `.svelte-kit/cloudflare`.
+The `wrangler.toml` is configured to:
+- Use `.svelte-kit/cloudflare` as the asset directory.
+- Enable `nodejs_compat` and `nodejs_als` for full Svelte 5 support.
+- Manage session storage via Cloudflare KV namespaces (`LOGIN_SESSION_CACHE`, `DATA_CACHE`).
 
 ---
 

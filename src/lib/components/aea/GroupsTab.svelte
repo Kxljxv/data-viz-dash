@@ -1,10 +1,12 @@
 <script>
-    import { Card, CardContent } from '$lib/components/ui/card';
-    import { Button } from '$lib/components/ui/button';
-    import { Badge } from '$lib/components/ui/badge';
-    import { Slider } from '$lib/components/ui/slider';
-    import { Label } from '$lib/components/ui/label';
-    import * as Select from '$lib/components/ui/select';
+    import { 
+        Card, 
+        CardContent, 
+        Button, 
+        Badge, 
+        Slider, 
+        Select 
+    } from '$lib/components/aea';
 
     /**
      * @typedef {Object} Props

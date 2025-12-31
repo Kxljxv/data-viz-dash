@@ -32,7 +32,15 @@
     let triggerElement = $state();
     let popoverElement = $state();
     let coords = $state({ x: 0, y: 0 });
-    let currentPosition = $state(position);
+    let currentPosition = $state('');
+
+    $effect.pre(() => {
+        if (!currentPosition) currentPosition = position;
+    });
+
+    $effect(() => {
+        currentPosition = position;
+    });
 
     async function toggleOpen(e) {
         if (e) {

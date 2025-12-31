@@ -15,7 +15,7 @@
     let activeId = $state(null);
 
     setContext('accordion', {
-        allowMultiple,
+        get allowMultiple() { return allowMultiple; },
         activeId: () => activeId,
         setActive: (id) => activeId = id
     });

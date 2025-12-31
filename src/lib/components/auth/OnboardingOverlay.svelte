@@ -1,9 +1,17 @@
 <script>
-    import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "$components/ui/card";
-    import { Button } from "$components/ui/button";
-    import { Input } from "$components/ui/input";
-    import { Label } from "$components/ui/label";
-    import { Loader2, UserCircle2, MapPin } from "lucide-svelte";
+    import { 
+        Card, 
+        CardContent, 
+        CardDescription, 
+        CardHeader, 
+        CardTitle, 
+        CardFooter,
+        Button,
+        Input,
+        Spinner,
+        Typography
+    } from "$lib/components/aea";
+    import { UserCircle2, MapPin } from "lucide-svelte";
     import { invalidateAll } from "$app/navigation";
 
     let { user } = $props();
@@ -47,12 +55,12 @@
 </script>
 
 <div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-sm p-4">
-    <Card class="w-full max-w-md shadow-2xl border-primary/20">
+    <Card variant="glass" class="w-full max-w-md shadow-2xl border-primary/20">
         <CardHeader class="space-y-1">
-            <CardTitle class="text-2xl font-bold text-center">Willkommen!</CardTitle>
-            <CardDescription class="text-center">
+            <Typography tag="h2" variant="h2" class="text-center">Willkommen!</Typography>
+            <Typography variant="body" class="text-center opacity-70">
                 Bevor Sie AEA nutzen können, benötigen wir noch ein paar Informationen von Ihnen.
-            </CardDescription>
+            </Typography>
         </CardHeader>
         <form onsubmit={handleSubmit}>
             <CardContent class="space-y-4 py-4">
@@ -63,37 +71,35 @@
                 {/if}
 
                 <div class="space-y-2">
-                    <Label for="full-name" class="flex items-center gap-2">
-                        <UserCircle2 class="w-4 h-4 text-muted-foreground" />
+                    <Typography variant="label" class="flex items-center gap-2 mb-1">
+                        <UserCircle2 class="w-4 h-4 text-primary" />
                         Vollständiger Name
-                    </Label>
+                    </Typography>
                     <Input 
                         id="full-name" 
                         placeholder="z.B. Max Mustermann" 
                         bind:value={fullName}
                         required
-                        class="bg-muted/50"
                     />
                 </div>
 
                 <div class="space-y-2">
-                    <Label for="kreisverband" class="flex items-center gap-2">
-                        <MapPin class="w-4 h-4 text-muted-foreground" />
+                    <Typography variant="label" class="flex items-center gap-2 mb-1">
+                        <MapPin class="w-4 h-4 text-primary" />
                         Kreisverband
-                    </Label>
+                    </Typography>
                     <Input 
                         id="kreisverband" 
                         placeholder="z.B. KV Berlin-Mitte" 
                         bind:value={kreisverband}
                         required
-                        class="bg-muted/50"
                     />
                 </div>
             </CardContent>
             <CardFooter>
-                <Button type="submit" class="w-full gap-2" disabled={isSaving}>
+                <Button type="submit" variant="primary" class="w-full gap-2" disabled={isSaving}>
                     {#if isSaving}
-                        <Loader2 class="w-4 h-4 animate-spin" />
+                        <Spinner size="sm" />
                         Wird gespeichert...
                     {:else}
                         Profil vervollständigen & Starten

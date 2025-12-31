@@ -78,6 +78,7 @@
 
     .aea-slider {
         -webkit-appearance: none;
+        appearance: none;
         width: 100%;
         height: 6px;
         background: hsla(var(--text-500) / 0.2);

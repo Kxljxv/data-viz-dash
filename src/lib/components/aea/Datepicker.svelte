@@ -35,7 +35,13 @@
 		return isNaN(d.getTime()) ? null : d;
 	});
 
-	let viewDate = $state(selectedDate || new Date());
+	let viewDate = $state(new Date());
+
+	$effect(() => {
+		if (selectedDate) {
+			viewDate = new Date(selectedDate);
+		}
+	});
 
 	const monthNames = [
 		'January',

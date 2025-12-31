@@ -14,14 +14,12 @@
     if (!context) {
         throw new Error('TabList must be used within a Tabs component');
     }
-
-    const { orientation, variant } = context;
 </script>
 
 <nav 
-    class="tabs-container {variant === 'pill' ? 'tabs-pills' : ''} {orientation} {className}" 
+    class="tabs-container {context.variant === 'pill' ? 'tabs-pills' : ''} {context.orientation} {className}" 
     role="tablist"
-    aria-orientation={orientation}
+    aria-orientation={context.orientation}
     {...rest}
 >
     {@render children?.()}

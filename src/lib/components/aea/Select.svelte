@@ -39,8 +39,8 @@
 	let isOpen = $state(false);
 	let activeIndex = $state(-1);
 	let searchQuery = $state('');
-	let containerEl: HTMLDivElement;
-	let searchInputEl: HTMLInputElement;
+	let containerEl: HTMLDivElement | undefined = $state();
+	let searchInputEl: HTMLInputElement | undefined = $state();
 
 	const filteredOptions = $derived.by(() => {
 		if (!searchable || !searchQuery) return options;
@@ -60,7 +60,7 @@
 	// Focus search input when opening if searchable
 	$effect(() => {
 		if (isOpen && searchable && searchInputEl) {
-			setTimeout(() => searchInputEl.focus(), 50);
+			setTimeout(() => searchInputEl?.focus(), 50);
 		}
 	});
 

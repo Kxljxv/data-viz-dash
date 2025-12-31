@@ -25,10 +25,22 @@
     } = $props();
 
     // Internal state if value is not provided
-    let internalValue = $state(defaultValue || '');
+    let internalValue = $state('');
     
     // Derived current value
     const currentValue = $derived(value !== undefined ? value : internalValue);
+
+    $effect.pre(() => {
+        if (!internalValue && defaultValue) {
+            internalValue = defaultValue;
+        }
+    });
+
+    $effect(() => {
+        if (value === undefined && defaultValue !== undefined && !internalValue) {
+            internalValue = defaultValue;
+        }
+    });
 
     function selectTab(newValue) {
         if (value !== undefined) {
@@ -42,8 +54,8 @@
     // Set context for child components
     setContext('AEA_TABS', {
         get value() { return currentValue; },
-        orientation,
-        variant,
+        get orientation() { return orientation; },
+        get variant() { return variant; },
         selectTab
     });
 </script>

@@ -47,12 +47,12 @@
 </script>
 
 <Dialog.Root open={true} onOpenChange={(open) => !open && onClose()}>
-    <Dialog.Content class="sm:max-w-md p-0 overflow-hidden border-none shadow-2xl rounded-3xl">
-        <Dialog.Header class="p-6 border-b border-[hsl(var(--border-300))/0.5] bg-[var(--bg-100)]/30">
-            <Dialog.Title class="text-lg font-serif text-[var(--text-primary)]">KV-Gruppe erstellen</Dialog.Title>
+    <Dialog.Content class="sm:max-w-md p-0 overflow-hidden border border-white/5 shadow-2xl rounded-3xl bg-background/95 backdrop-blur-xl">
+        <Dialog.Header class="p-6 border-b border-white/5 bg-white/5">
+            <Dialog.Title class="text-lg font-serif text-white">KV-Gruppe erstellen</Dialog.Title>
         </Dialog.Header>
 
-        <div class="p-6 space-y-6 overflow-hidden flex flex-col max-h-[60vh]">
+        <div class="p-6 space-y-6 overflow-hidden flex flex-col max-h-[60vh] bg-transparent">
             <!-- Search & Filter -->
             <div class="space-y-4">
                 <div class="relative">
@@ -98,14 +98,14 @@
             </div>
         </div>
 
-        <Dialog.Footer class="p-6 bg-[var(--bg-100)]/30 border-t border-[hsl(var(--border-300))] flex flex-row space-x-3">
-            <Button variant="ghost" onclick={onClose} class="flex-1 py-4 text-[10px] font-black uppercase tracking-[0.2em]">
+        <Dialog.Footer class="p-6 bg-white/5 border-t border-white/5 flex flex-row space-x-3">
+            <Button variant="ghost" onclick={onClose} class="flex-1 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/60 hover:text-white">
                 Abbrechen
             </Button>
             <Button 
                 onclick={handleCreate} 
                 disabled={selectedKvs.length === 0}
-                class="flex-1 py-4 text-[10px] font-black uppercase tracking-[0.2em]"
+                class="flex-1 py-4 text-[10px] font-black uppercase tracking-[0.2em] bg-brand text-white hover:bg-brand/80"
             >
                 Erstellen
             </Button>

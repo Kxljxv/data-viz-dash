@@ -23,8 +23,8 @@
         throw new Error('Tab must be used within a Tabs component');
     }
 
-    const { value: selectedValue, selectTab, orientation, variant } = context;
-    const isActive = $derived(selectedValue === value);
+    const { selectTab, orientation, variant } = context;
+    const isActive = $derived(context.value === value);
 
     function handleClick() {
         if (!disabled) {
@@ -45,6 +45,7 @@
     role="tab"
     aria-selected={isActive}
     aria-disabled={disabled}
+    data-state={isActive ? 'active' : 'inactive'}
     tabindex={isActive ? 0 : -1}
     onclick={handleClick}
     onkeydown={handleKeyDown}

@@ -1,8 +1,10 @@
 <script>
-    import { Button } from '$lib/components/ui/button';
-    import { Checkbox } from '$lib/components/ui/checkbox';
-    import { Slider } from '$lib/components/ui/slider';
-    import { Label } from '$lib/components/ui/label';
+    import { 
+        Button, 
+        Checkbox, 
+        Slider,
+        Typography
+    } from '$lib/components/aea';
 
     /**
      * @typedef {Object} Props
@@ -16,11 +18,11 @@
 
 <div class="space-y-10">
     <div class="space-y-6">
-        <h4 class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Filter</h4>
+        <Typography variant="label" class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Filter</Typography>
         <div class="grid grid-cols-1 gap-4">
             <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                 <div class="flex flex-col">
-                    <Label for="showAntraege" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Anträge anzeigen</Label>
+                    <Typography tag="label" for="showAntraege" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Anträge anzeigen</Typography>
                     <span class="text-[8px] text-[var(--text-tertiary)] uppercase font-black tracking-widest mt-1">Status: {settings.showAntraege ? 'Aktiv' : 'Inaktiv'}</span>
                 </div>
                 <Checkbox 
@@ -32,7 +34,7 @@
 
             <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                 <div class="flex flex-col">
-                    <Label for="showSupporters" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Unterstützer anzeigen</Label>
+                    <Typography tag="label" for="showSupporters" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Unterstützer anzeigen</Typography>
                     <span class="text-[8px] text-[var(--text-tertiary)] uppercase font-black tracking-widest mt-1">Status: {settings.showSupporters ? 'Aktiv' : 'Inaktiv'}</span>
                 </div>
                 <Checkbox 
@@ -45,12 +47,12 @@
     </div>
 
     <div class="space-y-6">
-        <h4 class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Darstellung</h4>
+        <Typography variant="label" class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Darstellung</Typography>
         <div class="space-y-8">
             <div class="grid grid-cols-1 gap-3">
                 <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                     <div class="flex flex-col">
-                        <Label for="showLabels" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Beschriftungen anzeigen</Label>
+                        <Typography tag="label" for="showLabels" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Beschriftungen anzeigen</Typography>
                     </div>
                     <Checkbox 
                         id="showLabels"
@@ -61,7 +63,7 @@
 
                 <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                     <div class="flex flex-col">
-                        <Label for="showLinks" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Verbindungen anzeigen</Label>
+                        <Typography tag="label" for="showLinks" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Verbindungen anzeigen</Typography>
                     </div>
                     <Checkbox 
                         id="showLinks"
@@ -73,12 +75,12 @@
 
             <div class="space-y-4 px-2">
                 <div class="flex justify-between items-center">
-                    <Label class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Knotengröße</Label>
+                    <Typography variant="label" class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Knotengröße</Typography>
                     <span class="text-xs font-mono text-[hsl(var(--accent-pro-100))] font-bold">{settings.nodeSize}x</span>
                 </div>
                 <Slider 
-                    value={[settings.nodeSize]}
-                    onValueChange={(val) => onUpdate('nodeSize', val[0])}
+                    value={settings.nodeSize}
+                    onchange={(e) => onUpdate('nodeSize', parseFloat(e.target.value))}
                     min={0.1}
                     max={3}
                     step={0.1}

@@ -33,6 +33,8 @@
 		toggleSelection: (id: string) => void;
 	}>('list-group');
 
+	const isInteractive = $derived(listContext?.interactive || false);
+
 	let isVisible = $state(false);
 
 	onMount(() => {
@@ -63,39 +65,72 @@
 
 <li
 	{id}
-	class="list-group-item {listContext?.interactive ? 'list-group-item-interactive' : ''} {active
+	class="list-group-item {isInteractive ? 'list-group-item-interactive' : ''} {active
 		? 'active'
 		: ''} {className}"
-	role={listContext?.interactive ? 'option' : 'listitem'}
-	aria-selected={listContext?.interactive ? active : undefined}
+	role={isInteractive ? 'none' : 'listitem'}
 	aria-disabled={disabled}
-	tabindex={listContext?.interactive && !disabled ? 0 : -1}
-	onclick={handleClick}
-	onkeydown={handleKeydown}
 >
-	{#if icon}
-		<div class="list-group-icon">
-			{@render icon()}
-		</div>
-	{/if}
+	{#if isInteractive}
+		<button
+			class="list-group-item-button"
+			role="option"
+			aria-selected={active}
+			aria-disabled={disabled}
+			{disabled}
+			onclick={handleClick}
+			onkeydown={handleKeydown}
+		>
+			{#if icon}
+				<div class="list-group-icon">
+					{@render icon()}
+				</div>
+			{/if}
 
-	<div class="list-group-content">
-		{#if children}
-			<span class="list-group-title">
-				{@render children()}
-			</span>
-		{/if}
-		{#if subtitle}
-			<span class="list-group-subtitle">
-				{@render subtitle()}
-			</span>
-		{/if}
-	</div>
+			<div class="list-group-content">
+				{#if children}
+					<span class="list-group-title">
+						{@render children()}
+					</span>
+				{/if}
+				{#if subtitle}
+					<span class="list-group-subtitle">
+						{@render subtitle()}
+					</span>
+				{/if}
+			</div>
 
-	{#if extra}
-		<div class="list-group-extra">
-			{@render extra()}
+			{#if extra}
+				<div class="list-group-extra">
+					{@render extra()}
+				</div>
+			{/if}
+		</button>
+	{:else}
+		{#if icon}
+			<div class="list-group-icon">
+				{@render icon()}
+			</div>
+		{/if}
+
+		<div class="list-group-content">
+			{#if children}
+				<span class="list-group-title">
+					{@render children()}
+				</span>
+			{/if}
+			{#if subtitle}
+				<span class="list-group-subtitle">
+					{@render subtitle()}
+				</span>
+			{/if}
 		</div>
+
+		{#if extra}
+			<div class="list-group-extra">
+				{@render extra()}
+			</div>
+		{/if}
 	{/if}
 </li>
 
@@ -103,7 +138,6 @@
 	.list-group-item {
 		display: flex;
 		align-items: center;
-		padding: 1rem 1.25rem;
 		gap: 1rem;
 		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		border-bottom: 1px solid hsla(var(--border-300) / 0.1);
@@ -111,21 +145,39 @@
 		overflow: hidden;
 	}
 
+	.list-group-item:not(.list-group-item-interactive) {
+		padding: 1rem 1.25rem;
+	}
+
+	.list-group-item-button {
+		display: flex;
+		align-items: center;
+		padding: 1rem 1.25rem;
+		gap: 1rem;
+		width: 100%;
+		background: none;
+		border: none;
+		text-align: left;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+		transition: inherit;
+	}
+
 	.list-group-item:last-child {
 		border-bottom: none;
 	}
 
 	.list-group-item-interactive {
-		cursor: pointer;
 		user-select: none;
 	}
 
-	.list-group-item-interactive:hover:not(.active) {
+	.list-group-item-button:hover:not(.active) {
 		background-color: hsla(var(--bg-200) / 0.4);
 		transform: translateX(4px);
 	}
 
-	.list-group-item.active {
+	.list-group-item.active .list-group-item-button {
 		background-color: hsla(var(--accent-brand) / 0.15);
 		border-left: 3px solid hsl(var(--accent-brand));
 		padding-left: calc(1.25rem - 3px);
@@ -167,7 +219,7 @@
 	}
 
 	/* Accessibility Focus */
-	.list-group-item-interactive:focus-visible {
+	.list-group-item-button:focus-visible {
 		outline: 2px solid hsl(var(--accent-brand));
 		outline-offset: -2px;
 		background-color: hsla(var(--bg-200) / 0.6);

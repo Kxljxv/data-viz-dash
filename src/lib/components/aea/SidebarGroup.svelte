@@ -25,12 +25,12 @@
 </script>
 
 <div class="aea-sidebar-group" class:is-collapsed={collapsed} class:is-mini={sidebar?.isMini.value}>
-	<div
+	<button
 		class="aea-sidebar-group-header"
 		onclick={toggleCollapse}
-		role={collapsible ? 'button' : 'presentation'}
-		tabindex={collapsible ? 0 : -1}
-		onkeydown={(e) => collapsible && (e.key === 'Enter' || e.key === ' ') && toggleCollapse()}
+		type="button"
+		disabled={!collapsible}
+		aria-expanded={collapsible ? !collapsed : undefined}
 	>
 		<span class="aea-sidebar-group-title">{title}</span>
 		{#if collapsible && !sidebar?.isMini.value}
@@ -44,7 +44,7 @@
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 			</svg>
 		{/if}
-	</div>
+	</button>
 
 	<div class="aea-sidebar-group-content">
 		{@render children?.()}
@@ -63,7 +63,16 @@
 		cursor: pointer;
 		padding-right: 1rem;
 		outline: none;
+		background: none;
+		border: none;
+		width: 100%;
+		text-align: left;
+		padding-left: 0;
 	}
+
+    .aea-sidebar-group-header:disabled {
+        cursor: default;
+    }
 
 	.aea-sidebar-group-title {
 		display: block;

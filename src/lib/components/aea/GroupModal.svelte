@@ -1,7 +1,9 @@
 <script>
-    import { Button } from '$lib/components/ui/button';
-    import { Input } from '$lib/components/ui/input';
-    import * as Dialog from '$lib/components/ui/dialog';
+    import { 
+        Button, 
+        Input, 
+        Modal 
+    } from '$lib/components/aea';
     import { onMount } from 'svelte';
 
     /**
@@ -111,24 +113,23 @@
     }
 </script>
 
-<Dialog.Root open={!!group} onOpenChange={(open) => !open && onClose()}>
-    <Dialog.Content class="sm:max-w-md p-0 overflow-hidden border-none shadow-2xl rounded-3xl">
-        <Dialog.Header class="p-6 border-b border-[hsl(var(--border-300))/0.5] bg-[var(--bg-100)]/30">
-            <Dialog.Title class="text-lg font-serif text-[var(--text-primary)]">Gruppe bearbeiten</Dialog.Title>
-        </Dialog.Header>
-
-        <div class="p-6 space-y-6 overflow-y-auto custom-scrollbar max-h-[60vh]">
+<Modal 
+    open={!!group} 
+    onclose={onClose}
+    title="Gruppe bearbeiten"
+    accent="brand"
+>
+    {#snippet body()}
+        <div class="space-y-6">
             <!-- Name & Color Section -->
             <div class="space-y-4">
-                <div>
-                    <label for="group-name" class="block text-[10px] font-black text-[hsl(var(--accent-pro-100))] uppercase tracking-[0.2em] mb-2">Gruppenname</label>
-                    <Input 
-                        id="group-name"
-                        type="text" 
-                        bind:value={name}
-                        placeholder="Gruppenname eingeben..."
-                    />
-                </div>
+                <Input 
+                    id="group-name"
+                    label="Gruppenname"
+                    type="text" 
+                    bind:value={name}
+                    placeholder="Gruppenname eingeben..."
+                />
                 <div>
                     <label for="group-color" class="block text-[10px] font-black text-[hsl(var(--accent-pro-100))] uppercase tracking-[0.2em] mb-2">Farbe</label>
                     <div class="flex items-center space-x-4">
@@ -177,7 +178,7 @@
                 <!-- Add Nodes Search -->
                 <div class="relative">
                     <Input 
-                        type="text" 
+                        type="search" 
                         bind:value={searchQuery}
                         placeholder="Knoten suchen..."
                         aria-label="Knoten suchen"
@@ -204,12 +205,12 @@
                     Exportieren
                 </Button>
                 <div class="flex-1 relative">
-                    <Input 
+                    <input 
                         id="import-group"
                         type="file" 
                         accept=".json" 
                         onchange={handleImport}
-                        class="absolute inset-0 opacity-0 cursor-pointer"
+                        class="absolute inset-0 opacity-0 cursor-pointer z-10"
                         aria-label="Gruppe importieren"
                     />
                     <Button variant="ghost" size="sm" class="w-full py-3 text-[10px] font-black uppercase tracking-[0.1em] border border-[hsl(var(--border-300))]">
@@ -218,17 +219,17 @@
                 </div>
             </div>
         </div>
+    {/snippet}
 
-        <Dialog.Footer class="p-6 bg-[var(--bg-100)]/30 border-t border-[hsl(var(--border-300))] flex flex-row space-x-3">
-            <Button variant="ghost" onclick={onClose} class="flex-1 py-4 text-[10px] font-black uppercase tracking-[0.2em]" aria-label="Abbrechen">
-                Abbrechen
-            </Button>
-            <Button onclick={handleSave} class="flex-1 py-4 text-[10px] font-black uppercase tracking-[0.2em]" aria-label="Speichern">
-                Speichern
-            </Button>
-        </Dialog.Footer>
-    </Dialog.Content>
-</Dialog.Root>
+    {#snippet footer()}
+        <Button variant="ghost" onclick={onClose} class="flex-1" aria-label="Abbrechen">
+            Abbrechen
+        </Button>
+        <Button onclick={handleSave} class="flex-1" aria-label="Speichern">
+            Speichern
+        </Button>
+    {/snippet}
+</Modal>
 
 <style>
 </style>

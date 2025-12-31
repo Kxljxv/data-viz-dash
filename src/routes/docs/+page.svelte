@@ -1,5 +1,5 @@
 <script>
-    import { Button, Card, Separator, Typography, Badge } from '$lib/components/aea';
+    import { Button, Card, Separator, Typography, Badge, Pagination, BottomNav } from '$lib/components/aea';
     import { goto } from '$app/navigation';
 
     const components = [
@@ -9,6 +9,7 @@
         { name: 'Avatar', status: 'done', category: 'Display' },
         { name: 'Badge', status: 'done', category: 'Feedback' },
         { name: 'Banner', status: 'done', category: 'Feedback' },
+        { name: 'BottomNav', status: 'done', category: 'Structure' },
         { name: 'Breadcrumb', status: 'done', category: 'Structure' },
         { name: 'Button', status: 'done', category: 'Interaction' },
         { name: 'Card', status: 'done', category: 'Structure' },
@@ -25,6 +26,7 @@
         { name: 'Jumbotron', status: 'done', category: 'Structure' },
         { name: 'Media', status: 'done', category: 'Display' },
         { name: 'Modal', status: 'done', category: 'Feedback' },
+        { name: 'Pagination', status: 'done', category: 'Interaction' },
         { name: 'PdfViewer', status: 'done', category: 'Display' },
         { name: 'ProgressBar', status: 'done', category: 'Feedback' },
         { name: 'Radio', status: 'done', category: 'Input' },
@@ -147,5 +149,74 @@
                 </Card>
             {/each}
         </div>
+
+        <!-- Component Previews -->
+        <section class="mt-20">
+            <Typography tag="h3" variant="h2" class="mb-12 text-white">Interactive Previews</Typography>
+            
+            <div class="space-y-12">
+                <!-- Pagination Preview -->
+                <Card class="p-8">
+                    <Typography variant="label" class="mb-4">Pagination - Standard & Glass</Typography>
+                    <div class="flex flex-col gap-8">
+                        <Pagination totalPages={10} currentPage={1} />
+                        <Pagination totalPages={5} currentPage={3} glass={true} />
+                    </div>
+                </Card>
+
+                <!-- Bottom Nav Preview -->
+                <Card class="p-8 overflow-hidden relative min-h-[200px]">
+                    <Typography variant="label" class="mb-4">Bottom Navigation (Mobile Optimized)</Typography>
+                    <Typography variant="body" class="text-xs mb-8">Visible only on mobile by default. Forced visible here for demo.</Typography>
+                    
+                    <div class="border border-white/5 rounded-2xl p-4 bg-slate-900/50 min-h-[300px] relative overflow-hidden">
+                         <BottomNav 
+                            forceShow={true}
+                            class="!absolute !bottom-0"
+                            activeId="nav-graph"
+                            items={[
+                                { 
+                                    id: 'nav-graph', 
+                                    label: 'Graph', 
+                                    href: '#',
+                                    icon: iconGraph
+                                },
+                                { 
+                                    id: 'nav-search', 
+                                    label: 'Search', 
+                                    href: '#',
+                                    icon: iconSearch
+                                },
+                                { 
+                                    id: 'nav-settings', 
+                                    label: 'Settings', 
+                                    href: '#',
+                                    icon: iconSettings
+                                }
+                            ]} 
+                        />
+                    </div>
+                </Card>
+            </div>
+        </section>
     </div>
 </div>
+
+{#snippet iconGraph()}
+    <svg class="aea-bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+    </svg>
+{/snippet}
+
+{#snippet iconSearch()}
+    <svg class="aea-bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+{/snippet}
+
+{#snippet iconSettings()}
+    <svg class="aea-bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+{/snippet}

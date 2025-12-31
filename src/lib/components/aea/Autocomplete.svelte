@@ -16,6 +16,7 @@
 		loading?: boolean;
 		debounceMs?: number;
 		class?: string;
+		id?: string;
 		onSearch?: (query: string) => void;
 		onSelect?: (item: Item) => void;
 		onClear?: () => void;
@@ -28,6 +29,7 @@
 		loading = false,
 		debounceMs = 300,
 		class: className = '',
+		id = `autocomplete-${Math.random().toString(36).substring(2, 9)}`,
 		onSearch,
 		onSelect,
 		onClear
@@ -177,6 +179,7 @@
 			aria-autocomplete="list"
 			aria-expanded={isOpen}
 			aria-haspopup="listbox"
+			aria-controls="{id}-results"
 			role="combobox"
 			spellcheck="false"
 			autocomplete="off"
@@ -193,7 +196,7 @@
 		</button>
 	</div>
 
-	<div class="aea-autocomplete-results custom-scrollbar" role="listbox" aria-label="Search results">
+	<div id="{id}-results" class="aea-autocomplete-results custom-scrollbar" role="listbox" aria-label="Search results">
 		{#if loading}
 			<div class="aea-autocomplete-loading" aria-live="polite">
 				<div class="aea-autocomplete-spinner"></div>

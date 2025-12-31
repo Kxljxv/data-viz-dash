@@ -1,5 +1,11 @@
 <script>
-	import { Card, CardContent, CardHeader, CardTitle } from "$components/ui/card";
+	import { 
+		Card, 
+		CardContent, 
+		CardHeader, 
+		CardTitle,
+		Typography
+	} from "$lib/components/aea";
 	import { WEBSITE_NAME } from "$config";
 </script>
 
@@ -17,24 +23,24 @@
 				Zurück zur Startseite
 			</a>
 		</div>
-		<Card class="border-border/40 shadow-xl bg-card/50 backdrop-blur-sm">
+		<Card variant="glass" class="border-border/40 shadow-xl">
 		<CardHeader>
-			<CardTitle class="text-3xl font-bold">Impressum</CardTitle>
+			<Typography tag="h1" variant="h1">Impressum</Typography>
 		</CardHeader>
-		<CardContent class="prose prose-invert max-w-none space-y-6">
+		<CardContent class="space-y-6">
 			<section>
-				<h2 class="text-xl font-semibold border-b border-border pb-2 mb-4">Privater Betrieb</h2>
-				<p class="text-muted-foreground">
+				<Typography tag="h2" variant="h3" class="border-b border-border pb-2 mb-4">Privater Betrieb</Typography>
+				<Typography variant="body" class="text-muted-foreground">
 					Dies ist eine rein <strong>private Webseite</strong>. Sie dient nicht-kommerziellen Zwecken 
 					und stellt ein persönliches Projekt dar.
-				</p>
+				</Typography>
 			</section>
 
 			<section>
-				<h2 class="text-xl font-semibold border-b border-border pb-2 mb-4">Kontakt</h2>
-				<p class="text-muted-foreground">
+				<Typography tag="h2" variant="h3" class="border-b border-border pb-2 mb-4">Kontakt</Typography>
+				<Typography variant="body" class="text-muted-foreground">
 					E-Mail: koljavvoehringer@gmail.com
-				</p>
+				</Typography>
 			</section>
 
 		</CardContent>

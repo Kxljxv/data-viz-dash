@@ -1,7 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "$components/ui/card";
-	import { Button } from "$components/ui/button";
+	import { 
+		Card, 
+		CardContent, 
+		CardDescription, 
+		CardHeader, 
+		CardTitle,
+		Button,
+		Typography
+	} from "$lib/components/aea";
 
 	let { data } = $props();
 
@@ -35,45 +42,45 @@
 
 <div class="space-y-6">
 	<div>
-		<h1 class="text-3xl font-bold">Einstellungen</h1>
-		<p class="text-muted-foreground mt-2">Verwalte deine Benutzer-Präferenzen</p>
+		<Typography tag="h1" variant="h1">Einstellungen</Typography>
+		<Typography variant="body" class="text-muted-foreground mt-2">Verwalte deine Benutzer-Präferenzen</Typography>
 	</div>
 
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-		<Card>
+		<Card variant="glass">
 			<CardHeader>
 				<CardTitle>Benutzer-Informationen</CardTitle>
 			</CardHeader>
 			<CardContent class="space-y-4">
 				<div>
-					<label class="text-sm font-medium">E-Mail</label>
-					<p class="text-sm text-muted-foreground">{data.user.email}</p>
+					<Typography variant="label" class="text-sm font-medium">E-Mail</Typography>
+					<Typography variant="body" class="text-sm text-muted-foreground">{data.user.email}</Typography>
 				</div>
 				<div>
-					<label class="text-sm font-medium">Name</label>
-					<p class="text-sm text-muted-foreground">{data.user.nickname}</p>
+					<Typography variant="label" class="text-sm font-medium">Name</Typography>
+					<Typography variant="body" class="text-sm text-muted-foreground">{data.user.nickname}</Typography>
 				</div>
 				<div>
-					<label class="text-sm font-medium">Rolle</label>
-					<p class="text-sm text-muted-foreground capitalize">{data.user.role}</p>
+					<Typography variant="label" class="text-sm font-medium">Rolle</Typography>
+					<Typography variant="body" class="text-sm text-muted-foreground capitalize">{data.user.role}</Typography>
 				</div>
 			</CardContent>
 		</Card>
 
-		<Card>
+		<Card variant="glass">
 			<CardHeader>
 				<CardTitle>Präferenzen</CardTitle>
 			</CardHeader>
 			<CardContent class="space-y-4">
 				<div>
-					<label class="text-sm font-medium">Theme</label>
-					<p class="text-sm text-muted-foreground">Dark Mode (Standard)</p>
+					<Typography variant="label" class="text-sm font-medium">Theme</Typography>
+					<Typography variant="body" class="text-sm text-muted-foreground">Dark Mode (Standard)</Typography>
 				</div>
 				<div>
-					<label class="text-sm font-medium">Schriftart</label>
-					<p class="text-sm text-muted-foreground capitalize">{settings.font}</p>
+					<Typography variant="label" class="text-sm font-medium">Schriftart</Typography>
+					<Typography variant="body" class="text-sm text-muted-foreground capitalize">{settings.font}</Typography>
 				</div>
-				<Button onclick={saveSettings} class="w-full">
+				<Button onclick={saveSettings} class="w-full mt-4">
 					Einstellungen speichern
 				</Button>
 			</CardContent>

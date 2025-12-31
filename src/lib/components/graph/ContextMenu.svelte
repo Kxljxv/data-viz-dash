@@ -20,9 +20,23 @@
 
     onMount(() => {
         const handleContextMenu = (event) => {
+            const menuWidth = 200; // estimated
+            const menuHeight = 250; // estimated
+            
+            let posX = event.detail.x;
+            let posY = event.detail.y;
+            
+            // Boundary checks
+            if (posX + menuWidth > window.innerWidth) {
+                posX = window.innerWidth - menuWidth - 10;
+            }
+            if (posY + menuHeight > window.innerHeight) {
+                posY = window.innerHeight - menuHeight - 10;
+            }
+            
             node = event.detail.node;
-            x = event.detail.x;
-            y = event.detail.y;
+            x = Math.max(10, posX);
+            y = Math.max(10, posY);
             visible = true;
         };
 

@@ -31,7 +31,7 @@
 <div class="aea-toggle-root {className} {disabled ? 'is-disabled' : ''} variant-{variant}">
 	<label class="aea-toggle-container" for={id}>
 		{#if variant === 'hud'}
-			<span class="aea-toggle-status aea-toggle-status-off">{offLabel}</span>
+			<span class="aea-toggle-status aea-toggle-status-off" class:is-active={!checked}>{offLabel}</span>
 		{/if}
 
 		<div class="aea-toggle-wrapper">
@@ -49,7 +49,7 @@
 		</div>
 
 		{#if variant === 'hud'}
-			<span class="aea-toggle-status aea-toggle-status-on">{onLabel}</span>
+			<span class="aea-toggle-status aea-toggle-status-on" class:is-active={checked}>{onLabel}</span>
 		{/if}
 
 		{#if label && variant !== 'hud'}
@@ -158,33 +158,30 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
-		transition: opacity 0.2s ease;
+		transition: all 0.2s ease;
 		width: 40px;
+		opacity: 0.3;
+		color: hsl(var(--text-500));
+	}
+
+	.aea-toggle-status.is-active {
+		opacity: 1;
 	}
 
 	.aea-toggle-status-off {
 		text-align: right;
-		color: hsl(var(--text-500));
+	}
+
+	.aea-toggle-status-off.is-active {
+		color: hsl(var(--text-200));
 	}
 
 	.aea-toggle-status-on {
 		text-align: left;
-		color: hsl(var(--text-500));
 	}
 
-	.aea-toggle-input:not(:checked) ~ .aea-toggle-status-off {
-		color: hsl(var(--text-200));
-		opacity: 1;
-	}
-
-	.aea-toggle-input:checked ~ .aea-toggle-status-on {
+	.aea-toggle-status-on.is-active {
 		color: hsl(var(--accent-brand));
-		opacity: 1;
-	}
-
-	.aea-toggle-input:not(:checked) ~ .aea-toggle-status-on,
-	.aea-toggle-input:checked ~ .aea-toggle-status-off {
-		opacity: 0.3;
 	}
 
 	.aea-toggle-sublabel {

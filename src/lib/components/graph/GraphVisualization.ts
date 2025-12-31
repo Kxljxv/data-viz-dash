@@ -51,15 +51,7 @@ class GraphVisualization {
     constructor(projectName: string | null = null, canvasId: string = 'graph-canvas') {
         this.projectName = projectName;
         this.canvasId = canvasId;
-        this.canvas = d3.select(`#${this.canvasId}`);
-        const canvasNode = this.canvas.node();
         
-        if (!canvasNode) {
-            console.warn(`Canvas element #${this.canvasId} not found. Retrying in 100ms...`);
-            setTimeout(() => this.init(), 100);
-            return;
-        }
-
         this.settings = {
             showLabels: false,
             showLinks: true,
@@ -68,7 +60,6 @@ class GraphVisualization {
             nodeSize: 1
         };
 
-        // Initialize zoom behavior here to satisfy TS initialization requirements
         this.zoom = d3.zoom()
             .scaleExtent([0.01, 10])
             .on('zoom', (event) => {
@@ -81,6 +72,15 @@ class GraphVisualization {
                     }));
                 }
             });
+
+        this.canvas = d3.select(`#${this.canvasId}`);
+        const canvasNode = this.canvas.node();
+        
+        if (!canvasNode) {
+            console.warn(`Canvas element #${this.canvasId} not found. Retrying in 100ms...`);
+            setTimeout(() => this.init(), 100);
+            return;
+        }
 
         this.init();
     }
@@ -119,7 +119,7 @@ class GraphVisualization {
         d3.select(canvasNode).on('mousemove', (event) => {
             const node = this.findNodeAt(event);
             if (node !== this.hoveredNode) {
-                this.hoveredNode = node;
+                this.hoveredNode = node || null;
                 this.render();
             }
         });
@@ -356,16 +356,16 @@ class GraphVisualization {
             console.warn(`Could not load nodes.json for project ${project}. Using default positions.`);
         }
         const nodeRef = new Map(this.nodes.map(n => [n.id, n]));
-        this.links = this.links
+        this.links = (this.links
             .map(l => {
                 const a = (l.source as any).id || l.source;
                 const b = (l.target as any).id || l.target;
                 const sa = nodeRef.get(a);
                 const sb = nodeRef.get(b);
                 if (!sa || !sb) return null;
-                return { source: sa, target: sb, weight: l.weight || 1 };
+                return { source: sa, target: sb, weight: l.weight || 1 } as GraphLink;
             })
-            .filter((l): l is GraphLink => l !== null);
+            .filter(l => l !== null) as GraphLink[]);
             
         this.allNodes = [...this.nodes];
         this.allLinks = [...this.links];

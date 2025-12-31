@@ -1,13 +1,20 @@
 <script>
-	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "$components/ui/card";
-	import { Button } from "$components/ui/button";
+	import { 
+		Card, 
+		CardContent, 
+		CardDescription, 
+		CardHeader, 
+		CardTitle,
+		Button,
+		Typography,
+		Spinner
+	} from "$lib/components/aea";
 	import { AVAILABLE_PROJECTS } from "$config";
 	import { goto } from "$app/navigation";
 	import FileUploadStatus from "$components/aea/FileUploadStatus.svelte";
-	import { AlertCircle, CheckCircle2, Loader2, Download, Info, Eye, EyeOff, Save, FolderOpen, Trash2 } from "lucide-svelte";
-    import * as Tooltip from "$components/ui/tooltip";
+	import { AlertCircle, CheckCircle2, Download, Info, Eye, EyeOff, Save, FolderOpen, Trash2 } from "lucide-svelte";
     import DensityMap from "$lib/components/analysis/DensityMap.svelte";
-    import GraphVisualizationModule from "$components/graph/GraphVisualization";
+    import GraphVisualization from "$components/graph/GraphVisualization";
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
     import { page } from "$app/state";
@@ -512,7 +519,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {#each AVAILABLE_PROJECTS as project}
                         <Card 
-                            class="cursor-pointer hover:border-[hsl(var(--accent-pro-100))] transition-all group overflow-hidden bg-card/50 backdrop-blur-sm rounded-3xl"
+                            variant="glass"
+                            interactive
+                            class="cursor-pointer hover:border-[hsl(var(--accent-pro-100))] transition-all group overflow-hidden rounded-3xl"
                             onclick={() => selectProject(project)}
                         >
                             <CardHeader>
@@ -540,6 +549,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {#each savedProjects as project}
                             <Card 
+                                variant="glass"
+                                interactive
                                 class="cursor-pointer hover:border-[hsl(var(--accent-pro-100))] transition-all group relative overflow-hidden"
                                 onclick={() => loadProject(project)}
                             >
@@ -581,7 +592,7 @@
             {/if}
 		</div>
 	{:else if step === 2}
-		<Card class="animate-in fade-in slide-in-from-bottom-4 duration-500">
+		<Card variant="glass" class="animate-in fade-in slide-in-from-bottom-4 duration-500">
 			<CardHeader>
 				<CardTitle>Gruppen-Daten hochladen</CardTitle>
 				<CardDescription>
@@ -599,7 +610,7 @@
 
 				{#if isProcessing}
 					<div class="flex flex-col items-center justify-center py-12 space-y-4">
-						<Loader2 class="size-12 animate-spin text-[hsl(var(--accent-pro-100))]" />
+						<Spinner size="xl" variant="orbit" color="hsl(var(--accent-pro-100))" />
 						<p class="text-sm font-medium animate-pulse">Analysiere Daten und generiere Dichtekarte...</p>
 					</div>
 				{/if}
@@ -610,7 +621,7 @@
 			<div class="lg:col-span-3 space-y-6">
                 <div class="grid grid-cols-1 {analysisResults.length > 1 ? 'md:grid-cols-2' : ''} gap-6">
                     {#each analysisResults as result, i}
-                        <Card class="overflow-hidden relative group/card">
+                        <Card variant="glass" class="overflow-hidden relative group/card">
                             <CardHeader class="border-b bg-muted/20 py-3 px-4 flex flex-row items-center justify-between">
                                 <div class="flex flex-col">
                                     <CardTitle class="text-xs font-bold truncate max-w-[200px]">{result.fileName}</CardTitle>
@@ -705,7 +716,7 @@
                                 disabled={isSaving}
                             >
                                 {#if isSaving}
-                                    <Loader2 class="size-3.5 animate-spin" />
+                                    <Spinner size="sm" />
                                 {:else}
                                     <Save class="size-3.5" />
                                 {/if}
@@ -716,10 +727,11 @@
                         {#if showForceGraph}
                             <div class="space-y-2 pt-2 border-t border-[hsl(var(--accent-pro-100))]/10">
                                 <div class="flex items-center justify-between">
-                                    <label class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Overlay Deckkraft</label>
+                                    <label for="overlay-opacity" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Overlay Deckkraft</label>
                                     <span class="text-[10px] font-mono">{Math.round(overlayOpacity * 100)}%</span>
                                 </div>
                                 <input 
+                                    id="overlay-opacity"
                                     type="range" 
                                     min="0" max="1" step="0.01" 
                                     bind:value={overlayOpacity}
@@ -755,10 +767,11 @@
                         {#if visualizationType === 'hexbin'}
                             <div class="space-y-2">
                                 <div class="flex items-center justify-between">
-                                    <label class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Hex-Radius</label>
+                                    <label for="hex-radius" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Hex-Radius</label>
                                     <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{densityRadius}px</span>
                                 </div>
                                 <input 
+                                    id="hex-radius"
                                     type="range" 
                                     min="2" max="50" step="1" 
                                     bind:value={densityRadius}
@@ -770,10 +783,11 @@
                         {#if visualizationType === 'contours' || visualizationType === 'density'}
                              <div class="space-y-2">
                                 <div class="flex items-center justify-between">
-                                    <label class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Bandbreite (Smooth)</label>
+                                    <label for="bandwidth" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Bandbreite (Smooth)</label>
                                     <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{contourBandwidth}px</span>
                                 </div>
                                 <input 
+                                    id="bandwidth"
                                     type="range" 
                                     min="5" max="100" step="1" 
                                     bind:value={contourBandwidth}
@@ -784,10 +798,11 @@
                         
 						<div class="space-y-2">
 							<div class="flex items-center justify-between">
-								<label class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Multiplikator</label>
+								<label for="weight-multiplier" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Multiplikator</label>
                                 <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{weightMultiplier.toFixed(2)}x</span>
 							</div>
 							<input 
+                                id="weight-multiplier"
                                 type="range" 
                                 min="0.1" max="10" step="0.1" 
                                 bind:value={weightMultiplier}
@@ -797,10 +812,11 @@
 
                         <div class="space-y-2">
 							<div class="flex items-center justify-between">
-								<label class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Exponent (Wurzel)</label>
+								<label for="weight-exponent" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Exponent (Wurzel)</label>
                                 <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{weightExponent.toFixed(1)}</span>
 							</div>
 							<input 
+                                id="weight-exponent"
                                 type="range" 
                                 min="1" max="5" step="0.1" 
                                 bind:value={weightExponent}
@@ -810,10 +826,11 @@
 
                         <div class="space-y-2">
 							<div class="flex items-center justify-between">
-								<label class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Deckkraft</label>
+								<label for="density-opacity" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Deckkraft</label>
                                 <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{Math.round(densityOpacity * 100)}%</span>
 							</div>
 							<input 
+                                id="density-opacity"
                                 type="range" 
                                 min="0" max="1" step="0.01" 
                                 bind:value={densityOpacity}
@@ -827,7 +844,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="postcss">
     @reference "../../../../../../app.css";
 
 	:global(.aea-upload-root) {

@@ -1,9 +1,17 @@
 <script>
     import { onMount } from 'svelte';
-    import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "$components/ui/card";
-    import { Button } from "$components/ui/button";
-    import { Badge } from "$components/ui/badge";
-    import { Loader2, Trash2, FolderOpen, Calendar, Clock, Database, BarChart2 } from "lucide-svelte";
+    import { 
+        Card, 
+        CardContent, 
+        CardDescription, 
+        CardHeader, 
+        CardTitle,
+        Button,
+        Badge,
+        Spinner,
+        Typography
+    } from "$lib/components/aea";
+    import { Trash2, FolderOpen, Calendar, Clock, Database, BarChart2 } from "lucide-svelte";
     import { goto } from "$app/navigation";
 
     let analyses = $state([]);
@@ -108,13 +116,13 @@
 
 <div class="space-y-4">
     <div class="flex items-center justify-between">
-        <h2 class="text-xl font-semibold flex items-center gap-2">
+        <Typography tag="h2" variant="h2" class="flex items-center gap-2">
             <Database class="w-5 h-5 text-primary" />
             Gespeicherte Analysen
-        </h2>
+        </Typography>
         <Button variant="outline" size="sm" onclick={fetchAnalyses} disabled={isLoading}>
             {#if isLoading}
-                <Loader2 class="w-4 h-4 mr-2 animate-spin" />
+                <Spinner size="sm" class="mr-2" />
             {/if}
             Aktualisieren
         </Button>
@@ -122,27 +130,27 @@
 
     {#if isLoading && analyses.length === 0}
         <div class="flex flex-col items-center justify-center py-12 border-2 border-dashed rounded-xl opacity-50">
-            <Loader2 class="w-8 h-8 animate-spin mb-4" />
-            <p>Analysen werden geladen...</p>
+            <Spinner size="lg" variant="orbit" class="mb-4" />
+            <Typography variant="body">Analysen werden geladen...</Typography>
         </div>
     {:else if error}
         <div class="p-4 bg-destructive/10 text-destructive rounded-xl border border-destructive/20">
-            <p class="font-medium">Fehler beim Laden</p>
-            <p class="text-sm opacity-80">{error}</p>
+            <Typography variant="h4" class="font-medium text-destructive">Fehler beim Laden</Typography>
+            <Typography variant="body" class="text-sm opacity-80">{error}</Typography>
         </div>
     {:else if analyses.length === 0}
         <div class="flex flex-col items-center justify-center py-12 border-2 border-dashed rounded-xl text-muted-foreground bg-muted/5">
             <BarChart2 class="w-12 h-12 mb-4 opacity-20" />
-            <p class="font-medium">Keine gespeicherten Analysen gefunden</p>
-            <p class="text-sm">Starten Sie eine Dichte-Analyse, um Ergebnisse zu speichern.</p>
-            <Button variant="link" onclick={() => goto('/dashboard/analysis/density')} class="mt-2">
+            <Typography variant="h4" class="font-medium">Keine gespeicherten Analysen gefunden</Typography>
+            <Typography variant="body" class="text-sm">Starten Sie eine Dichte-Analyse, um Ergebnisse zu speichern.</Typography>
+            <Button variant="ghost" onclick={() => goto('/dashboard/analysis/density')} class="mt-2">
                 Neue Analyse erstellen
             </Button>
         </div>
     {:else}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {#each analyses as analysis (analysis.id)}
-                <Card class="group hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden flex flex-col">
+                <Card variant="glass" class="group hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden flex flex-col">
                     <CardHeader class="pb-3 bg-muted/30">
                         <div class="flex justify-between items-start gap-2">
                             <CardTitle class="text-base line-clamp-1">{analysis.name || 'Unbenannte Analyse'}</CardTitle>
@@ -192,7 +200,7 @@
                                 disabled={isDeleting === analysis.id}
                             >
                                 {#if isDeleting === analysis.id}
-                                    <Loader2 class="w-4 h-4 animate-spin" />
+                                    <Spinner size="sm" />
                                 {:else}
                                     <Trash2 class="w-4 h-4" />
                                 {/if}

@@ -2,9 +2,12 @@
 	let { children } = $props();
 	import "$appcss";
 	import { WEBSITE_NAME } from "$config";
-	import { Button } from "$components/ui/button";
-	import { Separator } from "$components/ui/separator";
-	import { page } from "$app/stores";
+	import { 
+		Button,
+		Separator,
+		Typography
+	} from "$lib/components/aea";
+	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
 </script>
 
@@ -21,7 +24,7 @@
 		<div class="hidden sm:flex items-center gap-6">
 			<a href="/impressum" class="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">Impressum</a>
 			<a href="/datenschutz" class="text-sm font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider">Datenschutz</a>
-			<Button variant="default" class="rounded-xl font-bold px-6 shadow-lg shadow-primary/20 hover:scale-105 transition-all" onclick={() => goto("/sign-in")}>
+			<Button variant="primary" class="rounded-xl font-bold px-6 shadow-lg shadow-primary/20 hover:scale-105 transition-all" onclick={() => goto("/sign-in")}>
 				Anmelden
 			</Button>
 		</div>

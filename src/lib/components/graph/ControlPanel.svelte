@@ -1,7 +1,15 @@
 <script>
     import { onMount } from 'svelte';
     import { auth } from '$lib/auth/client.svelte';
-    import * as Tabs from '$lib/components/ui/tabs/index.js';
+    import { 
+        Tabs, 
+        TabList, 
+        Tab, 
+        TabPanels, 
+        TabPanel,
+        Button,
+        Typography
+    } from '$lib/components/aea';
     import SearchTab from './SearchTab.svelte';
     import ViewTab from './ViewTab.svelte';
     import GroupsTab from './GroupsTab.svelte';
@@ -26,7 +34,14 @@
     let kvModalOpen = $state(false);
     let nodeToGroup = $state(null);
     let groups = $state([]);
-    let isOpen = $state(true);
+    let isOpen = $state(false);
+
+    // Desktop should probably be open by default
+    onMount(() => {
+        if (window.innerWidth > 1024) {
+            isOpen = true;
+        }
+    });
 
     let settings = $state({
         showLabels: false,
@@ -364,13 +379,37 @@
     />
 {/if}
 
-<div class="fixed top-10 right-10 z-[5000] flex items-start pointer-events-none">
-
+<div class="fixed top-4 right-4 md:top-10 md:right-10 z-[5000] flex flex-col items-end pointer-events-none w-[calc(100%-2rem)] md:w-80">
+    <!-- Toggle Button -->
+    <Button 
+        variant="ghost" 
+        size="icon" 
+        class="mb-2 pointer-events-auto rounded-xl bg-background/80 backdrop-blur-xl border border-white/5 shadow-lg lg:hidden"
+        onclick={togglePanel}
+    >
+        {#if isOpen}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        {:else}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        {/if}
+    </Button>
 
     <!-- Panel Content -->
     {#if isOpen}
-        <div class="overall-container pointer-events-auto max-h-[70vh] w-80 flex flex-col overflow-hidden z-40 rounded-2xl border-width:0  border-transparent shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/3.5%),0_0_0_0.5px_hsla(var(--border-300)/0.15)] hover:shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/3.5%),0_0_0_0.5px_hsla(var(--border-200)/0.3)] focus-within:shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/7.5%),0_0_0_0.5px_hsla(var(--border-200)/0.3)] transition-transform duration-300  ease-[cubic-bezier(0.16,1,0.3,1)] ">
-
+        <div class="overall-container pointer-events-auto max-h-[85vh] md:max-h-[70vh] w-full flex flex-col overflow-hidden z-40 rounded-2xl border-width:0  border-transparent shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/3.5%),0_0_0_0.5px_hsla(var(--border-300)/0.15)] hover:shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/3.5%),0_0_0_0.5px_hsla(var(--border-200)/0.3)] focus-within:shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/7.5%),0_0_0_0.5px_hsla(var(--border-200)/0.3)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] bg-background/90 backdrop-blur-xl animate-in fade-in slide-in-from-top-2">
+            
+            <div class="flex items-center justify-between px-4 py-2 border-b border-white/5 bg-white/5 lg:hidden">
+                <Typography variant="label" class="text-[10px] font-black uppercase tracking-widest opacity-40">Menü</Typography>
+                <button onclick={togglePanel} class="p-1 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+            </div>
             {#if backUrl}
                 <div class="px-4 pt-4 pb-0 bg-[var(--text-primary)]/[0.02]">
                     <a 
@@ -385,50 +424,52 @@
                 </div>
             {/if}
 
-            <Tabs.Root value={activeTab} onValueChange={(v) => activeTab = v} class="flex flex-col flex-1 min-h-0 gap-0">
+            <Tabs value={activeTab} onValueChange={(v) => activeTab = v} class="flex flex-col flex-1 min-h-0 gap-0">
                 <!-- Tabs Navigation -->
-                <Tabs.List class="w-full rounded-none border-b border-[hsl(var(--text-500)/0.1)] bg-[var(--text-primary)]/[0.02] h-12 p-0 flex flex-none">
-                    <Tabs.Trigger 
+                <TabList class="w-full rounded-none border-b border-[hsl(var(--text-500)/0.1)] bg-[var(--text-primary)]/[0.02] h-12 p-0 flex flex-none">
+                    <Tab 
                         value="search" 
                         class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-[0.2em] font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
                     >
                         Suche
-                    </Tabs.Trigger>
-                    <Tabs.Trigger 
+                    </Tab>
+                    <Tab 
                         value="view" 
                         class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-[0.2em] font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
                     >
                         Ansicht
-                    </Tabs.Trigger>
-                    <Tabs.Trigger 
+                    </Tab>
+                    <Tab 
                         value="groups" 
                         class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-[0.2em] font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
                     >
                         Gruppen
-                    </Tabs.Trigger>
-                </Tabs.List>
+                    </Tab>
+                </TabList>
 
                 <!-- Scrollable Content Area -->
-                <div class="flex-1 overflow-y-auto custom-scrollbar pl-8 pr-2 pt-4 pb-8">
-                    <div class="pr-6 space-y-10">
-                        <Tabs.Content value="search" class="m-0 outline-none">
-                            <SearchTab {graph} onSelect={selectNode} />
-                        </Tabs.Content>
+                <div class="flex-1 overflow-y-auto custom-scrollbar px-4 md:pl-8 md:pr-2 pt-4 pb-8">
+                    <div class="md:pr-6 space-y-6 md:space-y-10">
+                        <TabPanels>
+                            <TabPanel value="search" class="m-0 outline-none p-0">
+                                <SearchTab {graph} onSelect={selectNode} />
+                            </TabPanel>
 
-                        <Tabs.Content value="view" class="m-0 outline-none">
-                            <ViewTab {settings} onUpdate={updateSetting} onReset={resetView} />
-                        </Tabs.Content>
+                            <TabPanel value="view" class="m-0 outline-none p-0">
+                                <ViewTab {settings} onUpdate={updateSetting} onReset={resetView} />
+                            </TabPanel>
 
-                        <Tabs.Content value="groups" class="m-0 outline-none">
-                            <GroupsTab 
-                                {groups} 
-                                onGroupAction={handleGroupAction}
-                                onEditGroup={(group) => editingGroup = group}
-                            />
-                        </Tabs.Content>
+                            <TabPanel value="groups" class="m-0 outline-none p-0">
+                                <GroupsTab 
+                                    {groups} 
+                                    onGroupAction={handleGroupAction}
+                                    onEditGroup={(group) => editingGroup = group}
+                                />
+                            </TabPanel>
+                        </TabPanels>
                     </div>
                 </div>
-            </Tabs.Root>
+            </Tabs>
         </div>
     {/if}
 </div>

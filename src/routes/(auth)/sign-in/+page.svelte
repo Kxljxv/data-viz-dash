@@ -1,9 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
 	import { auth } from '$lib/auth/client.svelte';
-	import { Button } from '$components/ui/button';
-	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '$components/ui/card';
+	import { Button, Card, Typography, Spinner, Alert } from '$lib/components/aea';
 
 	let { data } = $props();
 	let error = $state(null);
@@ -48,37 +46,61 @@
 	<title>Anmelden - AEA Graph Visualization</title>
 </svelte:head>
 
-<div class="min-h-screen flex items-center justify-center bg-background p-4">
-	<Card class="w-full max-w-md">
-		<CardHeader class="text-center">
-			<CardTitle class="text-2xl">AEA Graph Visualization</CardTitle>
-			<CardDescription>Bitte melde dich an, um fortzufahren</CardDescription>
-		</CardHeader>
-		<CardContent class="space-y-4">
-			{#if error}
-				<div class="p-4 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
-					{error}
+<div class="min-h-screen flex items-center justify-center bg-background p-4 relative overflow-hidden">
+	<!-- Background Glow -->
+	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+	<Card class="w-full max-w-md card-glass relative z-10">
+		{#snippet header()}
+			<div class="text-center mb-4">
+				<div class="h-12 w-12 rounded-xl bg-brand flex items-center justify-center shadow-lg shadow-brand/20 mx-auto mb-6">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+					</svg>
 				</div>
+				<Typography variant="h2" class="text-white">AEA Analytics</Typography>
+				<Typography variant="label" class="opacity-40">Systemzugang</Typography>
+			</div>
+		{/snippet}
+
+		<div class="space-y-6">
+			{#if error}
+				<Alert variant="danger" title="Zugriffsfehler">
+					{error}
+				</Alert>
 			{/if}
 
 			{#if auth.loading}
-				<div class="flex items-center justify-center py-8">
-					<div class="w-8 h-8 border-4 border-primary/20 border-t-primary animate-spin rounded-full"></div>
+				<div class="flex flex-col items-center justify-center py-8 gap-4">
+					<Spinner size="lg" color="brand" />
+					<Typography variant="label" class="opacity-40">Initialisierung...</Typography>
 				</div>
 			{:else}
-				<Button 
-					onclick={handleLogin}
-					class="w-full"
-					size="lg"
-				>
-					Mit Auth0 anmelden
-				</Button>
+				<div class="space-y-4">
+					<Button 
+						onclick={handleLogin}
+						variant="primary"
+						class="w-full h-12 rounded-xl"
+					>
+						Mit Auth0 anmelden
+					</Button>
+					
+					<Button 
+						onclick={() => goto("/")}
+						variant="ghost"
+						class="w-full text-xs opacity-40 hover:opacity-100"
+					>
+						&larr; Zurück zur Startseite
+					</Button>
+				</div>
 			{/if}
 
-			<div class="text-center text-sm text-muted-foreground pt-4">
-				<p>Für Zugriff auf diese Plattform benötigst du einen freigeschalteten Account.</p>
+			<div class="text-center pt-4 border-t border-white/5">
+				<Typography variant="body" class="text-[10px] opacity-40 leading-relaxed uppercase tracking-wider">
+					Für Zugriff auf diese Plattform benötigst du einen freigeschalteten Account.
+				</Typography>
 			</div>
-		</CardContent>
+		</div>
 	</Card>
 </div>
 

@@ -1,9 +1,22 @@
 <script>
-	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "$components/ui/card";
-	import { Button } from "$components/ui/button";
-	import { Badge } from "$components/ui/badge";
-	import { Separator } from "$components/ui/separator";
-	import { Table, TableBody, TableCell, TableHead, TableRow } from "$components/ui/table";
+	import { 
+		Card, 
+		CardHeader,
+		CardTitle,
+		CardDescription,
+		CardContent,
+		CardFooter,
+		Button, 
+		Badge, 
+		Separator, 
+		Typography, 
+		Spinner, 
+		Table, 
+		TableBody, 
+		TableCell, 
+		TableHeadCell, 
+		TableRow 
+	} from "$lib/components/aea";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { 
@@ -11,7 +24,6 @@
 		BarChart3, 
 		Activity, 
 		Map, 
-		Loader2, 
 		ArrowUpRight,
 		UserCheck,
 		Database
@@ -62,7 +74,7 @@
 		</div>
 		<Button onclick={fetchStats} variant="outline" size="sm" disabled={isLoading} class="gap-2">
 			{#if isLoading}
-				<Loader2 class="w-4 h-4 animate-spin" />
+				<Spinner size="sm" />
 			{/if}
 			Daten aktualisieren
 		</Button>
@@ -70,7 +82,7 @@
 
 	{#if isLoading && !stats}
 		<div class="flex flex-col items-center justify-center py-24 border-2 border-dashed rounded-3xl opacity-50">
-			<Loader2 class="w-12 h-12 animate-spin mb-4 text-primary" />
+			<Spinner size="xl" variant="orbit" class="mb-4 text-primary" />
 			<p class="text-lg font-medium">Statistiken werden berechnet...</p>
 		</div>
 	{:else if error}
@@ -115,10 +127,10 @@
 				</CardHeader>
 			</Card>
 
-			<Card class="bg-blue-500/5 border-blue-500/10">
+			<Card class="bg-brand/5 border-brand/10">
 				<CardHeader class="pb-2">
-					<CardDescription class="text-xs uppercase tracking-wider font-bold text-blue-600">KV Verteilung</CardDescription>
-					<CardTitle class="text-3xl font-black flex items-center justify-between text-blue-600">
+					<CardDescription class="text-xs uppercase tracking-wider font-bold text-brand">KV Verteilung</CardDescription>
+					<CardTitle class="text-3xl font-black flex items-center justify-between text-brand">
 						{Object.keys(stats.kvDistribution).length}
 						<Map class="w-6 h-6 opacity-50" />
 					</CardTitle>
@@ -141,10 +153,10 @@
 						<Table>
 							<thead>
 								<TableRow class="bg-muted/30 hover:bg-muted/30 border-b border-border/40">
-										<TableHead class="text-[10px] uppercase font-bold py-4 px-6 whitespace-nowrap">Nutzer</TableHead>
-										<TableHead class="text-[10px] uppercase font-bold py-4 px-6 whitespace-nowrap">Kreisverband</TableHead>
-										<TableHead class="text-[10px] uppercase font-bold py-4 px-6 text-center whitespace-nowrap">Analysen</TableHead>
-										<TableHead class="text-[10px] uppercase font-bold py-4 px-6 whitespace-nowrap">Zuletzt Aktiv</TableHead>
+										<TableHeadCell class="text-[10px] uppercase font-bold py-4 px-6 whitespace-nowrap">Nutzer</TableHeadCell>
+										<TableHeadCell class="text-[10px] uppercase font-bold py-4 px-6 whitespace-nowrap">Kreisverband</TableHeadCell>
+										<TableHeadCell class="text-[10px] uppercase font-bold py-4 px-6 text-center whitespace-nowrap">Analysen</TableHeadCell>
+										<TableHeadCell class="text-[10px] uppercase font-bold py-4 px-6 whitespace-nowrap">Zuletzt Aktiv</TableHeadCell>
 									</TableRow>
 								</thead>
 								<TableBody>

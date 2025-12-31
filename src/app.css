@@ -1,23 +1,24 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./lib/aea.css";
 
 @layer base {
     :root {
         /* shadcn-svelte variables mapped to AEA HSL variables */
-        --background: 60 2.7% 14.5%; /* --bg-100 */
-        --foreground: 48 33.3% 97.1%; /* --text-000 */
+        --background: 0 0% 14%; /* --bg-100 */
+        --foreground: 0 0% 98%; /* --text-000 */
         
-        --muted: 60 2.6% 7.6%; /* --bg-300 */
-        --muted-foreground: 48 4.8% 59.2%; /* --text-400 */
+        --muted: 0 0% 8%; /* --bg-300 */
+        --muted-foreground: 0 0% 60%; /* --text-400 */
         
-        --popover: 60 2.7% 14.5%; /* --bg-100 */
-        --popover-foreground: 48 33.3% 97.1%; /* --text-000 */
+        --popover: 0 0% 14%; /* --bg-100 */
+        --popover-foreground: 0 0% 98%; /* --text-000 */
         
-        --card: 60 2.7% 14.5%; /* --bg-100 */
-        --card-foreground: 48 33.3% 97.1%; /* --text-000 */
+        --card: 0 0% 14%; /* --bg-100 */
+        --card-foreground: 0 0% 98%; /* --text-000 */
         
-        --border: 51 16.5% 84.5%; /* --border-300 */
-        --input: 51 16.5% 84.5%; /* --border-300 */
+        --border: 0 0% 85%; /* --border-300 */
+        --input: 0 0% 85%; /* --border-300 */
         
         --primary: 15 63.1% 59.6%; /* --accent-brand */
         --primary-foreground: 0 0% 100%; /* --always-white */
@@ -40,24 +41,24 @@
 @custom-variant dark (&:is(.dark *));
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --background: 0 0% 7%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 12%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 0 0% 83.1%;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);

@@ -173,17 +173,26 @@
 
     .input-field {
         width: 100%;
-        height: 2.75rem;
+        height: 3rem;
         padding: 0.625rem 1rem;
         background-color: hsla(var(--bg-100) / 0.5);
         border: 1px solid hsla(var(--border-300) / 0.1);
-        border-radius: 0.75rem;
+        border-radius: 1rem;
         color: hsl(var(--text-100));
         font-family: inherit;
         font-size: 0.875rem;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    .input-field::-webkit-search-decoration,
+    .input-field::-webkit-search-cancel-button,
+    .input-field::-webkit-search-results-button,
+    .input-field::-webkit-search-results-decoration {
+        display: none;
     }
 
     .input-field::placeholder {

@@ -83,7 +83,7 @@
 	});
 
 	setContext('list-group', {
-		interactive,
+		get interactive() { return interactive; },
 		registerItem,
 		toggleSelection
 	});

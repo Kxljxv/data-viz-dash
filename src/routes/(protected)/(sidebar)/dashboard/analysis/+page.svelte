@@ -1,6 +1,13 @@
 <script>
-	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "$components/ui/card";
-	import { Button } from "$components/ui/button";
+	import { 
+		Card, 
+		CardContent, 
+		CardDescription, 
+		CardHeader, 
+		CardTitle,
+		Button,
+		Typography
+	} from "$lib/components/aea";
 	import { goto } from "$app/navigation";
 	import SavedAnalysesOverview from "$components/analysis/SavedAnalysesOverview.svelte";
 
@@ -13,12 +20,12 @@
 
 <div class="space-y-8">
 	<div class="flex flex-col gap-1">
-		<h1 class="text-3xl font-bold tracking-tight">Analyse-Tools</h1>
-		<p class="text-muted-foreground">Erweiterte Analyse- und Inspektionstools für die Daten</p>
+		<Typography tag="h1" variant="h1">Analyse-Tools</Typography>
+		<Typography variant="body" class="text-muted-foreground">Erweiterte Analyse- und Inspektionstools für die Daten</Typography>
 	</div>
 
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-		<Card class="flex flex-col">
+		<Card variant="glass" class="flex flex-col">
 			<CardHeader>
 				<CardTitle>Daten-Inspektion</CardTitle>
 				<CardDescription>
@@ -32,7 +39,7 @@
 			</CardContent>
 		</Card>
 
-		<Card class="flex flex-col border-[hsl(var(--accent-pro-100)/0.2)] bg-[hsl(var(--accent-pro-100)/0.02)]">
+		<Card variant="glass" class="flex flex-col border-[hsl(var(--accent-pro-100)/0.2)] bg-[hsl(var(--accent-pro-100)/0.02)]">
 			<CardHeader>
 				<CardTitle class="text-[hsl(var(--accent-pro-100))]">Dichte-Analyse</CardTitle>
 				<CardDescription>
@@ -46,7 +53,7 @@
 			</CardContent>
 		</Card>
 
-		<Card class="flex flex-col opacity-60 grayscale-[0.5]">
+		<Card variant="glass" class="flex flex-col opacity-60 grayscale-[0.5]">
 			<CardHeader>
 				<CardTitle>Statistiken</CardTitle>
 				<CardDescription>
@@ -54,9 +61,9 @@
 				</CardDescription>
 			</CardHeader>
 			<CardContent class="mt-auto text-center py-4">
-				<p class="text-xs text-muted-foreground italic">
+				<Typography variant="body" class="text-xs text-muted-foreground italic">
 					Derzeit in die Graph-Visualisierung integriert.
-				</p>
+				</Typography>
 			</CardContent>
 		</Card>
 	</div>

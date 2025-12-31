@@ -16,9 +16,10 @@
     let scale = $state(1.0);
     let container: HTMLDivElement;
     let loading = $state(true);
-    let error = $state(null);
+    let error = $state<string | null>(null);
     let pageElements: HTMLDivElement[] = $state([]);
     let observer: IntersectionObserver | null = null;
+    let renderTask: any = null;
 
     async function initPdfJs() {
         if (pdfjsLib) return;
@@ -108,7 +109,12 @@
                 viewport: viewport
             };
 
-            await page.render(renderContext).promise;
+            if (renderTask) {
+                renderTask.cancel();
+            }
+            renderTask = page.render(renderContext);
+            await renderTask.promise;
+            renderTask = null;
             canvas.setAttribute('data-rendered-scale', String(scale));
         } catch (e) {
             console.error('Error rendering page:', e);

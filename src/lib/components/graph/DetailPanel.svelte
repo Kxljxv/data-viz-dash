@@ -1,8 +1,16 @@
 <script>
-    import { Button } from '$lib/components/ui/button';
-    import * as Dialog from '$lib/components/ui/dialog';
-    import { Card, CardContent } from '$lib/components/ui/card';
-    import * as Table from '$lib/components/ui/table';
+    import { 
+        Button, 
+        Modal, 
+        Card, 
+        CardContent,
+        Table,
+        TableBody,
+        TableCell,
+        TableHeadCell,
+        TableRow,
+        Typography
+    } from '$lib/components/aea';
     import PdfViewer from './PdfViewer.svelte';
     import { onMount } from 'svelte';
 
@@ -54,29 +62,13 @@
     }
 </script>
 
-<Dialog.Root open={!!node} onOpenChange={(open) => !open && onClose()}>
-    <Dialog.Content class="sm:max-w-md p-0 overflow-hidden border-none shadow-2xl rounded-3xl transition-all duration-300 {isPdfOpen ? 'sm:max-w-4xl' : 'sm:max-w-sm'}">
-        <!-- Header -->
-        <Dialog.Header class="p-6 border-b border-[hsl(var(--text-500)/0.2)] flex flex-row justify-between items-center bg-gradient-to-r from-[var(--text-primary)]/5 to-transparent space-y-0">
-            <div class="flex items-center space-x-3">
-                {#if isPdfOpen}
-                    <Button 
-                        variant="ghost"
-                        size="icon"
-                        onclick={() => isPdfOpen = false}
-                        class="h-8 w-8 hover:bg-[var(--text-primary)]/5 rounded-xl transition-colors text-[var(--text-tertiary)]"
-                        title="Zurück zur Übersicht"
-                    >
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
-                        </svg>
-                    </Button>
-                {/if}
-                <div class={`w-3 h-3 rounded-full ${node.type === 'antrag' ? 'bg-[hsl(var(--accent-secondary-100))]' : 'bg-[hsl(var(--success-100))]'} shadow-lg shrink-0`}></div>
-                <Dialog.Title class="text-xl font-serif text-[var(--text-primary)] truncate {isPdfOpen ? 'max-w-md' : 'max-w-[200px]'}">{node.label}</Dialog.Title>
-            </div>
-        </Dialog.Header>
-
+<Modal 
+    open={!!node} 
+    onclose={onClose} 
+    size={isPdfOpen ? 'xl' : 'sm'}
+    title={node.label}
+>
+    {#snippet body()}
         <!-- Content Area -->
         <div class="flex-1 overflow-hidden flex flex-col min-h-0">
             {#if isPdfOpen}
@@ -87,69 +79,69 @@
                 <div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8 max-h-[70vh]">
                     <!-- Stats Cards -->
                     <div class="grid grid-cols-2 gap-4">
-                        <Card class="bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.2)]">
+                        <Card variant="glass" class="border border-[hsl(var(--text-500)/0.2)]">
                             <CardContent class="p-4">
-                                <span class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">ID</span>
-                                <span class="text-sm font-mono text-[var(--text-primary)]">{node.id}</span>
+                                <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">ID</Typography>
+                                <Typography variant="body" class="text-sm font-mono text-[var(--text-primary)]">{node.id}</Typography>
                             </CardContent>
                         </Card>
-                        <Card class="bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.2)]">
+                        <Card variant="glass" class="border border-[hsl(var(--text-500)/0.2)]">
                             <CardContent class="p-4">
-                                <span class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Typ</span>
-                                <span class="text-sm font-mono text-[var(--text-primary)] uppercase">{node.type || 'Knoten'}</span>
+                                <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Typ</Typography>
+                                <Typography variant="body" class="text-sm font-mono text-[var(--text-primary)] uppercase">{node.type || 'Knoten'}</Typography>
                             </CardContent>
                         </Card>
                     </div>
 
                     <!-- Description / Content -->
                     <div class="space-y-3">
-                        <span class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Beschreibung</span>
-                        <p class="text-sm text-[var(--text-primary)]/80 leading-relaxed font-modern">
+                        <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Beschreibung</Typography>
+                        <Typography variant="body" class="text-sm text-[var(--text-primary)]/80 leading-relaxed font-modern">
                             {node.sublabel ? `${node.label} (${node.sublabel})` : node.label} ist Teil des Netzwerks. 
                             {node.type === 'antrag' ? ' Dieser Antrag weist folgende Verbindungen zu Unterstützern auf.' : ' Diese Person unterstützt folgende Anträge.'}
-                        </p>
+                        </Typography>
                     </div>
 
                     <!-- Connections List -->
                     <div class="space-y-4">
                         <div class="flex justify-between items-center">
-                            <span class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Verbindungen</span>
+                            <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Verbindungen</Typography>
                             <span class="text-[10px] font-mono text-[var(--text-tertiary)]">{connections.length} Total</span>
                         </div>
                         
                         {#if connections.length > 0}
                             <div class="rounded-2xl border border-[hsl(var(--text-500)/0.1)] overflow-hidden bg-[var(--text-primary)]/5">
-                                <Table.Root>
-                                    <Table.Header class="bg-[var(--text-primary)]/5">
-                                        <Table.Row class="hover:bg-transparent border-b border-[hsl(var(--text-500)/0.1)]">
-                                            <Table.Head class="text-[10px] font-black uppercase tracking-widest text-[var(--text-tertiary)] h-10">Typ</Table.Head>
-                                            <Table.Head class="text-[10px] font-black uppercase tracking-widest text-[var(--text-tertiary)] h-10">Label</Table.Head>
-                                            <Table.Head class="text-right h-10"></Table.Head>
-                                        </Table.Row>
-                                    </Table.Header>
-                                    <Table.Body>
+                                <Table>
+                                    <thead>
+                                        <TableRow class="hover:bg-transparent border-b border-[hsl(var(--text-500)/0.1)]">
+                                            <TableHeadCell class="text-[10px] font-black uppercase tracking-widest text-[var(--text-tertiary)] h-10">Typ</TableHeadCell>
+                                            <TableHeadCell class="text-[10px] font-black uppercase tracking-widest text-[var(--text-tertiary)] h-10">Label</TableHeadCell>
+                                            <TableHeadCell align="right" class="h-10"></TableHeadCell>
+                                        </TableRow>
+                                    </thead>
+                                    <TableBody>
                                         {#each connections as neighbor (neighbor.id)}
-                                            <Table.Row 
+                                            <TableRow 
                                                 class="cursor-pointer group border-b border-[hsl(var(--text-500)/0.05)] last:border-0 hover:bg-[var(--text-primary)]/5 transition-colors" 
                                                 onclick={() => handleAction('details', neighbor)}
                                             >
-                                                <Table.Cell class="py-3">
+                                                <TableCell class="py-3">
                                                     <div class={`w-2 h-2 rounded-full ${neighbor.type === 'antrag' ? 'bg-[hsl(var(--accent-secondary-100))]' : 'bg-[hsl(var(--success-100))]'} opacity-60`}></div>
-                                                </Table.Cell>
-                                                <Table.Cell class="py-3">
-                                                    <span class="text-xs text-[var(--text-primary)] truncate block max-w-[120px] font-modern font-bold">{neighbor.label}</span>
-                                                </Table.Cell>
-                                                <Table.Cell class="text-right py-3">
+                                                </TableCell>
+                                                <TableCell class="py-3">
+                                                    <Typography variant="body" class="text-xs text-[var(--text-primary)] truncate block max-w-[120px] font-modern font-bold">{neighbor.label}</Typography>
+                                                </TableCell>
+                                                <TableCell align="right" class="py-3">
                                                     <span class="text-[10px] text-[hsl(var(--accent-pro-100))] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 inline-block">→</span>
-                                                </Table.Cell>
-                                            </Table.Row>
+                                                </TableCell>
+                                            </TableRow>
                                         {/each}
-                                    </Table.Body>
-                                </Table.Root>
+                                    </TableBody>
+                                </Table>
                             </div>
                         {:else}
                             <div class="text-center py-6 border-2 border-dashed border-[var(--text-primary)]/5 rounded-2xl">
-                                <span class="text-xs text-[var(--text-tertiary)] font-modern">Keine Verbindungen gefunden</span>
+                                <Typography variant="body" class="text-xs text-[var(--text-tertiary)] font-modern">Keine Verbindungen gefunden</Typography>
                             </div>
                         {/if}
                     </div>
@@ -185,10 +177,11 @@
                 </div>
             {/if}
         </div>
+    {/snippet}
 
-        <!-- Footer / PDF Toggle -->
+    {#snippet footer()}
         {#if pdfPath && !isPdfOpen}
-            <div class="p-6 bg-[var(--text-primary)]/5 border-t border-[hsl(var(--text-500)/0.2)]">
+            <div class="w-full">
                 <Button 
                     variant="ghost"
                     onclick={() => isPdfOpen = true}
@@ -199,18 +192,18 @@
                             📄
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-xs font-bold text-[var(--text-primary)] block truncate max-w-[150px] font-modern">
+                            <Typography variant="body" class="text-xs font-bold text-[var(--text-primary)] block truncate max-w-[150px] font-modern">
                                 {node.id}.pdf
-                            </span>
-                            <span class="text-[10px] text-[var(--text-tertiary)] font-modern uppercase tracking-wider">Dokument öffnen</span>
+                            </Typography>
+                            <Typography variant="label" class="text-[10px] text-[var(--text-tertiary)] font-modern uppercase tracking-wider">Dokument öffnen</Typography>
                         </div>
                     </div>
                     <span class="text-[var(--text-tertiary)] group-hover:translate-x-1 transition-transform">→</span>
                 </Button>
             </div>
         {/if}
-    </Dialog.Content>
-</Dialog.Root>
+    {/snippet}
+</Modal>
 
 <style>
 </style>

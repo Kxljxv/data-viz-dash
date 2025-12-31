@@ -17,8 +17,7 @@
         throw new Error('TabPanel must be used within a Tabs component');
     }
 
-    const { value: selectedValue } = context;
-    const isActive = $derived(selectedValue === value);
+    const isActive = $derived(context.value === value);
 </script>
 
 {#if isActive}

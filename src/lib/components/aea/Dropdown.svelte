@@ -112,7 +112,7 @@
         bind:this={menuElement}
         class="dropdown-menu {open ? 'active' : ''} {className}"
         role="menu"
-        aria-expanded={open}
+        aria-hidden={!open}
         style={positionStyles}
         {...rest}
     >

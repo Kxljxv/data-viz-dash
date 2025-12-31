@@ -1,7 +1,10 @@
 <script>
-    import { Button } from '$lib/components/ui/button';
-    import { Input } from '$lib/components/ui/input';
-    import { Card, CardContent } from '$lib/components/ui/card';
+    import { 
+        Button, 
+        Input, 
+        Card, 
+        CardContent 
+    } from '$lib/components/aea';
 
     /**
      * @typedef {Object} Props

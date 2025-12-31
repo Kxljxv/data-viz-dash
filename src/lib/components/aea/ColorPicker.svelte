@@ -81,8 +81,8 @@
 		b /= 255;
 		let max = Math.max(r, g, b),
 			min = Math.min(r, g, b);
-		let hVal,
-			sVal,
+		let hVal = 0,
+			sVal = 0,
 			vVal = max;
 		let d = max - min;
 		sVal = max === 0 ? 0 : d / max;
@@ -260,8 +260,17 @@
 			style="background-color: {pureHueHex}"
 			onmousedown={startDraggingSaturation}
 			ontouchstart={startDraggingSaturation}
+			onkeydown={(e) => {
+				if (e.key === 'ArrowLeft') s = Math.max(0, s - 1);
+				if (e.key === 'ArrowRight') s = Math.min(100, s + 1);
+				if (e.key === 'ArrowUp') v = Math.min(100, v + 1);
+				if (e.key === 'ArrowDown') v = Math.max(0, v - 1);
+			}}
 			role="slider"
 			aria-label="Select saturation and value"
+			aria-valuemin="0"
+			aria-valuemax="100"
+			aria-valuenow={s}
 			tabindex="0"
 		>
 			<div class="aea-color-picker-white-grad"></div>
@@ -276,8 +285,15 @@
 				class="aea-color-picker-hue"
 				onmousedown={startDraggingHue}
 				ontouchstart={startDraggingHue}
+				onkeydown={(e) => {
+					if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') h = (h - 1 + 360) % 360;
+					if (e.key === 'ArrowRight' || e.key === 'ArrowUp') h = (h + 1) % 360;
+				}}
 				role="slider"
 				aria-label="Select hue"
+				aria-valuemin="0"
+				aria-valuemax="360"
+				aria-valuenow={h}
 				tabindex="0"
 			>
 				<div class="aea-color-picker-hue-handle" style="left: {(h / 360) * 100}%"></div>

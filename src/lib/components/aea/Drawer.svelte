@@ -1,7 +1,7 @@
 <script>
     import { setContext } from 'svelte';
     import { fade, fly } from 'svelte/transition';
-    import { portal } from '$lib/actions/portal'; // Assuming a portal action exists or we implement it
+    import { portal } from '$lib/actions/portal.js'; // Assuming a portal action exists or we implement it
 
     /**
      * @typedef {Object} Props

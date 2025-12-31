@@ -75,7 +75,14 @@
 </script>
 
 <!-- Backdrop for mobile -->
-<div class="aea-sidebar-backdrop" class:is-visible={isOpen} onclick={closeMobile}></div>
+<button 
+	class="aea-sidebar-backdrop" 
+	class:is-visible={isOpen} 
+	onclick={closeMobile}
+	onkeydown={(e) => e.key === 'Escape' && closeMobile()}
+	aria-label="Close sidebar"
+	tabindex="-1"
+></button>
 
 <aside class="aea-sidebar {isMini ? 'is-mini' : ''} {isOpen ? 'is-open' : ''} {className}">
 	<div class="aea-sidebar-header">
@@ -119,9 +126,7 @@
 	}
 
 	.aea-sidebar {
-		position: fixed;
-		top: 0;
-		left: 0;
+		position: relative;
 		height: 100vh;
 		width: var(--sidebar-width-full);
 		background-color: hsla(var(--bg-100) / 0.8);
@@ -134,6 +139,19 @@
 		transition:
 			width var(--sidebar-transition),
 			transform var(--sidebar-transition);
+	}
+
+	@media (max-width: 1024px) {
+		.aea-sidebar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			transform: translateX(-100%);
+		}
+
+		.aea-sidebar.is-open {
+			transform: translateX(0);
+		}
 	}
 
 	.aea-sidebar.is-mini {
@@ -218,4 +236,34 @@
 
 	/* Mobile */
 	@media (max-width: 768px) {
+		.aea-sidebar {
+			transform: translateX(-100%);
+			width: 280px !important;
+		}
+
+		.aea-sidebar.is-open {
+			transform: translateX(0);
+		}
+
+		.aea-sidebar-backdrop {
+			position: fixed;
+			inset: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(4px);
+			z-index: 999;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+			border: none;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.aea-sidebar-backdrop.is-visible {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
 </style>

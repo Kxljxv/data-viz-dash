@@ -1,10 +1,13 @@
 <script>
-    import { Card, CardContent } from '$lib/components/ui/card';
-    import { Button } from '$lib/components/ui/button';
-    import { Badge } from '$lib/components/ui/badge';
-    import { Slider } from '$lib/components/ui/slider';
-    import { Label } from '$lib/components/ui/label';
-    import * as Select from '$lib/components/ui/select';
+    import { 
+        Card, 
+        CardContent,
+        Button,
+        Badge,
+        Slider,
+        Typography,
+        Select
+    } from '$lib/components/aea';
 
     /**
      * @typedef {Object} Props
@@ -56,7 +59,7 @@
 
 <div class="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
     <div class="flex justify-between items-center mb-2">
-        <span class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Aktive Gruppen</span>
+        <Typography variant="label" class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Aktive Gruppen</Typography>
         <div class="flex space-x-1">
             <Button 
                 variant="ghost" 
@@ -80,7 +83,7 @@
     <div class="space-y-2">
         {#if groups.length === 0}
             <div class="text-center py-8 border-2 border-dashed border-[hsl(var(--text-500)/0.2)] rounded-xl">
-                <span class="text-xs text-[var(--text-tertiary)] italic">Keine Gruppen vorhanden</span>
+                <Typography variant="body" class="text-xs text-[var(--text-tertiary)] italic">Keine Gruppen vorhanden</Typography>
             </div>
         {:else}
             {#each groups as group (group.id)}
@@ -96,9 +99,9 @@
                                 style="background-color: {group.color}"
                             ></div>
                             <div>
-                                <div class="text-sm font-serif text-[var(--text-primary)] group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">{group.name}</div>
+                                <Typography variant="h4" class="text-sm font-serif text-[var(--text-primary)] group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">{group.name}</Typography>
                                 <div class="flex items-center mt-1">
-                                    <Badge variant="neutral" class="text-[8px] px-1.5 py-0">
+                                    <Badge variant="secondary" class="text-[8px] px-1.5 py-0">
                                         {group.nodes?.length || 0} Knoten
                                     </Badge>
                                 </div>

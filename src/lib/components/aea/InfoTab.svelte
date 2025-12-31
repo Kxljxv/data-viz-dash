@@ -1,8 +1,11 @@
 <script>
     import { auth } from '$lib/auth.svelte';
-    import { Button } from '$lib/components/ui/button';
-    import { Card, CardContent } from '$lib/components/ui/card';
-    import { Badge } from '$lib/components/ui/badge';
+    import { 
+        Button, 
+        Card, 
+        CardContent, 
+        Badge 
+    } from '$lib/components/aea';
 
     /**
      * @typedef {Object} Props

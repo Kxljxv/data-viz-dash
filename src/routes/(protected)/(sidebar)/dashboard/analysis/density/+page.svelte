@@ -35,20 +35,51 @@
     let isSaving = $state(false);
 
     // Load saved projects on mount
-    onMount(() => {
+    onMount(async () => {
+        // First try to load from API (Cloudflare KV)
+        try {
+            const response = await fetch('/api/saved-analysis');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.analyses && data.analyses.length > 0) {
+                    savedProjects = data.analyses;
+                    return; // Successfully loaded from server
+                }
+            }
+        } catch (e) {
+            console.error("Failed to load analyses from server", e);
+        }
+
+        // Fallback to localStorage if server is empty or fails
         const stored = localStorage.getItem('aea_density_projects');
         if (stored) {
             try {
                 savedProjects = JSON.parse(stored);
+                // Proactively sync to server if we have local data but nothing on server
+                syncToServer(savedProjects);
             } catch (e) {
-                console.error("Failed to parse saved projects", e);
+                console.error("Failed to parse saved projects from localStorage", e);
             }
         }
     });
 
-    // Save projects to localStorage whenever savedProjects changes
+    async function syncToServer(projects) {
+        try {
+            await fetch('/api/saved-analysis', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ analyses: projects })
+            });
+        } catch (e) {
+            console.error("Failed to sync analyses to server", e);
+        }
+    }
+
+    // Save projects to server whenever savedProjects changes
     $effect(() => {
-        if (typeof window !== 'undefined') {
+        if (savedProjects.length > 0) {
+            syncToServer(savedProjects);
+            // Still keep localStorage as a backup
             localStorage.setItem('aea_density_projects', JSON.stringify(savedProjects));
         }
     });

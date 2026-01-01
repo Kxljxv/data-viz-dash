@@ -6,6 +6,7 @@
         CardContent, 
         Badge 
     } from '$lib/components/aea';
+    import { IconX } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -30,9 +31,7 @@
                         class="h-6 w-6 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                         aria-label="Auswahl aufheben"
                     >
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                        <IconX size={16} />
                     </Button>
                 </div>
                 <div>

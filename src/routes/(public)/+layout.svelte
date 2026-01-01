@@ -9,15 +9,14 @@
 	} from "$lib/components/aea";
 	import { page } from "$app/state";
 	import { goto } from "$app/navigation";
+	import { IconBolt, IconLogout } from "@tabler/icons-svelte";
 </script>
 
 <nav class="border-b border-border/40 bg-card/80 backdrop-blur-xl sticky top-0 z-50">
 	<div class="container mx-auto px-4 py-4 flex items-center justify-between">
 		<a href="/" class="flex items-center gap-2 group transition-transform hover:scale-[1.02]">
 			<div class="h-9 w-9 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:rotate-12 transition-transform">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-				</svg>
+				<IconBolt size={24} class="text-primary-foreground" />
 			</div>
 			<span class="text-xl font-black tracking-tight uppercase">{WEBSITE_NAME}</span>
 		</a>
@@ -30,9 +29,7 @@
 		</div>
 		<div class="sm:hidden">
 			<Button variant="ghost" size="icon" class="rounded-xl hover:bg-primary/10 hover:text-primary transition-colors" onclick={() => goto("/sign-in")}>
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-				</svg>
+				<IconLogout size={24} />
 			</Button>
 		</div>
 	</div>
@@ -48,9 +45,7 @@
 			<div class="space-y-6">
 				<a href="/" class="flex items-center gap-2 group">
 					<div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-						</svg>
+						<IconBolt size={20} class="text-primary-foreground" />
 					</div>
 					<span class="text-lg font-black tracking-tight uppercase">{WEBSITE_NAME}</span>
 				</a>

@@ -25,11 +25,11 @@
             <span class="text-[10px] font-mono text-[hsl(var(--text-300))] uppercase tracking-widest">Projekt: {project}</span>
         </div>
         <div class="flex items-center space-x-1.5">
-            <span class="w-2 h-2 rounded-full bg-[hsl(var(--text-300))] shadow-[0_0_8px_hsl(var(--text-300)/0.5)]"></span>
+            <IconDatabase size={12} class="text-[hsl(var(--text-300))]" />
             <span class="text-[10px] font-mono text-[var(--text-300)] uppercase">{formatNumber(nodeCount)} Nodes</span>
         </div>
         <div class="flex items-center space-x-1.5">
-            <span class="w-2 h-2 rounded-full bg-[hsl(var(--text-300))] shadow-[0_0_8px_hsl(var(--text-300)/0.5)]"></span>
+            <IconLink size={12} class="text-[hsl(var(--text-300))]" />
             <span class="text-[10px] font-mono text-[var(--text-300)] uppercase">{formatNumber(linkCount)} Links</span>
         </div>
     </div>

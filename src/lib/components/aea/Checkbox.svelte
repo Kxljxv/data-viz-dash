@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { IconCheck } from '@tabler/icons-svelte';
+
 	interface Props {
 		checked?: boolean;
 		label?: string;
@@ -36,13 +38,12 @@
 				class="aea-checkbox-input"
 			/>
 			<span class="aea-checkbox-box">
-				<svg class="aea-checkbox-check" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-					{#if variant === 'base'}
-						<polyline points="20 6 9 17 4 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-					{:else}
-						<path d="M5 12l5 5L19 7" stroke-width="4" />
-					{/if}
-				</svg>
+				<span class="aea-checkbox-check">
+					<IconCheck 
+						size={14}
+						strokeWidth={variant === 'base' ? 3 : 4} 
+					/>
+				</span>
 			</span>
 		</div>
 		{#if label}

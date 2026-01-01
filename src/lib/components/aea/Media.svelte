@@ -1,4 +1,5 @@
 <script>
+    import { IconPlayerPlay, IconPlayerPause } from '@tabler/icons-svelte';
     /**
      * @typedef {Object} Props
      * @property {string} src - Source URL for the image or video.
@@ -83,13 +84,9 @@
         <div class="aea-video-controls group-hover:opacity-100">
             <button class="aea-video-btn" onclick={togglePlay} aria-label={isPlaying ? 'Pause' : 'Play'}>
                 {#if isPlaying}
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                    </svg>
+                    <IconPlayerPause size={24} fill="currentColor" />
                 {:else}
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
+                    <IconPlayerPlay size={24} fill="currentColor" />
                 {/if}
             </button>
             

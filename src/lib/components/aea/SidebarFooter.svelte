@@ -1,55 +1,50 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
+	import { IconUser, IconLogout } from '@tabler/icons-svelte';
 
 	interface Props {
-		name: string;
+		name?: string;
 		role?: string;
 		avatar?: import('svelte').Snippet;
+		children?: import('svelte').Snippet;
 		class?: string;
 		onLogout?: () => void;
 	}
 
-	let { name, role, avatar, class: className = '', onLogout }: Props = $props();
+	let { name, role, avatar, children, class: className = '', onLogout }: Props = $props();
 
 	const sidebar = getContext<{ isMini: { value: boolean } }>('sidebar-context');
 </script>
 
 <div class="aea-sidebar-footer {className}" class:is-mini={sidebar?.isMini.value}>
-	<div class="footer-container">
-		<div class="avatar-wrapper">
-			{#if avatar}
-				{@render avatar()}
-			{:else}
-				<div class="default-avatar">
-					<svg class="w-6 h-6 text-white/50" fill="currentColor" viewBox="0 0 24 24">
-						<path
-							d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-						/>
-					</svg>
-				</div>
+	{#if children}
+		{@render children()}
+	{:else}
+		<div class="footer-container">
+			<div class="avatar-wrapper">
+				{#if avatar}
+					{@render avatar()}
+				{:else}
+					<div class="default-avatar">
+						<IconUser size={24} class="text-white/50" />
+					</div>
+				{/if}
+			</div>
+
+			<div class="user-info">
+				<p class="user-name">{name}</p>
+				{#if role}
+					<p class="user-role">{role}</p>
+				{/if}
+			</div>
+
+			{#if !sidebar?.isMini.value}
+				<button class="logout-btn" onclick={onLogout} aria-label="Logout">
+					<IconLogout size={20} />
+				</button>
 			{/if}
 		</div>
-
-		<div class="user-info">
-			<p class="user-name">{name}</p>
-			{#if role}
-				<p class="user-role">{role}</p>
-			{/if}
-		</div>
-
-		{#if !sidebar?.isMini.value}
-			<button class="logout-btn" onclick={onLogout} aria-label="Logout">
-				<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-					/>
-				</svg>
-			</button>
-		{/if}
-	</div>
+	{/if}
 </div>
 
 <style>

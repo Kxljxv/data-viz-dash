@@ -48,6 +48,7 @@
 	"dependencies": {
 		"@auth0/auth0-spa-js": "^2.11.0",
 		"@observablehq/plot": "^0.6.17",
+		"@tabler/icons-svelte": "^3.36.0",
 		"@tsndr/cloudflare-worker-jwt": "^2.5.3",
 		"d3": "^7.9.0",
 		"d3-hexbin": "^0.2.2",

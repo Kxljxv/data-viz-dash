@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { IconUpload, IconX, IconRefresh } from '@tabler/icons-svelte';
 
 	export interface UploadFile {
 		id: string;
@@ -99,9 +100,9 @@
 			class="aea-file-input"
 		/>
 		<div class="aea-drop-zone-content">
-			<svg class="aea-drop-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-			</svg>
+			<span class="aea-drop-icon">
+				<IconUpload size={40} />
+			</span>
 			<p class="aea-drop-text">{dropzoneLabel}</p>
 		</div>
 	</div>
@@ -120,12 +121,12 @@
 						</div>
 						<div class="aea-file-actions">
 							{#if file.status === 'uploading'}
-								<button class="aea-file-btn" onclick={() => oncancel?.(file.id)} title="Cancel">✕</button>
+								<button class="aea-file-btn" onclick={() => oncancel?.(file.id)} title="Cancel"><IconX size={14} /></button>
 							{:else if file.status === 'error'}
-								<button class="aea-file-btn" onclick={() => onretry?.(file.id)} title="Retry">↻</button>
-								<button class="aea-file-btn" onclick={() => onremove?.(file.id)} title="Remove">✕</button>
+								<button class="aea-file-btn" onclick={() => onretry?.(file.id)} title="Retry"><IconRefresh size={14} /></button>
+								<button class="aea-file-btn" onclick={() => onremove?.(file.id)} title="Remove"><IconX size={14} /></button>
 							{:else}
-								<button class="aea-file-btn" onclick={() => onremove?.(file.id)} title="Remove">✕</button>
+								<button class="aea-file-btn" onclick={() => onremove?.(file.id)} title="Remove"><IconX size={14} /></button>
 							{/if}
 						</div>
 					</div>
@@ -195,8 +196,9 @@
 	}
 
 	.aea-drop-icon {
-		width: 2.5rem;
-		height: 2.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		color: hsla(var(--text-500) / 0.5);
 		margin-bottom: 1rem;
 		transition: all 0.3s ease;

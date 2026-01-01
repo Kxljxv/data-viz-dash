@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { IconCheck } from "@tabler/icons-svelte";
+
 	interface Step {
 		title: string;
 		description?: string;
@@ -34,9 +36,7 @@
 		<div class="aea-step {isCompleted ? 'aea-step-completed' : ''} {isActive ? 'aea-step-active' : ''}">
 			<div class="aea-step-marker">
 				{#if isCompleted}
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-					</svg>
+					<IconCheck size={20} stroke={3} />
 				{:else if step.marker}
 					{#if typeof step.marker === 'string'}
 						{step.marker}

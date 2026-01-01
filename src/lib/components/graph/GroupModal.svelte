@@ -3,6 +3,7 @@
     import { Input } from '$lib/components/ui/input';
     import * as Dialog from '$lib/components/ui/dialog';
     import { onMount } from 'svelte';
+    import { IconX, IconPlus, IconDownload, IconUpload } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -112,12 +113,12 @@
 </script>
 
 <Dialog.Root open={!!group} onOpenChange={(open) => !open && onClose()}>
-    <Dialog.Content class="sm:max-w-md p-0 overflow-hidden border-none shadow-2xl rounded-3xl">
-        <Dialog.Header class="p-6 border-b border-[hsl(var(--border-300))/0.5] bg-[var(--bg-100)]/30">
+    <Dialog.Content class="sm:max-w-md p-0 overflow-hidden border-none shadow-2xl rounded-3xl bg-[hsl(var(--bg-300))]">
+        <Dialog.Header class="p-6 bg-[hsl(var(--bg-300))]">
             <Dialog.Title class="text-lg font-serif text-[var(--text-primary)]">Gruppe bearbeiten</Dialog.Title>
         </Dialog.Header>
 
-        <div class="p-6 space-y-6 overflow-y-auto custom-scrollbar max-h-[60vh]">
+        <div class="p-6 pb-0 pt-0 space-y-6 overflow-y-auto custom-scrollbar max-h-[60vh]">
             <!-- Name & Color Section -->
             <div class="space-y-4">
                 <div>
@@ -160,9 +161,7 @@
                                     class="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                                     aria-label={`Entferne ${node.label}`}
                                 >
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
+                                    <IconX size={12} />
                                 </button>
                             </div>
                         {/if}
@@ -190,7 +189,7 @@
                                     class="w-full text-left px-4 py-3 text-xs text-[var(--text-primary)] hover:bg-[var(--bg-100)] transition-all flex items-center justify-between"
                                 >
                                     <span>{node.label}</span>
-                                    <span class="text-[hsl(var(--accent-pro-100))]">+</span>
+                                    <span class="text-[hsl(var(--accent-pro-100))]"><IconPlus size={14} /></span>
                                 </button>
                             {/each}
                         </div>
@@ -200,26 +199,28 @@
 
             <!-- Import/Export -->
             <div class="pt-6 border-t border-[hsl(var(--border-300))] flex space-x-3">
-                <Button variant="ghost" size="sm" onclick={handleExport} class="flex-1 py-3 text-[10px] font-black uppercase tracking-[0.1em] border border-[hsl(var(--border-300))]" aria-label="Gruppe exportieren">
+                <Button variant="ghost" size="sm" onclick={handleExport} class="flex-1 py-3 text-[10px] font-black uppercase tracking-[0.1em] border border-[hsl(var(--border-300))] flex items-center justify-center gap-2" aria-label="Gruppe exportieren">
+                    <IconDownload size={14} />
                     Exportieren
                 </Button>
                 <div class="flex-1 relative">
-                    <Input 
+                    <input 
                         id="import-group"
                         type="file" 
                         accept=".json" 
                         onchange={handleImport}
-                        class="absolute inset-0 opacity-0 cursor-pointer"
+                        class="absolute inset-0 opacity-0 cursor-pointer z-10"
                         aria-label="Gruppe importieren"
                     />
-                    <Button variant="ghost" size="sm" class="w-full py-3 text-[10px] font-black uppercase tracking-[0.1em] border border-[hsl(var(--border-300))]">
+                    <Button variant="ghost" size="sm" class="w-full py-3 text-[10px] font-black uppercase tracking-[0.1em] border border-[hsl(var(--border-300))] flex items-center justify-center gap-2">
+                        <IconUpload size={14} />
                         Importieren
                     </Button>
                 </div>
             </div>
         </div>
 
-        <Dialog.Footer class="p-6 bg-[var(--bg-100)]/30 border-t border-[hsl(var(--border-300))] flex flex-row space-x-3">
+        <Dialog.Footer class="p-6 bg-[var(--bg-100)]/30 flex flex-row space-x-3">
             <Button variant="ghost" onclick={onClose} class="flex-1 py-4 text-[10px] font-black uppercase tracking-[0.2em]" aria-label="Abbrechen">
                 Abbrechen
             </Button>

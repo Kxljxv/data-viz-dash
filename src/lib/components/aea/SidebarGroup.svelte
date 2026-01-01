@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
+	import { IconChevronDown } from '@tabler/icons-svelte';
 
 	interface Props {
 		title: string;
@@ -34,15 +35,9 @@
 	>
 		<span class="aea-sidebar-group-title">{title}</span>
 		{#if collapsible && !sidebar?.isMini.value}
-			<svg
-				class="aea-sidebar-group-chevron"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke="currentColor"
-				aria-hidden="true"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-			</svg>
+			<span class="aea-sidebar-group-chevron">
+				<IconChevronDown size={12} aria-hidden="true" />
+			</span>
 		{/if}
 	</button>
 
@@ -88,8 +83,9 @@
 	}
 
 	.aea-sidebar-group-chevron {
-		width: 0.75rem;
-		height: 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		color: hsla(var(--text-400) / 0.3);
 		transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		margin-bottom: 0.75rem;

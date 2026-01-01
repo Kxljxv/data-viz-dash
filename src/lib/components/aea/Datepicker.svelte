@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { IconCalendar, IconChevronLeft, IconChevronRight } from '@tabler/icons-svelte';
 
 	interface Props {
 		value?: Date | string | null;
@@ -194,37 +195,20 @@
 				{selectedDate ? formatDisplayDate(selectedDate) : placeholder}
 			</span>
 			<span class="aea-datepicker-icon">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="w-4 h-4"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-					/>
-				</svg>
+				<IconCalendar size={16} />
 			</span>
 		</button>
 
 		<div class="aea-datepicker-popover" role="dialog" aria-modal="true">
 			<div class="aea-datepicker-header">
 				<button type="button" class="aea-datepicker-nav-btn" onclick={prevMonth} aria-label="Previous month">
-					<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-					</svg>
+					<IconChevronLeft size={16} />
 				</button>
 				<div class="aea-datepicker-current-month">
 					{monthNames[viewDate.getMonth()]} {viewDate.getFullYear()}
 				</div>
 				<button type="button" class="aea-datepicker-nav-btn" onclick={nextMonth} aria-label="Next month">
-					<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-					</svg>
+					<IconChevronRight size={16} />
 				</button>
 			</div>
 

@@ -3,6 +3,7 @@
     import { Input } from '$lib/components/ui/input';
     import * as Dialog from '$lib/components/ui/dialog';
     import Checkbox from './Checkbox.svelte';
+    import { IconSearch } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -60,7 +61,11 @@
                         type="text" 
                         bind:value={searchQuery}
                         placeholder="KV suchen..."
+                        class="pl-10"
                     />
+                    <div class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
+                        <IconSearch size={16} class="text-[var(--text-primary)]" />
+                    </div>
                 </div>
                 
                 <div class="flex justify-between items-center px-1">

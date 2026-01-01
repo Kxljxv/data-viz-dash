@@ -3,7 +3,7 @@
 
 	interface Props {
 		href: string;
-		icon?: import('svelte').Snippet;
+		icon?: import('svelte').Snippet | import('svelte').Component<any>;
 		label: string;
 		active?: boolean;
 		class?: string;
@@ -12,7 +12,7 @@
 
 	let {
 		href,
-		icon,
+		icon: Icon,
 		label,
 		active = false,
 		class: className = '',
@@ -33,9 +33,13 @@
 	data-tooltip={label}
 	onclick={handleClick}
 >
-	{#if icon}
+	{#if Icon}
 		<div class="aea-sidebar-icon">
-			{@render icon()}
+			{#if typeof Icon === 'function' && !Icon.prototype}
+				{@render Icon()}
+			{:else}
+				<Icon size={20} />
+			{/if}
 		</div>
 	{/if}
 	<span class="aea-sidebar-label">{label}</span>

@@ -8,8 +8,15 @@
 	import { goto } from "$app/navigation";
 	import { AVAILABLE_PROJECTS } from "$config";
 
-	import { FolderOpen, ArrowRight } from "lucide-svelte";
 	import { onMount } from "svelte";
+	import { 
+		IconArrowRight, 
+		IconFolder, 
+		IconBolt, 
+		IconMap, 
+		IconChartBar, 
+		IconSettings 
+	} from "@tabler/icons-svelte";
 
 	let { data } = $props();
 	let savedAnalyses = $state([]);
@@ -37,9 +44,7 @@
 <div class="space-y-12 pb-12">
 	<div class="card-glass p-8 md:p-12 relative overflow-hidden rounded-[2.5rem]">
 		<div class="absolute top-0 right-0 p-8 opacity-5">
-			<svg xmlns="http://www.w3.org/2000/svg" class="size-64" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-			</svg>
+			<IconBolt size={256} />
 		</div>
 		<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
 			<div>
@@ -56,7 +61,7 @@
 			</div>
 			<div class="flex flex-col sm:flex-row gap-4">
 				<Button onclick={() => goto("/dashboard/graph")} variant="primary" size="lg" class="rounded-2xl gap-2 h-14 px-8 shadow-xl shadow-brand/20">
-					<ArrowRight class="size-5" />
+					<IconArrowRight size={20} />
 					Graph Visualisierung
 				</Button>
 			</div>
@@ -67,9 +72,7 @@
 		<Card interactive class="card-accent-brand">
 			{#snippet header()}
 				<div class="size-14 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-6 shadow-lg shadow-brand/5">
-					<svg xmlns="http://www.w3.org/2000/svg" class="size-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-					</svg>
+					<IconMap size={28} />
 				</div>
 				<Typography variant="h3" class="mb-2 text-white">Graph-Visualisierung</Typography>
 			{/snippet}
@@ -86,9 +89,7 @@
 		<Card interactive class="card-accent-brand">
 			{#snippet header()}
 				<div class="size-14 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-6 shadow-lg shadow-brand/5">
-					<svg xmlns="http://www.w3.org/2000/svg" class="size-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-					</svg>
+					<IconChartBar size={28} />
 				</div>
 				<Typography variant="h3" class="mb-2 text-white">Analyse-Tools</Typography>
 			{/snippet}
@@ -105,10 +106,7 @@
 		<Card interactive>
 			{#snippet header()}
 				<div class="size-14 rounded-2xl bg-white/5 text-white flex items-center justify-center mb-6 shadow-lg shadow-white/5">
-					<svg xmlns="http://www.w3.org/2000/svg" class="size-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-					</svg>
+					<IconSettings size={28} />
 				</div>
 				<Typography variant="h3" class="mb-2 text-white">Einstellungen</Typography>
 			{/snippet}
@@ -125,7 +123,7 @@
 
 	<div class="mt-16">
 		<div class="flex items-center gap-3 mb-8">
-			<FolderOpen class="size-8 text-brand" />
+			<IconFolder size={32} class="text-brand" />
 			<Typography variant="h2" class="text-white">Verfügbare Projekte</Typography>
 		</div>
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -138,7 +136,7 @@
 					{#snippet header()}
 						<Typography variant="h3" class="capitalize text-white flex items-center justify-between">
 							{project}
-							<ArrowRight class="size-4 text-brand" />
+							<IconArrowRight size={16} class="text-brand" />
 						</Typography>
 					{/snippet}
 					<Typography variant="label" class="text-[10px] opacity-40">

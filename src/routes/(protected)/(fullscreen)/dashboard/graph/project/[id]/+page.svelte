@@ -77,10 +77,10 @@
 <div class="relative h-screen w-screen overflow-hidden bg-[var(--bg-graph)]">
     <canvas id="graph-canvas" class="z-10" aria-label="Interaktive Netzwerk-Visualisierung"></canvas>
 
-    <div id="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-background">
+    <div id="loading" class="absolute inset-0 z-[10000] flex items-center justify-center bg-[hsl(var(--bg-300))] backdrop-blur-xl">
         <div class="text-center flex flex-col items-center gap-6">
-            <Typography variant="h2" class="text-white">Graph wird vorbereitet...</Typography>
-            <Spinner size="lg" color="brand" />
+            <Typography variant="h2" class="color-[hsl(var(--text-300))]">Graph wird vorbereitet...</Typography>
+            <Spinner size="lg" color="hsl(var(--text-500))" />
             <Typography variant="label" id="loading-text" class="opacity-40">Lade Daten...</Typography>
         </div>
     </div>

@@ -1,5 +1,12 @@
 <script>
     import { fade, slide } from 'svelte/transition';
+    import { 
+        IconInfoCircle, 
+        IconCircleCheck, 
+        IconAlertTriangle, 
+        IconAlertCircle, 
+        IconX 
+    } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -7,7 +14,7 @@
      * @property {'inline' | 'fixed-top' | 'fixed-bottom'} [position='inline'] - Where the banner is positioned.
      * @property {boolean} [dismissible=true] - Whether the banner can be dismissed by the user.
      * @property {() => void} [onDismiss] - Callback called when the banner is dismissed.
-     * @property {import('svelte').Snippet} [icon] - Custom icon to display.
+     * @property {import('svelte').Snippet | import('svelte').Component<any>} [icon] - Custom icon to display.
      * @property {import('svelte').Snippet} [actions] - Custom actions (buttons) to display.
      * @property {import('svelte').Snippet} [children] - The banner content.
      * @property {string} [class] - Additional CSS classes.
@@ -34,10 +41,10 @@
     }
 
     const icons = {
-        info: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />',
-        success: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />',
-        warning: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />',
-        danger: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />'
+        info: IconInfoCircle,
+        success: IconCircleCheck,
+        warning: IconAlertTriangle,
+        danger: IconAlertCircle
     };
 </script>
 
@@ -50,11 +57,18 @@
     >
         <div class="banner-content">
             {#if icon}
-                {@render icon()}
+                <span class="banner-icon">
+                    {#if typeof icon === 'function' && !icon.prototype}
+                        {@render icon()}
+                    {:else}
+                        <icon size={24} />
+                    {/if}
+                </span>
             {:else}
-                <svg class="banner-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    {@html icons[variant]}
-                </svg>
+                {@const Icon = icons[variant]}
+                <span class="banner-icon">
+                    <Icon size={24} />
+                </span>
             {/if}
             <div class="banner-text">
                 {@render children?.()}
@@ -72,9 +86,7 @@
                     aria-label="Dismiss"
                     onclick={handleDismiss}
                 >
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <IconX size={16} />
                 </button>
             {/if}
         </div>

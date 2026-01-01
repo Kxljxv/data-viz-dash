@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { auth } from '$lib/auth/client.svelte';
 	import { Button, Card, Typography, Spinner, Alert } from '$lib/components/aea';
+	import { IconBolt, IconArrowLeft } from '@tabler/icons-svelte';
 
 	let { data } = $props();
 	let error = $state(null);
@@ -54,9 +55,7 @@
 		{#snippet header()}
 			<div class="text-center mb-4">
 				<div class="h-12 w-12 rounded-xl bg-brand flex items-center justify-center shadow-lg shadow-brand/20 mx-auto mb-6">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-					</svg>
+					<IconBolt size={28} class="text-white" />
 				</div>
 				<Typography variant="h2" class="text-white">AEA Analytics</Typography>
 				<Typography variant="label" class="opacity-40">Systemzugang</Typography>
@@ -88,9 +87,10 @@
 					<Button 
 						onclick={() => goto("/")}
 						variant="ghost"
-						class="w-full text-xs opacity-40 hover:opacity-100"
+						class="w-full text-xs opacity-40 hover:opacity-100 gap-2"
 					>
-						&larr; Zurück zur Startseite
+						<IconArrowLeft size={14} />
+						Zurück zur Startseite
 					</Button>
 				</div>
 			{/if}

@@ -1,6 +1,13 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
     import { browser } from '$app/environment';
+    import { 
+        IconChevronLeft, 
+        IconChevronRight, 
+        IconMinus, 
+        IconPlus, 
+        IconFileText 
+    } from '@tabler/icons-svelte';
 
     interface Props {
         url: string;
@@ -174,9 +181,7 @@
                 disabled={pageNum <= 1 || loading}
                 title="Vorherige Seite"
             >
-                <svg class="w-4 h-4 text-[hsl(var(--text-200))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
+                <IconChevronLeft size={16} class="text-[hsl(var(--text-200))]" />
             </button>
             <span class="text-[10px] font-mono text-[hsl(var(--text-300))] min-w-[60px] text-center">
                 {loading ? '...' : `${pageNum} / ${numPages}`}
@@ -187,9 +192,7 @@
                 disabled={pageNum >= numPages || loading}
                 title="Nächste Seite"
             >
-                <svg class="w-4 h-4 text-[hsl(var(--text-200))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
+                <IconChevronRight size={16} class="text-[hsl(var(--text-200))]" />
             </button>
         </div>
 
@@ -200,9 +203,7 @@
                 disabled={loading}
                 title="Verkleinern"
             >
-                <svg class="w-4 h-4 text-[hsl(var(--text-200))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-                </svg>
+                <IconMinus size={16} class="text-[hsl(var(--text-200))]" />
             </button>
             <span class="text-[10px] font-mono text-[hsl(var(--text-300))] w-10 text-center">
                 {Math.round(scale * 100)}%
@@ -213,9 +214,7 @@
                 disabled={loading}
                 title="Vergrößern"
             >
-                <svg class="w-4 h-4 text-[hsl(var(--text-200))]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
+                <IconPlus size={16} class="text-[hsl(var(--text-200))]" />
             </button>
         </div>
     </div>
@@ -236,8 +235,8 @@
 
         {#if error}
             <div class="absolute inset-0 flex items-center justify-center p-8 text-center">
-                <div class="max-w-xs space-y-6">
-                    <div class="text-4xl">📄</div>
+                <div class="max-w-xs space-y-6 flex flex-col items-center">
+                    <IconFileText size={48} class="text-[hsl(var(--text-400))]" />
                     <p class="text-sm text-[hsl(var(--text-200))] font-medium leading-relaxed">{error}</p>
                     <button 
                         class="px-6 py-2.5 bg-[hsla(var(--always-white)/0.05)] hover:bg-[hsla(var(--always-white)/0.1)] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 border border-[hsla(var(--border-300)/0.1)]"

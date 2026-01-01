@@ -1,5 +1,6 @@
 <script>
     import { Button, Modal } from '$lib/components/aea';
+    import { IconPlus } from '@tabler/icons-svelte';
 
     let { node, groups = [], onSelect, onCreate, onClose } = $props();
 
@@ -41,8 +42,8 @@
                 onclick={handleCreate}
                 class="w-full flex items-center justify-start space-x-3 p-6 rounded-2xl border-dashed border-2 border-[hsl(var(--border-300))] hover:border-[hsl(var(--accent-pro-100))] hover:bg-[hsl(var(--accent-pro-100))]/5 transition-all group h-auto"
             >
-                <div class="w-8 h-8 rounded-full bg-[hsl(var(--accent-pro-100))]/10 flex items-center justify-center text-[hsl(var(--accent-pro-100))] group-hover:scale-110 transition-transform font-bold">
-                    +
+                <div class="w-8 h-8 rounded-full bg-[hsl(var(--accent-pro-100))]/10 flex items-center justify-center text-[hsl(var(--accent-pro-100))] group-hover:scale-110 transition-transform">
+                    <IconPlus size={20} strokeWidth={3} />
                 </div>
                 <span class="text-sm font-bold text-[var(--text-primary)]">Neue Gruppe erstellen</span>
             </Button>

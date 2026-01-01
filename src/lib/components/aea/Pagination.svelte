@@ -1,4 +1,6 @@
 <script>
+    import { IconChevronLeft, IconChevronRight } from '@tabler/icons-svelte';
+
     /**
      * @typedef {Object} Props
      * @property {number} [currentPage] - The current active page
@@ -59,7 +61,7 @@
                 disabled={currentPage === 1}
                 aria-label="Previous page"
             >
-                &larr; <span class="aea-pagination-desktop-only ml-1">Prev</span>
+                <IconChevronLeft size={16} /> <span class="aea-pagination-desktop-only ml-1">Prev</span>
             </button>
         </li>
 
@@ -86,7 +88,7 @@
                 disabled={currentPage === totalPages}
                 aria-label="Next page"
             >
-                <span class="aea-pagination-desktop-only mr-1">Next</span> &rarr;
+                <span class="aea-pagination-desktop-only mr-1">Next</span> <IconChevronRight size={16} />
             </button>
         </li>
     </ul>

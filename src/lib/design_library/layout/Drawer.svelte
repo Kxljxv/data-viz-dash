@@ -1,4 +1,5 @@
 <script>
+    import { IconX } from '@tabler/icons-svelte';
     /**
      * @typedef {Object} Props
      * @property {boolean} open - Whether the drawer is open
@@ -64,10 +65,7 @@
                 onclick={close}
                 aria-label="Close"
             >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="15" y1="5" x2="5" y2="15"></line>
-                    <line x1="5" y1="5" x2="15" y2="15"></line>
-                </svg>
+                <IconX size={20} />
             </button>
         {/if}
     </div>

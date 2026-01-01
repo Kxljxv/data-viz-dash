@@ -1,6 +1,15 @@
 <script>
     import { Button, Card, Separator, Typography, Badge, Pagination, BottomNav } from '$lib/components/aea';
     import { goto } from '$app/navigation';
+    import { 
+        IconCheck, 
+        IconLoader, 
+        IconCircle, 
+        IconArrowRight,
+        IconNetwork,
+        IconSearch,
+        IconSettings
+    } from '@tabler/icons-svelte';
 
     const components = [
         { name: 'Accordion', status: 'done', category: 'Feedback' },
@@ -87,21 +96,27 @@
         <!-- Status Overview -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             <Card class="flex items-center gap-4 p-6">
-                <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500 text-xl">🟢</div>
+                <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500">
+                    <IconCheck size={24} />
+                </div>
                 <div>
                     <div class="text-2xl font-serif text-white">{counts.done}</div>
                     <Typography variant="label" class="text-[10px]">Components Ready</Typography>
                 </div>
             </Card>
             <Card class="flex items-center gap-4 p-6">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-xl">🟡</div>
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+                    <IconLoader size={24} class="animate-spin" />
+                </div>
                 <div>
                     <div class="text-2xl font-serif text-white">{counts.progress}</div>
                     <Typography variant="label" class="text-[10px]">In Development</Typography>
                 </div>
             </Card>
             <Card class="flex items-center gap-4 p-6">
-                <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 text-xl">🔴</div>
+                <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
+                    <IconCircle size={24} />
+                </div>
                 <div>
                     <div class="text-2xl font-serif text-white">{counts.pending}</div>
                     <Typography variant="label" class="text-[10px]">Pending</Typography>
@@ -130,7 +145,13 @@
                         <div class="flex justify-between items-center mb-2">
                             <Typography variant="label" class="text-[10px] text-brand">{comp.category}</Typography>
                             <span class="text-xs">
-                                {comp.status === 'done' ? '🟢' : comp.status === 'progress' ? '🟡' : '🔴'}
+                                {#if comp.status === 'done'}
+                                    <IconCheck size={14} class="text-green-500" />
+                                {:else if comp.status === 'progress'}
+                                    <IconLoader size={14} class="text-amber-500 animate-spin" />
+                                {:else}
+                                    <IconCircle size={14} class="text-red-500" />
+                                {/if}
                             </span>
                         </div>
                         <Typography variant="h3" class="group-hover:text-brand transition-colors text-white">{comp.name}</Typography>
@@ -141,9 +162,7 @@
                     {#snippet footer()}
                         <Button variant="ghost" size="sm" class="w-full justify-between group/btn">
                             View Details
-                            <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                            </svg>
+                            <IconArrowRight size={16} class="transform group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                     {/snippet}
                 </Card>
@@ -203,20 +222,13 @@
 </div>
 
 {#snippet iconGraph()}
-    <svg class="aea-bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-    </svg>
+    <IconNetwork size={20} class="aea-bottom-nav-icon" />
 {/snippet}
 
 {#snippet iconSearch()}
-    <svg class="aea-bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-    </svg>
+    <IconSearch size={20} class="aea-bottom-nav-icon" />
 {/snippet}
 
 {#snippet iconSettings()}
-    <svg class="aea-bottom-nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
+    <IconSettings size={20} class="aea-bottom-nav-icon" />
 {/snippet}

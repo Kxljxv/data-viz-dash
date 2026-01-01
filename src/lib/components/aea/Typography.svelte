@@ -17,10 +17,10 @@
     } = $props();
 
     const variantClasses = {
-        display: 'font-serif text-4xl',
-        h1: 'font-serif text-3xl',
-        h2: 'font-serif text-2xl',
-        h3: 'font-modern-dense text-xl',
+        display: 'font-serif text-4xl text-[hsl(var(--text-500))]',
+        h1: 'font-serif text-3xl text-[hsl(var(--text-500))]',
+        h2: 'font-serif text-2xl text-[hsl(var(--text-500))]',
+        h3: 'font-modern-dense text-xl text-[hsl(var(--text-300))]',
         body: 'text-base leading-relaxed text-[hsl(var(--text-200))]',
         small: 'text-sm leading-relaxed text-[hsl(var(--text-200))]',
         label: 'text-xs font-bold text-[hsl(var(--text-500))] uppercase tracking-widest',

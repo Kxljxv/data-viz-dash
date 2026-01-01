@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { IconChevronDown, IconSearch, IconCheck } from "@tabler/icons-svelte";
 
 	interface Option {
 		label: string;
@@ -159,36 +160,19 @@
 				{selectedOption ? selectedOption.label : placeholder}
 			</span>
 			<span class="aea-select-icon">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="w-4 h-4 transition-transform duration-300"
-					class:rotate-180={isOpen}
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-				</svg>
+				<IconChevronDown
+					size={16}
+					class="transition-transform duration-300 {isOpen ? 'rotate-180' : ''}"
+				/>
 			</span>
 		</button>
 
 		<div class="aea-select-dropdown" role="listbox" tabindex="-1">
 			{#if searchable}
 				<div class="aea-select-search">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="aea-select-search-icon"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-						/>
-					</svg>
+					<span class="aea-select-search-icon">
+						<IconSearch size={14} />
+					</span>
 					<input
 						bind:this={searchInputEl}
 						type="text"
@@ -221,20 +205,7 @@
 							{option.label}
 							{#if value === option.value}
 								<span class="aea-select-check">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="w-4 h-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M5 13l4 4L19 7"
-										/>
-									</svg>
+									<IconCheck size={16} />
 								</span>
 							{/if}
 						</button>
@@ -367,8 +338,9 @@
 		left: 0.75rem;
 		top: 50%;
 		transform: translateY(-50%);
-		width: 0.875rem;
-		height: 0.875rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		color: hsl(var(--text-400));
 		pointer-events: none;
 	}

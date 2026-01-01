@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { IconSearch, IconX } from "@tabler/icons-svelte";
 
 	interface Item {
 		label: string;
 		value: any;
 		group?: string;
 		meta?: string;
-		icon?: import('svelte').Snippet;
+		icon?: import('svelte').Snippet | import('svelte').Component<any>;
 	}
 
 	interface Props {
@@ -154,20 +155,9 @@
 	class:has-value={value.length > 0}
 >
 	<div class="aea-autocomplete-wrapper">
-		<svg
-			class="aea-autocomplete-search-icon"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-			aria-hidden="true"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-			/>
-		</svg>
+		<span class="aea-autocomplete-search-icon">
+			<IconSearch size={16} aria-hidden="true" />
+		</span>
 		<input
 			type="text"
 			class="aea-autocomplete-input"
@@ -185,14 +175,7 @@
 			autocomplete="off"
 		/>
 		<button class="aea-autocomplete-clear" aria-label="Clear search" onclick={clearSearch} type="button">
-			<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M6 18L18 6M6 6l12 12"
-				/>
-			</svg>
+			<IconX size={12} />
 		</button>
 	</div>
 
@@ -219,7 +202,11 @@
 					>
 						{#if item.icon}
 							<div class="aea-autocomplete-item-icon">
-								{@render item.icon()}
+								{#if typeof item.icon === 'function' && !item.icon.prototype}
+									{@render item.icon()}
+								{:else}
+									<item.icon size={16} />
+								{/if}
 							</div>
 						{/if}
 						<div class="aea-autocomplete-item-label">
@@ -271,8 +258,9 @@
 	.aea-autocomplete-search-icon {
 		position: absolute;
 		left: 1rem;
-		width: 1rem;
-		height: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		color: hsla(var(--text-400) / 0.5);
 		pointer-events: none;
 	}

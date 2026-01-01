@@ -1,6 +1,7 @@
 <script>
     import { onMount, tick } from 'svelte';
     import { fade, scale } from 'svelte/transition';
+    import { IconX } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -180,9 +181,7 @@
                         aria-label="Close"
                         onclick={() => { open = false; onOpenChange?.(false); }}
                     >
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                        <IconX size={16} />
                     </button>
                 {/if}
             </div>

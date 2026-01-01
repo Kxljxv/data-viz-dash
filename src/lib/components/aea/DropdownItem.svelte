@@ -5,7 +5,7 @@
      * @property {boolean} [disabled=false] - Whether the item is interactive.
      * @property {() => void} [onclick] - Click handler.
      * @property {import('svelte').Snippet} [children] - Content.
-     * @property {import('svelte').Snippet} [icon] - Leading icon.
+     * @property {import('svelte').Snippet | import('svelte').Component<any>} [icon] - Leading icon.
      * @property {import('svelte').Snippet} [shortcut] - Keyboard shortcut label.
      */
 
@@ -15,7 +15,7 @@
         disabled = false, 
         onclick, 
         children,
-        icon,
+        icon: Icon,
         shortcut,
         ...rest 
     } = $props();
@@ -33,9 +33,13 @@
     onclick={handleClick}
     {...rest}
 >
-    {#if icon}
+    {#if Icon}
         <span class="dropdown-icon">
-            {@render icon()}
+            {#if typeof Icon === 'function' && !Icon.prototype}
+                {@render Icon()}
+            {:else}
+                <Icon size={16} />
+            {/if}
         </span>
     {/if}
     

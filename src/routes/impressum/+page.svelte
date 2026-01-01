@@ -7,6 +7,7 @@
 		Typography
 	} from "$lib/components/aea";
 	import { WEBSITE_NAME } from "$config";
+	import { IconArrowLeft } from "@tabler/icons-svelte";
 </script>
 
 <svelte:head>
@@ -17,9 +18,7 @@
 	<div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 		<div class="mb-6">
 			<a href="/" class="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors gap-2">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-				</svg>
+				<IconArrowLeft size={16} />
 				Zurück zur Startseite
 			</a>
 		</div>

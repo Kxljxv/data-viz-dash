@@ -7,6 +7,7 @@
         Slider, 
         Select 
     } from '$lib/components/aea';
+    import { IconPlus, IconChevronRight, IconUpload, IconDownload } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -74,7 +75,8 @@
                 onclick={() => handleAction('create')}
                 class="text-[10px] font-black tracking-widest uppercase border border-[var(--text-primary)]/10"
             >
-                + Neu
+                <IconPlus size={12} class="mr-1" />
+                Neu
             </Button>
         </div>
     </div>
@@ -107,9 +109,7 @@
                             </div>
                         </div>
                         <div class="text-[var(--text-tertiary)] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
+                            <IconChevronRight size={16} />
                         </div>
                     </CardContent>
                 </Card>
@@ -129,7 +129,7 @@
             onclick={() => handleAction('import')}
             class="flex items-center justify-center space-x-2 p-3 text-[10px] font-black uppercase tracking-[0.2em] border border-[var(--text-primary)]/10"
         >
-            <span>📥</span>
+            <IconUpload size={14} />
             <span>Import</span>
         </Button>
         <Button 
@@ -137,7 +137,7 @@
             onclick={() => handleAction('export_all')}
             class="flex items-center justify-center space-x-2 p-3 text-[10px] font-black uppercase tracking-[0.2em] border border-[var(--text-primary)]/10"
         >
-            <span>📤</span>
+            <IconDownload size={14} />
             <span>Export All</span>
         </Button>
     </div>

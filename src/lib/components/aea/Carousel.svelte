@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy, type Snippet } from 'svelte';
+	import { IconChevronLeft, IconChevronRight } from '@tabler/icons-svelte';
 
 	interface Props {
 		items?: any[];
@@ -98,9 +99,7 @@
 			onclick={prev}
 			aria-label="Previous slide"
 		>
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-			</svg>
+			<IconChevronLeft size={24} />
 		</button>
 		<button
 			type="button"
@@ -108,9 +107,7 @@
 			onclick={next}
 			aria-label="Next slide"
 		>
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-			</svg>
+			<IconChevronRight size={24} />
 		</button>
 	{/if}
 
@@ -196,11 +193,6 @@
 		background-color: hsla(var(--accent-brand) / 0.2);
 		border-color: hsl(var(--accent-brand));
 		box-shadow: 0 0 15px hsla(var(--accent-brand) / 0.4);
-	}
-
-	.aea-carousel-arrow svg {
-		width: 1.5rem;
-		height: 1.5rem;
 	}
 
 	.arrow-prev { left: 1rem; }

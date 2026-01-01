@@ -1,5 +1,6 @@
 <script lang="ts">
     import { getContext, onMount } from 'svelte';
+    import { IconChevronDown } from "@tabler/icons-svelte";
 
     interface Props {
         open?: boolean;
@@ -81,9 +82,7 @@
                 {title}
             {/if}
         </span>
-        <svg class="accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
+        <IconChevronDown size={20} class="accordion-icon" />
     </button>
     <div class="accordion-content-wrapper">
         <div class="accordion-content">

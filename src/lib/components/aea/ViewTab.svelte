@@ -3,6 +3,7 @@
     import { Checkbox } from '$lib/components/ui/checkbox';
     import { Slider } from '$lib/components/ui/slider';
     import { Label } from '$lib/components/ui/label';
+    import { IconRefresh } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -94,9 +95,10 @@
     <Button 
         onclick={onReset}
         variant="outline"
-        class="w-full py-6 text-[10px] font-black uppercase tracking-[0.2em] border-[var(--text-primary)]/10 hover:bg-[var(--text-primary)]/5 rounded-2xl"
+        class="w-full py-6 text-[10px] font-black uppercase tracking-[0.2em] border-[var(--text-primary)]/10 hover:bg-[var(--text-primary)]/5 rounded-2xl flex items-center justify-center gap-2"
         aria-label="Ansicht zurücksetzen"
     >
+        <IconRefresh size={14} />
         Ansicht zurücksetzen
     </Button>
 </div>

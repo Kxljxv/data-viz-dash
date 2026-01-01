@@ -5,6 +5,13 @@
         Modal 
     } from '$lib/components/aea';
     import { onMount } from 'svelte';
+    import { 
+        IconX, 
+        IconSearch, 
+        IconDownload, 
+        IconUpload, 
+        IconPlus 
+    } from "@tabler/icons-svelte";
 
     /**
      * @typedef {Object} Props
@@ -118,59 +125,71 @@
     onclose={onClose}
     title="Gruppe bearbeiten"
     accent="brand"
+    size="md"
 >
     {#snippet body()}
-        <div class="space-y-6">
+        <div class="space-y-8">
             <!-- Name & Color Section -->
-            <div class="space-y-4">
-                <Input 
-                    id="group-name"
-                    label="Gruppenname"
-                    type="text" 
-                    bind:value={name}
-                    placeholder="Gruppenname eingeben..."
-                />
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="md:col-span-3">
+                    <Input 
+                        id="group-name"
+                        label="Gruppenname"
+                        type="text" 
+                        bind:value={name}
+                        placeholder="Gruppenname eingeben..."
+                        class="bg-white/5 border-white/10 focus:border-brand/50 transition-colors"
+                    />
+                </div>
                 <div>
-                    <label for="group-color" class="block text-[10px] font-black text-[hsl(var(--accent-pro-100))] uppercase tracking-[0.2em] mb-2">Farbe</label>
-                    <div class="flex items-center space-x-4">
+                    <label for="group-color" class="block text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-3">Farbe</label>
+                    <div class="flex items-center space-x-3 p-2 bg-white/5 border border-white/10 rounded-2xl">
                         <input 
                             id="group-color"
                             type="color" 
                             bind:value={color}
-                            class="w-12 h-12 rounded-xl cursor-pointer bg-transparent border-0 p-0 overflow-hidden"
+                            class="w-10 h-10 rounded-xl cursor-pointer bg-transparent border-0 p-0 overflow-hidden"
                             title="Farbe wählen"
                         />
-                        <span class="text-xs font-mono text-[var(--text-tertiary)]">{color.toUpperCase()}</span>
+                        <span class="text-[10px] font-mono text-white/60">{color.toUpperCase()}</span>
                     </div>
                 </div>
             </div>
 
             <!-- Node Management Section -->
             <div class="space-y-4">
-                <span class="block text-[10px] font-black text-[hsl(var(--accent-pro-100))] uppercase tracking-[0.2em] mb-2">Knoten verwalten ({groupNodes.length})</span>
+                <div class="flex justify-between items-center">
+                    <span class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Mitglieder ({groupNodes.length})</span>
+                    {#if groupNodes.length > 0}
+                        <button 
+                            onclick={() => groupNodes = []}
+                            class="text-[10px] font-black text-danger-100/60 hover:text-danger-100 uppercase tracking-[0.2em] transition-colors"
+                        >
+                            Alle entfernen
+                        </button>
+                    {/if}
+                </div>
                 
                 <!-- Current Nodes -->
-                <div class="flex flex-wrap gap-2 mb-4">
+                <div class="flex flex-wrap gap-2 min-h-[60px] p-4 bg-white/5 border border-white/5 rounded-2xl">
                     {#each groupNodes as nodeId}
                         {@const node = allNodes.find(n => n.id === nodeId)}
                         {#if node}
-                            <div class="flex items-center space-x-2 px-3 py-1.5 bg-[hsl(var(--accent-pro-100))]/10 border border-[hsl(var(--accent-pro-100))]/20 rounded-full group">
-                                <span class="text-xs text-[var(--text-primary)]">{node.label}</span>
+                            <div class="flex items-center space-x-2 px-3 py-1.5 bg-brand/10 border border-brand/20 rounded-xl group transition-all hover:border-brand/40">
+                                <span class="text-[11px] font-medium text-white/90">{node.label}</span>
                                 <button 
                                     onclick={() => removeNode(nodeId)}
-                                    class="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+                                    class="text-white/30 hover:text-danger-100 transition-colors"
                                     aria-label={`Entferne ${node.label}`}
                                 >
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
+                                    <IconX size={14} />
                                 </button>
                             </div>
                         {/if}
                     {/each}
                     {#if groupNodes.length === 0}
-                        <div class="w-full py-4 text-center border-2 border-dashed border-[hsl(var(--border-300))] rounded-2xl">
-                            <span class="text-xs text-[var(--text-tertiary)]">Keine Knoten in dieser Gruppe</span>
+                        <div class="w-full flex flex-col items-center justify-center py-4 text-center">
+                            <span class="text-[10px] font-medium text-white/20 uppercase tracking-widest">Keine Knoten ausgewählt</span>
                         </div>
                     {/if}
                 </div>
@@ -180,18 +199,28 @@
                     <Input 
                         type="search" 
                         bind:value={searchQuery}
-                        placeholder="Knoten suchen..."
+                        placeholder="Nach Knoten suchen..."
                         aria-label="Knoten suchen"
+                        class="bg-white/5 border-white/10 pr-10"
                     />
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
+                        <IconSearch size={16} class="text-white" />
+                    </div>
+
                     {#if searchQuery.length > 0 && filteredNodes.length > 0}
-                        <div class="absolute z-10 w-full mt-2 bg-[var(--bg-300)] border border-[hsl(var(--border-300))] rounded-xl shadow-2xl overflow-hidden">
+                        <div class="absolute z-50 w-full mt-2 bg-background/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                             {#each filteredNodes as node}
                                 <button 
                                     onclick={() => { addNode(node.id); searchQuery = ''; }}
-                                    class="w-full text-left px-4 py-3 text-xs text-[var(--text-primary)] hover:bg-[var(--bg-100)] transition-all flex items-center justify-between"
+                                    class="w-full text-left px-5 py-4 text-xs text-white/80 hover:bg-white/5 hover:text-white transition-all flex items-center justify-between group"
                                 >
-                                    <span>{node.label}</span>
-                                    <span class="text-[hsl(var(--accent-pro-100))]">+</span>
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">{node.label}</span>
+                                        <span class="text-[9px] text-white/40 uppercase tracking-tighter">{node.id}</span>
+                                    </div>
+                                    <span class="w-6 h-6 rounded-lg bg-brand/10 text-brand flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <IconPlus size={14} />
+                                    </span>
                                 </button>
                             {/each}
                         </div>
@@ -200,11 +229,12 @@
             </div>
 
             <!-- Import/Export -->
-            <div class="pt-6 border-t border-[hsl(var(--border-300))] flex space-x-3">
-                <Button variant="ghost" size="sm" onclick={handleExport} class="flex-1 py-3 text-[10px] font-black uppercase tracking-[0.1em] border border-[hsl(var(--border-300))]" aria-label="Gruppe exportieren">
+            <div class="pt-6 border-t border-white/5 flex gap-3">
+                <Button variant="ghost" size="sm" onclick={handleExport} class="flex-1 h-11 text-[10px] font-black uppercase tracking-[0.2em] border border-white/5 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all" aria-label="Gruppe exportieren">
+                    <IconDownload size={14} class="mr-2 opacity-50" />
                     Exportieren
                 </Button>
-                <div class="flex-1 relative">
+                <div class="flex-1 relative group">
                     <input 
                         id="import-group"
                         type="file" 
@@ -213,7 +243,8 @@
                         class="absolute inset-0 opacity-0 cursor-pointer z-10"
                         aria-label="Gruppe importieren"
                     />
-                    <Button variant="ghost" size="sm" class="w-full py-3 text-[10px] font-black uppercase tracking-[0.1em] border border-[hsl(var(--border-300))]">
+                    <Button variant="ghost" size="sm" class="w-full h-11 text-[10px] font-black uppercase tracking-[0.2em] border border-white/5 bg-white/5 group-hover:bg-white/10 text-white/60 group-hover:text-white transition-all">
+                        <IconUpload size={14} class="mr-2 opacity-50" />
                         Importieren
                     </Button>
                 </div>
@@ -222,12 +253,14 @@
     {/snippet}
 
     {#snippet footer()}
-        <Button variant="ghost" onclick={onClose} class="flex-1" aria-label="Abbrechen">
-            Abbrechen
-        </Button>
-        <Button onclick={handleSave} class="flex-1" aria-label="Speichern">
-            Speichern
-        </Button>
+        <div class="flex w-full gap-3">
+            <Button variant="ghost" onclick={onClose} class="flex-1 h-12 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors" aria-label="Abbrechen">
+                Abbrechen
+            </Button>
+            <Button onclick={handleSave} class="flex-1 h-12 text-[10px] font-black uppercase tracking-[0.2em] bg-brand hover:bg-brand/80 text-white transition-all shadow-lg shadow-brand/20" aria-label="Speichern">
+                Änderungen speichern
+            </Button>
+        </div>
     {/snippet}
 </Modal>
 

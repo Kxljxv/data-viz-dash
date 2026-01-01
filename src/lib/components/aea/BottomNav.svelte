@@ -3,7 +3,7 @@
      * @typedef {Object} NavItem
      * @property {string} label - The label for the item
      * @property {string} href - The link for the item
-     * @property {import('svelte').Snippet} [icon] - Optional snippet for the icon
+     * @property {import('svelte').Snippet | import('svelte').Component<any>} [icon] - Optional snippet or component for the icon
      * @property {string} [id] - Optional ID for the item
      */
 
@@ -37,7 +37,11 @@
             >
                 <span class="aea-bottom-nav-indicator"></span>
                 {#if item.icon}
-                    {@render item.icon()}
+                    {#if typeof item.icon === 'function' && !item.icon.prototype}
+                        {@render item.icon()}
+                    {:else}
+                        <item.icon size={24} />
+                    {/if}
                 {/if}
                 <span class="aea-bottom-nav-label">{item.label}</span>
             </a>

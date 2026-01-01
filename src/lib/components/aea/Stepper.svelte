@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { IconCheck } from '@tabler/icons-svelte';
+
 	interface Step {
 		title: string;
 		description?: string;
@@ -53,9 +55,7 @@
 			>
 				<div class="aea-step-marker">
 					{#if currentStep > i}
-						<svg class="aea-icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-						</svg>
+						<IconCheck size={16} strokeWidth={3} class="aea-icon-check" />
 					{:else}
 						{variant === 'technical' ? '+' : i + 1}
 					{/if}

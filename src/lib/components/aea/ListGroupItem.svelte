@@ -8,7 +8,7 @@
 		disabled?: boolean;
 		class?: string;
 		children?: import('svelte').Snippet;
-		icon?: import('svelte').Snippet;
+		icon?: import('svelte').Snippet | import('svelte').Component<any>;
 		subtitle?: import('svelte').Snippet;
 		extra?: import('svelte').Snippet;
 		onclick?: (id: string) => void;
@@ -20,7 +20,7 @@
 		disabled = false,
 		class: className = '',
 		children,
-		icon,
+		icon: Icon,
 		subtitle,
 		extra,
 		onclick
@@ -81,9 +81,13 @@
 			onclick={handleClick}
 			onkeydown={handleKeydown}
 		>
-			{#if icon}
+			{#if Icon}
 				<div class="list-group-icon">
-					{@render icon()}
+					{#if typeof Icon === 'function' && !Icon.prototype}
+						{@render Icon()}
+					{:else}
+						<Icon size={20} />
+					{/if}
 				</div>
 			{/if}
 
@@ -107,9 +111,13 @@
 			{/if}
 		</button>
 	{:else}
-		{#if icon}
+		{#if Icon}
 			<div class="list-group-icon">
-				{@render icon()}
+				{#if typeof Icon === 'function' && !Icon.prototype}
+					{@render Icon()}
+				{:else}
+					<Icon size={20} />
+				{/if}
 			</div>
 		{/if}
 

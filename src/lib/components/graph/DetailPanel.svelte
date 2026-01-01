@@ -13,6 +13,13 @@
     } from '$lib/components/aea';
     import PdfViewer from './PdfViewer.svelte';
     import { onMount } from 'svelte';
+    import { 
+        IconTarget, 
+        IconSparkles, 
+        IconFolderPlus, 
+        IconFileText, 
+        IconArrowRight 
+    } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -132,7 +139,7 @@
                                                     <Typography variant="body" class="text-xs text-[var(--text-primary)] truncate block max-w-[120px] font-modern font-bold">{neighbor.label}</Typography>
                                                 </TableCell>
                                                 <TableCell align="right" class="py-3">
-                                                    <span class="text-[10px] text-[hsl(var(--accent-pro-100))] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 inline-block">→</span>
+                                                    <IconArrowRight size={14} class="text-[hsl(var(--accent-pro-100))] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 inline-block" />
                                                 </TableCell>
                                             </TableRow>
                                         {/each}
@@ -153,7 +160,7 @@
                                 onclick={() => handleAction('focus')}
                                 class="w-full flex items-center justify-center space-x-2 py-6 rounded-xl font-black uppercase tracking-[0.2em] text-[10px]"
                             >
-                                <span>🎯</span>
+                                <IconTarget size={18} />
                                 <span>Fokus</span>
                             </Button>
                             <Button 
@@ -161,7 +168,7 @@
                                 onclick={() => handleAction('highlight')}
                                 class="w-full flex items-center justify-center space-x-2 py-6 rounded-xl font-black uppercase tracking-[0.2em] text-[10px] border-[var(--text-primary)]/10"
                             >
-                                <span>✨</span>
+                                <IconSparkles size={18} />
                                 <span>Hervorheben</span>
                             </Button>
                         </div>
@@ -170,7 +177,7 @@
                             onclick={() => handleAction('add_group')}
                             class="w-full flex items-center justify-center space-x-2 py-6 rounded-xl font-black uppercase tracking-[0.2em] text-[10px] border border-[var(--text-primary)]/10 hover:bg-[var(--text-primary)]/5"
                         >
-                            <span>📁</span>
+                            <IconFolderPlus size={18} />
                             <span>Zu Gruppe hinzufügen</span>
                         </Button>
                     </div>
@@ -188,8 +195,8 @@
                     class="w-full h-auto flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.2)] hover:bg-[var(--text-primary)]/10 transition-all group"
                 >
                     <div class="flex items-center space-x-3 text-left">
-                        <div class="w-10 h-10 rounded-xl bg-[hsl(var(--danger-100))]/10 flex items-center justify-center text-[hsl(var(--danger-100))] text-lg">
-                            📄
+                        <div class="w-10 h-10 rounded-xl bg-[hsl(var(--danger-100))]/10 flex items-center justify-center text-[hsl(var(--danger-100))]">
+                            <IconFileText size={24} />
                         </div>
                         <div class="flex flex-col">
                             <Typography variant="body" class="text-xs font-bold text-[var(--text-primary)] block truncate max-w-[150px] font-modern">
@@ -198,7 +205,7 @@
                             <Typography variant="label" class="text-[10px] text-[var(--text-tertiary)] font-modern uppercase tracking-wider">Dokument öffnen</Typography>
                         </div>
                     </div>
-                    <span class="text-[var(--text-tertiary)] group-hover:translate-x-1 transition-transform">→</span>
+                    <IconArrowRight size={18} class="text-[var(--text-tertiary)] group-hover:translate-x-1 transition-transform" />
                 </Button>
             </div>
         {/if}

@@ -5,6 +5,7 @@
         Slider,
         Typography
     } from '$lib/components/aea';
+    import { IconRefresh } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -20,10 +21,9 @@
     <div class="space-y-6">
         <Typography variant="label" class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Filter</Typography>
         <div class="grid grid-cols-1 gap-4">
-            <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
+            <div class="gap-5 flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                 <div class="flex flex-col">
                     <Typography tag="label" for="showAntraege" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Anträge anzeigen</Typography>
-                    <span class="text-[8px] text-[var(--text-tertiary)] uppercase font-black tracking-widest mt-1">Status: {settings.showAntraege ? 'Aktiv' : 'Inaktiv'}</span>
                 </div>
                 <Checkbox 
                     id="showAntraege"
@@ -32,10 +32,9 @@
                 />
             </div>
 
-            <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
+            <div class="gap-5 flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                 <div class="flex flex-col">
                     <Typography tag="label" for="showSupporters" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Unterstützer anzeigen</Typography>
-                    <span class="text-[8px] text-[var(--text-tertiary)] uppercase font-black tracking-widest mt-1">Status: {settings.showSupporters ? 'Aktiv' : 'Inaktiv'}</span>
                 </div>
                 <Checkbox 
                     id="showSupporters"
@@ -50,7 +49,7 @@
         <Typography variant="label" class="text-[10px] font-black text-[var(--text-tertiary)] uppercase tracking-[0.2em]">Darstellung</Typography>
         <div class="space-y-8">
             <div class="grid grid-cols-1 gap-3">
-                <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
+                <div class="gap-5 flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                     <div class="flex flex-col">
                         <Typography tag="label" for="showLabels" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Beschriftungen anzeigen</Typography>
                     </div>
@@ -61,7 +60,7 @@
                     />
                 </div>
 
-                <div class="flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
+                <div class="gap-5 flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
                     <div class="flex flex-col">
                         <Typography tag="label" for="showLinks" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Verbindungen anzeigen</Typography>
                     </div>
@@ -96,9 +95,10 @@
     <Button 
         onclick={onReset}
         variant="outline"
-        class="w-full py-6 text-[10px] font-black uppercase tracking-[0.2em] border-[var(--text-primary)]/10 hover:bg-[var(--text-primary)]/5 rounded-2xl"
+        class="w-full py-6 text-[10px] font-black uppercase tracking-[0.2em] border-[var(--text-primary)]/10 hover:bg-[var(--text-primary)]/5 rounded-2xl flex items-center justify-center gap-2"
         aria-label="Ansicht zurücksetzen"
     >
+        <IconRefresh size={14} />
         Ansicht zurücksetzen
     </Button>
 </div>

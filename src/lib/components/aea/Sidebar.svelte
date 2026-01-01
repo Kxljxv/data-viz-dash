@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { setContext, onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { IconChevronsLeft } from "@tabler/icons-svelte";
 
 	interface Props {
 		brandTitle?: string;
@@ -98,14 +99,9 @@
 		</div>
 
 		<button class="aea-sidebar-toggle" onclick={toggleMini} aria-label="Toggle Sidebar">
-			<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-				/>
-			</svg>
+			<span class="aea-sidebar-toggle-icon">
+				<IconChevronsLeft size={20} />
+			</span>
 		</button>
 	</div>
 
@@ -226,11 +222,12 @@
 		color: hsl(var(--accent-brand));
 	}
 
-	.aea-sidebar-toggle svg {
+	.aea-sidebar-toggle-icon {
+		display: flex;
 		transition: transform var(--sidebar-transition);
 	}
 
-	.aea-sidebar.is-mini .aea-sidebar-toggle svg {
+	.aea-sidebar.is-mini .aea-sidebar-toggle-icon {
 		transform: rotate(180deg);
 	}
 

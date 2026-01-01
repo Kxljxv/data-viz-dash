@@ -12,6 +12,14 @@
     } from '$lib/components/aea';
     import PdfViewer from './PdfViewer.svelte';
     import { onMount } from 'svelte';
+    import { 
+        IconArrowLeft, 
+        IconArrowRight, 
+        IconTarget, 
+        IconSparkles, 
+        IconFolderPlus, 
+        IconFileText 
+    } from '@tabler/icons-svelte';
 
     /**
      * @typedef {Object} Props
@@ -79,9 +87,7 @@
                             onclick={() => isPdfOpen = false}
                             class="flex items-center gap-2 px-3 py-2 text-[10px] font-black tracking-widest uppercase border border-[var(--text-primary)]/10 rounded-xl hover:bg-[var(--text-primary)]/5 transition-colors text-[var(--text-tertiary)]"
                         >
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
-                            </svg>
+                            <IconArrowLeft size={16} />
                             Zurück
                         </Button>
                     </div>
@@ -141,7 +147,7 @@
                                                 <span class="text-xs text-[var(--text-primary)] truncate block max-w-[120px] font-modern font-bold">{neighbor.label}</span>
                                             </TableCell>
                                             <TableCell class="text-right">
-                                                <span class="text-[10px] text-[hsl(var(--accent-pro-100))] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 inline-block">→</span>
+                                                <IconArrowRight size={14} class="text-[hsl(var(--accent-pro-100))] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 inline-block" />
                                             </TableCell>
                                         </TableRow>
                                     {/each}
@@ -161,7 +167,7 @@
                                 onclick={() => handleAction('focus')}
                                 class="w-full flex items-center justify-center space-x-2"
                             >
-                                <span>🎯</span>
+                                <IconTarget size={18} />
                                 <span>Fokus</span>
                             </Button>
                             <Button 
@@ -169,7 +175,7 @@
                                 onclick={() => handleAction('highlight')}
                                 class="w-full flex items-center justify-center space-x-2"
                             >
-                                <span>✨</span>
+                                <IconSparkles size={18} />
                                 <span>Hervorheben</span>
                             </Button>
                         </div>
@@ -178,7 +184,7 @@
                             onclick={() => handleAction('add_group')}
                             class="w-full flex items-center justify-center space-x-2 border border-[var(--text-primary)]/10 hover:bg-[var(--text-primary)]/5"
                         >
-                            <span>📁</span>
+                            <IconFolderPlus size={18} />
                             <span>Zu Gruppe hinzufügen</span>
                         </Button>
                     </div>
@@ -196,8 +202,8 @@
                 class="w-full h-auto flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.2)] hover:bg-[var(--text-primary)]/10 transition-all group"
             >
                 <div class="flex items-center space-x-3 text-left">
-                    <div class="w-10 h-10 rounded-xl bg-[hsl(var(--danger-100))]/10 flex items-center justify-center text-[hsl(var(--danger-100))] text-lg">
-                        📄
+                    <div class="w-10 h-10 rounded-xl bg-[hsl(var(--danger-100))]/10 flex items-center justify-center text-[hsl(var(--danger-100))]">
+                        <IconFileText size={24} />
                     </div>
                     <div class="flex flex-col">
                         <span class="text-xs font-bold text-[var(--text-primary)] block truncate max-w-[150px] font-modern">
@@ -206,7 +212,7 @@
                         <span class="text-[10px] text-[var(--text-tertiary)] font-modern uppercase tracking-wider">Dokument öffnen</span>
                     </div>
                 </div>
-                <span class="text-[var(--text-tertiary)] group-hover:translate-x-1 transition-transform">→</span>
+                <IconArrowRight size={18} class="text-[var(--text-tertiary)] group-hover:translate-x-1 transition-transform" />
             </Button>
         {/if}
     {/snippet}

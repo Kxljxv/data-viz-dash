@@ -10,6 +10,11 @@
         Button,
         Typography
     } from '$lib/components/aea';
+    import { 
+        IconMenu2, 
+        IconArrowLeft, 
+        IconChevronDown 
+    } from "@tabler/icons-svelte";
     import SearchTab from './SearchTab.svelte';
     import ViewTab from './ViewTab.svelte';
     import GroupsTab from './GroupsTab.svelte';
@@ -380,49 +385,43 @@
 {/if}
 
 <div class="fixed top-4 right-4 md:top-10 md:right-10 z-[5000] flex flex-col items-end pointer-events-none w-[calc(100%-2rem)] md:w-80">
-    <!-- Toggle Button -->
-    <Button 
-        variant="ghost" 
-        size="icon" 
-        class="mb-2 pointer-events-auto rounded-xl bg-background/80 backdrop-blur-xl border border-white/5 shadow-lg lg:hidden"
-        onclick={togglePanel}
-    >
-        {#if isOpen}
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        {:else}
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-        {/if}
-    </Button>
+    <!-- Toggle Button (only when closed) -->
+    {#if !isOpen}
+        <Button 
+            variant="ghost" 
+            size="icon" 
+            class="pointer-events-auto rounded-xl bg-background/80 backdrop-blur-xl border border-white/5 shadow-lg lg:hidden"
+            onclick={togglePanel}
+        >
+            <IconMenu2 size={20} class="text-white" />
+        </Button>
+    {/if}
 
     <!-- Panel Content -->
     {#if isOpen}
         <div class="overall-container pointer-events-auto max-h-[85vh] md:max-h-[70vh] w-full flex flex-col overflow-hidden z-40 rounded-2xl border-width:0  border-transparent shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/3.5%),0_0_0_0.5px_hsla(var(--border-300)/0.15)] hover:shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/3.5%),0_0_0_0.5px_hsla(var(--border-200)/0.3)] focus-within:shadow-[0_0.25rem_1.25rem_hsl(var(--always-black)/7.5%),0_0_0_0.5px_hsla(var(--border-200)/0.3)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] bg-background/90 backdrop-blur-xl animate-in fade-in slide-in-from-top-2">
             
-            <div class="flex items-center justify-between px-4 py-2 border-b border-white/5 bg-white/5 lg:hidden">
-                <Typography variant="label" class="text-[10px] font-black uppercase tracking-widest opacity-40">Menü</Typography>
-                <button onclick={togglePanel} class="p-1 hover:bg-white/10 rounded-lg transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-            </div>
-            {#if backUrl}
-                <div class="px-4 pt-4 pb-0 bg-[var(--text-primary)]/[0.02]">
+            <div class="flex items-center gap-2 px-4 pt-4 pb-0 bg-[var(--text-primary)]/[0.02]">
+                {#if backUrl}
                     <a 
                         href={backUrl}
-                        class="flex items-center gap-2 px-3 py-2 text-[10px] font-black tracking-widest uppercase border border-[var(--text-primary)]/10 rounded-xl hover:bg-[var(--text-primary)]/5 transition-colors text-[var(--text-primary)]"
+                        class="flex-1 flex items-center gap-2 px-3 py-2 text-[10px] font-black tracking-widest uppercase border border-[var(--text-primary)]/10 rounded-xl hover:bg-[var(--text-primary)]/5 transition-colors text-[var(--text-primary)]"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                        </svg>
+                        <IconArrowLeft size={12} />
                         Zur Übersicht
                     </a>
-                </div>
-            {/if}
+                {/if}
+
+                <!-- Toggle Button (inside panel) -->
+                <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    class="h-9 px-3 rounded-xl border border-white/5 bg-white/5 lg:hidden"
+                    onclick={togglePanel}
+                >
+                    <IconChevronDown size={16} class="text-white/60" />
+                </Button>
+            </div>
 
             <Tabs value={activeTab} onValueChange={(v) => activeTab = v} class="flex flex-col flex-1 min-h-0 gap-0">
                 <!-- Tabs Navigation -->

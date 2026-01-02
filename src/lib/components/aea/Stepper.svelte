@@ -55,7 +55,7 @@
 			>
 				<div class="aea-step-marker">
 					{#if currentStep > i}
-						<IconCheck size={16} strokeWidth={3} class="aea-icon-check" />
+						<IconCheck size={16} stroke={3} class="aea-icon-check" />
 					{:else}
 						{variant === 'technical' ? '+' : i + 1}
 					{/if}

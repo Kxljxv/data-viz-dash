@@ -65,7 +65,7 @@
             bind:value={searchQuery}
             oninput={handleSearch}
             placeholder="Nach Entitäten suchen..."
-            class="bg-[var(--text-primary)]/5 border-[hsl(var(--text-500)/0.1)] rounded-2xl h-12 pl-12 pr-5 text-sm font-modern placeholder:text-[var(--text-tertiary)] w-full"
+            class="bg-muted border-[hsl(var(--text-500)/0.1)] rounded-2xl h-12 pl-12 pr-5 text-sm font-modern placeholder:text-[var(--text-tertiary)] w-full focus:bg-background transition-colors"
         />
         <div class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-40">
             <IconSearch size={20} class="text-[var(--text-primary)]" />
@@ -117,7 +117,7 @@
                 <IconSearch size={24} class="text-[var(--text-tertiary)]" />
             </div>
             <Typography variant="label" class="text-[10px] text-[var(--text-tertiary)] uppercase tracking-[0.2em] font-black">Suche starten</Typography>
-            <Typography variant="body" class="text-[8px] text-[var(--text-tertiary)] uppercase tracking-widest mt-2 font-bold opacity-60">Geben Sie mindestens 2 Zeichen ein</Typography>
+            <Typography variant="body" class="text-[8px] text-[var(--text-tertiary)] uppercase tracking-widest mt-2 font-bold opacity-60">Gib mindestens 2 Zeichen ein</Typography>
         </div>
     {/if}
 </div>

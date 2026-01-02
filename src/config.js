@@ -17,8 +17,8 @@ export const LOGIN_JWT_SECRET = import.meta.env.LOGIN_JWT_SECRET || "dev-secret-
 // App Configuration
 export const WEBSITE_NAME = "AEA Graph Visualization";
 export const APP_DOMAIN = dev ? "localhost:5173" : (import.meta.env.VITE_APP_DOMAIN || "data-viz-dash.koljav.workers.dev");
-export const WEBSITE_DESCRIPTION = "Interaktive Netzwerk-Visualisierung für politische Anträge und Unterstützer";
+export const WEBSITE_DESCRIPTION = "Interaktive Netzwerk-Visualisierung für politische Anträge und Unterstützer*innen";
 
 // Data Projects
-export const AVAILABLE_PROJECTS = ["bdk", "la", "ldk_la", "eu"];
+export const AVAILABLE_PROJECTS = ["bdk", "la", "ldk_la"];
 

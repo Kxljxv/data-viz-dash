@@ -34,7 +34,7 @@
                                 {@const Icon = item.icon}
                                 <Icon 
                                     size={14} 
-                                    strokeWidth={2.5}
+                                    stroke={2.5}
                                     style="color: {item.color.includes('text') ? 'var(--bg-100)' : 'white'}" 
                                 />
                             {/if}

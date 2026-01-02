@@ -49,10 +49,13 @@
 		"@auth0/auth0-spa-js": "^2.11.0",
 		"@observablehq/plot": "^0.6.17",
 		"@tabler/icons-svelte": "^3.36.0",
+		"@tanstack/table-core": "^8.21.3",
 		"@tsndr/cloudflare-worker-jwt": "^2.5.3",
 		"d3": "^7.9.0",
 		"d3-hexbin": "^0.2.2",
 		"js-yaml": "^4.1.1",
-		"pdfjs-dist": "^5.4.449"
+		"marked": "^17.0.1",
+		"pdfjs-dist": "^5.4.449",
+		"roughjs": "^4.6.6"
 	}
 }

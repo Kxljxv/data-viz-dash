@@ -16,9 +16,7 @@
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/5 rounded-full blur-[120px] pointer-events-none"></div>
 		
 		<div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-			<Badge variant="outline" class="mb-4 text-brand border-brand/20 bg-brand/5">
-				AEA ANALYTICS SYSTEM v2.0
-			</Badge>
+
 			
 			<Typography tag="h1" variant="display" class="text-white leading-tight">
 				Interaktive Netzwerk-Visualisierung
@@ -59,7 +57,7 @@
 						<Typography variant="label" class="opacity-40 text-[10px]">Visualisierung</Typography>
 					{/snippet}
 					<Typography variant="body" class="text-sm opacity-60">
-						Erkunde komplexe Netzwerke zwischen Anträgen und Unterstützern mit einer leistungsstarken Canvas-basierten Visualisierung.
+						Erkunde komplexe Netzwerke zwischen Anträgen und Unterstützer*innen mit einer leistungsstarken Visualisierung.
 					</Typography>
 				</Card>
 
@@ -69,29 +67,11 @@
 						<Typography variant="label" class="opacity-40 text-[10px]">Analyse</Typography>
 					{/snippet}
 					<Typography variant="body" class="text-sm opacity-60">
-						Analysiere Daten mit detaillierten Inspektionstools, Filtern und Suchfunktionen für maximale Präzision.
+						Analysiere Daten mit detaillierten Inspektionstools, Filtern und Suchfunktionen.
 					</Typography>
 				</Card>
 
-				<Card interactive class="card-glass">
-					{#snippet header()}
-						<Typography variant="h3" class="text-white">Gruppen-Management</Typography>
-						<Typography variant="label" class="opacity-40 text-[10px]">Management</Typography>
-					{/snippet}
-					<Typography variant="body" class="text-sm opacity-60">
-						Erstelle und verwalte benutzerdefinierte Gruppen von Knoten für gezielte Analysen und Vergleiche.
-					</Typography>
-				</Card>
 
-				<Card interactive class="card-glass">
-					{#snippet header()}
-						<Typography variant="h3" class="text-white">Daten-Export</Typography>
-						<Typography variant="label" class="opacity-40 text-[10px]">Export</Typography>
-					{/snippet}
-					<Typography variant="body" class="text-sm opacity-60">
-						Exportiere deine Gruppen und Analyseergebnisse für die weitere Verarbeitung in externen Tools.
-					</Typography>
-				</Card>
 
 				<Card interactive class="card-glass">
 					{#snippet header()}
@@ -103,15 +83,7 @@
 					</Typography>
 				</Card>
 
-				<Card interactive class="card-glass">
-					{#snippet header()}
-						<Typography variant="h3" class="text-white">Modernes Interface</Typography>
-						<Typography variant="label" class="opacity-40 text-[10px]">Design</Typography>
-					{/snippet}
-					<Typography variant="body" class="text-sm opacity-60">
-						Optimiert für Desktop und Mobile mit einem modernen, technischen und zugänglichen Designsystem.
-					</Typography>
-				</Card>
+
 			</div>
 		</div>
 	</section>

@@ -53,19 +53,7 @@
 			</CardContent>
 		</Card>
 
-		<Card variant="glass" class="flex flex-col opacity-60 grayscale-[0.5]">
-			<CardHeader>
-				<CardTitle>Statistiken</CardTitle>
-				<CardDescription>
-					Übersicht über Knoten, Verbindungen und Projekte (Demnächst)
-				</CardDescription>
-			</CardHeader>
-			<CardContent class="mt-auto text-center py-4">
-				<Typography variant="body" class="text-xs text-muted-foreground italic">
-					Derzeit in die Graph-Visualisierung integriert.
-				</Typography>
-			</CardContent>
-		</Card>
+
 	</div>
 
 	<div class="pt-4 border-t border-border/50">

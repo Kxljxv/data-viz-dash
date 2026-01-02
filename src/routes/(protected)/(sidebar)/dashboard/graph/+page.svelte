@@ -14,7 +14,7 @@
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
             <Typography tag="h1" variant="h1" class="text-white">Graph-Visualisierungen</Typography>
-            <Typography variant="body" class="opacity-70 mt-1">Wählen Sie ein Projekt aus, um die Netzwerk-Visualisierung zu öffnen.</Typography>
+            <Typography variant="body" class="opacity-70 mt-1">Wähle ein Projekt aus, um die Netzwerk-Visualisierung zu öffnen.</Typography>
         </div>
         <Button variant="primary">Neuer Graph</Button>
     </div>

@@ -116,7 +116,7 @@
                 <IconSearch size={24} class="text-[var(--text-tertiary)]" />
             </div>
             <p class="text-[10px] text-[var(--text-tertiary)] uppercase tracking-[0.2em] font-black">Suche starten</p>
-            <p class="text-[8px] text-[var(--text-tertiary)] uppercase tracking-widest mt-2 font-bold opacity-60">Geben Sie mindestens 2 Zeichen ein</p>
+            <p class="text-[8px] text-[var(--text-tertiary)] uppercase tracking-widest mt-2 font-bold opacity-60">Gib mindestens zwei Zeichen ein.</p>
         </div>
     {/if}
 </div>

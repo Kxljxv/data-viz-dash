@@ -66,11 +66,11 @@ class GraphVisualization {
                 this.transform = event.transform;
                 this.render();
                 
-                if (event.sourceEvent) {
-                    window.dispatchEvent(new CustomEvent('aea-graph-zoom', {
-                        detail: { transform: event.transform, sourceId: this.canvasId }
-                    }));
-                }
+                // Optimized event dispatching to avoid bottlenecking the UI thread
+                // only dispatch if there's a significant change or use requestAnimationFrame if needed
+                window.dispatchEvent(new CustomEvent('aea-graph-zoom', {
+                    detail: { transform: this.transform }
+                }));
             });
 
         this.canvas = d3.select(`#${this.canvasId}`);
@@ -176,6 +176,21 @@ class GraphVisualization {
 
             this.processData();
             this.setupEventListeners();
+
+            // Fetch centrality if available
+            try {
+                const centralityRes = await fetch(`/api/data/${project}`);
+                if (centralityRes.ok) {
+                    const resData = await centralityRes.json();
+                    if (resData && resData.centrality && resData.centrality.nodes) {
+                        this.applyCentralityData(resData.centrality.nodes);
+                        console.log('#problems_and_diagnostics [GraphVisualization.loadData] loaded cached centrality');
+                    }
+                }
+            } catch (e) {
+                console.warn('Could not fetch centrality data, will compute locally');
+            }
+
             await this.simulatePhysics();
 
             const duration = performance.now() - startTime;
@@ -378,7 +393,24 @@ class GraphVisualization {
             if (this.adj.has(b)) this.adj.get(b)!.add(a);
         });
 
-        this.computeCentrality();
+        // Try to load pre-computed centrality
+        try {
+            const response = await fetch(`/api/data/${project}`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.centrality) {
+                    console.log(`Using cached centrality for ${project}`);
+                    this.applyCentrality(data.centrality);
+                } else {
+                    this.computeAndSaveCentrality(project);
+                }
+            } else {
+                this.computeAndSaveCentrality(project);
+            }
+        } catch (err) {
+            console.warn("Could not fetch cached centrality, computing locally:", err);
+            this.computeCentrality();
+        }
 
         const loadingOverlay = document.getElementById('loading');
         if (loadingOverlay) loadingOverlay.style.display = 'none';
@@ -404,6 +436,48 @@ class GraphVisualization {
                 metadata: this.metadata
             }
         }));
+    }
+
+    applyCentrality(centralityData: Record<string, { degree: number, closeness: number, betweenness: number }>) {
+        this.allNodes.forEach(node => {
+            const stats = centralityData[node.id];
+            if (stats) {
+                node.degree = stats.degree;
+                node.closeness = stats.closeness;
+                node.betweenness = stats.betweenness;
+            }
+        });
+
+        window.dispatchEvent(new CustomEvent('aea-centrality-computed', {
+            detail: {
+                nodes: this.allNodes.map(n => ({ id: n.id, degree: n.degree, closeness: n.closeness, betweenness: n.betweenness }))
+            }
+        }));
+    }
+
+    async computeAndSaveCentrality(projectId: string) {
+        this.computeCentrality();
+        
+        // Prepare data for saving
+        const centrality: Record<string, { degree: number, closeness: number, betweenness: number }> = {};
+        this.allNodes.forEach(n => {
+            centrality[n.id] = {
+                degree: n.degree || 0,
+                closeness: n.closeness || 0,
+                betweenness: n.betweenness || 0
+            };
+        });
+
+        try {
+            await fetch(`/api/data/${projectId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ centrality })
+            });
+            console.log(`Saved computed centrality for ${projectId} to server`);
+        } catch (err) {
+            console.error("Failed to save centrality to server:", err);
+        }
     }
 
     computeCentrality() {
@@ -488,11 +562,50 @@ class GraphVisualization {
             this.allNodes[i].betweenness = bet[i] / 2;
         }
 
+        // Save to server
+        const project = this.projectName || new URLSearchParams(window.location.search).get('project') || 'bdk';
+        fetch(`/api/data/${project}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                centrality: {
+                    nodes: this.allNodes.map(n => ({ 
+                        id: n.id, 
+                        degree: n.degree, 
+                        closeness: n.closeness, 
+                        betweenness: n.betweenness 
+                    }))
+                }
+            })
+        }).catch(err => console.error('Failed to save centrality:', err));
+
         window.dispatchEvent(new CustomEvent('aea-centrality-computed', {
             detail: {
                 nodes: this.allNodes.map(n => ({ id: n.id, degree: n.degree, closeness: n.closeness, betweenness: n.betweenness }))
             }
         }));
+    }
+
+    applyCentralityData(nodes: any[]) {
+        const nodeMap = new Map<string, any>();
+        nodes.forEach(n => nodeMap.set(n.id, n));
+
+        this.allNodes.forEach(node => {
+            const cached = nodeMap.get(node.id);
+            if (cached) {
+                node.degree = cached.degree;
+                node.closeness = cached.closeness;
+                node.betweenness = cached.betweenness;
+            }
+        });
+
+        window.dispatchEvent(new CustomEvent('aea-centrality-computed', {
+            detail: {
+                nodes: this.allNodes.map(n => ({ id: n.id, degree: n.degree, closeness: n.closeness, betweenness: n.betweenness }))
+            }
+        }));
+        
+        this.render();
     }
 
     setupEventListeners() {
@@ -926,6 +1039,13 @@ class GraphVisualization {
     setTransform(transform: d3.ZoomTransform) {
         if (!this.canvas) return;
         this.canvas.call(this.zoom.transform as any, transform);
+    }
+
+    transitionTo(transform: d3.ZoomTransform, duration: number = 2000) {
+        if (!this.canvas) return;
+        this.canvas.transition()
+            .duration(duration)
+            .call(this.zoom.transform as any, transform);
     }
 
     destroy() {

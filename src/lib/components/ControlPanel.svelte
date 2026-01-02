@@ -190,7 +190,7 @@
                 kvModalOpen = true;
                 break;
             case 'delete':
-                if (confirm('Möchten Sie diese Gruppe wirklich löschen?')) {
+                if (confirm('Möchtest du diese Gruppe wirklich löschen?')) {
                     groups = groups.filter(g => g.id !== data);
                     window.dispatchEvent(new CustomEvent('aea-group-update', {
                         detail: { groups }

@@ -13,7 +13,8 @@
     import { 
         IconMenu2, 
         IconArrowLeft, 
-        IconChevronDown 
+        IconChevronDown,
+        IconQuestionMark
     } from "@tabler/icons-svelte";
     import SearchTab from './SearchTab.svelte';
     import ViewTab from './ViewTab.svelte';
@@ -210,7 +211,7 @@
                 kvModalOpen = true;
                 break;
             case 'delete':
-                if (confirm('Möchten Sie diese Gruppe wirklich löschen?')) {
+                if (confirm('Möchtest du diese Gruppe wirklich löschen?')) {
                     groups = groups.filter(g => g.id !== data);
                     window.dispatchEvent(new CustomEvent('aea-group-update', {
                         detail: { groups }
@@ -387,14 +388,19 @@
 <div class="fixed top-4 right-4 md:top-10 md:right-10 z-[5000] flex flex-col items-end pointer-events-none w-[calc(100%-2rem)] md:w-80">
     <!-- Toggle Button (only when closed) -->
     {#if !isOpen}
-        <Button 
-            variant="ghost" 
-            size="icon" 
-            class="pointer-events-auto rounded-xl bg-background/80 backdrop-blur-xl border border-white/5 shadow-lg lg:hidden"
-            onclick={togglePanel}
-        >
-            <IconMenu2 size={20} class="text-white" />
-        </Button>
+        <div class="flex items-center gap-2 pointer-events-auto">
+            <a href="/docs/manual/graph" target="_blank" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/40 hover:text-white transition-all border border-white/5" title="Benutzerhandbuch öffnen">
+                <IconQuestionMark size={18} />
+            </a>
+            <Button 
+                variant="ghost" 
+                size="icon" 
+                onclick={togglePanel}
+                class="lg:hidden text-[var(--text-primary)]"
+            >
+                <IconMenu2 size={24} />
+            </Button>
+        </div>
     {/if}
 
     <!-- Panel Content -->
@@ -413,14 +419,19 @@
                 {/if}
 
                 <!-- Toggle Button (inside panel) -->
-                <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    class="h-9 px-3 rounded-xl border border-white/5 bg-white/5 lg:hidden"
-                    onclick={togglePanel}
-                >
-                    <IconChevronDown size={16} class="text-white/60" />
-                </Button>
+                <div class="flex items-center gap-2">
+                    <a href="/docs/manual/graph" target="_blank" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/40 hover:text-white transition-all border border-white/5" title="Benutzerhandbuch öffnen">
+                        <IconQuestionMark size={16} />
+                    </a>
+                    <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        class="h-9 px-3 rounded-xl border border-white/5 bg-white/5 lg:hidden"
+                        onclick={togglePanel}
+                    >
+                        <IconChevronDown size={16} class="text-white/60" />
+                    </Button>
+                </div>
             </div>
 
             <Tabs value={activeTab} onValueChange={(v) => activeTab = v} class="flex flex-col flex-1 min-h-0 gap-0">

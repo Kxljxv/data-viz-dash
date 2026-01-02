@@ -69,7 +69,7 @@
     }
 
     async function deleteAnalysis(id) {
-        if (!confirm('Möchten Sie diese Analyse wirklich löschen?')) return;
+        if (!confirm('Möchtest du diese Analyse wirklich löschen?')) return;
         
         isDeleting = id;
         try {
@@ -96,8 +96,8 @@
         if (!dateString) return 'Unbekannt';
         const date = new Date(dateString);
         return new Intl.DateTimeFormat('de-DE', {
-            day: '2.digit',
-            month: '2.digit',
+            day: '2-digit',
+            month: '2-digit',
             year: 'numeric'
         }).format(date);
     }
@@ -106,8 +106,8 @@
         if (!dateString) return '';
         const date = new Date(dateString);
         return new Intl.DateTimeFormat('de-DE', {
-            hour: '2.digit',
-            minute: '2.digit'
+            hour: '2-digit',
+            minute: '2-digit'
         }).format(date);
     }
 
@@ -142,7 +142,7 @@
         <div class="flex flex-col items-center justify-center py-12 border-2 border-dashed rounded-xl text-muted-foreground bg-muted/5">
             <BarChart2 class="w-12 h-12 mb-4 opacity-20" />
             <Typography variant="h4" class="font-medium">Keine gespeicherten Analysen gefunden</Typography>
-            <Typography variant="body" class="text-sm">Starten Sie eine Dichte-Analyse, um Ergebnisse zu speichern.</Typography>
+            <Typography variant="body" class="text-sm">Starte eine Dichte-Analyse, um Ergebnisse zu speichern.</Typography>
             <Button variant="ghost" onclick={() => goto('/dashboard/analysis/density')} class="mt-2">
                 Neue Analyse erstellen
             </Button>

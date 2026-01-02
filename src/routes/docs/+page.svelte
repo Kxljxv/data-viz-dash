@@ -78,11 +78,14 @@
                         A high-performance design library built for data-heavy applications. Cyberpunk-Lite aesthetic with glassmorphism, functional minimalism, and WCAG AA compliance.
                     </Typography>
                     <div class="flex gap-4">
-                        <Button variant="primary" onclick={() => goto('/')}>
-                            Get Started
+                        <Button variant="primary" onclick={() => goto('/docs/manual/graph')}>
+                            User Manual
                         </Button>
-                        <Button variant="outline">
-                            Technical Specs
+                        <Button variant="outline" onclick={() => {
+                            const el = document.getElementById('components');
+                            el?.scrollIntoView({ behavior: 'smooth' });
+                        }}>
+                            Component Library
                         </Button>
                     </div>
                 </div>
@@ -94,7 +97,7 @@
         </section>
 
         <!-- Status Overview -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" id="components">
             <Card class="flex items-center gap-4 p-6">
                 <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500">
                     <IconCheck size={24} />

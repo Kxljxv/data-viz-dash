@@ -26,7 +26,7 @@
         position = 'inline', 
         dismissible = true, 
         onDismiss, 
-        icon, 
+        icon: IconProp, 
         actions, 
         children,
         class: className = '',
@@ -56,12 +56,12 @@
         {...rest}
     >
         <div class="banner-content">
-            {#if icon}
+            {#if IconProp}
                 <span class="banner-icon">
-                    {#if typeof icon === 'function' && !icon.prototype}
-                        {@render icon()}
+                    {#if typeof IconProp === 'function' && !IconProp.prototype}
+                        {@render IconProp()}
                     {:else}
-                        <icon size={24} />
+                        <IconProp size={24} />
                     {/if}
                 </span>
             {:else}

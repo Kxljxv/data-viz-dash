@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext, onMount } from 'svelte';
+	import { getContext, onMount, type Snippet, type Component } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 	interface Props {
@@ -7,10 +7,10 @@
 		active?: boolean;
 		disabled?: boolean;
 		class?: string;
-		children?: import('svelte').Snippet;
-		icon?: import('svelte').Snippet | import('svelte').Component<any>;
-		subtitle?: import('svelte').Snippet;
-		extra?: import('svelte').Snippet;
+		children?: Snippet;
+		icon?: Snippet | Component<any>;
+		subtitle?: Snippet;
+		extra?: Snippet;
 		onclick?: (id: string) => void;
 	}
 

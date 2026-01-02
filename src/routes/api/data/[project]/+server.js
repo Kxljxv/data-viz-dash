@@ -11,42 +11,47 @@ export async function GET({ params, platform, url }) {
 	}
 
 	// Check cache first (if KV is available)
-	const cacheKey = `data:${project}`;
-	let cachedData = null;
-
+	const cacheKey = `data:${project}:centrality`;
+	
 	if (platform?.env?.DATA_CACHE) {
 		try {
-			cachedData = await platform.env.DATA_CACHE.get(cacheKey, { type: "json" });
+			const cachedCentrality = await platform.env.DATA_CACHE.get(cacheKey, { type: "json" });
+			if (cachedCentrality) {
+				return json({ centrality: cachedCentrality }, {
+					headers: {
+						"Cache-Control": "public, max-age=3600",
+						"X-Cache": "HIT"
+					}
+				});
+			}
 		} catch (err) {
 			console.error("KV cache read error:", err);
 		}
 	}
 
-	if (cachedData) {
-		return json(cachedData, {
-			headers: {
-				"Cache-Control": "public, max-age=3600",
-				"X-Cache": "HIT"
-			}
-		});
+	return json({ error: "Centrality not cached" }, { status: 404 });
+}
+
+/** @type {import('./$types').RequestHandler} */
+export async function POST({ params, request, platform }) {
+	const { project } = params;
+	const { centrality } = await request.json();
+
+	if (!AVAILABLE_PROJECTS.includes(project)) {
+		return json({ error: "Invalid project" }, { status: 400 });
 	}
 
-	// If not cached, try to load from static files
-	// In production, this would typically load from R2 or another storage
-	// For now, we'll return a response that tells the client to use static files
-	// In a real implementation, you would read from R2 or the file system here
-
-	return json(
-		{ 
-			error: "Data not cached. Please use static files in development.",
-			hint: `Use /data/${project}/data.json for static files`
-		},
-		{ 
-			status: 404,
-			headers: {
-				"X-Cache": "MISS"
-			}
+	if (platform?.env?.DATA_CACHE) {
+		const cacheKey = `data:${project}:centrality`;
+		try {
+			await platform.env.DATA_CACHE.put(cacheKey, JSON.stringify(centrality));
+			return json({ success: true });
+		} catch (err) {
+			console.error("KV cache write error:", err);
+			return json({ error: "Failed to save to KV" }, { status: 500 });
 		}
-	);
+	}
+
+	return json({ error: "KV not available" }, { status: 501 });
 }
 

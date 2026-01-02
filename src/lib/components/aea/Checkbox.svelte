@@ -41,7 +41,7 @@
 				<span class="aea-checkbox-check">
 					<IconCheck 
 						size={14}
-						strokeWidth={variant === 'base' ? 3 : 4} 
+						stroke={variant === 'base' ? 3 : 4} 
 					/>
 				</span>
 			</span>

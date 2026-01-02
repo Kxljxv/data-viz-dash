@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
+	import { getContext, type Snippet, type Component } from 'svelte';
 
 	interface Props {
 		href: string;
-		icon?: import('svelte').Snippet | import('svelte').Component<any>;
+		icon?: Snippet | Component<any>;
 		label: string;
 		active?: boolean;
 		class?: string;

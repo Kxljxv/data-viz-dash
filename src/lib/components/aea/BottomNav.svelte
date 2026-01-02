@@ -37,10 +37,11 @@
             >
                 <span class="aea-bottom-nav-indicator"></span>
                 {#if item.icon}
-                    {#if typeof item.icon === 'function' && !item.icon.prototype}
-                        {@render item.icon()}
+                    {@const ItemIcon = item.icon}
+                    {#if typeof ItemIcon === 'function' && !ItemIcon.prototype}
+                        {@render ItemIcon()}
                     {:else}
-                        <item.icon size={24} />
+                        <ItemIcon size={24} />
                     {/if}
                 {/if}
                 <span class="aea-bottom-nav-label">{item.label}</span>

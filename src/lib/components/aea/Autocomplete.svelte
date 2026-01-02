@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, type Snippet, type Component } from 'svelte';
 	import { IconSearch, IconX } from "@tabler/icons-svelte";
 
 	interface Item {
@@ -7,7 +7,7 @@
 		value: any;
 		group?: string;
 		meta?: string;
-		icon?: import('svelte').Snippet | import('svelte').Component<any>;
+		icon?: Snippet | Component<any>;
 	}
 
 	interface Props {
@@ -192,6 +192,7 @@
 				<div class="aea-autocomplete-group" role="presentation">{groupName}</div>
 				{#each groupItems as item}
 					{@const itemIndex = flatItems.indexOf(item)}
+					{@const ItemIcon = item.icon}
 					<button
 						class="aea-autocomplete-item"
 						class:is-active={activeIndex === itemIndex}
@@ -200,12 +201,12 @@
 						onclick={() => selectItem(item)}
 						type="button"
 					>
-						{#if item.icon}
+						{#if ItemIcon}
 							<div class="aea-autocomplete-item-icon">
-								{#if typeof item.icon === 'function' && !item.icon.prototype}
-									{@render item.icon()}
+								{#if typeof ItemIcon === 'function' && !ItemIcon.prototype}
+									{@render ItemIcon()}
 								{:else}
-									<item.icon size={16} />
+									<ItemIcon size={16} />
 								{/if}
 							</div>
 						{/if}

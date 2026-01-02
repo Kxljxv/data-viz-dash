@@ -24,7 +24,8 @@
 		IconUsers, 
 		IconLogout, 
 		IconMenu2, 
-		IconBolt 
+		IconBolt,
+		IconDatabase
 	} from "@tabler/icons-svelte";
 
 	let { data, children } = $props();
@@ -70,6 +71,13 @@
 			href: '/dashboard/analysis', 
 			active: page.url?.pathname?.startsWith('/dashboard/analysis'),
 			icon: IconAnalyze
+		},
+		{
+			id: 'database',
+			label: 'Datenbank',
+			href: '/dashboard/database',
+			active: page.url?.pathname?.startsWith('/dashboard/database'),
+			icon: IconDatabase
 		},
 		{ 
 			id: 'settings', 

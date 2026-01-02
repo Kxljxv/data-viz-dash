@@ -464,7 +464,7 @@ body {
 }
 
 .modal {
-    background-color: hsla(var(--bg-100) / 0.85);
+    background-color: hsl(var(--bg-100));
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid hsla(var(--border-300) / 0.2);

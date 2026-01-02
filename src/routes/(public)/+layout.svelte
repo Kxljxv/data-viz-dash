@@ -82,15 +82,7 @@
 				</ul>
 			</div>
 
-			<div class="bg-primary/5 rounded-3xl p-6 border border-primary/10">
-				<h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2">Copyright</h3>
-				<p class="text-sm font-bold text-foreground">
-					© 2026 AEA
-				</p>
-				<p class="text-[10px] text-muted-foreground mt-1 uppercase font-black tracking-widest">
-					Alle Rechte vorbehalten
-				</p>
-			</div>
+
 		</div>
 	</div>
 </footer>

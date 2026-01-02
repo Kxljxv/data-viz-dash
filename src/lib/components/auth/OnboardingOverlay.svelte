@@ -24,7 +24,7 @@
     async function handleSubmit(e) {
         e.preventDefault();
         if (!fullName || !kreisverband) {
-            error = "Bitte füllen Sie alle Felder aus.";
+            error = "Bitte fülle alle Felder aus.";
             return;
         }
 
@@ -59,7 +59,7 @@
         <CardHeader class="space-y-1">
             <Typography tag="h2" variant="h2" class="text-center">Willkommen!</Typography>
             <Typography variant="body" class="text-center opacity-70">
-                Bevor Sie AEA nutzen können, benötigen wir noch ein paar Informationen von Ihnen.
+                Bevor du die Seite verwenden kannst, benötigen wir noch ein paar Informationen von dir.
             </Typography>
         </CardHeader>
         <form onsubmit={handleSubmit}>

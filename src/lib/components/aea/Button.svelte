@@ -22,7 +22,7 @@
         loading = false,
         class: className = '',
         onclick,
-        icon,
+        icon: IconProp,
         children,
         ...rest
     } = $props();
@@ -52,9 +52,15 @@
 >
     {#if loading}
         <IconLoader2 class="animate-spin -ml-1 mr-3 h-4 w-4" />
-    {:else if icon}
-        {@render icon()}
+    {:else}
+        {#if IconProp}
+            {#if typeof IconProp === 'function' && !IconProp.prototype}
+                {@render IconProp()}
+            {:else}
+                <IconProp class="-ml-1 mr-2 h-4 w-4" />
+            {/if}
+        {/if}
+        {@render children?.()}
     {/if}
-    {@render children?.()}
 </button>
 

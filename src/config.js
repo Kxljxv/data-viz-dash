@@ -20,5 +20,5 @@ export const APP_DOMAIN = dev ? "localhost:5173" : (import.meta.env.VITE_APP_DOM
 export const WEBSITE_DESCRIPTION = "Interaktive Netzwerk-Visualisierung für politische Anträge und Unterstützer*innen";
 
 // Data Projects
-export const AVAILABLE_PROJECTS = ["bdk", "la", "ldk_la"];
+export const AVAILABLE_PROJECTS = ["bdk", "ldk_la"];
 

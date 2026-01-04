@@ -54,7 +54,7 @@
 
     /** @type {string|null} - Reactive derived path to the PDF document for 'antrag' type nodes. */
     let pdfPath = $derived(
-        node?.type === 'antrag' 
+        (node?.type === 'antrag' || node?.type === 'amendment')
             ? `/data/${project}/pdf/${String(node.id).replace(/[<>:"/\\|?*]/g, '_').trim()}.pdf` 
             : null
     );
@@ -105,7 +105,7 @@
                         <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Beschreibung</Typography>
                         <Typography variant="body" class="text-sm text-[var(--text-primary)]/80 leading-relaxed font-modern">
                             {node.sublabel ? `${node.label} (${node.sublabel})` : node.label} ist Teil des Netzwerks. 
-                            {node.type === 'antrag' ? ' Dieser Antrag weist folgende Verbindungen zu Unterstützern auf.' : ' Diese Person unterstützt folgende Anträge.'}
+                            {(node.type === 'antrag' || node.type === 'amendment') ? ' Dieser Antrag weist folgende Verbindungen zu Unterstützern auf.' : ' Diese Person unterstützt folgende Anträge.'}
                         </Typography>
                     </div>
 
@@ -133,7 +133,7 @@
                                                 onclick={() => handleAction('details', neighbor)}
                                             >
                                                 <TableCell class="py-3">
-                                                    <div class={`w-2 h-2 rounded-full ${neighbor.type === 'antrag' ? 'bg-[hsl(var(--accent-secondary-100))]' : 'bg-[hsl(var(--success-100))]'} opacity-60`}></div>
+                                                    <div class={`w-2 h-2 rounded-full ${(neighbor.type === 'antrag' || neighbor.type === 'amendment') ? 'bg-[hsl(var(--accent-secondary-100))]' : 'bg-[hsl(var(--success-100))]'} opacity-60`}></div>
                                                 </TableCell>
                                                 <TableCell class="py-3">
                                                     <Typography variant="body" class="text-xs text-[var(--text-primary)] truncate block max-w-[120px] font-modern font-bold">{neighbor.label}</Typography>

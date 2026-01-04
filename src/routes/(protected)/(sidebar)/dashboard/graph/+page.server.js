@@ -1,9 +1,9 @@
 import yaml from 'js-yaml';
 import { AVAILABLE_PROJECTS } from '$config';
 
-// Import all project.yaml files at build time using Vite's glob import
-// We use a relative path from this file to the static/data directory
-const projectConfigs = import.meta.glob('../../../../../../static/data/*/project.yaml', { 
+// Import all project configuration files at build time using Vite's glob import
+// We support both project.yaml and project_config.yaml
+const projectConfigs = import.meta.glob('../../../../../../static/data/*/project*.yaml', { 
     as: 'raw', 
     eager: true 
 });
@@ -15,12 +15,16 @@ export async function load() {
     // Process the imported configurations
     for (const [filePath, content] of Object.entries(projectConfigs)) {
         try {
-            // Extract the project ID from the file path (e.g., .../static/data/bdk/project.yaml -> bdk)
-            const pathParts = filePath.split('/');
+            // Extract the project ID from the file path
+            const normalizedPath = filePath.replace(/\\/g, '/');
+            const pathParts = normalizedPath.split('/');
             const id = pathParts[pathParts.length - 2];
             
             // Only include if it's in our list of available projects
             if (AVAILABLE_PROJECTS.includes(id)) {
+                // Skip if we already processed this project
+                if (projects.some(p => p.id === id)) continue;
+
                 const config = yaml.load(content);
                 
                 projects.push({

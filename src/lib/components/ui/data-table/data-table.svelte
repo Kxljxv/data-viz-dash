@@ -8,7 +8,8 @@
         getFacetedUniqueValues,
         getFacetedMinMaxValues,
         type SortingState,
-        type ColumnFiltersState
+        type ColumnFiltersState,
+        type Updater
     } from "@tanstack/table-core";
     import {
         createSvelteTable,
@@ -43,7 +44,7 @@
         get data() {
             return data;
         },
-        columns,
+        columns: columns as ColumnDef<TData, any>[],
         state: {
             get sorting() {
                 return sorting;
@@ -63,21 +64,21 @@
             pagination: { pageIndex: 0, pageSize: 100 },
             expanded: {},
         },
-        onSortingChange: (updater) => {
+        onSortingChange: (updater: Updater<SortingState>) => {
             if (typeof updater === "function") {
                 sorting = updater(sorting);
             } else {
                 sorting = updater;
             }
         },
-        onColumnFiltersChange: (updater) => {
+        onColumnFiltersChange: (updater: Updater<ColumnFiltersState>) => {
             if (typeof updater === "function") {
                 columnFilters = updater(columnFilters);
             } else {
                 columnFilters = updater;
             }
         },
-        onGlobalFilterChange: (updater) => {
+        onGlobalFilterChange: (updater: Updater<string>) => {
              if (typeof updater === "function") {
                 globalFilter = updater(globalFilter);
             } else {
@@ -93,7 +94,7 @@
     });
 
     $effect(() => {
-        table.setOptions((prev) => ({
+        table.setOptions((prev: any) => ({
             ...prev,
             data,
             columns,
@@ -128,12 +129,12 @@
 </script>
 
 <div class="rounded-md border bg-card/50 backdrop-blur-md">
-    <Table.Root>
+    <Table.Root class="">
         <Table.Header class="sticky top-0 z-10 bg-background/80 backdrop-blur-md">
             {#each headerGroups as headerGroup (headerGroup.id)}
-                <Table.Row>
+                <Table.Row class="">
                     {#each headerGroup.headers as header (header.id)}
-                        <Table.Head colspan={header.colSpan}>
+                        <Table.Head class="" colspan={header.colSpan}>
                             {#if !header.isPlaceholder}
                                 <FlexRender
                                     content={header.column.columnDef.header}
@@ -145,23 +146,23 @@
                 </Table.Row>
             {/each}
         </Table.Header>
-        <Table.Body>
+        <Table.Body class="">
             <!-- Description Row -->
             <Table.Row class="bg-brand/5 border-b border-brand/10">
                 {#each columns as column}
                     <Table.Cell class="py-2 px-4">
                         <div class="flex items-center gap-2 text-[10px] text-brand/60 italic">
                             <IconInfoCircle size={12} class="shrink-0" />
-                            <span>{column.meta?.description || "-"}</span>
+                            <span>{(column as any).meta?.description || "-"}</span>
                         </div>
                     </Table.Cell>
                 {/each}
             </Table.Row>
 
             {#each rowModel.rows as row (row.id)}
-                <Table.Row data-state={row.getIsSelected() && "selected"}>
+                <Table.Row class="" data-state={row.getIsSelected() && "selected"}>
                     {#each row.getVisibleCells() as cell (cell.id)}
-                        <Table.Cell>
+                        <Table.Cell class="">
                             <FlexRender
                                 content={cell.column.columnDef.cell}
                                 context={cell.getContext()}
@@ -170,7 +171,7 @@
                     {/each}
                 </Table.Row>
             {:else}
-                <Table.Row>
+                <Table.Row class="">
                     <Table.Cell colspan={columns.length} class="h-24 text-center">
                         Keine Ergebnisse.
                     </Table.Cell>

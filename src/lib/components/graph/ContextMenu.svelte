@@ -51,12 +51,18 @@
             visible = false;
         };
 
+        const handleHide = () => {
+            visible = false;
+        };
+
         window.addEventListener('aea-context-menu', handleContextMenu);
+        window.addEventListener('aea-context-menu-hide', handleHide);
         window.addEventListener('click', handleClick);
         window.addEventListener('scroll', handleClick);
 
         return () => {
             window.removeEventListener('aea-context-menu', handleContextMenu);
+            window.removeEventListener('aea-context-menu-hide', handleHide);
             window.removeEventListener('click', handleClick);
             window.removeEventListener('scroll', handleClick);
         };
@@ -150,7 +156,7 @@
             <div class="aea-button-group-indicator"></div>
         </button>
         
-        {#if node?.type === 'antrag'}
+        {#if node?.type === 'antrag' || node?.type === 'amendment'}
             <button type="button" class="aea-button-group-item" onclick={openLink}>
                 <IconFileText size={14} />
                 Öffnen

@@ -165,7 +165,7 @@
                         />
 
                         <div class="space-y-3">
-                            <label class="text-[10px] font-black text-white/30 uppercase tracking-widest block ml-1">Farbschema</label>
+                            <div class="text-[10px] font-black text-white/30 uppercase tracking-widest block ml-1">Farbschema</div>
                             <div class="flex flex-wrap gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
                                 {#each presets as p}
                                     <button 

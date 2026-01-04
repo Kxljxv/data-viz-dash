@@ -5,7 +5,8 @@
     import StatusBar from '$components/graph/StatusBar.svelte';
     import ContextMenu from '$components/graph/ContextMenu.svelte';
     import { Spinner, Typography, Button, Card } from '$lib/components/aea';
-    import GraphVisualizationModule from '$components/graph/GraphVisualization';
+    // Remove static import to prevent SSR errors with Sigma.js (WebGL2)
+    // import GraphVisualizationModule from '$components/graph/GraphVisualization';
     import { tourStore } from '$lib/stores/tourStore.svelte';
     import { IconChevronRight, IconChevronLeft, IconX, IconMap } from '@tabler/icons-svelte';
     import * as d3 from 'd3';
@@ -83,7 +84,10 @@
         dismissTour();
     }
 
-    onMount(() => {
+    onMount(async () => {
+        // Dynamically import GraphVisualization to avoid SSR issues
+        const GraphVisualizationModule = (await import('$components/graph/GraphVisualization')).default;
+
         const handleZoom = (e) => {
             graphTransform = {
                 x: e.detail.transform.x,
@@ -123,9 +127,9 @@
             }
 
             // Use GraphVisualization from module or window
-            if (GraphVisualization) {
+            if (GraphVisualizationModule) {
                 // Initialize graph
-                graphInstance = new GraphVisualization(stats.project);
+                graphInstance = new GraphVisualizationModule(stats.project, 'graph-container');
                 window.graph = graphInstance;
                 
                 // Sync initial stats if data already loaded
@@ -153,7 +157,7 @@
 </svelte:head>
 
 <div class="relative h-screen w-screen overflow-hidden bg-[var(--bg-graph)]">
-    <canvas id="graph-canvas" class="z-10" aria-label="Interaktive Netzwerk-Visualisierung"></canvas>
+    <div id="graph-container" class="absolute inset-0 z-10" aria-label="Interaktive Netzwerk-Visualisierung"></div>
 
     <div id="loading" class="absolute inset-0 z-[10000] flex items-center justify-center bg-[hsl(var(--bg-300))] backdrop-blur-xl">
         <div class="text-center flex flex-col items-center gap-6">

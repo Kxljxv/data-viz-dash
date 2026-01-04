@@ -2,7 +2,7 @@ export interface GraphNode extends d3.SimulationNodeDatum {
     id: string;
     label: string;
     sublabel?: string;
-    type: 'antrag' | 'supporter';
+    type: 'antrag' | 'supporter' | 'amendment' | 'person';
     color: string;
     linkCount: number;
     font: string;
@@ -30,6 +30,7 @@ export interface GraphSettings {
     showAntraege: boolean;
     showSupporters: boolean;
     nodeSize: number;
+    linearZoom: boolean;
 }
 
 export interface DensityContours {

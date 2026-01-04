@@ -67,7 +67,7 @@
         if (!graph?.allNodes) return [];
         const kvs = new Set();
         graph.allNodes.forEach(node => {
-            if (node.type === 'supporter' && node.sublabel) {
+            if ((node.type === 'supporter' || node.type === 'person') && node.sublabel) {
                 kvs.add(node.sublabel);
             }
         });
@@ -486,4 +486,3 @@
 
 <style>
 </style>
-

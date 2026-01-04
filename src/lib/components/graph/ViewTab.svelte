@@ -28,7 +28,7 @@
                 <Checkbox 
                     id="showAntraege"
                     checked={settings.showAntraege}
-                    onCheckedChange={(checked) => onUpdate('showAntraege', checked)}
+                    onchange={(checked) => onUpdate('showAntraege', checked)}
                 />
             </div>
 
@@ -39,7 +39,7 @@
                 <Checkbox 
                     id="showSupporters"
                     checked={settings.showSupporters}
-                    onCheckedChange={(checked) => onUpdate('showSupporters', checked)}
+                    onchange={(checked) => onUpdate('showSupporters', checked)}
                 />
             </div>
         </div>
@@ -56,7 +56,7 @@
                     <Checkbox 
                         id="showLabels"
                         checked={settings.showLabels}
-                        onCheckedChange={(checked) => onUpdate('showLabels', checked)}
+                        onchange={(checked) => onUpdate('showLabels', checked)}
                     />
                 </div>
 
@@ -67,7 +67,19 @@
                     <Checkbox 
                         id="showLinks"
                         checked={settings.showLinks}
-                        onCheckedChange={(checked) => onUpdate('showLinks', checked)}
+                        onchange={(checked) => onUpdate('showLinks', checked)}
+                    />
+                </div>
+
+                <div class="gap-5 flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
+                    <div class="flex flex-col">
+                        <Typography tag="label" for="linearZoom" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Linearer Zoom</Typography>
+                        <Typography variant="body" class="text-[9px] text-[var(--text-tertiary)] font-medium leading-tight mt-1">Knotengröße skaliert linear mit dem Zoom</Typography>
+                    </div>
+                    <Checkbox 
+                        id="linearZoom"
+                        checked={settings.linearZoom}
+                        onchange={(checked) => onUpdate('linearZoom', checked)}
                     />
                 </div>
             </div>

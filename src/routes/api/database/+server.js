@@ -1,140 +1,114 @@
 import { json } from "@sveltejs/kit";
-import { AVAILABLE_PROJECTS } from "$config";
+import path from "node:path";
 
 /** @type {import('./$types').RequestHandler} */
-export async function GET({ fetch }) {
-    const supporters = [];
-    const amendments = [];
-
-    // Helper to find or create a supporter entry
-    // Since "Supporters from different projects with the same name are not combined!",
-    // we scope the cache by project.
-    const getSupporter = (projectMap, name, kv, project) => {
-        const key = `${name}|${kv}`;
-        if (!projectMap.has(key)) {
-            const cleanName = name.trim();
-            const cleanKv = (kv || '').trim();
-            const graphId = cleanKv ? `${cleanName} | ${cleanKv}` : cleanName;
-
-            const newSupporter = {
-                id: crypto.randomUUID(), // Unique ID for UI keys
-                graphId: graphId,
-                name,
-                kv,
-                project,
-                supported: [], // List of amendment objects { id, label }
-                applied: []    // List of amendment objects { id, label }
-            };
-            projectMap.set(key, newSupporter);
-            supporters.push(newSupporter);
-        }
-        return projectMap.get(key);
-    };
-
-    for (const project of AVAILABLE_PROJECTS) {
-        if (project === "LA") continue; // Exclude LA project
-        if (project === "la") continue; // Exclude la project case-insensitive
-
-        try {
-            const response = await fetch(`/data/${project}/data.json`);
-            if (!response.ok) {
-                console.warn(`Failed to fetch data for project ${project}`);
-                continue;
-            }
-
-            const data = await response.json();
-            const projectSupporters = new Map(); // Local map for this project
-
-            Object.values(data).forEach(item => {
-                // 1. Process Amendment
-                const amendment = {
-                    id: item.application_id,
-                    label: item.heading,
-                    project: project,
-                    applicants: [], // List of names
-                    supporterCount: item.supporters ? item.supporters.length : 0,
-                    supporters: [], // List of names for the modal
-                    url: item.url || `/data/${project}/pdf/${item.application_id.replace('TO', 'A')}.pdf`
-                };
-                
-                // Refine URL: In the file list, PDFs are like 51BDK-A-02-137.pdf
-                // The IDs are like 51BDK-TO-01-008.
-                // It seems 'TO' maps to something else or the ID structure varies.
-                // For now, we'll try a best-effort link or just link to the graph.
-                // Re-reading requirements: "URL" column. 
-                // Let's use a generic PDF path if possible, or leave it if unknown.
-                // Actually, let's look at the data again. 
-                // "heading": "51BDK-TO-01-008: ..."
-                // PDF files: 51BDK-A-... 
-                // Maybe TO stands for Tagesordnung?
-                
-                amendments.push(amendment);
-
-                // 2. Process Applicants
-                if (item.applicant) {
-                    // item.applicant can be a list of strings or list of lists?
-                    // "applicant": ["Jürgen Blümer", "KV Warendorf"] -> This looks like ONE applicant with Name + KV.
-                    // Or is it multiple applicants? 
-                    // Looking at data.json: "applicant": ["Name", "KV"] seems to be a single tuple.
-                    // Wait, let's check if it's an array of arrays.
-                    // In data.json: "applicant": ["Jürgen Blümer", "KV Warendorf"]
-                    // "supporters": [ ["Name", "KV"], ["Name", "KV"] ]
-                    // So "applicant" seems to be a single entry [Name, KV].
-                    // But typically there can be multiple applicants.
-                    // Let's assume for now it is one [Name, KV] tuple based on the sample.
-                    
-                    // Robust check:
-                    let applicantsList = [];
-                    if (Array.isArray(item.applicant) && item.applicant.length > 0) {
-                        if (Array.isArray(item.applicant[0])) {
-                             // Array of arrays
-                             applicantsList = item.applicant;
-                        } else {
-                             // Single array [Name, KV]
-                             applicantsList = [item.applicant];
-                        }
-                    }
-
-                    applicantsList.forEach(([name, kv]) => {
-                        const cleanName = name.trim();
-                        const cleanKv = (kv || '').trim();
-                        const graphId = cleanKv ? `${cleanName} | ${cleanKv}` : cleanName;
-                        
-                        amendment.applicants.push({
-                            label: name,
-                            kv: kv,
-                            id: graphId
-                        });
-                        const supp = getSupporter(projectSupporters, name, kv, project);
-                        supp.applied.push({ id: amendment.id, label: amendment.label });
-                    });
-                }
-
-                // 3. Process Supporters
-                if (item.supporters && Array.isArray(item.supporters)) {
-                    item.supporters.forEach(([name, kv]) => {
-                        const cleanName = name.trim();
-                        const cleanKv = (kv || '').trim();
-                        const graphId = cleanKv ? `${cleanName} | ${cleanKv}` : cleanName;
-                        
-                        amendment.supporters.push({
-                            label: name,
-                            kv: kv,
-                            id: graphId
-                        });
-                        const supp = getSupporter(projectSupporters, name, kv, project);
-                        supp.supported.push({ id: amendment.id, label: amendment.label });
-                    });
-                }
-            });
-
-        } catch (error) {
-            console.error(`Error processing project ${project}:`, error);
-        }
+export async function GET() {
+    let Database;
+    try {
+        const mod = await import("better-sqlite3");
+        Database = mod.default || mod;
+    } catch (e) {
+        return new Response(
+            JSON.stringify({ error: "SQLite not available in this runtime" }),
+            { status: 501, headers: { "content-type": "application/json" } }
+        );
     }
 
-    return json({
-        supporters,
-        amendments
+    const dbDir = path.join(process.cwd(), "static", "data", "database");
+    const amendmentsPath = path.join(dbDir, "amendments.sqlite");
+    const personsPath = path.join(dbDir, "persons.sqlite");
+
+    const amendDb = new Database(amendmentsPath, { readonly: true });
+    const personsDb = new Database(personsPath, { readonly: true });
+
+    const amendmentsRows = amendDb
+        .prepare("SELECT id, convention, url, label, applicant_id, supporter_ids FROM amendments")
+        .all();
+
+    const personsRows = personsDb
+        .prepare("SELECT id, name, kv, applicated_ids, applicated_count, supported_ids, supported_count, conventions FROM persons")
+        .all();
+
+    const personById = new Map();
+    for (const p of personsRows) {
+        personById.set(p.id, {
+            id: p.id,
+            name: p.name || "",
+            kv: p.kv || "",
+            applicated_ids: safeJsonParseArray(p.applicated_ids),
+            supported_ids: safeJsonParseArray(p.supported_ids),
+            applicated_count: Number(p.applicated_count || 0),
+            supported_count: Number(p.supported_count || 0),
+            conventions: safeJsonParseArray(p.conventions),
+        });
+    }
+
+    const amendmentLabelById = new Map();
+    for (const a of amendmentsRows) {
+        amendmentLabelById.set(a.id, a.label || a.id);
+    }
+
+    const supporters = personsRows.map((p) => {
+        const graphId = p.kv ? `${p.name} | ${p.kv}` : (p.name || p.id);
+        const supported = safeJsonParseArray(p.supported_ids).map((aid) => ({
+            id: aid,
+            label: amendmentLabelById.get(aid) || aid,
+        }));
+        const applied = safeJsonParseArray(p.applicated_ids).map((aid) => ({
+            id: aid,
+            label: amendmentLabelById.get(aid) || aid,
+        }));
+        return {
+            id: crypto.randomUUID(),
+            graphId,
+            name: p.name,
+            kv: p.kv,
+            project: (safeJsonParseArray(p.conventions)[0]) || "",
+            supported,
+            applied,
+            supportedCount: p.supported_count || supported.length,
+            applicatedCount: p.applicated_count || applied.length,
+        };
     });
+
+    const amendments = amendmentsRows.map((a) => {
+        const supportersIds = safeJsonParseArray(a.supporter_ids);
+        const supportersList = supportersIds.map((pid) => {
+            const person = personById.get(pid);
+            return {
+                id: pid,
+                label: person?.name || pid,
+                kv: person?.kv || "",
+            };
+        });
+        const applicant = personById.get(a.applicant_id);
+        const applicants = applicant
+            ? [{ id: a.applicant_id, label: applicant.name || a.applicant_id, kv: applicant.kv || "" }]
+            : [];
+        return {
+            id: a.id,
+            label: a.label,
+            project: a.convention || "",
+            applicants,
+            applicantLabels: applicants.map((x) => x.label).join(", "),
+            supporterCount: supportersIds.length,
+            supporters: supportersList,
+            url: a.url || "",
+        };
+    });
+
+    amendDb.close();
+    personsDb.close();
+
+    return json({ supporters, amendments });
+}
+
+function safeJsonParseArray(value) {
+    if (!value) return [];
+    try {
+        const parsed = JSON.parse(value);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch {
+        return [];
+    }
 }

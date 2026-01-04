@@ -143,7 +143,7 @@ class GraphVisualization {
         const nodeMap = new Map();
         const links = [];
 
-        const antragColor = getComputedStyle(document.documentElement).getPropertyValue('--node-antrag').trim() || '#d86b74';
+        const antragColor = getComputedStyle(document.documentElement).getPropertyValue('--node-amendment').trim() || '#d86b74';
         const supporterColor = getComputedStyle(document.documentElement).getPropertyValue('--node-supporter').trim() || '#7dff00';
 
         const getSupporterId = (name, kv) => {

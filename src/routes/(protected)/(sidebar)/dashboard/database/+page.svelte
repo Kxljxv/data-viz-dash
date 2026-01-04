@@ -67,6 +67,88 @@
 
 
 
+    // Supporter Columns
+    const supporterColumns = [
+        {
+            accessorKey: "name",
+            header: (ctx) => renderComponent(HeaderCell, { label: "Name", column: ctx.column }),
+            cell: (ctx) => {
+                const val = ctx.getValue();
+                return renderSnippet(createRawSnippet(() => ({
+                    render: () => `<div class="font-medium text-sm">${val}</div>`
+                })));
+            },
+            meta: { description: "Name des Unterstützers" }
+        },
+        {
+            accessorKey: "kv",
+            header: (ctx) => renderComponent(HeaderCell, { label: "KV / Gliederung", column: ctx.column }),
+            cell: (ctx) => {
+                const val = ctx.getValue();
+                return renderSnippet(createRawSnippet(() => ({
+                    render: () => `<div class="text-xs opacity-70 italic">${val || "-"}</div>`
+                })));
+            },
+            meta: { description: "Kreisverband oder Gliederung" }
+        },
+        {
+            accessorKey: "project",
+            header: (ctx) => renderComponent(HeaderCell, { label: "Projekt", column: ctx.column }),
+            cell: (ctx) => {
+                const val = ctx.getValue();
+                return renderSnippet(createRawSnippet(() => ({
+                    render: () => `<span class="uppercase text-[10px] font-bold px-2 py-0.5 rounded-full bg-brand/10 text-brand/80 border border-brand/20">${val}</span>`
+                })));
+            },
+            meta: { description: "Zugehöriges Projekt" }
+        },
+        {
+            accessorKey: "applied",
+            header: (ctx) => renderComponent(HeaderCell, { label: "Antragsteller", column: ctx.column }),
+            cell: (ctx) => {
+                const val = ctx.getValue();
+                const row = ctx.row.original;
+                return renderComponent(ListTriggerCell, {
+                    count: val.length,
+                    title: `Anträge von ${row.name}`,
+                    items: val,
+                    project: row.project,
+                    onOpenModal: openModal
+                });
+            },
+            meta: { description: "Anzahl der selbst gestellten Anträge" }
+        },
+        {
+            accessorKey: "supported",
+            header: (ctx) => renderComponent(HeaderCell, { label: "Unterstützt", column: ctx.column }),
+            cell: (ctx) => {
+                const val = ctx.getValue();
+                const row = ctx.row.original;
+                return renderComponent(ListTriggerCell, {
+                    count: val.length,
+                    title: `Unterstützte Anträge von ${row.name}`,
+                    items: val,
+                    project: row.project,
+                    onOpenModal: openModal
+                });
+            },
+            meta: { description: "Anzahl der unterstützten Anträge" }
+        },
+        {
+            id: "actions",
+            header: "Aktion",
+            cell: (ctx) => {
+                const row = ctx.row.original;
+                return renderComponent(ActionCell, {
+                    project: row.project,
+                    id: row.graphId,
+                    onclick: goToGraph
+                });
+            },
+            meta: { description: "Zum Graphen springen" }
+        }
+    ];
+
     // Amendment Columns
     const amendmentColumns = [
         {

@@ -2,7 +2,7 @@ export interface GraphNode extends d3.SimulationNodeDatum {
     id: string;
     label: string;
     sublabel?: string;
-    type: 'antrag' | 'supporter' | 'amendment' | 'person';
+    type: 'antrag' | 'supporter' | 'amendment' | 'person' | 'prs';
     color: string;
     linkCount: number;
     font: string;

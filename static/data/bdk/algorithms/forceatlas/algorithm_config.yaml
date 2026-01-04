@@ -1,4 +1,0 @@
-# The label and description of the layout are here. There is also a flag indicating whether or not the layout is experimental. If so, there is a badge indicating that.  
-label: 'ForceAtlas'
-description: 'ForceAtlas is a ...'
-experimental: false

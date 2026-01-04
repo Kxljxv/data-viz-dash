@@ -1,7 +1,0 @@
-# Here, you have to add things like short, medium, and long headings; descriptions; and URLs to external sites for the project. 
-heading:
-  short: '51. BDK'
-  medium: '51. Bundesdelegiertenkonferenz'
-  long: '51. Bundesdelegiertenkonferenz in Hannover'
-description: 'Mit dieser Visualisierung kannst du die Änderungsanträge und Unterstützer der Bundesdelegiertenkonferenz in Hannover visualisieren.'
-url: 'https://antraege.gruene.de/51bdk'

@@ -121,7 +121,8 @@ export default class GraphVisualization {
                 applicant: NodeCircleProgram,
                 supporter: NodeCircleProgram,
                 amendment: NodeCircleProgram,
-                person: NodeCircleProgram
+                person: NodeCircleProgram,
+                prs: NodeCircleProgram
             },
             edgeProgramClasses: {
                 line: EdgeRectangleProgram,
@@ -150,12 +151,48 @@ export default class GraphVisualization {
     async loadData() {
         try {
             // Load the GEXF file
-            // Note: We use the specific path provided by the user, but made it dynamic for the project
             const project = this.projectName || 'bdk';
-            const response = await fetch(`/data/${project}/algorithms/forceatlas/graph.gexf`);
-            if (!response.ok) throw new Error(`Failed to load GEXF file for project ${project}`);
             
-            const gexfString = await response.text();
+            // Potential paths to try
+            const pathsToTry = [
+                `/data/${project}/algorithms/forceatlas/graph.gexf.gz`,
+                `/data/${project}.gexf.gz`,
+                `/data/${project}/algorithms/forceatlas/graph.gexf`,
+                `/data/${project}.gexf`
+            ];
+            
+            let response: Response | null = null;
+            let loadedPath = '';
+            
+            for (const path of pathsToTry) {
+                try {
+                    const res = await fetch(path);
+                    if (res.ok) {
+                        response = res;
+                        loadedPath = path;
+                        break;
+                    }
+                } catch (e) {
+                    continue;
+                }
+            }
+
+            if (!response || !response.ok) {
+                throw new Error(`Failed to load GEXF file for project ${project} from any expected path`);
+            }
+            
+            let gexfString: string;
+
+            if (loadedPath.endsWith('.gz')) {
+                // Decompress the .gz file
+                const ds = new DecompressionStream('gzip');
+                const decompressedStream = response.body!.pipeThrough(ds);
+                gexfString = await new Response(decompressedStream).text();
+                console.log(`Loaded compressed graph from ${loadedPath}`);
+            } else {
+                gexfString = await response.text();
+                console.log(`Loaded uncompressed graph from ${loadedPath}`);
+            }
             
             // Parse GEXF into Graphology graph
             // Handle different import behaviors for CommonJS modules in Vite
@@ -180,7 +217,7 @@ export default class GraphVisualization {
                 // Set default colors based on type
                 if (attr.type === 'antrag' || attr.type === 'amendment') {
                     this.graph.setNodeAttribute(node, 'color', COLOR_AMENDMENT);
-                } else if (attr.type === 'supporter' || attr.type === 'person') {
+                } else if (attr.type === 'supporter' || attr.type === 'person' || attr.type === 'prs') {
                     this.graph.setNodeAttribute(node, 'color', COLOR_SUPPORTER);
                 } else if (!attr.color) {
                     this.graph.setNodeAttribute(node, 'color', '#999');

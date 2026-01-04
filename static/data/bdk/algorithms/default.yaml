@@ -1,2 +1,0 @@
-# This YAML only defines which layout folder is the default folder selected from the beginning. When a new folder is added, that has an algorithm_config.yaml, it will be automatically added to the algorithms list.
-default_folder: 'forceatlas'

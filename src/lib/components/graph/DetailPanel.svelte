@@ -95,17 +95,38 @@
                         <Card variant="glass" class="border border-[hsl(var(--text-500)/0.2)]">
                             <CardContent class="p-4">
                                 <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Typ</Typography>
-                                <Typography variant="body" class="text-sm font-mono text-[var(--text-primary)] uppercase">{node.type || 'Knoten'}</Typography>
+                                <Typography variant="body" class="text-sm font-mono text-[var(--text-primary)] uppercase">{node.type === 'prs' ? 'Person' : (node.type || 'Knoten')}</Typography>
                             </CardContent>
                         </Card>
+                        {#if node.convention}
+                            <Card variant="glass" class="border border-[hsl(var(--text-500)/0.2)] col-span-2">
+                                <CardContent class="p-4">
+                                    <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Versammlung</Typography>
+                                    <Typography variant="body" class="text-sm font-mono text-[var(--text-primary)]">{node.convention}</Typography>
+                                </CardContent>
+                            </Card>
+                        {/if}
+                        {#if node.kv}
+                            <Card variant="glass" class="border border-[hsl(var(--text-500)/0.2)] col-span-2">
+                                <CardContent class="p-4">
+                                    <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Kreisverband</Typography>
+                                    <Typography variant="body" class="text-sm font-mono text-[var(--text-primary)]">{node.kv}</Typography>
+                                </CardContent>
+                            </Card>
+                        {/if}
                     </div>
 
                     <!-- Description / Content -->
                     <div class="space-y-3">
                         <Typography variant="label" class="text-[10px] font-black text-[hsl(var(--text-300))] uppercase tracking-[0.2em] block mb-1">Beschreibung</Typography>
                         <Typography variant="body" class="text-sm text-[var(--text-primary)]/80 leading-relaxed font-modern">
-                            {node.sublabel ? `${node.label} (${node.sublabel})` : node.label} ist Teil des Netzwerks. 
-                            {(node.type === 'antrag' || node.type === 'amendment') ? ' Dieser Antrag weist folgende Verbindungen zu Unterstützern auf.' : ' Diese Person unterstützt folgende Anträge.'}
+                            {#if node.type === 'antrag' || node.type === 'amendment'}
+                                Dieser Antrag {node.convention ? `aus der Versammlung ${node.convention}` : ''} weist folgende Verbindungen zu Unterstützern auf.
+                            {:else if node.type === 'prs' || node.type === 'person' || node.type === 'supporter'}
+                                {node.label} {node.kv ? `aus dem KV ${node.kv}` : ''} unterstützt folgende Anträge im Netzwerk.
+                            {:else}
+                                {node.label} ist Teil des Netzwerks.
+                            {/if}
                         </Typography>
                     </div>
 

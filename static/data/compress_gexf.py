@@ -16,17 +16,25 @@ def compress_gexf_files(root_directory):
                 print(f"Compressing {file_path} -> {gz_path}")
                 
                 try:
+                    temp_gz_path = f"{gz_path}.tmp"
                     with open(file_path, 'rb') as f_in:
-                        with gzip.open(gz_path, 'wb', compresslevel=9) as f_out:
+                        with gzip.open(temp_gz_path, 'wb', compresslevel=9) as f_out:
                             shutil.copyfileobj(f_in, f_out)
                     
                     # Verify the compressed file exists and is not empty before removing original
-                    if os.path.exists(gz_path) and os.path.getsize(gz_path) > 0:
+                    if os.path.exists(temp_gz_path) and os.path.getsize(temp_gz_path) > 0:
+                        if os.path.exists(gz_path):
+                            os.remove(gz_path)
+                        os.rename(temp_gz_path, gz_path)
                         os.remove(file_path)
                         print(f"Successfully compressed and removed original: {file_path}")
                     else:
+                        if os.path.exists(temp_gz_path):
+                            os.remove(temp_gz_path)
                         print(f"Error: Compression failed for {file_path}")
                 except Exception as e:
+                    if 'temp_gz_path' in locals() and os.path.exists(temp_gz_path):
+                        os.remove(temp_gz_path)
                     print(f"Error processing {file_path}: {e}")
 
 if __name__ == "__main__":

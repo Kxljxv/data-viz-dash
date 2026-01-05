@@ -19,27 +19,26 @@
 
     /** @type {string} - The current search query string. */
     let searchQuery = $state('');
+    
     /** @type {any[]} - The list of nodes matching the search query. */
-    let searchResults = $state([]);
-
-    /**
-     * Performs a search across all nodes in the graph based on the query.
-     * Searches in label, sublabel, and ID (case-insensitive).
-     */
-    function handleSearch() {
-        if (!graph) return;
-        if (!searchQuery || searchQuery.length < 2) {
-            searchResults = [];
-            return;
+    let searchResults = $derived.by(() => {
+        if (!graph || !searchQuery || searchQuery.trim().length < 2) {
+            return [];
         }
-
+        
+        const query = searchQuery.toLowerCase().trim();
         const nodes = graph.allNodes || [];
-        searchResults = nodes.filter(n =>
-            (n.label && n.label.toLowerCase().includes(searchQuery.toLowerCase())) ||
-            (n.sublabel && n.sublabel.toLowerCase().includes(searchQuery.toLowerCase())) ||
-            (n.id && n.id.toLowerCase().includes(searchQuery.toLowerCase()))
-        ).slice(0, 1000);
-    }
+        
+        return nodes.filter(n => {
+            const label = (n.label || '').toLowerCase();
+            const sublabel = (n.sublabel || '').toLowerCase();
+            const id = (n.id || '').toLowerCase();
+            
+            return label.includes(query) || 
+                   sublabel.includes(query) || 
+                   id.includes(query);
+        }).slice(0, 500);
+    });
 
     /**
      * Behandelt den Rechtsklick auf eine Karte, um das Kontextmenü zu öffnen.
@@ -63,13 +62,10 @@
         <Input 
             type="search"
             bind:value={searchQuery}
-            oninput={handleSearch}
             placeholder="Nach Entitäten suchen..."
-            class="bg-muted border-[hsl(var(--text-500)/0.1)] rounded-2xl h-12 pl-12 pr-5 text-sm font-modern placeholder:text-[var(--text-tertiary)] w-full focus:bg-background transition-colors"
+            showClear={true}
+            class="bg-muted border-[hsl(var(--text-500)/0.1)] rounded-2xl h-12 text-sm font-modern placeholder:text-[var(--text-tertiary)] w-full focus:bg-background transition-colors"
         />
-        <div class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-40">
-            <IconSearch size={20} class="text-[var(--text-primary)]" />
-        </div>
     </div>
 
     {#if searchResults.length > 0}

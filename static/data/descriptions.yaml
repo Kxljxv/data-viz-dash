@@ -1,0 +1,19 @@
+51bdk:
+  short: "51. BDK"
+  medium: "51. Bundesdelegiertenkonferenz"
+  long: "51. Bundesdelegiertenkonferenz in Hannover"
+  nodes: 5000
+  edges: 30000
+bdk_all:
+  short: "43.-51. BDK's"
+  medium: "43.-51. Bundesdelegiertenkonferenzen"
+  long: "43.-51. Bundesdelegiertenkonferenzen kombiniert"
+  nodes: 22000
+  edges: 210000
+ldk_la:
+  short: "LDK's & LA's"
+  medium: "LDK's & LA's seit 2020"
+  long: "Alle (auf Antragsgrün verfügbaren) LDK's und LA's seit 2020 kombiniert"
+  nodes: 1700
+  edges: 9000
+# This is just optional, 

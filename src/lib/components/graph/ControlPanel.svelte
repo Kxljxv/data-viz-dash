@@ -130,7 +130,7 @@
                 detail: { action: 'center', nodeId: node.id }
             }));
             window.dispatchEvent(new CustomEvent('aea-view-action', {
-                detail: { action: 'highlight', nodeId: node.id }
+                detail: { action: 'select', nodeId: node.id }
             }));
         }
     }

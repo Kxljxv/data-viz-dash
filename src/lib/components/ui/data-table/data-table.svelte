@@ -44,7 +44,9 @@
         get data() {
             return data;
         },
-        columns: columns as ColumnDef<TData, any>[],
+        get columns() {
+            return columns as ColumnDef<TData, any>[];
+        },
         state: {
             get sorting() {
                 return sorting;

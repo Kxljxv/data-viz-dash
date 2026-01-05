@@ -1,52 +1,67 @@
 import yaml from 'js-yaml';
 import { AVAILABLE_PROJECTS } from '$config';
 
-// Import all project configuration files at build time using Vite's glob import
-// We support both project.yaml and project_config.yaml
-const projectConfigs = import.meta.glob('../../../../../../static/data/*/project*.yaml', { 
-    as: 'raw', 
+// Import the descriptions file
+const descriptionsRaw = import.meta.glob('../../../../../../static/data/descriptions.yaml', { 
+    query: '?raw',
+    import: 'default',
+    eager: true 
+});
+
+// Import all GEXF files to detect available graphs
+const gexfFiles = import.meta.glob('../../../../../../static/data/*.gexf*', { 
+    query: '?url',
+    import: 'default',
     eager: true 
 });
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
     const projects = [];
-
-    // Process the imported configurations
-    for (const [filePath, content] of Object.entries(projectConfigs)) {
+    
+    // Load descriptions
+    let descriptions = {};
+    const descPath = Object.keys(descriptionsRaw)[0];
+    if (descPath && descriptionsRaw[descPath]) {
         try {
-            // Extract the project ID from the file path
-            const normalizedPath = filePath.replace(/\\/g, '/');
-            const pathParts = normalizedPath.split('/');
-            const id = pathParts[pathParts.length - 2];
-            
-            // Only include if it's in our list of available projects
-            if (AVAILABLE_PROJECTS.includes(id)) {
-                // Skip if we already processed this project
-                if (projects.some(p => p.id === id)) continue;
-
-                const config = yaml.load(content);
-                
-                projects.push({
-                    id,
-                    name: config.heading?.medium || config.heading?.short || id,
-                    description: config.description || '',
-                    date: config.date || '',
-                    nodeCount: config.nodeCount || 0,
-                    heading: config.heading
-                });
-            }
+            descriptions = yaml.load(descriptionsRaw[descPath]) || {};
         } catch (e) {
-            console.error(`Error processing project config from ${filePath}:`, e);
+            console.error("Error loading descriptions.yaml:", e);
         }
     }
 
-    // Sort projects by date descending
-    projects.sort((a, b) => {
-        const dateA = a.date ? new Date(a.date) : new Date(0);
-        const dateB = b.date ? new Date(b.date) : new Date(0);
-        return dateB - dateA;
-    });
+    // Process available GEXF files
+    const foundProjectIds = new Set();
+    
+    for (const filePath of Object.keys(gexfFiles)) {
+        // Extract filename from path
+        const fileName = filePath.split('/').pop();
+        if (!fileName) continue;
+        
+        // Extract project ID (e.g., "51bdk" from "51bdk.gexf.gz")
+        const id = fileName.split('.')[0];
+        if (!id || foundProjectIds.has(id)) continue;
+        
+        foundProjectIds.add(id);
+        
+        const desc = descriptions[id] || {};
+        
+        projects.push({
+            id,
+            name: desc.medium || desc.short || id,
+            description: desc.long || desc.medium || '',
+            date: desc.date || '',
+            nodeCount: desc.nodeCount || 0,
+            heading: {
+                short: desc.short || id,
+                medium: desc.medium || id,
+                long: desc.long || id
+            }
+        });
+    }
+
+    // Sort projects by ID or date if available
+    projects.sort((a, b) => a.id.localeCompare(b.id));
 
     return {
         projects

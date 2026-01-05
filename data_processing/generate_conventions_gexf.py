@@ -3,44 +3,60 @@ import os
 import re
 import gzip
 import shutil
+import math
 from tqdm import tqdm
 
 # Configuration
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 YAML_FILE = os.path.join(SCRIPT_DIR, "amendments_pipeline.yaml")
-OUTPUT_GEXF = os.path.join(SCRIPT_DIR, "ldk_la.gexf")
+OUTPUT_GEXF = os.path.join(SCRIPT_DIR, "bdk_all.gexf")
 
 def compress_file(file_path):
-    """Compresses a file using gzip and removes the original."""
+    """Compresses a file using gzip safely."""
     gz_path = f"{file_path}.gz"
+    temp_gz_path = f"{gz_path}.tmp"
     print(f"Compressing {file_path} -> {gz_path}")
     try:
         with open(file_path, 'rb') as f_in:
-            with gzip.open(gz_path, 'wb', compresslevel=9) as f_out:
+            with gzip.open(temp_gz_path, 'wb', compresslevel=9) as f_out:
                 shutil.copyfileobj(f_in, f_out)
-        if os.path.exists(gz_path) and os.path.getsize(gz_path) > 0:
+        
+        # Verify the temp file exists and is not empty
+        if os.path.exists(temp_gz_path) and os.path.getsize(temp_gz_path) > 0:
+            # Atomic rename to the final destination
+            if os.path.exists(gz_path):
+                os.remove(gz_path)
+            os.rename(temp_gz_path, gz_path)
             os.remove(file_path)
             print(f"Successfully compressed and removed original: {file_path}")
         else:
+            if os.path.exists(temp_gz_path):
+                os.remove(temp_gz_path)
             print(f"Error: Compression failed for {file_path}")
     except Exception as e:
+        if os.path.exists(temp_gz_path):
+            os.remove(temp_gz_path)
         print(f"Error compressing {file_path}: {e}")
 
-# Convention IDs to include
-# You can add or remove IDs from this list as needed
-CONVENTION_IDS = [    
-    "LDK20",
-    "LDK23-1",
-    "LDK23-3",
-    "LDK24-1",
-    "LDK24-2",
-    "LDK25-1",
-    "LDK25-2",
-    "LDK26-1",
-    "LA25-3",
-    "LA25-4",
-    "LA26-1"
-]
+# Convention IDs and their dates
+CONVENTION_DATA = {
+    "43bdk": 2018.86, # 10.11.2018 approx
+    "44bdk": 2019.87, # 16.11.2019
+    "45bdk": 2020.89, # 21.11.2020
+    "46bdk": 2021.45, # 12.06.2021
+    "48bdk": 2022.79, # 15.10.2022
+    "49bdk": 2018.87, # 16.10.2018
+    "50bdk": 2018.88, # 17.10.2018
+    "51bdk": 2018.89, # 18.10.2018
+}
+
+# If True, persons with only one connection (degree 1) are excluded from the graph
+FILTER_SINGLE_LINK_SUPPORTERS = False
+
+CONVENTION_IDS = list(CONVENTION_DATA.keys())
+
+def get_conv_year(cid):
+    return CONVENTION_DATA.get(cid, 2020.0) # Default if not found
 
 RE_ID_CLEAN = re.compile(r'[^a-z0-9-]')
 
@@ -81,14 +97,15 @@ def generate_gexf():
 
     print("Building network...")
     nodes = {}  # id -> {label, type, ...attrs}
-    edges = []  # (source, target, weight, type)
     
-    # Track node weight components
-    # For amendments: number of supporters
-    # For persons: supports + (applications * 5)
+    # Track person stats per convention: pid -> convention -> {'supports': 0, 'authored': 0}
+    person_convention_stats = {}
+    
+    # Track raw connections to build edges later: (source, target, type)
+    raw_connections = []
+    
+    # Track amendment info for node weights
     amendment_supporters_count = {} # aid -> count
-    prs_supports_count = {}      # pid -> count
-    prs_applications_count = {}  # pid -> count
     
     # Track which nodes have at least one connection
     connected_nodes = set()
@@ -135,12 +152,22 @@ def generate_gexf():
                         'type': 'prs'
                     }
                 
-                prs_applications_count[author_id] = prs_applications_count.get(author_id, 0) + 1
+                # Track stats for person weight
+                if author_id not in person_convention_stats:
+                    person_convention_stats[author_id] = {}
+                if convention not in person_convention_stats[author_id]:
+                    person_convention_stats[author_id][convention] = {'supports': 0, 'authored': 0}
+                person_convention_stats[author_id][convention]['authored'] += 1
                 
-                edge = (author_id, aid)
-                if edge not in seen_edges:
-                    edges.append({'source': author_id, 'target': aid, 'weight': 5, 'type': 'authored'})
-                    seen_edges.add(edge)
+                edge_key = (author_id, aid)
+                if edge_key not in seen_edges:
+                    raw_connections.append({
+                        'source': author_id, 
+                        'target': aid, 
+                        'type': 'authored',
+                        'convention': convention
+                    })
+                    seen_edges.add(edge_key)
                     connected_nodes.add(author_id)
                     connected_nodes.add(aid)
 
@@ -165,29 +192,120 @@ def generate_gexf():
                 }
             
             amendment_supporters_count[aid] += 1
-            prs_supports_count[s_id] = prs_supports_count.get(s_id, 0) + 1
             
-            edge = (s_id, aid)
-            if edge not in seen_edges:
-                edges.append({'source': s_id, 'target': aid, 'weight': 1, 'type': 'supports'})
-                seen_edges.add(edge)
+            # Track stats for person weight
+            if s_id not in person_convention_stats:
+                person_convention_stats[s_id] = {}
+            if convention not in person_convention_stats[s_id]:
+                person_convention_stats[s_id][convention] = {'supports': 0, 'authored': 0}
+            person_convention_stats[s_id][convention]['supports'] += 1
+            
+            edge_key = (s_id, aid)
+            if edge_key not in seen_edges:
+                raw_connections.append({
+                    'source': s_id, 
+                    'target': aid, 
+                    'type': 'supports',
+                    'convention': convention
+                })
+                seen_edges.add(edge_key)
                 connected_nodes.add(s_id)
                 connected_nodes.add(aid)
 
-    # Second pass: finalize node weights and filter connected nodes
+    # Calculate final person weights based on the new formula
+    # pid -> cid -> weight
+    person_convention_weights = {}
+    # pid -> sum of weights
+    person_sum_weights = {}
+    # pid -> weighted date average
+    person_weighted_date_avg = {}
+    
+    for pid, convs in person_convention_stats.items():
+        person_convention_weights[pid] = {}
+        total_w = 0
+        weighted_date_sum = 0
+        
+        for cid, stats in convs.items():
+            # Formula: prsconventionweight = cube root of (supported + 5 * authored)
+            w = math.pow(stats['supports'] + 5 * stats['authored'], 1/3)
+            person_convention_weights[pid][cid] = w
+            
+            total_w += w
+            conv_year = get_conv_year(cid)
+            weighted_date_sum += w * conv_year
+            
+        person_sum_weights[pid] = total_w
+        if total_w > 0:
+            person_weighted_date_avg[pid] = weighted_date_sum / total_w
+        else:
+            person_weighted_date_avg[pid] = 2020.0 # Fallback
+
+    # Calculate degrees to support FILTER_SINGLE_LINK_SUPPORTERS
+    node_degrees = {}
+    for conn in raw_connections:
+        s, t = conn['source'], conn['target']
+        node_degrees[s] = node_degrees.get(s, 0) + 1
+        node_degrees[t] = node_degrees.get(t, 0) + 1
+
+    # Second pass: finalize node weights and build edges with the new weights
     final_nodes = {}
     for nid, ninfo in nodes.items():
         if nid not in connected_nodes:
             continue
             
+        # Optional Filter: Skip persons with only one connection
+        if FILTER_SINGLE_LINK_SUPPORTERS and ninfo['type'] == 'prs' and node_degrees.get(nid, 0) <= 1:
+            continue
+
         if ninfo['type'] == 'amendment':
             ninfo['weight'] = amendment_supporters_count.get(nid, 0)
         else:
-            supports = prs_supports_count.get(nid, 0)
-            apps = prs_applications_count.get(nid, 0)
-            ninfo['weight'] = supports + (apps * 5)
+            # Use total sum weight for node size visualization
+            ninfo['weight'] = 10 * round(person_sum_weights.get(nid, 0))
         
         final_nodes[nid] = ninfo
+
+    edges = []
+    for i, conn in enumerate(raw_connections):
+        source = conn['source']
+        target = conn['target']
+        
+        # Skip edges where source or target was filtered out
+        if source not in final_nodes or target not in final_nodes:
+            continue
+
+        ctype = conn['type']
+        cid = conn['convention']
+        
+        # New complex edge weight formula
+        # sum_weights = total experience across all conventions
+        total_w = person_sum_weights.get(source, 1.0)
+        # weight_in_this_conv = experience in the specific convention of the amendment
+        weight_this_conv = person_convention_weights.get(source, {}).get(cid, 1.0)
+        # weighted_date_avg = the person's "average activity year"
+        weighted_date_avg = person_weighted_date_avg.get(source, 2020.0)
+        # current_year = year of the amendment's convention
+        current_year = get_conv_year(cid)
+        
+        # Formula part 1: sqrt(total_w) / sqrt(weight_this_conv)
+        ratio = math.sqrt(total_w) / math.sqrt(max(0.001, weight_this_conv))
+        
+        # Formula part 2: (1 + 2 * weighted_date_avg / current_year)
+        temporal_factor = (1 + 2 * (weighted_date_avg / current_year))
+        
+        weight = ratio * temporal_factor
+        
+        # Apply 5x multiplier for authored edges
+        if ctype == 'authored':
+            weight *= 5.0
+            
+        edges.append({
+            'id': f"e{i}",
+            'source': source,
+            'target': target,
+            'weight': weight,
+            'type': ctype
+        })
 
     print(f"Writing GEXF to {OUTPUT_GEXF}...")
     try:
@@ -232,9 +350,6 @@ def generate_gexf():
             f.write('  </graph>\n')
             f.write('</gexf>\n')
         print(f"Success! Created {OUTPUT_GEXF} with {len(final_nodes)} nodes and {len(edges)} edges.")
-        
-        # Compress the output file
-        compress_file(OUTPUT_GEXF)
         
     except Exception as e:
         print(f"Error writing GEXF: {e}")

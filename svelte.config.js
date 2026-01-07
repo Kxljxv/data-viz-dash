@@ -17,7 +17,6 @@ const config = {
 			$design: "./src/lib/design_library",
 			$config: "./src/config.js",
 			$appcss: "./src/app.css",
-			$graphlib: "./custom-graph-lib",
 		}
 	},
 	preprocess: [vitePreprocess({})],

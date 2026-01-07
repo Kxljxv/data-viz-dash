@@ -9,7 +9,7 @@ from tqdm import tqdm
 # Configuration
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 YAML_FILE = os.path.join(SCRIPT_DIR, "amendments_pipeline.yaml")
-OUTPUT_GEXF = os.path.join(SCRIPT_DIR, "ldk_la.gexf")
+OUTPUT_GEXF = os.path.join(SCRIPT_DIR, "bdk_all.gexf")
 
 def compress_file(file_path):
     """Compresses a file using gzip safely."""
@@ -40,16 +40,14 @@ def compress_file(file_path):
 
 # Convention IDs and their dates
 CONVENTION_DATA = {
-    "LDK26-1": 2026.12, # 14.02.2026
-    "LDK25-2": 2025.89, # 22.11.2025
-    "LDK24-2": 2024.92, # 30.11.2024
-    "LDK24-1": 2024.34, # 04.05.2024
-    "LDK23-3": 2023.95, # 13.12.2023
-    "LDK23-2": 2023.42, # 03.06.2023
-    "LDK23-1": 2023.06, # 21.01.2023
-    "LDK20": 2020.80, # 20.10.2020
-    "LA25-4": 2025.94, # 10.12.2025
-    "LA25-3": 2025.75, # 01.10.2025
+    "43bdk": 2018.86, # 10.11.2018 approx
+    "44bdk": 2019.87, # 16.11.2019
+    "45bdk": 2020.89, # 21.11.2020
+    "46bdk": 2021.45, # 12.06.2021
+    "48bdk": 2022.79, # 15.10.2022
+    "49bdk": 2018.87, # 16.10.2018
+    "50bdk": 2018.88, # 17.10.2018
+    "51bdk": 2018.89, # 18.10.2018
 }
 
 # If True, persons with only one connection (degree 1) are excluded from the graph
@@ -87,11 +85,8 @@ def generate_gexf():
         return
 
     try:
-        print(f"Opening {YAML_FILE}...")
         with open(YAML_FILE, 'r', encoding='utf-8') as f:
-            print("Loading with yaml.safe_load (this may take a while for large files)...")
             data = yaml.safe_load(f)
-            print(f"Loaded {len(data)} entries.")
     except Exception as e:
         print(f"Error loading YAML: {e}")
         return

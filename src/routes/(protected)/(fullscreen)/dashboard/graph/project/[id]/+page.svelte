@@ -1,66 +1,19 @@
-<script lang="ts">
-    // #region agent log - hypothesis A: TypeScript syntax without lang="ts"
-    fetch('http://127.0.0.1:7243/ingest/b34304f7-5e17-4ac0-9444-78f5a99fcdc1', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            location: '+page.svelte:1',
-            message: 'Script tag loaded, testing TypeScript syntax',
-            data: { hasLangAttr: document?.currentScript?.getAttribute('lang') },
-            timestamp: Date.now(),
-            sessionId: 'debug-session',
-            hypothesisId: 'A'
-        })
-    }).catch(() => {});
-    // #endregion
-
+<script>
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import ControlPanel from '$components/graph/ControlPanel.svelte';
     import StatusBar from '$components/graph/StatusBar.svelte';
     import ContextMenu from '$components/graph/ContextMenu.svelte';
     import { Spinner, Typography, Button, Card } from '$lib/components/aea';
-
-    import GraphRenderer from '$graphlib/GraphRenderer.svelte';
-
-    // #region agent log - hypothesis B: Import path issues during SSR
-    fetch('http://127.0.0.1:7243/ingest/b34304f7-5e17-4ac0-9444-78f5a99fcdc1', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            location: '+page.svelte:8',
-            message: 'GraphRenderer import executed',
-            data: { importExecuted: true },
-            timestamp: Date.now(),
-            sessionId: 'debug-session',
-            hypothesisId: 'B'
-        })
-    }).catch(() => {});
-    // #endregion
+    // Remove static import to prevent SSR errors with Sigma.js (WebGL2)
+    // import GraphVisualizationModule from '$components/graph/GraphVisualization';
     import { tourStore } from '$lib/stores/tourStore.svelte';
     import { IconChevronRight, IconChevronLeft, IconX, IconMap } from '@tabler/icons-svelte';
     import * as d3 from 'd3';
     import { marked } from 'marked';
     import RoughShape from '$lib/components/tour/RoughShape.svelte';
 
-    let graphInstance = $state<any>(null);
-    
-    // #region agent log - hypothesis C: Svelte 5 runes compatibility
-    fetch('http://127.0.0.1:7243/ingest/b34304f7-5e17-4ac0-9444-78f5a99fcdc1', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            location: '+page.svelte:46',
-            message: '$state<any>(null) declared successfully',
-            data: { stateInit: 'success', value: null },
-            timestamp: Date.now(),
-            sessionId: 'debug-session',
-            hypothesisId: 'C'
-        })
-    }).catch(() => {});
-    // #endregion
-
-    let graphRendererComponent: any = null;
+    let graphInstance = $state(null);
     let stats = $state({
         nodes: 0,
         links: 0,
@@ -131,60 +84,9 @@
         dismissTour();
     }
 
-    // Graph settings state
-    let graphSettings = $state({
-        showLabels: false,
-        showLinks: true,
-        showAntraege: true,
-        showSupporters: true,
-        nodeSize: 1,
-        linearZoom: true
-    });
-
-    // Create wrapper object that mimics GraphVisualization API for compatibility
-    $effect(() => {
-        if (graphRendererComponent?.instance) {
-            const wrapper = {
-                get allNodes() {
-                    return graphRendererComponent.instance.allNodes || [];
-                },
-                get allLinks() {
-                    return graphRendererComponent.instance.allLinks || [];
-                },
-                get settings() {
-                    return graphSettings;
-                },
-                setTransform: (transform: any) => {
-                    if (graphRendererComponent.instance.setTransform) {
-                        graphRendererComponent.instance.setTransform(transform);
-                    }
-                },
-                centerOnNode: (nodeId: string) => {
-                    if (graphRendererComponent.instance.centerOnNodeById) {
-                        graphRendererComponent.instance.centerOnNodeById(nodeId);
-                    }
-                }
-            };
-            graphInstance = wrapper;
-            window.graph = wrapper;
-        }
-    });
-
-    // #region agent log - hypothesis D: Module resolution during SSR
-    onMount(() => {
-        fetch('http://127.0.0.1:7243/ingest/b34304f7-5e17-4ac0-9444-78f5a99fcdc1', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                location: '+page.svelte:onMount',
-                message: 'onMount executed successfully',
-                data: { onMountReached: true },
-                timestamp: Date.now(),
-                sessionId: 'debug-session',
-                hypothesisId: 'D'
-            })
-        }).catch(() => {});
-        // #endregion
+    onMount(async () => {
+        // Dynamically import GraphVisualization to avoid SSR issues
+        const GraphVisualizationModule = (await import('$components/graph/GraphVisualization')).default;
 
         const handleZoom = (e) => {
             graphTransform = {
@@ -194,57 +96,53 @@
             };
         };
         window.addEventListener('aea-graph-zoom', handleZoom);
-
-        // #region agent log - hypothesis E: Page params access
-        try {
-            stats.project = $page.params.id || 'bdk';
-            fetch('http://127.0.0.1:7243/ingest/b34304f7-5e17-4ac0-9444-78f5a99fcdc1', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    location: '+page.svelte:page-params',
-                    message: 'Page params accessed successfully',
-                    data: { project: stats.project },
-                    timestamp: Date.now(),
-                    sessionId: 'debug-session',
-                    hypothesisId: 'E'
-                })
-            }).catch(() => {});
-        } catch (e) {
-            fetch('http://127.0.0.1:7243/ingest/b34304f7-5e17-4ac0-9444-78f5a99fcdc1', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    location: '+page.svelte:page-params',
-                    message: 'Page params access failed',
-                    data: { error: e.message },
-                    timestamp: Date.now(),
-                    sessionId: 'debug-session',
-                    hypothesisId: 'E'
-                })
-            }).catch(() => {});
-        }
-        // #endregion
+        
+        stats.project = $page.params.id || 'bdk';
 
         const handleDataLoaded = (event) => {
             stats.nodes = event.detail.nodes.length;
             stats.links = event.detail.links.length;
-            // Hide loading screen
-            const loadingEl = document.getElementById('loading');
-            if (loadingEl) loadingEl.style.display = 'none';
         };
 
         const handleFilterChange = (event) => {
-            // Count active filters
-            let count = 0;
-            if (!graphSettings.showAntraege) count++;
-            if (!graphSettings.showSupporters) count++;
-            if (!graphSettings.showLinks) count++;
-            stats.activeFilters = count;
+            // Count active filters in the graph
+            if (window.graph && window.graph.settings) {
+                let count = 0;
+                const s = window.graph.settings;
+                if (!s.showAntraege) count++;
+                if (!s.showSupporters) count++;
+                // Add more as needed
+                stats.activeFilters = count;
+            }
         };
 
         window.addEventListener('aea-data-loaded', handleDataLoaded);
         window.addEventListener('aea-filter-change', handleFilterChange);
+
+        const initGraph = () => {
+            // Wait for D3.js to be available
+            if (typeof d3 === 'undefined') {
+                setTimeout(initGraph, 100);
+                return;
+            }
+
+            // Use GraphVisualization from module or window
+            if (GraphVisualizationModule) {
+                // Initialize graph
+                graphInstance = new GraphVisualizationModule(stats.project, 'graph-container');
+                window.graph = graphInstance;
+                
+                // Sync initial stats if data already loaded
+                if (graphInstance.allNodes) {
+                    stats.nodes = graphInstance.allNodes.length;
+                    stats.links = graphInstance.allLinks.length;
+                }
+            } else {
+                setTimeout(initGraph, 100);
+            }
+        };
+
+        initGraph();
 
         return () => {
             window.removeEventListener('aea-data-loaded', handleDataLoaded);
@@ -259,13 +157,7 @@
 </svelte:head>
 
 <div class="relative h-screen w-screen overflow-hidden bg-[var(--bg-graph)]">
-    <div id="graph-container" class="absolute inset-0 z-10" aria-label="Interaktive Netzwerk-Visualisierung">
-        <GraphRenderer 
-            bind:this={graphRendererComponent}
-            src={`/data/${stats.project}.gexf.gz`}
-            bind:settings={graphSettings}
-        />
-    </div>
+    <div id="graph-container" class="absolute inset-0 z-10" aria-label="Interaktive Netzwerk-Visualisierung"></div>
 
     <div id="loading" class="absolute inset-0 z-[10000] flex items-center justify-center bg-[hsl(var(--bg-300))] backdrop-blur-xl">
         <div class="text-center flex flex-col items-center gap-6">

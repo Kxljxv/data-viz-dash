@@ -18,6 +18,8 @@ export default class GraphVisualization {
     containerId: string;
     graph: Graph;
     renderer: Sigma | null = null;
+    ogma: any | null = null;
+    isUsingOgma: boolean = false;
     
     // UI State
     selectedNode: any | null = null;
@@ -87,6 +89,25 @@ export default class GraphVisualization {
         // Prevent browser context menu on the container to allow Sigma's rightClickNode to fire
         container.addEventListener('contextmenu', (e) => e.preventDefault());
 
+        const OgmaGlobal = (window as any).Ogma;
+        if (OgmaGlobal) {
+            this.isUsingOgma = true;
+            this.ogma = new OgmaGlobal({ container: this.containerId });
+            this.ogma.graph.setData({ nodes: this.allNodes, edges: this.allLinks });
+            this.setupEventsOgma();
+            this.setupUIListeners();
+            window.dispatchEvent(new CustomEvent('aea-data-loaded', {
+                detail: {
+                    nodes: this.allNodes,
+                    links: this.allLinks
+                }
+            }));
+            const loadingEl = document.getElementById('loading');
+            if (loadingEl) loadingEl.style.display = 'none';
+            this.applyOgmaStyles();
+            return;
+        }
+
         // Initialize Sigma
         const SigmaConstructor = (Sigma as any).default || Sigma;
         this.renderer = new SigmaConstructor(this.graph, container, {
@@ -131,7 +152,7 @@ export default class GraphVisualization {
             // Removed edgeProgramClasses for default line rendering
         });
 
-        this.setupEvents();
+        this.setupEventsSigma();
         this.setupUIListeners();
         
         // Dispatch loaded event
@@ -266,7 +287,7 @@ export default class GraphVisualization {
         }
     }
 
-    setupEvents() {
+    setupEventsSigma() {
         if (!this.renderer) return;
 
         // Click Node
@@ -322,6 +343,44 @@ export default class GraphVisualization {
                 k: 1 / state.ratio
             };
             
+            window.dispatchEvent(new CustomEvent('aea-graph-zoom', {
+                detail: { transform: this.transform }
+            }));
+        });
+    }
+
+    setupEventsOgma() {
+        if (!this.ogma) return;
+        this.ogma.events.on('click:node', (event: any) => {
+            const nodeId = event.target.getId();
+            const attr = this.graph.getNodeAttributes(nodeId);
+            this.selectedNode = { id: nodeId, ...attr };
+            window.dispatchEvent(new CustomEvent('aea-node-selected', {
+                detail: { node: this.selectedNode, openPanel: true }
+            }));
+            this.applyOgmaStyles();
+        });
+        this.ogma.events.on('hover:node', (event: any) => {
+            this.hoveredNode = event.target.getId();
+            this.applyOgmaStyles();
+        });
+        this.ogma.events.on('leave:node', () => {
+            this.hoveredNode = null;
+            this.applyOgmaStyles();
+        });
+        this.ogma.events.on('click:background', () => {
+            this.selectedNode = null;
+            window.dispatchEvent(new CustomEvent('aea-node-selected', {
+                detail: { node: null }
+            }));
+            this.applyOgmaStyles();
+        });
+        this.ogma.view.on('change', (state: any) => {
+            this.transform = {
+                x: state.center.x,
+                y: state.center.y,
+                k: state.zoom
+            };
             window.dispatchEvent(new CustomEvent('aea-graph-zoom', {
                 detail: { transform: this.transform }
             }));
@@ -392,7 +451,8 @@ export default class GraphVisualization {
     }
 
     updateNodeStyles() {
-        this.refreshReducers();
+        if (this.isUsingOgma) this.applyOgmaStyles();
+        else this.refreshReducers();
     }
 
     private dimColor(color: string): string {
@@ -407,6 +467,7 @@ export default class GraphVisualization {
     }
 
     refreshReducers() {
+        if (this.isUsingOgma) return;
         if (!this.renderer) return;
 
         // Node Reducer
@@ -524,7 +585,8 @@ export default class GraphVisualization {
 
     highlightNode(nodeId: string) {
         this.highlightedNodeId = nodeId;
-        this.refreshReducers();
+        if (this.isUsingOgma) this.applyOgmaStyles();
+        else this.refreshReducers();
     }
 
     selectNodeById(nodeId: string) {
@@ -538,68 +600,105 @@ export default class GraphVisualization {
             detail: { node: this.selectedNode, openPanel: false }
         }));
         
-        this.refreshReducers();
+        if (this.isUsingOgma) this.applyOgmaStyles();
+        else this.refreshReducers();
     }
 
     resetHighlight() {
         this.highlightedNodeId = null;
-        this.refreshReducers();
+        if (this.isUsingOgma) this.applyOgmaStyles();
+        else this.refreshReducers();
     }
 
     centerOnNode(nodeId: string) {
-        if (!this.renderer || !this.graph.hasNode(nodeId)) return;
-        
-        // Get Sigma position (which might be normalized)
-        const sigmaPos = this.renderer.getNodeDisplayData(nodeId);
-        if (!sigmaPos) return;
-
-        this.renderer.getCamera().animate({
-            x: sigmaPos.x,
-            y: sigmaPos.y,
-            ratio: 0.15
-        }, { duration: 600 });
+        if (this.isUsingOgma) {
+            if (!this.ogma || !this.graph.hasNode(nodeId)) return;
+            const node = this.ogma.getNode(nodeId);
+            if (!node) return;
+            const pos = node.getPosition();
+            this.ogma.view.animate({ center: pos, zoom: 6 }, { duration: 600 });
+        } else {
+            if (!this.renderer || !this.graph.hasNode(nodeId)) return;
+            const sigmaPos = this.renderer.getNodeDisplayData(nodeId);
+            if (!sigmaPos) return;
+            this.renderer.getCamera().animate({
+                x: sigmaPos.x,
+                y: sigmaPos.y,
+                ratio: 0.15
+            }, { duration: 600 });
+        }
     }
 
     // API for UI to control the graph
     
     setTransform(transform: any) {
-        if (!this.renderer) return;
-        
-        // Transform d3-like transform {x, y, k} to Sigma camera
-        const { x, y, k } = transform;
-        if (x !== undefined && y !== undefined && k !== undefined) {
-            this.renderer.getCamera().animate({
-                x: x,
-                y: y,
-                ratio: 1 / k
-            }, { duration: 500 });
+        if (this.isUsingOgma) {
+            if (!this.ogma) return;
+            const { x, y, k } = transform;
+            if (x !== undefined && y !== undefined && k !== undefined) {
+                this.ogma.view.animate({ center: { x, y }, zoom: k }, { duration: 500 });
+            }
+        } else {
+            if (!this.renderer) return;
+            const { x, y, k } = transform;
+            if (x !== undefined && y !== undefined && k !== undefined) {
+                this.renderer.getCamera().animate({
+                    x: x,
+                    y: y,
+                    ratio: 1 / k
+                }, { duration: 500 });
+            }
         }
     }
 
     centerGraph() {
-        if (!this.renderer) return;
-        this.renderer.getCamera().animate({ x: 0.5, y: 0.5, ratio: 1 }, { duration: 500 });
+        if (this.isUsingOgma) {
+            if (!this.ogma) return;
+            this.ogma.view.animate({ center: { x: 0.5, y: 0.5 }, zoom: 1 }, { duration: 500 });
+        } else {
+            if (!this.renderer) return;
+            this.renderer.getCamera().animate({ x: 0.5, y: 0.5, ratio: 1 }, { duration: 500 });
+        }
     }
 
     updateSettings(newSettings: Partial<GraphSettings>) {
         this.settings = { ...this.settings, ...newSettings };
         
-        if (!this.renderer) return;
-
-        // Apply linear zoom settings if changed
-        if (newSettings.linearZoom !== undefined) {
-            this.renderer.setSetting("nodeSizeReference", this.settings.linearZoom ? "positions" : "pixels");
-            this.renderer.setSetting("edgeSizeReference", this.settings.linearZoom ? "positions" : "pixels");
-            this.renderer.setSetting("zoomToSizeRatioFunction", this.settings.linearZoom ? (x: number) => x : () => 1);
-            this.renderer.setSetting("autoRescale", !this.settings.linearZoom);
+        if (this.isUsingOgma) {
+            this.applyOgmaStyles();
+        } else {
+            if (!this.renderer) return;
+            if (newSettings.linearZoom !== undefined) {
+                this.renderer.setSetting("nodeSizeReference", this.settings.linearZoom ? "positions" : "pixels");
+                this.renderer.setSetting("edgeSizeReference", this.settings.linearZoom ? "positions" : "pixels");
+                this.renderer.setSetting("zoomToSizeRatioFunction", this.settings.linearZoom ? (x: number) => x : () => 1);
+                this.renderer.setSetting("autoRescale", !this.settings.linearZoom);
+            }
+            this.refreshReducers();
         }
-
-        this.refreshReducers();
     }
 
     destroy() {
-        if (this.renderer) {
-            this.renderer.kill();
+        if (this.isUsingOgma) {
+            this.ogma = null;
+        } else {
+            if (this.renderer) {
+                this.renderer.kill();
+            }
         }
+    }
+
+    private applyOgmaStyles() {
+        if (!this.ogma) return;
+        const selectedId = this.selectedNode?.id || null;
+        const rules: any[] = [];
+        rules.push({ selector: 'edge', style: { color: COLOR_LINK, width: this.settings.showLinks ? 0.1 : 0 } });
+        rules.push({ selector: 'node[type="antrag"], node[type="amendment"]', style: { color: COLOR_AMENDMENT } });
+        rules.push({ selector: 'node[type="supporter"], node[type="person"], node[type="prs"]', style: { color: COLOR_SUPPORTER } });
+        if (selectedId) {
+            rules.push({ selector: `edge[source="${selectedId}"], edge[target="${selectedId}"]`, style: { color: 'rgba(153,153,153,0.6)', width: 1 } });
+        }
+        this.ogma.styles.clear();
+        this.ogma.styles.addRules(rules);
     }
 }

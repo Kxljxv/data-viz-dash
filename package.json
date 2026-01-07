@@ -53,12 +53,15 @@
 		"@tanstack/table-core": "^8.21.3",
 		"@tsndr/cloudflare-worker-jwt": "^2.5.3",
 		"better-sqlite3": "^12.5.0",
+		"d3": "^7.9.0",
 		"d3-hexbin": "^0.2.2",
+		"graphology": "^0.26.0",
+		"graphology-gexf": "^0.13.2",
+		"graphology-types": "^0.24.8",
 		"js-yaml": "^4.1.1",
 		"marked": "^17.0.1",
 		"pdfjs-dist": "^5.4.449",
-		"pixi.js": "^8.15.0",
 		"roughjs": "^4.6.6",
-		"svelte-pixi": "^8.0.1"
+		"sigma": "^3.0.2"
 	}
 }

@@ -29,6 +29,7 @@ vite.config.ts.timestamp-*
 data_processing/
 design_library/
 html_design_library/
+custom-graph-lib/
 *.gexf
 !*.gexf.gz
 

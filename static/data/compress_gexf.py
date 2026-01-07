@@ -24,7 +24,7 @@ def compress_gexf_files(root_directory):
                     # Verify the compressed file exists and is not empty before removing original
                     if os.path.exists(temp_gz_path) and os.path.getsize(temp_gz_path) > 0:
                         if os.path.exists(gz_path):
-                            os.remove(gz_path)
+                            print("os.remove(gz_path)")
                         os.rename(temp_gz_path, gz_path)
                         os.remove(file_path)
                         print(f"Successfully compressed and removed original: {file_path}")

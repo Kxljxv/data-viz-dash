@@ -9,7 +9,7 @@ from tqdm import tqdm
 # Configuration
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 YAML_FILE = os.path.join(SCRIPT_DIR, "amendments_pipeline.yaml")
-OUTPUT_GEXF = os.path.join(SCRIPT_DIR, "bdk_all.gexf")
+OUTPUT_GEXF = os.path.join(SCRIPT_DIR, "ldk_la.gexf")
 
 def compress_file(file_path):
     """Compresses a file using gzip safely."""
@@ -87,8 +87,11 @@ def generate_gexf():
         return
 
     try:
+        print(f"Opening {YAML_FILE}...")
         with open(YAML_FILE, 'r', encoding='utf-8') as f:
+            print("Loading with yaml.safe_load (this may take a while for large files)...")
             data = yaml.safe_load(f)
+            print(f"Loaded {len(data)} entries.")
     except Exception as e:
         print(f"Error loading YAML: {e}")
         return

@@ -55,9 +55,9 @@
 		{#snippet header()}
 			<div class="text-center mb-4">
 				<div class="h-12 w-12 rounded-xl bg-brand flex items-center justify-center shadow-lg shadow-brand/20 mx-auto mb-6">
-					<IconBolt size={28} class="text-white" />
+					<IconBolt size={28} class="text-oncolor-100" />
 				</div>
-				<Typography variant="h2" class="text-white">AEA Analytics</Typography>
+				<Typography variant="h2" class="text-foreground">AEA Analytics</Typography>
 				<Typography variant="label" class="opacity-40">Systemzugang</Typography>
 			</div>
 		{/snippet}
@@ -95,7 +95,7 @@
 				</div>
 			{/if}
 
-			<div class="text-center pt-4 border-t border-white/5">
+			<div class="text-center pt-4 border-t border-border/10">
 				<Typography variant="body" class="text-[10px] opacity-40 leading-relaxed uppercase tracking-wider">
 					Für Zugriff auf diese Plattform benötigst du einen freigeschalteten Account.
 				</Typography>

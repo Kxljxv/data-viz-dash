@@ -79,3 +79,4 @@ export { default as Typography } from './Typography.svelte';
 export { default as WaveformChart } from './WaveformChart.svelte';
 export { default as Pagination } from './Pagination.svelte';
 export { default as BottomNav } from './BottomNav.svelte';
+export { default as ThemeToggle } from './ThemeToggle.svelte';

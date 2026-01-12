@@ -698,14 +698,14 @@
 
 <div class="h-[calc(100vh-6rem)] flex flex-col overflow-hidden">
     <!-- Toolbar -->
-    <div class="h-14 border-b border-white/10 flex items-center justify-between px-4 bg-bg-200/50 backdrop-blur">
+    <div class="h-14 border-b border-border/10 flex items-center justify-between px-4 bg-bg-200/50 backdrop-blur">
         <div class="flex items-center gap-4">
-            <Typography variant="h3" class="text-white">{tour?.name}</Typography>
+            <Typography variant="h3" class="text-foreground">{tour?.name}</Typography>
         </div>
         <div class="flex items-center gap-2">
-            <div class="flex items-center border-r border-white/10 pr-2 mr-2">
+            <div class="flex items-center border-r border-border/10 pr-2 mr-2">
                 <button 
-                    class="p-2 rounded hover:bg-white/10 text-white/60 hover:text-white disabled:opacity-20 transition-all"
+                    class="p-2 rounded hover:bg-muted text-foreground/60 hover:text-foreground disabled:opacity-20 transition-all"
                     onclick={undo}
                     disabled={historyIndex <= 0}
                     title="Rückgängig (Ctrl+Z)"
@@ -713,7 +713,7 @@
                     <IconArrowBackUp size={20} />
                 </button>
                 <button 
-                    class="p-2 rounded hover:bg-white/10 text-white/60 hover:text-white disabled:opacity-20 transition-all"
+                    class="p-2 rounded hover:bg-muted text-foreground/60 hover:text-foreground disabled:opacity-20 transition-all"
                     onclick={redo}
                     disabled={historyIndex >= history.length - 1}
                     title="Wiederholen (Ctrl+Y)"
@@ -741,52 +741,52 @@
     </div>
 
     <!-- Floating Toolbar -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-bg-200/90 backdrop-blur border border-white/10 p-2 rounded-xl flex gap-2 shadow-2xl z-30">
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-bg-200/90 backdrop-blur border border-border/10 p-2 rounded-xl flex gap-2 shadow-2xl z-30">
         <button 
-            class="p-3 rounded-lg hover:bg-white/10 transition-all {activeTool === 'select' ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'text-white/60'}"
+            class="p-3 rounded-lg hover:bg-muted transition-all {activeTool === 'select' ? 'bg-brand text-oncolor-100 shadow-lg shadow-brand/20' : 'text-foreground/60'}"
             onclick={() => activeTool = 'select'}
             title="Auswählen (V)"
         >
             <IconPointer size={20} />
         </button>
         <button 
-            class="p-3 rounded-lg hover:bg-white/10 transition-all {activeTool === 'pan' ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'text-white/60'}"
+            class="p-3 rounded-lg hover:bg-muted transition-all {activeTool === 'pan' ? 'bg-brand text-oncolor-100 shadow-lg shadow-brand/20' : 'text-foreground/60'}"
             onclick={() => { activeTool = 'pan'; selectedAnnotationId = null; }}
             title="Verschieben (H)"
         >
             <IconHandStop size={20} />
         </button>
-        <div class="w-px bg-white/10 mx-1"></div>
+        <div class="w-px bg-border/10 mx-1"></div>
         <button 
-            class="p-3 rounded-lg hover:bg-white/10 transition-all {activeTool === 'rect' ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'text-white/60'}"
+            class="p-3 rounded-lg hover:bg-muted transition-all {activeTool === 'rect' ? 'bg-brand text-oncolor-100 shadow-lg shadow-brand/20' : 'text-foreground/60'}"
             onclick={() => addAnnotation('rect')}
             title="Rechteck (R)"
         >
             <IconSquare size={20} />
         </button>
         <button 
-            class="p-3 rounded-lg hover:bg-white/10 transition-all {activeTool === 'circle' ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'text-white/60'}"
+            class="p-3 rounded-lg hover:bg-muted transition-all {activeTool === 'circle' ? 'bg-brand text-oncolor-100 shadow-lg shadow-brand/20' : 'text-foreground/60'}"
             onclick={() => addAnnotation('circle')}
             title="Kreis (C)"
         >
             <IconCircle size={20} />
         </button>
         <button 
-            class="p-3 rounded-lg hover:bg-white/10 transition-all {activeTool === 'arrow' ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'text-white/60'}"
+            class="p-3 rounded-lg hover:bg-muted transition-all {activeTool === 'arrow' ? 'bg-brand text-oncolor-100 shadow-lg shadow-brand/20' : 'text-foreground/60'}"
             onclick={() => addAnnotation('arrow')}
             title="Pfeil (A)"
         >
             <IconArrowRight size={20} />
         </button>
         <button 
-            class="p-3 rounded-lg hover:bg-white/10 transition-all {activeTool === 'draw' ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'text-white/60'}"
+            class="p-3 rounded-lg hover:bg-muted transition-all {activeTool === 'draw' ? 'bg-brand text-oncolor-100 shadow-lg shadow-brand/20' : 'text-foreground/60'}"
             onclick={() => activeTool = 'draw'}
             title="Zeichnen (D)"
         >
             <IconPencil size={20} />
         </button>
         <button 
-            class="p-3 rounded-lg hover:bg-white/10 transition-all {activeTool === 'text' ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'text-white/60'}"
+            class="p-3 rounded-lg hover:bg-muted transition-all {activeTool === 'text' ? 'bg-brand text-oncolor-100 shadow-lg shadow-brand/20' : 'text-foreground/60'}"
             onclick={() => addAnnotation('text')}
             title="Text (T)"
         >
@@ -796,8 +796,8 @@
 
     <div class="flex-1 flex overflow-hidden">
         <!-- Sidebar -->
-        <div class="w-64 border-r border-white/10 bg-bg-200/30 flex flex-col">
-            <div class="p-4 border-b border-white/10 flex justify-between items-center">
+        <div class="w-64 border-r border-border/10 bg-bg-200/30 flex flex-col">
+            <div class="p-4 border-b border-border/10 flex justify-between items-center">
                 <Typography variant="label">Folien</Typography>
                 <button class="text-brand hover:text-brand-light" onclick={addSlide}>
                     <IconPlus size={18} />
@@ -811,7 +811,7 @@
                             role="button"
                             tabindex="0"
                             draggable="true"
-                            class="p-3 rounded-lg border cursor-pointer transition-all group relative {activeSlideIndex === i ? 'bg-brand/10 border-brand' : 'bg-white/5 border-transparent hover:bg-white/10'} {dragOverIndex === i ? 'border-t-brand border-t-2' : ''} {draggedSlideIndex === i ? 'opacity-40' : ''}"
+                            class="p-3 rounded-lg border cursor-pointer transition-all group relative {activeSlideIndex === i ? 'bg-brand/10 border-brand' : 'bg-muted border-transparent hover:bg-muted/80'} {dragOverIndex === i ? 'border-t-brand border-t-2' : ''} {draggedSlideIndex === i ? 'opacity-40' : ''}"
                             onclick={() => selectSlide(i)}
                             onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && selectSlide(i)}
                             ondragstart={() => handleSlideDragStart(i)}
@@ -820,17 +820,17 @@
                             ondrop={() => handleSlideDrop(i)}
                         >
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-white/90">Folie {i + 1}</span>
+                                <span class="text-sm font-medium text-foreground/90">Folie {i + 1}</span>
                                 <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <button 
-                                        class="text-white/20 hover:text-brand transition-colors p-1"
+                                        class="text-foreground/20 hover:text-brand transition-colors p-1"
                                         onclick={(e) => { e.stopPropagation(); duplicateSlide(i); }}
                                         title="Duplizieren"
                                     >
                                         <IconCopy size={14} />
                                     </button>
                                     <button 
-                                        class="text-white/20 hover:text-danger transition-colors p-1"
+                                        class="text-foreground/20 hover:text-danger transition-colors p-1"
                                         onclick={(e) => { e.stopPropagation(); deleteSlide(i); }}
                                         title="Löschen"
                                     >
@@ -841,7 +841,7 @@
                             <input 
                                 type="text" 
                                 bind:value={slide.title}
-                                class="w-full bg-transparent border-none text-xs text-white/60 focus:text-white p-0 focus:ring-0"
+                                class="w-full bg-transparent border-none text-xs text-foreground/60 focus:text-foreground p-0 focus:ring-0"
                                 onclick={(e) => e.stopPropagation()}
                             />
                         </div>
@@ -851,34 +851,34 @@
 
             <!-- Slide Camera Settings -->
             {#if activeSlide}
-                <div class="p-4 border-t border-white/10 bg-bg-300/20">
-                    <Typography variant="label" class="mb-4 block text-white/70">Kamera-Einstellungen</Typography>
+                <div class="p-4 border-t border-border/10 bg-bg-300/20">
+                    <Typography variant="label" class="mb-4 block text-foreground/70">Kamera-Einstellungen</Typography>
                     <div class="space-y-4">
                         <div class="grid grid-cols-2 gap-2">
                             <div>
-                                <label for="cam-x" class="text-[10px] uppercase tracking-wider text-white/40 mb-1 block">Position X</label>
+                                <label for="cam-x" class="text-[10px] uppercase tracking-wider text-foreground/40 mb-1 block">Position X</label>
                                 <Input 
                                     id="cam-x"
                                     type="number" 
                                     value={Math.round(graphTransform.x)} 
                                     onchange={(e) => updateCameraState('x', parseFloat(e.currentTarget.value))}
-                                    class="h-8 text-xs bg-white/5 border-white/10"
+                                    class="h-8 text-xs bg-muted border-border/10"
                                 />
                             </div>
                             <div>
-                                <label for="cam-y" class="text-[10px] uppercase tracking-wider text-white/40 mb-1 block">Position Y</label>
+                                <label for="cam-y" class="text-[10px] uppercase tracking-wider text-foreground/40 mb-1 block">Position Y</label>
                                 <Input 
                                     id="cam-y"
                                     type="number" 
                                     value={Math.round(graphTransform.y)} 
                                     onchange={(e) => updateCameraState('y', parseFloat(e.currentTarget.value))}
-                                    class="h-8 text-xs bg-white/5 border-white/10"
+                                    class="h-8 text-xs bg-muted border-border/10"
                                 />
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <label for="cam-k" class="text-[10px] uppercase tracking-wider text-white/40">Zoom (k)</label>
+                                <label for="cam-k" class="text-[10px] uppercase tracking-wider text-foreground/40">Zoom (k)</label>
                                 <span class="text-[10px] text-brand font-mono">{graphTransform.k.toFixed(2)}x</span>
                             </div>
                             <input 
@@ -889,14 +889,14 @@
                                 step="0.05"
                                 value={graphTransform.k}
                                 oninput={(e) => updateCameraState('k', parseFloat(e.currentTarget.value))}
-                                class="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand"
+                                class="w-full h-1 bg-border/10 rounded-lg appearance-none cursor-pointer accent-brand"
                             />
                         </div>
                     </div>
                 </div>
             {/if}
 
-            <div class="p-4 border-t border-white/10">
+            <div class="p-4 border-t border-border/10">
                 <Button variant="secondary" class="w-full" onclick={togglePlay}>
                     <IconPlayerPlay size={16} class="mr-2" />
                     {isPlaying ? 'Stop' : 'Vorschau'}
@@ -980,7 +980,7 @@
             {#if selectedAnnotationId && activeSlide}
                 {@const ann = activeSlide.annotations.find(a => a.id === selectedAnnotationId)}
                 {#if ann}
-                    <div class="absolute top-4 right-4 w-72 bg-bg-200/95 backdrop-blur border border-white/10 rounded-lg p-4 z-20 shadow-xl max-h-[80vh] overflow-y-auto">
+                    <div class="absolute top-4 right-4 w-72 bg-bg-200/95 backdrop-blur border border-border/10 rounded-lg p-4 z-20 shadow-xl max-h-[80vh] overflow-y-auto">
                         <div class="flex justify-between items-center mb-4">
                             <Typography variant="label">Eigenschaften</Typography>
                             <button 
@@ -994,24 +994,24 @@
                         <div class="space-y-4">
                             <!-- Position & Size -->
                             <div class="space-y-2">
-                                <label class="text-xs text-white/50 block font-bold uppercase">Abmessungen</label>
+                                <label class="text-xs text-foreground/50 block font-bold uppercase">Abmessungen</label>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div>
-                                        <label for="prop-x-{ann.id}" class="text-[10px] text-white/40 block mb-1">X</label>
-                                        <input id="prop-x-{ann.id}" type="number" bind:value={ann.x} class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10" />
+                                        <label for="prop-x-{ann.id}" class="text-[10px] text-foreground/40 block mb-1">X</label>
+                                        <input id="prop-x-{ann.id}" type="number" bind:value={ann.x} class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10" />
                                     </div>
                                     <div>
-                                        <label for="prop-y-{ann.id}" class="text-[10px] text-white/40 block mb-1">Y</label>
-                                        <input id="prop-y-{ann.id}" type="number" bind:value={ann.y} class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10" />
+                                        <label for="prop-y-{ann.id}" class="text-[10px] text-foreground/40 block mb-1">Y</label>
+                                        <input id="prop-y-{ann.id}" type="number" bind:value={ann.y} class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10" />
                                     </div>
                                     {#if ann.type !== 'draw'}
                                         <div>
-                                            <label for="prop-w-{ann.id}" class="text-[10px] text-white/40 block mb-1">Breite</label>
-                                            <input id="prop-w-{ann.id}" type="number" bind:value={ann.width} class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10" />
+                                            <label for="prop-w-{ann.id}" class="text-[10px] text-foreground/40 block mb-1">Breite</label>
+                                            <input id="prop-w-{ann.id}" type="number" bind:value={ann.width} class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10" />
                                         </div>
                                         <div>
-                                            <label for="prop-h-{ann.id}" class="text-[10px] text-white/40 block mb-1">Höhe</label>
-                                            <input id="prop-h-{ann.id}" type="number" bind:value={ann.height} class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10" />
+                                            <label for="prop-h-{ann.id}" class="text-[10px] text-foreground/40 block mb-1">Höhe</label>
+                                            <input id="prop-h-{ann.id}" type="number" bind:value={ann.height} class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10" />
                                         </div>
                                     {/if}
                                 </div>
@@ -1020,24 +1020,24 @@
                             {#if ann.type === 'text'}
                                 <div class="space-y-3">
                                     <div>
-                                        <label for="prop-content-{ann.id}" class="text-xs text-white/50 mb-1 block">Inhalt (Markdown)</label>
+                                        <label for="prop-content-{ann.id}" class="text-xs text-foreground/50 mb-1 block">Inhalt (Markdown)</label>
                                         <textarea 
                                             id="prop-content-{ann.id}"
                                             bind:value={ann.content} 
-                                            class="w-full bg-white/5 rounded px-2 py-1 text-sm text-white border border-white/10 min-h-[100px]"
+                                            class="w-full bg-muted rounded px-2 py-1 text-sm text-foreground border border-border/10 min-h-[100px]"
                                         ></textarea>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2">
                                         <div>
-                                            <label for="prop-fontsize-{ann.id}" class="text-xs text-white/50 mb-1 block">Schriftgröße</label>
-                                            <input id="prop-fontsize-{ann.id}" type="number" bind:value={ann.fontSize} class="w-full bg-white/5 rounded px-2 py-1 text-sm text-white border border-white/10" />
+                                            <label for="prop-fontsize-{ann.id}" class="text-xs text-foreground/50 mb-1 block">Schriftgröße</label>
+                                            <input id="prop-fontsize-{ann.id}" type="number" bind:value={ann.fontSize} class="w-full bg-muted rounded px-2 py-1 text-sm text-foreground border border-border/10" />
                                         </div>
                                         <div>
-                                            <label for="prop-font-{ann.id}" class="text-xs text-white/50 mb-1 block">Schriftart</label>
+                                            <label for="prop-font-{ann.id}" class="text-xs text-foreground/50 mb-1 block">Schriftart</label>
                                             <select 
                                                 id="prop-font-{ann.id}" 
                                                 bind:value={ann.fontFamily}
-                                                class="w-full bg-bg-200 text-white rounded px-2 py-1 text-sm border border-white/10"
+                                                class="w-full bg-bg-200 text-foreground rounded px-2 py-1 text-sm border border-border/10"
                                             >
                                                 <option value="var(--default-font)">Modern Dense</option>
                                                 <option value="var(--serif-font)">Serif</option>
@@ -1051,13 +1051,13 @@
                             
                             <!-- Stroke -->
                             <div class="space-y-2">
-                                <label class="text-xs text-white/50 block font-bold uppercase">Linie</label>
+                                <label class="text-xs text-foreground/50 block font-bold uppercase">Linie</label>
                                 
                                 <!-- Quick Palette -->
                                 <div class="flex gap-1 mb-1 flex-wrap">
-                                    {#each ['#00a8ff', '#00cc66', '#ffaa00', '#ff4444', '#ffffff', '#aaaaaa', '#000000'] as color}
+                                    {#each ['#00a8ff', '#00cc66', '#ffaa00', '#ff4444', 'hsl(var(--always-white))', '#aaaaaa', 'hsl(var(--always-black))'] as color}
                                         <button 
-                                            class="w-5 h-5 rounded-full border border-white/20 transition-transform hover:scale-110"
+                                            class="w-5 h-5 rounded-full border border-border/20 transition-transform hover:scale-110"
                                             style="background-color: {color};"
                                             onclick={() => ann.color = color}
                                             title={color}
@@ -1066,37 +1066,37 @@
                                 </div>
 
                                 <div class="flex items-center justify-between">
-                                    <label for="prop-color-{ann.id}" class="text-xs text-white/70">Farbe</label>
+                                    <label for="prop-color-{ann.id}" class="text-xs text-foreground/70">Farbe</label>
                                     <input id="prop-color-{ann.id}" type="color" bind:value={ann.color} class="bg-transparent border-none w-8 h-8 cursor-pointer" />
                                 </div>
                                 <div class="flex items-center justify-between">
-                                    <label for="prop-sw-{ann.id}" class="text-xs text-white/70">Breite</label>
-                                    <input id="prop-sw-{ann.id}" type="range" min="0.5" max="20" step="0.5" bind:value={ann.strokeWidth} class="w-24 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand" />
-                                    <span class="text-xs text-white/50 w-8 text-right">{ann.strokeWidth}</span>
+                                    <label for="prop-sw-{ann.id}" class="text-xs text-foreground/70">Breite</label>
+                                    <input id="prop-sw-{ann.id}" type="range" min="0.5" max="20" step="0.5" bind:value={ann.strokeWidth} class="w-24 h-1 bg-border/10 rounded-lg appearance-none cursor-pointer accent-brand" />
+                                    <span class="text-xs text-foreground/50 w-8 text-right">{ann.strokeWidth}</span>
                                 </div>
 
                                 {#if ann.type === 'draw'}
                                     <div class="flex items-center justify-between">
-                                        <label for="prop-smooth-{ann.id}" class="text-xs text-white/70">Glättung</label>
-                                        <input id="prop-smooth-{ann.id}" type="range" min="0" max="5" step="0.1" bind:value={ann.smoothing} class="w-24 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand" />
-                                        <span class="text-xs text-white/50 w-8 text-right">{Math.round((ann.smoothing || 0) * 20)}%</span>
+                                        <label for="prop-smooth-{ann.id}" class="text-xs text-foreground/70">Glättung</label>
+                                        <input id="prop-smooth-{ann.id}" type="range" min="0" max="5" step="0.1" bind:value={ann.smoothing} class="w-24 h-1 bg-border/10 rounded-lg appearance-none cursor-pointer accent-brand" />
+                                        <span class="text-xs text-foreground/50 w-8 text-right">{Math.round((ann.smoothing || 0) * 20)}%</span>
                                     </div>
                                 {/if}
 
                                 {#if ann.type === 'rect'}
                                     <div class="flex items-center justify-between">
-                                        <label for="prop-round-{ann.id}" class="text-xs text-white/70">Abgerundet</label>
+                                        <label for="prop-round-{ann.id}" class="text-xs text-foreground/70">Abgerundet</label>
                                         <input 
                                             id="prop-round-{ann.id}"
                                             type="checkbox" 
                                             checked={ann.edges === 'round'} 
                                             onchange={(e) => ann.edges = e.currentTarget.checked ? 'round' : 'sharp'}
-                                            class="w-4 h-4 rounded border-white/10 bg-white/5 text-brand focus:ring-brand" 
+                                            class="w-4 h-4 rounded border-border/10 bg-muted text-brand focus:ring-brand" 
                                         />
                                     </div>
                                     {#if ann.edges === 'round'}
                                         <div class="flex items-center justify-between">
-                                            <label for="prop-radius-{ann.id}" class="text-xs text-white/70 ml-2">Radius</label>
+                                            <label for="prop-radius-{ann.id}" class="text-xs text-foreground/70 ml-2">Radius</label>
                                             <input 
                                                 id="prop-radius-{ann.id}"
                                                 type="range" 
@@ -1104,43 +1104,43 @@
                                                 max={Math.min(ann.width || 0, ann.height || 0) / 2} 
                                                 step="1" 
                                                 bind:value={ann.cornerRadius} 
-                                                class="w-24 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand" 
+                                                class="w-24 h-1 bg-border/10 rounded-lg appearance-none cursor-pointer accent-brand" 
                                             />
-                                            <span class="text-xs text-white/50 w-8 text-right">{Math.round(ann.cornerRadius || 0)}</span>
+                                            <span class="text-xs text-foreground/50 w-8 text-right">{Math.round(ann.cornerRadius || 0)}</span>
                                         </div>
                                     {/if}
                                 {/if}
                             </div>
 
                             <!-- Custom CSS -->
-                            <div class="space-y-2 border-t border-white/10 pt-2">
-                                <label for="prop-css-{ann.id}" class="text-xs text-white/50 block font-bold uppercase">Custom CSS</label>
+                            <div class="space-y-2 border-t border-border/10 pt-2">
+                                <label for="prop-css-{ann.id}" class="text-xs text-foreground/50 block font-bold uppercase">Custom CSS</label>
                                 <textarea 
                                     id="prop-css-{ann.id}"
                                     bind:value={ann.customStyle} 
-                                    placeholder="filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));"
-                                    class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10 min-h-[60px] font-mono"
+                                    placeholder="filter: drop-shadow(0 0 5px hsla(var(--always-black)/0.5));"
+                                    class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10 min-h-[60px] font-mono"
                                 ></textarea>
-                                <p class="text-[10px] text-white/30 italic">z.B. filter: drop-shadow(...), opacity: 0.5</p>
+                                <p class="text-[10px] text-foreground/30 italic">z.B. filter: drop-shadow(...), opacity: 0.5</p>
                             </div>
 
                             <!-- Fill -->
                             {#if ann.type !== 'arrow' && ann.type !== 'draw' && ann.type !== 'text'}
-                                <div class="space-y-2 border-t border-white/10 pt-2">
-                                    <label class="text-xs text-white/50 block font-bold uppercase">Füllung</label>
+                                <div class="space-y-2 border-t border-border/10 pt-2">
+                                    <label class="text-xs text-foreground/50 block font-bold uppercase">Füllung</label>
                                     
                                     <!-- Quick Palette -->
                                     <div class="flex gap-1 mb-1 flex-wrap">
                                         <button 
-                                            class="w-5 h-5 rounded-full border border-white/20 transition-transform hover:scale-110 bg-transparent relative"
+                                            class="w-5 h-5 rounded-full border border-border/20 transition-transform hover:scale-110 bg-transparent relative"
                                             onclick={() => ann.fill = 'none'}
                                             title="Keine Füllung"
                                         >
                                             <div class="absolute inset-0 border-r border-red-500 transform rotate-45"></div>
                                         </button>
-                                        {#each ['#00a8ff', '#00cc66', '#ffaa00', '#ff4444', '#ffffff', '#aaaaaa', '#000000'] as color}
+                                        {#each ['#00a8ff', '#00cc66', '#ffaa00', '#ff4444', 'hsl(var(--always-white))', '#aaaaaa', 'hsl(var(--always-black))'] as color}
                                             <button 
-                                                class="w-5 h-5 rounded-full border border-white/20 transition-transform hover:scale-110"
+                                                class="w-5 h-5 rounded-full border border-border/20 transition-transform hover:scale-110"
                                                 style="background-color: {color};"
                                                 onclick={() => ann.fill = color}
                                                 title={color}
@@ -1149,27 +1149,27 @@
                                     </div>
 
                                     <div class="flex items-center justify-between">
-                                        <label for="prop-fill-{ann.id}" class="text-xs text-white/70">Farbe</label>
+                                        <label for="prop-fill-{ann.id}" class="text-xs text-foreground/70">Farbe</label>
                                         <input id="prop-fill-{ann.id}" type="color" bind:value={ann.fill} class="bg-transparent border-none w-8 h-8 cursor-pointer" />
                                     </div>
                                 </div>
                             {/if}
 
                             <!-- Geometry -->
-                            <div class="space-y-2 border-t border-white/10 pt-2">
-                                <label class="text-xs text-white/50 block font-bold uppercase">Geometrie</label>
+                            <div class="space-y-2 border-t border-border/10 pt-2">
+                                <label class="text-xs text-foreground/50 block font-bold uppercase">Geometrie</label>
                                 <div class="grid grid-cols-2 gap-2">
                                     <div>
-                                        <label class="text-[10px] text-white/40">Breite</label>
-                                        <input type="number" bind:value={ann.width} class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10" />
+                                        <label class="text-[10px] text-foreground/40">Breite</label>
+                                        <input type="number" bind:value={ann.width} class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10" />
                                     </div>
                                     <div>
-                                        <label class="text-[10px] text-white/40">Höhe</label>
-                                        <input type="number" bind:value={ann.height} class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10" />
+                                        <label class="text-[10px] text-foreground/40">Höhe</label>
+                                        <input type="number" bind:value={ann.height} class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10" />
                                     </div>
                                     <div>
-                                        <label class="text-[10px] text-white/40">Rotation</label>
-                                        <input type="number" bind:value={ann.rotation} class="w-full bg-white/5 rounded px-2 py-1 text-xs text-white border border-white/10" />
+                                        <label class="text-[10px] text-foreground/40">Rotation</label>
+                                        <input type="number" bind:value={ann.rotation} class="w-full bg-muted rounded px-2 py-1 text-xs text-foreground border border-border/10" />
                                     </div>
                                 </div>
                             </div>

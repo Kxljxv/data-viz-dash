@@ -238,7 +238,7 @@
     }
 
     .input-icon-trailing:hover {
-        background-color: hsla(var(--always-white) / 0.05);
+        background-color: hsla(var(--text-100) / 0.05);
         color: hsl(var(--text-200));
     }
 

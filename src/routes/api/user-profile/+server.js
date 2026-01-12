@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { getUserSession } from "$lib/server/auth";
+import { getUserSession, getSafeUserId } from "$lib/server/auth";
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request, platform, cookies }) {
@@ -16,6 +16,7 @@ export async function POST({ request, platform, cookies }) {
         }
 
         const userId = session.user.sub;
+        const safeUserId = getSafeUserId(userId);
         const kv = platform?.env?.DATA_CACHE;
 
         if (!kv) {
@@ -31,7 +32,7 @@ export async function POST({ request, platform, cookies }) {
             updatedAt: new Date().toISOString()
         };
 
-        const key = `user_profile:${userId}`;
+        const key = `user_profile__${safeUserId}`;
         await kv.put(key, JSON.stringify(profile));
 
         return json({ success: true, profile });

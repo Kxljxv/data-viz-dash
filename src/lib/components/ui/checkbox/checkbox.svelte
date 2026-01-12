@@ -17,7 +17,7 @@
 	bind:ref
 	data-slot="checkbox"
 	class={cn(
-		"border-[hsl(var(--border-300))] bg-transparent data-[state=checked]:bg-[hsl(var(--accent-pro-100))] data-[state=checked]:text-white data-[state=checked]:border-[hsl(var(--accent-pro-100))] focus-visible:ring-[hsl(var(--accent-pro-100))]/30 peer flex size-5 shrink-0 items-center justify-center rounded-lg border shadow-sm transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+		"border-[hsl(var(--border-300))] bg-transparent data-[state=checked]:bg-[hsl(var(--accent-pro-100))] data-[state=checked]:text-accent-foreground data-[state=checked]:border-[hsl(var(--accent-pro-100))] focus-visible:ring-[hsl(var(--accent-pro-100))]/30 peer flex size-5 shrink-0 items-center justify-center rounded-lg border shadow-sm transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
 		className
 	)}
 	bind:checked

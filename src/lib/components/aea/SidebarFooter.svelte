@@ -26,7 +26,7 @@
 					{@render avatar()}
 				{:else}
 					<div class="default-avatar">
-						<IconUser size={24} class="text-white/50" />
+						<IconUser size={24} class="text-muted-foreground/50" />
 					</div>
 				{/if}
 			</div>

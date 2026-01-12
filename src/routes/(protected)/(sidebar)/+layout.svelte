@@ -9,7 +9,8 @@
 		SidebarFooter, 
 		Avatar,
 		Badge,
-		Typography
+		Typography,
+		ThemeToggle
 	} from "$lib/components/aea";
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
@@ -100,13 +101,13 @@
 	>
 		{#snippet logo()}
 			<div class="h-8 w-8 rounded-lg bg-brand flex items-center justify-center shadow-lg shadow-brand/20">
-				<IconBolt size={20} class="text-white" />
+				<IconBolt size={20} class="text-brand-foreground" />
 			</div>
 		{/snippet}
 
 		<!-- User Context in Sidebar -->
 		<div class="px-3 mb-6">
-			<div class="flex items-center gap-3 p-2 rounded-2xl bg-white/5 border border-white/5 overflow-hidden transition-all {isMini ? 'justify-center p-1' : ''}">
+			<div class="flex items-center gap-3 p-2 rounded-2xl bg-muted/5 border border-border/5 overflow-hidden transition-all {isMini ? 'justify-center p-1' : ''}">
 				<Avatar 
 					fallback={getInitialName(data.user.nickname)} 
 					size={isMini ? "sm" : "md"}
@@ -114,7 +115,7 @@
 				/>
 				{#if !isMini}
 					<div class="flex-1 min-w-0">
-						<Typography variant="body" class="text-xs font-bold truncate mb-0.5 text-white">
+						<Typography variant="body" class="text-xs font-bold truncate mb-0.5 text-foreground">
 							{data.user.profile?.fullName || getDisplayName()}
 						</Typography>
 						<Typography variant="label" class="text-[9px] truncate opacity-50">
@@ -151,6 +152,10 @@
 
 		{#snippet footer()}
 			<SidebarFooter>
+				<div class="mb-4 px-2">
+					<ThemeToggle showLabel={!isMini} />
+				</div>
+
 				<Button 
 					variant="ghost" 
 					size="sm" 
@@ -164,7 +169,7 @@
 				</Button>
 				
 				{#if !isMini}
-					<div class="mt-4 flex items-center justify-center gap-4 border-t border-white/5 pt-4">
+					<div class="mt-4 flex items-center justify-center gap-4 border-t border-border/5 pt-4">
 						<a href="/impressum" class="text-[8px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Impressum</a>
 						<a href="/datenschutz" class="text-[8px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Datenschutz</a>
 					</div>
@@ -176,15 +181,15 @@
 	<!-- Main Content -->
 	<div class="flex-1 flex flex-col min-h-0 overflow-hidden relative">
 		<!-- Top Bar Mobile -->
-		<header class="lg:hidden border-b border-white/5 bg-background/80 backdrop-blur-xl p-4 flex items-center justify-between sticky top-0 z-40">
+		<header class="lg:hidden border-b border-border/5 bg-background/80 backdrop-blur-xl p-4 flex items-center justify-between sticky top-0 z-40">
 			<Button variant="ghost" size="icon" onclick={() => (sidebarOpen = true)} class="rounded-xl">
 				<IconMenu2 size={20} />
 			</Button>
 			<div class="flex items-center gap-2">
 				<div class="h-6 w-6 rounded-lg bg-brand flex items-center justify-center shadow-lg shadow-brand/20">
-					<IconBolt size={16} class="text-white" />
+					<IconBolt size={16} class="text-brand-foreground" />
 				</div>
-				<span class="text-sm font-black tracking-tight uppercase text-white">{WEBSITE_NAME}</span>
+				<span class="text-sm font-black tracking-tight uppercase text-foreground">{WEBSITE_NAME}</span>
 			</div>
 			<Avatar fallback={getInitialName(data.user.nickname)} size="sm" />
 		</header>
@@ -197,10 +202,6 @@
 		</main>
 	</div>
 </div>
-
-{#if showOnboarding}
-	<OnboardingOverlay user={data.user} />
-{/if}
 
 {#if showOnboarding}
 	<OnboardingOverlay user={data.user} />

@@ -62,7 +62,7 @@
 
     .aea-footer-social-link:hover {
         background-color: hsl(var(--accent-brand));
-        color: white;
+        color: hsl(var(--oncolor-100));
         transform: translateY(-4px) scale(1.1);
         box-shadow: 0 5px 15px hsla(var(--accent-brand) / 0.4);
         border-color: transparent;

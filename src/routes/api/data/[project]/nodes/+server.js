@@ -1,17 +1,19 @@
 import { json } from "@sveltejs/kit";
-import { AVAILABLE_PROJECTS } from "$config";
+import { isValidProject } from "$lib/server/projects";
+import { getSafeUserId } from "$lib/server/auth";
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params, platform }) {
 	const { project } = params;
 
 	// Validate project
-	if (!AVAILABLE_PROJECTS.includes(project)) {
+	if (!isValidProject(project)) {
 		return json({ error: "Invalid project" }, { status: 400 });
 	}
 
 	// Check cache first (if KV is available)
-	const cacheKey = `nodes:${project}`;
+	const safeProject = getSafeUserId(project);
+	const cacheKey = `nodes__${safeProject}`;
 	let cachedData = null;
 
 	if (platform?.env?.DATA_CACHE) {
@@ -34,8 +36,8 @@ export async function GET({ params, platform }) {
 	// Return 404 to indicate static file should be used
 	return json(
 		{ 
-			error: "Nodes data not cached. Please use static files in development.",
-			hint: `Use /data/${project}/simulated/nodes.json for static files`
+			error: "Nodes data not cached. Please use the GEXF file for node data.",
+			hint: `Use /data/${project}/${project}.gexf for static files`
 		},
 		{ 
 			status: 404,

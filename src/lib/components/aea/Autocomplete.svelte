@@ -314,8 +314,8 @@
 		transform: translateY(10px) scale(0.98);
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		box-shadow: 
-			0 10px 25px -5px rgba(0, 0, 0, 0.3),
-			0 8px 10px -6px rgba(0, 0, 0, 0.3);
+			0 10px 25px -5px hsla(var(--always-black) / 0.3),
+			0 8px 10px -6px hsla(var(--always-black) / 0.3);
 	}
 
 	.aea-autocomplete.is-open .aea-autocomplete-results {

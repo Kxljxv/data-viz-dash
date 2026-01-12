@@ -60,7 +60,7 @@
                 height={h} 
                 rx={r} 
                 ry={r}
-                stroke={color || '#000000'}
+                stroke={color || 'hsl(var(--always-black))'}
                 stroke-width={sw}
                 fill={fill !== 'none' ? fill : 'transparent'}
             />
@@ -70,7 +70,7 @@
                 y="0" 
                 width={w} 
                 height={h} 
-                stroke={color || '#000000'}
+                stroke={color || 'hsl(var(--always-black))'}
                 stroke-width={sw}
                 fill={fill !== 'none' ? fill : 'transparent'}
             />
@@ -81,7 +81,7 @@
             cy={h/2} 
             rx={w/2} 
             ry={h/2}
-            stroke={color || '#000000'}
+            stroke={color || 'hsl(var(--always-black))'}
             stroke-width={sw}
             fill={fill !== 'none' ? fill : 'transparent'}
         />
@@ -100,18 +100,18 @@
             y1="0" 
             x2={x2} 
             y2={y2} 
-            stroke={color || '#000000'}
+            stroke={color || 'hsl(var(--always-black))'}
             stroke-width={sw}
         />
         <polygon 
             points="{x2},{y2} {p1x},{p1y} {p2x},{p2y}"
-            fill={color || '#000000'}
+            fill={color || 'hsl(var(--always-black))'}
         />
     {:else if type === 'draw' && displayedPoints && displayedPoints.length > 0}
         <path 
             d={`M ${displayedPoints.map(p => `${p.x},${p.y}`).join(' L ')}`}
             fill="none"
-            stroke={color || '#000000'}
+            stroke={color || 'hsl(var(--always-black))'}
             stroke-width={sw}
         />
     {/if}

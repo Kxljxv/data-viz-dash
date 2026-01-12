@@ -1,0 +1,17 @@
+bdk_all:
+  edges: 239131
+  long: 41.-51. Bundesdelegiertenkonferenzen kombiniert
+  medium: 41.-51. Bundesdelegiertenkonferenzen
+  nodes: 23220
+  regression:
+    b: -479.4964441733153
+    m: 0.4538749654548803
+  short: 41.-51. BDK's
+  viewSettings:
+    showAntraege: true
+    showSupporters: true
+    showLabels: true
+    showLinks: true
+    linearZoom: false
+    disableHover: true
+    nodeSize: 0.5

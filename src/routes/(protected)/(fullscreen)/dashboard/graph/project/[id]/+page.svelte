@@ -12,6 +12,8 @@
     import * as d3 from 'd3';
     import { marked } from 'marked';
     import RoughShape from '$lib/components/tour/RoughShape.svelte';
+    
+    let { data } = $props();
 
     let graphInstance = $state(null);
     let stats = $state({
@@ -128,8 +130,9 @@
 
             // Use GraphVisualization from module or window
             if (GraphVisualizationModule) {
-                // Initialize graph
-                graphInstance = new GraphVisualizationModule(stats.project, 'graph-container');
+                // Initialize graph with settings from server
+                const initialSettings = data.viewSettings || {};
+                graphInstance = new GraphVisualizationModule(stats.project, 'graph-container', initialSettings);
                 window.graph = graphInstance;
                 
                 // Sync initial stats if data already loaded
@@ -220,18 +223,18 @@
             </svg>
             
             <!-- Controls -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[hsl(var(--bg-200))]/90 backdrop-blur border border-white/10 rounded-xl p-6 flex flex-col gap-4 min-w-[400px] pointer-events-auto shadow-2xl">
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-bg-200/90 backdrop-blur border border-border/10 rounded-xl p-6 flex flex-col gap-4 min-w-[400px] pointer-events-auto shadow-2xl">
                 <div>
-                    <Typography variant="h4" class="text-white mb-2">{slide.title}</Typography>
+                    <Typography variant="h4" class="text-foreground mb-2">{slide.title}</Typography>
                     {#if slide.description}
-                        <Typography variant="body" class="text-white/70 text-sm">{slide.description}</Typography>
+                        <Typography variant="body" class="text-foreground/70 text-sm">{slide.description}</Typography>
                     {/if}
                 </div>
                 
                 <div class="flex justify-between items-center">
                     <div class="flex gap-2">
                         {#each activeTour.slides as _, i}
-                            <div class="w-2 h-2 rounded-full transition-colors {i === currentSlideIndex ? 'bg-brand' : 'bg-white/20'}"></div>
+                            <div class="w-2 h-2 rounded-full transition-colors {i === currentSlideIndex ? 'bg-brand' : 'bg-foreground/20'}"></div>
                         {/each}
                     </div>
                     
@@ -248,7 +251,7 @@
             </div>
             
             <button 
-                class="absolute top-4 right-4 p-3 bg-black/40 hover:bg-black/60 rounded-full text-white pointer-events-auto transition-colors backdrop-blur"
+                class="absolute top-4 right-4 p-3 bg-background/40 hover:bg-background/60 rounded-full text-foreground pointer-events-auto transition-colors backdrop-blur"
                 onclick={endTour}
                 title="Tour beenden"
             >
@@ -259,14 +262,14 @@
 
     <!-- Tour Prompt Modal -->
     {#if showTourPrompt && !isTourActive}
-        <div class="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div class="absolute inset-0 z-50 flex items-center justify-center bg-background/60 backdrop-blur-sm">
             <Card class="max-w-md w-full m-4 pointer-events-auto border-brand/20 shadow-brand/10 shadow-2xl">
                 <div class="flex flex-col items-center text-center p-4">
                     <div class="p-4 bg-brand/10 rounded-full text-brand mb-4">
                         <IconMap size={48} />
                     </div>
-                    <Typography variant="h2" class="mb-2">Willkommen!</Typography>
-                    <Typography variant="body" class="text-white/70 mb-6">
+                    <Typography variant="h2" class="mb-2 text-foreground">Willkommen!</Typography>
+                    <Typography variant="body" class="text-foreground/70 mb-6">
                         Möchtest du eine kurze Tour durch die Visualisierung machen? 
                         Bei der Tour werden dir der Nutzen und die wichtigsten Funktionen und Zusammenhänge der Visualisierung vorgestellt.
                     </Typography>

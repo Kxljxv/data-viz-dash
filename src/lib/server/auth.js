@@ -1,4 +1,5 @@
 import jwt from "@tsndr/cloudflare-worker-jwt";
+import { dev } from "$app/environment";
 import { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, LOGIN_JWT_SECRET, ROLE_ADMIN, ROLE_AEA_USER, SESSION_COOKIE_NAME, SESSION_TOKEN_TTL } from "$config";
 import { get_login_session, write_login_session, delete_login_session } from "./session";
 
@@ -178,6 +179,22 @@ export async function verifySessionToken(token) {
 }
 
 /**
+ * Sanitizes a user ID or any string for use as a KV key (replaces problematic characters for local dev)
+ * @param {string} id - Raw ID or string
+ * @returns {string} Sanitized string
+ */
+export function getSafeUserId(id) {
+	if (!id) return "anonymous";
+	// Replace characters that are problematic for local KV storage (especially on Windows)
+	// We keep alphanumeric, @, ., _, and - which are safe for most filesystems and KV
+	// Also ensure it doesn't start/end with a dot which can be problematic on Windows
+	let safe = id.replace(/[^a-zA-Z0-9@._-]/g, '_');
+	while (safe.startsWith('.')) safe = '_' + safe.substring(1);
+	while (safe.endsWith('.')) safe = safe.substring(0, safe.length - 1) + '_';
+	return safe || "empty";
+}
+
+/**
  * Gets user session from cookie or KV
  * @param {object} platform - Cloudflare platform object
  * @param {object} cookies - Request cookies
@@ -196,14 +213,18 @@ export async function getUserSession(platform, cookies) {
 	}
 
 	const userId = tokenResult.payload.sub;
+	const safeUserId = getSafeUserId(userId);
 	let profile = null;
 
 	// Try to get user profile from KV if available
 	if (platform?.env?.DATA_CACHE) {
 		try {
-			profile = await platform.env.DATA_CACHE.get(`user_profile:${userId}`, { type: "json" });
+			profile = await platform.env.DATA_CACHE.get(`user_profile__${safeUserId}`, { type: "json" });
 		} catch (e) {
-			console.error("Error fetching user profile from KV:", e);
+			// Only log error if not in development or if it's not a common dev-time KV error
+			if (!dev || !e.message.includes("400")) {
+				console.error("Error fetching user profile from KV:", e);
+			}
 		}
 	}
 

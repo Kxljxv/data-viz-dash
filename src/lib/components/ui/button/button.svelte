@@ -8,7 +8,7 @@
 			variant: {
 				default: "bg-primary text-primary-foreground hover:opacity-90 shadow-sm active:translate-y-[1px]",
 				destructive:
-					"bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white shadow-sm active:translate-y-[1px]",
+					"bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-destructive-foreground shadow-sm active:translate-y-[1px]",
 				outline:
 					"bg-transparent border-border/50 hover:bg-accent hover:text-accent-foreground border shadow-sm active:translate-y-[1px]",
 				secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm active:translate-y-[1px]",

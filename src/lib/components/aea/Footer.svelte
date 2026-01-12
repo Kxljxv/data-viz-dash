@@ -140,7 +140,7 @@
         height: 2.5rem;
         border-radius: 50%;
         background-color: hsl(var(--accent-brand));
-        color: white;
+        color: hsl(var(--oncolor-100));
         display: flex;
         align-items: center;
         justify-content: center;

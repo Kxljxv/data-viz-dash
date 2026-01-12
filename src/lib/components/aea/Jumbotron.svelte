@@ -162,7 +162,7 @@
         border: 1px solid hsla(var(--border-300) / 0.1);
         background: hsla(var(--bg-200) / 0.3);
         backdrop-filter: blur(10px);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 25px 50px -12px hsla(var(--always-black) / 0.5);
     }
 
     /* Responsive adjustments */

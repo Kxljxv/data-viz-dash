@@ -176,7 +176,7 @@
     <div class="flex items-center justify-between p-3 bg-[hsla(var(--bg-300)/0.5)] backdrop-blur-md border-b border-[hsla(var(--border-300)/0.1)]">
         <div class="flex items-center space-x-2">
             <button 
-                class="p-1.5 rounded-lg hover:bg-[hsla(var(--always-white)/0.05)] active:bg-[hsla(var(--always-white)/0.1)] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                class="p-1.5 rounded-lg hover:bg-muted/50 active:bg-muted disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
                 onclick={() => changePage(-1)}
                 disabled={pageNum <= 1 || loading}
                 title="Vorherige Seite"
@@ -187,7 +187,7 @@
                 {loading ? '...' : `${pageNum} / ${numPages}`}
             </span>
             <button 
-                class="p-1.5 rounded-lg hover:bg-[hsla(var(--always-white)/0.05)] active:bg-[hsla(var(--always-white)/0.1)] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                class="p-1.5 rounded-lg hover:bg-muted/50 active:bg-muted disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
                 onclick={() => changePage(1)}
                 disabled={pageNum >= numPages || loading}
                 title="Nächste Seite"
@@ -198,21 +198,21 @@
 
         <div class="flex items-center space-x-1">
             <button 
-                class="p-1.5 rounded-lg hover:bg-[hsla(var(--always-white)/0.05)] active:bg-[hsla(var(--always-white)/0.1)] disabled:opacity-30 transition-all duration-200"
-                onclick={() => changeZoom(-0.2)}
-                disabled={loading}
-                title="Verkleinern"
+                class="p-1.5 rounded-lg hover:bg-muted/50 active:bg-muted disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                onclick={() => changeZoom(-0.1)}
+                disabled={scale <= 0.5 || loading}
+                title="Zoom Out"
             >
                 <IconMinus size={16} class="text-[hsl(var(--text-200))]" />
             </button>
-            <span class="text-[10px] font-mono text-[hsl(var(--text-300))] w-10 text-center">
+            <span class="text-[10px] font-mono text-[hsl(var(--text-300))] min-w-[40px] text-center">
                 {Math.round(scale * 100)}%
             </span>
             <button 
-                class="p-1.5 rounded-lg hover:bg-[hsla(var(--always-white)/0.05)] active:bg-[hsla(var(--always-white)/0.1)] disabled:opacity-30 transition-all duration-200"
-                onclick={() => changeZoom(0.2)}
-                disabled={loading}
-                title="Vergrößern"
+                class="p-1.5 rounded-lg hover:bg-muted/50 active:bg-muted disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                onclick={() => changeZoom(0.1)}
+                disabled={scale >= 3.0 || loading}
+                title="Zoom In"
             >
                 <IconPlus size={16} class="text-[hsl(var(--text-200))]" />
             </button>
@@ -225,7 +225,7 @@
         class="flex-1 overflow-auto bg-[hsl(var(--bg-000))] flex flex-col items-center space-y-12 p-12 custom-scrollbar relative scroll-smooth"
     >
         {#if loading}
-            <div class="absolute inset-0 flex items-center justify-center bg-[hsla(var(--bg-100)/0.8)] backdrop-blur-sm z-10">
+            <div class="absolute inset-0 z-10 flex items-center justify-center bg-background/50 backdrop-blur-sm">
                 <div class="flex flex-col items-center space-y-4">
                     <div class="w-10 h-10 border-3 border-[hsl(var(--accent-brand))] border-t-transparent rounded-full animate-spin"></div>
                     <span class="text-[11px] font-black uppercase tracking-[0.2em] text-[hsl(var(--text-300))]">Dokument wird vorbereitet</span>
@@ -241,7 +241,7 @@
                     </div>
                     <p class="text-sm text-[hsl(var(--text-200))] font-medium leading-relaxed">{error}</p>
                     <button 
-                        class="px-6 py-2.5 bg-[hsla(var(--always-white)/0.05)] hover:bg-[hsla(var(--always-white)/0.1)] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 border border-[hsla(var(--border-300)/0.1)]"
+                        class="px-6 py-2.5 bg-muted/50 hover:bg-muted rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 border border-border/10"
                         onclick={loadPdf}
                     >
                         Erneut versuchen
@@ -258,7 +258,7 @@
                 style:min-height="{842 * scale}px"
                 style:width="{595 * scale}px"
             >
-                <canvas class="rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></canvas>
+                <canvas class="rounded-sm shadow-[0_20px_50px_hsla(var(--always-black)/0.5)]"></canvas>
                 <div class="page-number-hint">{i + 1}</div>
             </div>
         {/each}
@@ -268,10 +268,10 @@
 <style>
     .pdf-page-wrapper {
         position: relative;
-        background-color: white;
+        background-color: hsl(var(--always-white));
         transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
         flex-shrink: 0;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        border: 1px solid hsla(var(--always-black) / 0.1);
     }
 
     .pdf-page-wrapper:hover {
@@ -292,6 +292,6 @@
 
     canvas {
         display: block;
-        background-color: white;
+        background-color: hsl(var(--always-white));
     }
 </style>

@@ -120,7 +120,7 @@
 
     .tab-trigger.pill.active {
         background: hsla(var(--bg-100) / 0.5);
-        box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.2);
+        box-shadow: 0 4px 12px hsla(var(--always-black) / 0.2);
         backdrop-filter: blur(4px);
         border: 1px solid hsla(var(--border-300) / 0.1);
     }

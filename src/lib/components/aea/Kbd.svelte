@@ -39,7 +39,7 @@
 		-webkit-backdrop-filter: blur(8px);
 		border: 1px solid hsla(var(--border-300) / 0.4);
 		color: hsl(var(--text-200));
-		box-shadow: 0 2px 0 0 hsla(0, 0%, 0%, 0.4), 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 2px 0 0 hsla(var(--always-black) / 0.4), 0 4px 6px -1px hsla(var(--always-black) / 0.2);
 		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		user-select: none;
 		cursor: default;
@@ -69,7 +69,7 @@
 	/* Interactions */
 	.aea-kbd:hover {
 		border-color: hsla(var(--accent-brand) / 0.6);
-		box-shadow: 0 2px 0 0 hsla(0, 0%, 0%, 0.4), 0 0 10px hsla(var(--accent-brand) / 0.3);
+		box-shadow: 0 2px 0 0 hsla(var(--always-black) / 0.4), 0 0 10px hsla(var(--accent-brand) / 0.3);
 		transform: translateY(-1px);
 	}
 

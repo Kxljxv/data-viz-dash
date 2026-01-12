@@ -23,9 +23,9 @@ export async function GET({ platform, cookies }) {
         do {
             const list = await kv.list({ cursor });
             for (const key of list.keys) {
-                if (key.name.startsWith("user_profile:")) {
+                if (key.name.startsWith("user_profile__")) {
                     profileKeys.push(key.name);
-                } else if (key.name.startsWith("user_analyses:")) {
+                } else if (key.name.startsWith("user_analyses__")) {
                     analysisKeys.push(key.name);
                 }
             }
@@ -35,7 +35,7 @@ export async function GET({ platform, cookies }) {
         // 2. Fetch all profiles
         const profiles = await Promise.all(
             profileKeys.map(async (key) => {
-                const userId = key.replace("user_profile:", "");
+                const userId = key.replace("user_profile__", "");
                 const data = await kv.get(key, { type: "json" });
                 return { userId, ...data };
             })
@@ -44,7 +44,7 @@ export async function GET({ platform, cookies }) {
         // 3. Fetch analysis metadata (counts)
         const analysesStats = await Promise.all(
             analysisKeys.map(async (key) => {
-                const userId = key.replace("user_analyses:", "");
+                const userId = key.replace("user_analyses__", "");
                 const data = await kv.get(key, { type: "json" });
                 return {
                     userId,

@@ -917,7 +917,7 @@ body.modal-open {
 
 .aea-timepicker-option.aea-selected {
     background-color: hsl(var(--accent-brand));
-    color: #fff;
+    color: hsl(var(--always-white));
     font-weight: 700;
     box-shadow: 0 0 15px hsla(var(--accent-brand) / 0.4);
 }

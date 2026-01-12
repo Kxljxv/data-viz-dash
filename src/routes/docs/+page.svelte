@@ -66,12 +66,12 @@
     <div class="max-w-7xl mx-auto px-6 py-12">
         <!-- Hero Section -->
         <section class="mb-16">
-            <div class="p-12 rounded-3xl bg-gradient-to-br from-slate-900/80 to-slate-800/40 border border-white/10 relative overflow-hidden">
+            <div class="p-12 rounded-3xl bg-gradient-to-br from-muted/80 to-muted/40 border border-border/10 relative overflow-hidden">
                 <div class="relative z-10 max-w-2xl">
                     <Badge variant="outline" class="mb-4 text-brand border-brand/20 bg-brand/5">
                         System Documentation
                     </Badge>
-                    <Typography tag="h2" variant="display" class="mb-6 leading-tight text-white">
+                    <Typography tag="h2" variant="display" class="mb-6 leading-tight text-foreground">
                         Modern Technical Interface System
                     </Typography>
                     <Typography variant="body" class="text-lg mb-8">
@@ -99,29 +99,29 @@
         <!-- Status Overview -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" id="components">
             <Card class="flex items-center gap-4 p-6">
-                <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500">
+                <div class="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center text-success">
                     <IconCheck size={24} />
                 </div>
                 <div>
-                    <div class="text-2xl font-serif text-white">{counts.done}</div>
+                    <div class="text-2xl font-serif text-foreground">{counts.done}</div>
                     <Typography variant="label" class="text-[10px]">Components Ready</Typography>
                 </div>
             </Card>
             <Card class="flex items-center gap-4 p-6">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+                <div class="w-12 h-12 rounded-xl bg-warning/10 flex items-center justify-center text-warning">
                     <IconLoader size={24} class="animate-spin" />
                 </div>
                 <div>
-                    <div class="text-2xl font-serif text-white">{counts.progress}</div>
+                    <div class="text-2xl font-serif text-foreground">{counts.progress}</div>
                     <Typography variant="label" class="text-[10px]">In Development</Typography>
                 </div>
             </Card>
             <Card class="flex items-center gap-4 p-6">
-                <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
+                <div class="w-12 h-12 rounded-xl bg-danger/10 flex items-center justify-center text-danger">
                     <IconCircle size={24} />
                 </div>
                 <div>
-                    <div class="text-2xl font-serif text-white">{counts.pending}</div>
+                    <div class="text-2xl font-serif text-foreground">{counts.pending}</div>
                     <Typography variant="label" class="text-[10px]">Pending</Typography>
                 </div>
             </Card>
@@ -129,13 +129,13 @@
 
         <!-- Search & Filter -->
         <div class="mb-12 flex justify-between items-center">
-            <Typography tag="h3" variant="h2" class="text-white">Component Library</Typography>
+            <Typography tag="h3" variant="h2" class="text-foreground">Component Library</Typography>
             <div class="relative w-64">
                 <input 
                     type="text" 
                     bind:value={searchQuery}
                     placeholder="Search components..." 
-                    class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-brand/30 focus:border-brand/40 transition-all outline-none text-white"
+                    class="w-full bg-muted/50 border border-border/10 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-brand/30 focus:border-brand/40 transition-all outline-none text-foreground"
                 />
             </div>
         </div>
@@ -149,15 +149,15 @@
                             <Typography variant="label" class="text-[10px] text-brand">{comp.category}</Typography>
                             <span class="text-xs">
                                 {#if comp.status === 'done'}
-                                    <IconCheck size={14} class="text-green-500" />
+                                    <IconCheck size={14} class="text-success" />
                                 {:else if comp.status === 'progress'}
-                                    <IconLoader size={14} class="text-amber-500 animate-spin" />
+                                    <IconLoader size={14} class="text-warning animate-spin" />
                                 {:else}
-                                    <IconCircle size={14} class="text-red-500" />
+                                    <IconCircle size={14} class="text-danger" />
                                 {/if}
                             </span>
                         </div>
-                        <Typography variant="h3" class="group-hover:text-brand transition-colors text-white">{comp.name}</Typography>
+                        <Typography variant="h3" class="group-hover:text-brand transition-colors text-foreground">{comp.name}</Typography>
                     {/snippet}
                     <Typography variant="body" class="text-sm opacity-60">
                         Technical implementation of the {comp.name} component.
@@ -174,7 +174,7 @@
 
         <!-- Component Previews -->
         <section class="mt-20">
-            <Typography tag="h3" variant="h2" class="mb-12 text-white">Interactive Previews</Typography>
+            <Typography tag="h3" variant="h2" class="mb-12 text-foreground">Interactive Previews</Typography>
             
             <div class="space-y-12">
                 <!-- Pagination Preview -->
@@ -191,7 +191,7 @@
                     <Typography variant="label" class="mb-4">Bottom Navigation (Mobile Optimized)</Typography>
                     <Typography variant="body" class="text-xs mb-8">Visible only on mobile by default. Forced visible here for demo.</Typography>
                     
-                    <div class="border border-white/5 rounded-2xl p-4 bg-slate-900/50 min-h-[300px] relative overflow-hidden">
+                    <div class="border border-border/5 rounded-2xl p-4 bg-muted/50 min-h-[300px] relative overflow-hidden">
                          <BottomNav 
                             forceShow={true}
                             class="!absolute !bottom-0"

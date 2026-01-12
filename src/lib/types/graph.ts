@@ -5,6 +5,7 @@ export interface GraphNode extends d3.SimulationNodeDatum {
     type: 'antrag' | 'supporter' | 'amendment' | 'person' | 'prs';
     color: string;
     linkCount: number;
+    connections?: number;
     font: string;
     size?: number;
     degree?: number;
@@ -31,6 +32,7 @@ export interface GraphSettings {
     showSupporters: boolean;
     nodeSize: number;
     linearZoom: boolean;
+    disableHover: boolean;
 }
 
 export interface DensityContours {

@@ -14,15 +14,17 @@
         IconMenu2, 
         IconArrowLeft, 
         IconChevronDown,
-        IconQuestionMark
+        IconBook
     } from "@tabler/icons-svelte";
     import SearchTab from './SearchTab.svelte';
     import ViewTab from './ViewTab.svelte';
-    import GroupsTab from './GroupsTab.svelte';
+import ToolsTab from './ToolsTab.svelte';
+import GroupsTab from './GroupsTab.svelte';
     import DetailPanel from './DetailPanel.svelte';
-    import GroupModal from './GroupModal.svelte';
-    import KVGroupModal from './KVGroupModal.svelte';
-    import GroupSelector from './GroupSelector.svelte';
+import GroupModal from './GroupModal.svelte';
+import KVGroupModal from './KVGroupModal.svelte';
+import GroupSelector from './GroupSelector.svelte';
+import AttributeCompositionModal from './AttributeCompositionModal.svelte';
 
     /**
      * @typedef {Object} Props
@@ -42,10 +44,22 @@
     let groups = $state([]);
     let isOpen = $state(false);
 
+    let isCompositionModalOpen = $state(false);
+    let compositionNodes = $state([]);
+
     // Desktop should probably be open by default
     onMount(() => {
         if (window.innerWidth > 1024) {
             isOpen = true;
+        }
+    });
+
+    // Sync settings with graph instance
+    $effect(() => {
+        if (graph && graph.settings) {
+            settings = { ...graph.settings };
+            stats.nodes = graph.allNodes?.length || 0;
+            stats.links = graph.allLinks?.length || 0;
         }
     });
 
@@ -54,7 +68,9 @@
         showLinks: true,
         showAntraege: true,
         showSupporters: true,
-        nodeSize: 1
+        nodeSize: 1,
+        linearZoom: false,
+        disableHover: false
     });
 
     let stats = $state({
@@ -67,8 +83,13 @@
         if (!graph?.allNodes) return [];
         const kvs = new Set();
         graph.allNodes.forEach(node => {
-            if ((node.type === 'supporter' || node.type === 'person') && node.sublabel) {
-                kvs.add(node.sublabel);
+            // New GEXF data structure uses 'attr_kv' or 'kv' or 'sublabel'
+            const kv = node.attr_kv || node.kv || node.sublabel;
+            const type = (node.type || node.attr_type || "").toLowerCase();
+            const isPerson = type === 'person' || type === 'prs' || type === 'supporter' || node.id?.startsWith('prs-');
+
+            if (isPerson && kv) {
+                kvs.add(kv);
             }
         });
         return Array.from(kvs).sort();
@@ -302,6 +323,15 @@
     }
 
     /**
+     * Öffnet das Modal zur Attribut-Zusammensetzung
+     * @param {any[]} nodes - Die zu analysierenden Knoten
+     */
+    function openComposition(nodes) {
+        compositionNodes = nodes;
+        isCompositionModalOpen = true;
+    }
+
+    /**
      * Erstellt eine neue Gruppe aus einem Knoten
      * @param {any} node - Der initiale Knoten für die Gruppe
      */
@@ -322,7 +352,12 @@
         if (!graph?.allNodes) return;
         
         const nodeIds = graph.allNodes
-            .filter(node => node.type === 'supporter' && selectedKvs.includes(node.sublabel))
+            .filter(node => {
+                const kv = node.attr_kv || node.kv || node.sublabel;
+                const type = (node.type || node.attr_type || "").toLowerCase();
+                const isPerson = type === 'person' || type === 'prs' || type === 'supporter' || node.id?.startsWith('prs-');
+                return isPerson && selectedKvs.includes(kv);
+            })
             .map(node => node.id);
             
         if (nodeIds.length === 0) {
@@ -385,12 +420,19 @@
     />
 {/if}
 
-<div class="fixed top-4 right-4 md:top-10 md:right-10 z-[5000] flex flex-col items-end pointer-events-none w-[calc(100%-2rem)] md:w-80">
+<!-- Attribute Composition Modal (Overlay) -->
+<AttributeCompositionModal 
+    bind:open={isCompositionModalOpen}
+    selectedNodes={compositionNodes}
+    allNodes={graph?.allNodes || []}
+/>
+
+<div class="fixed top-4 right-4 md:top-10 md:right-10 z-[5000] flex flex-col items-end pointer-events-none w-[calc(100%-2rem)] md:w-96">
     <!-- Toggle Button (only when closed) -->
     {#if !isOpen}
         <div class="flex items-center gap-2 pointer-events-auto">
-            <a href="/docs/manual/graph" target="_blank" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/40 hover:text-white transition-all border border-white/5" title="Benutzerhandbuch öffnen">
-                <IconQuestionMark size={18} />
+            <a href="/docs/manual/graph" target="_blank" class="p-2 rounded-xl bg-muted/20 hover:bg-muted/40 text-muted-foreground/60 hover:text-foreground transition-all border border-border/50" title="Benutzerhandbuch öffnen">
+                <IconBook size={18} />
             </a>
             <Button 
                 variant="ghost" 
@@ -420,16 +462,16 @@
 
                 <!-- Toggle Button (inside panel) -->
                 <div class="flex items-center gap-2">
-                    <a href="/docs/manual/graph" target="_blank" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/40 hover:text-white transition-all border border-white/5" title="Benutzerhandbuch öffnen">
-                        <IconQuestionMark size={16} />
+                    <a href="/docs/manual/graph" target="_blank" class="p-2 rounded-xl bg-muted/20 hover:bg-muted/40 text-muted-foreground/60 hover:text-foreground transition-all border border-border/50" title="Benutzerhandbuch öffnen">
+                        <IconBook size={16} />
                     </a>
                     <Button 
                         variant="ghost" 
                         size="sm" 
-                        class="h-9 px-3 rounded-xl border border-white/5 bg-white/5 lg:hidden"
+                        class="h-9 px-3 rounded-xl border border-border/50 bg-muted/20 lg:hidden"
                         onclick={togglePanel}
                     >
-                        <IconChevronDown size={16} class="text-white/60" />
+                        <IconChevronDown size={16} class="text-muted-foreground/60" />
                     </Button>
                 </div>
             </div>
@@ -439,19 +481,25 @@
                 <TabList class="w-full rounded-none border-b border-[hsl(var(--text-500)/0.1)] bg-[var(--text-primary)]/[0.02] h-12 p-0 flex flex-none">
                     <Tab 
                         value="search" 
-                        class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-[0.2em] font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
+                        class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-widest font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
                     >
                         Suche
                     </Tab>
                     <Tab 
                         value="view" 
-                        class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-[0.2em] font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
+                        class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-widest font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
                     >
                         Ansicht
                     </Tab>
                     <Tab 
+                        value="tools" 
+                        class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-widest font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
+                    >
+                        Tools
+                    </Tab>
+                    <Tab 
                         value="groups" 
-                        class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-[0.2em] font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
+                        class="flex-1 h-12 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(var(--accent-pro-100))] data-[state=active]:bg-transparent data-[state=active]:text-[hsl(var(--accent-pro-100))] data-[state=active]:shadow-none text-[10px] tracking-widest font-modern font-black uppercase transition-all opacity-60 data-[state=active]:opacity-100"
                     >
                         Gruppen
                     </Tab>
@@ -467,6 +515,10 @@
 
                             <TabPanel value="view" class="m-0 outline-none p-0">
                                 <ViewTab {settings} onUpdate={updateSetting} onReset={resetView} />
+                            </TabPanel>
+
+                            <TabPanel value="tools" class="m-0 outline-none p-0">
+                                <ToolsTab {graph} onAction={handlePanelAction} onOpenComposition={openComposition} />
                             </TabPanel>
 
                             <TabPanel value="groups" class="m-0 outline-none p-0">

@@ -108,7 +108,7 @@ The core logic resides in `src/lib/components/graph/GraphVisualization.ts`. The 
 
 ### Key Methods & Improvements
 - `constructor()`: Initializes the canvas and zoom behavior. Now supports **multi-instance rendering** by accepting a `canvasId`, allowing multiple independent graphs to coexist on the same page.
-- `loadData()`: Fetches JSON data. Now **awaits physics simulation** (`nodes.json`) to prevent rendering nodes without positions.
+- `loadData()`: Fetches GEXF data. Nodes and edges are extracted from the GEXF structure.
 - `render()`: The primary draw loop. Updated with **coordinate safety checks** to skip nodes with invalid (NaN) positions.
 - `computeCentrality()`: **New in v2.0**. Implements graph analysis metrics:
     - **Degree Centrality**: Simple count of direct connections.
@@ -168,35 +168,27 @@ The `tailwind.config.js` file extends the default theme with custom spacing, bor
 ---
 
 ## 8. Data Pipeline & Management
-Data enters the system as JSON files located in `static/data/<project>/`.
+Data enters the system as GEXF files located in `static/data/<project>/`.
 
-### `data.json` Structure
-This file contains the motion data:
-```json
-{
-  "MotionID": {
-    "heading": ["Title of the motion"],
-    "applicant": "Main Supporter",
-    "supporters": ["Supporter 1", "Supporter 2"],
-    "url": "External link"
-  }
-}
-```
+### GEXF Data Structure
+The platform uses the GEXF (Graph Exchange XML Format) for graph data. This format natively supports:
+- Nodes and Edges with custom attributes.
+- Hierarchical structures.
+- Dynamic data (though primarily static in this project).
+- Pre-calculated coordinates (`x`, `y`, `z`).
 
-### `nodes.json` Structure
-This file stores pre-calculated coordinates to avoid expensive physics simulations on every page load:
-```json
-[
-  { "id": "NodeID", "x": 100, "y": 200, "vx": 0, "vy": 0 }
-]
-```
+### Project Structure
+Projects are automatically detected by scanning the `static/data/` directory. Each project should have:
+- `<project>.gexf` or `<project>.gexf.gz`: The core graph data.
+- `description.yaml` (optional): Metadata about the project (title, description).
+- `view-settings.yaml` (optional): Default camera position and zoom level.
 
 ### Data Processing Scripts
 The `data_processing/extract_data.py` script:
 1. Scrapes the target website.
 2. Extracts motion metadata.
-3. Generates the `data.json` file.
-4. (Optional) Uses a headless browser to pre-render the graph and save coordinates.
+3. Generates a GEXF file with node attributes and positions.
+4. Compresses the GEXF file to `.gz` for optimized transfer.
 
 ---
 
@@ -307,16 +299,16 @@ The `wrangler.toml` is configured to:
 /
 ├── data_processing/        # Python scripts for data gathering
 ├── static/                 # Static assets
-│   └── data/               # Project-specific JSON data
+│   └── data/               # Project-specific GEXF data
 ├── src/
 │   ├── assets/
-│   │   └── scripts/        # Legacy D3 Graph Engine
+│   │   └── styles/         # Global styles
 │   ├── lib/
 │   │   ├── auth.svelte.js  # Auth0 logic
 │   │   ├── i18n.svelte.js  # Translation logic
-│   │   ├── types/          # TypeScript interfaces (graph.ts)
+│   │   ├── types/          # TypeScript interfaces
 │   │   ├── components/     # UI Components
-│   │   │   ├── graph/      # Typed Graph Engine (GraphVisualization.ts)
+│   │   │   ├── graph/      # Sigma.js Graph Engine (GraphVisualization.ts)
 │   │   │   └── ui/         # Shadcn components (Typed Svelte 5)
 │   │   └── design_library/ # Foundation elements
 │   ├── routes/             # SvelteKit pages
@@ -454,11 +446,10 @@ The global stylesheet.
 
 ##### `src/lib/components/graph/GraphVisualization.ts` (The Heart)
 This file contains the `GraphVisualization` class.
-- **Data Loading**: Fetches `data.json` and `nodes.json` using the Fetch API.
-- **D3 Integration**: Sets up the force simulation, zoom behavior, and canvas rendering.
+- **Data Loading**: Fetches the project's GEXF file and parses it using `graphology-gexf`. Supports GZIP compressed GEXF files.
+- **Sigma.js Integration**: Sets up the graph renderer, zoom behavior, and WebGL-based rendering.
 - **Event Bus**: Dispatches and listens for Custom Events to communicate with Svelte components.
-- **Centrality Metrics**: Computes Degree, Closeness, and Betweenness centrality using advanced graph algorithms.
-- **Rendering**: Implements the `render()` loop that draws nodes and links to the Canvas.
+- **Rendering**: Uses Sigma.js for high-performance network rendering.
 
 ##### `src/lib/auth.svelte.js`
 A Svelte 5 module that manages Auth0 state.
@@ -593,13 +584,13 @@ The following table lists every CSS variable defined in `src/app.css` and its ro
 Initializes the class. Sets up the canvas, context, and basic properties. Attaches zoom and click listeners to the canvas.
 
 ##### `loadData()`
-Asynchronous method. Fetches the project's `data.json`. On success, calls `processData()`. On failure, logs an error to the console.
+Asynchronous method. Fetches the project's GEXF file. On success, calls `processData()`. On failure, logs an error to the console.
 
 ##### `processData()`
-Parses the raw JSON data. Creates a `Map` of nodes and an array of links. Calculates initial link counts for each node to determine their visual size.
+Parses the GEXF data using `graphology-gexf`. Creates a `Map` of nodes and an array of links. Calculates initial link counts for each node to determine their visual size.
 
-##### `simulatePhysics()`
-Asynchronous method. Fetches `nodes.json` to get pre-calculated coordinates. If not available, it would ideally run a force simulation (currently relies on pre-calculated data for performance). Dispatches `aea-data-loaded` once finished.
+##### `loadData()`
+Asynchronous method. Fetches the GEXF file (potentially compressed as `.gz`) to get node data and coordinates. Dispatches `aea-data-loaded` once finished.
 
 ##### `render()`
 The primary drawing method. It clears the canvas, applies the current zoom/pan transform, and draws all active nodes and links. It also handles the drawing of labels for hovered or selected nodes.
@@ -648,7 +639,7 @@ We use the industry-standard Auth0 service to manage user identities. This ensur
 - Session management is handled securely via signed tokens (JWT).
 
 #### 2. Data Integrity
-All data fetched from the backend (static JSON files) is treated as read-only. User modifications (like creating groups) are stored in the user's browser via `localStorage` or synced to Auth0 user metadata, ensuring that one user's changes do not affect another's.
+All data fetched from the backend (static GEXF files) is treated as read-only. User modifications (like creating groups) are stored in the user's browser via `localStorage` or synced to Auth0 user metadata, ensuring that one user's changes do not affect another's.
 
 #### 3. Content Security Policy (CSP)
 The application is designed to work with a strict CSP that prevents the execution of unauthorized scripts and protects against cross-site scripting (XSS) attacks.
@@ -1069,7 +1060,7 @@ This documentation will continue to evolve alongside the platform, serving as th
 
 #### 1. General Usage
 **Q: The graph is not loading, I just see a black screen. What should I do?**
-A: First, check your internet connection. Then, open the browser's developer tools (F12) and look at the "Console" tab. If you see errors related to `data.json` or `nodes.json` not being found, ensure that the URL parameters (like `?project=...`) are correct. If the error is a "CORS" issue, ensure that the server hosting the data allows requests from your domain.
+A: First, check your internet connection. Then, open the browser's developer tools (F12) and look at the "Console" tab. If you see errors related to GEXF files not being found, ensure that the project data is correctly placed in `static/data/`.
 
 **Q: How do I zoom in and out of the graph?**
 A: You can use your mouse wheel to zoom in and out. If you are on a laptop, you can use a pinch gesture on your trackpad. Additionally, you can double-click on any empty area of the canvas to zoom in.
@@ -1086,15 +1077,15 @@ A: Purple nodes (`#7f6df2`) represent "Anträge" (motions or documents). Green n
 #### 2. Technical and Development
 **Q: How do I add a new project to the visualization?**
 A: To add a new project:
-1. Create a new directory under `static/data/projects/`.
-2. Place your `data.json` and `nodes.json` files in that directory.
-3. Access the project via the URL: `https://your-domain.com/?project=your-project-name`.
+1. Create a new directory under `static/data/`.
+2. Place your GEXF file (e.g., `project-name.gexf` or `project-name.gexf.gz`) in that directory.
+3. The project will be automatically detected and listed in the dashboard.
 
 **Q: Why does the performance degrade with many nodes?**
 A: Performance is primarily limited by the number of links being drawn on the canvas. While the canvas can handle thousands of nodes, drawing thousands of lines every frame is expensive. To improve performance, try hiding links in the "View" tab or filtering out supporter nodes.
 
 **Q: How can I change the default zoom level?**
-A: The default zoom level is calculated automatically to fit the entire graph into the viewport. You can modify this behavior in the `GraphVisualization` class's `resetZoom()` method in `src/assets/scripts/index.js`.
+A: The default zoom level is calculated automatically to fit the entire graph into the viewport. You can modify this behavior in the `GraphVisualization` class's `resetZoom()` method in `src/lib/components/graph/GraphVisualization.ts`.
 
 **Q: Can I use this tool with a different authentication provider?**
 A: Yes, but you will need to modify the `src/lib/auth.svelte.js` file. The current implementation is tailored for Auth0, but the logic can be adapted for Firebase, AWS Cognito, or any other OIDC-compliant provider.
@@ -1104,19 +1095,13 @@ A: While not a built-in UI feature yet, you can use the browser's "Capture area 
 
 #### 3. Data Pipeline
 **Q: Where does the data come from?**
-A: The data is typically scraped from official political portals using the `extract_data.py` script. This script processes the raw HTML/JSON from those portals into the normalized format required by the visualization.
+A: The data is typically scraped from official political portals using the `extract_data.py` script. This script processes the raw HTML/JSON from those portals into the normalized GEXF format required by the visualization.
 
 **Q: How often is the data updated?**
-A: Data updates are handled by the repository maintainers. Typically, the scraping script is run on a weekly or monthly basis, and the resulting JSON files are committed to the repository.
+A: Data updates are handled by the repository maintainers. Typically, the scraping script is run on a weekly or monthly basis, and the resulting GEXF files are committed to the repository.
 
 **Q: Can I provide my own data?**
-A: Absolutely! As long as your data follows the schema defined in the "Data Structure" section of this README, the visualization will be able to render it.
-
-**Q: What is the purpose of `nodes.json`?**
-A: `nodes.json` contains pre-calculated coordinates for every node. This allows the graph to load instantly without having to run a potentially expensive force simulation in the user's browser every time.
-
-**Q: How are the `nodes.json` coordinates calculated?**
-A: They are usually generated by running the D3 force simulation in a Node.js environment or by saving the state of the simulation from the browser after it has reached an equilibrium.
+A: Absolutely! As long as your data is in GEXF format and includes `x` and `y` attributes for nodes, the visualization will be able to render it.
 
 ---
 
@@ -1142,7 +1127,7 @@ A: They are usually generated by running the D3 force simulation in a Node.js en
 | **Performance** | High (Canvas) | Very High (OpenGL) | Medium (SVG/Canvas) | Medium (Canvas) |
 | **Ease of Use** | Very High | Low (Steep curve) | Medium (Dev focused) | High |
 | **Customizability** | High (CSS/JS) | High (Plugins) | Very High (API) | Low |
-| **Data Format** | JSON | GEXF/GraphML | JSON | Markdown |
+| **Data Format** | GEXF | GEXF/GraphML | JSON | Markdown |
 | **Auth Support** | Built-in (Auth0) | None | Custom | None |
 
 ---
@@ -1159,7 +1144,7 @@ The following benchmarks were conducted on a mid-range machine (Apple M1, 16GB R
 | **Memory Usage** | 45 MB | 110 MB | 240 MB | 580 MB |
 | **Simulation Convergence** | 1.2s | 3.5s | 8.1s | 15.4s |
 
-*Note: Benchmarks include the time to fetch data, parse JSON, and perform the initial render.*
+*Note: Benchmarks include the time to fetch data, parse GEXF, and perform the initial render.*
 
 ---
 
@@ -1169,7 +1154,7 @@ A preliminary security audit was performed on 2024-12-01.
 
 - **Authentication**: Verified. Auth0 integration correctly handles token storage and expiration. No sensitive data is stored in `localStorage` except for non-critical UI preferences.
 - **XSS Protection**: Verified. All user-provided strings (like group names) are sanitized before being rendered. The use of Svelte's template syntax naturally prevents most XSS vectors.
-- **Data Privacy**: Verified. Static JSON files contain only public political data. No personally identifiable information (PII) is included in the datasets.
+- **Data Privacy**: Verified. Static GEXF files contain only public political data. No personally identifiable information (PII) is included in the datasets.
 - **Dependencies**: Verified. `npm audit` shows zero high or critical vulnerabilities in the current dependency tree.
 - **Transport Security**: Verified. Forced HTTPS via Cloudflare ensures all communication is encrypted.
 
@@ -1263,7 +1248,7 @@ To understand how our Svelte 5 components interact with the D3 Canvas, consider 
    - `GraphVisualization` class is instantiated.
    - `loadData()` is called.
 2. **Data Loading**:
-   - `data.json` is fetched and parsed.
+   - GEXF data is fetched and parsed.
    - Nodes and links are created.
    - `aea-data-loaded` event is dispatched.
 3. **Reactive Binding**:
@@ -1799,7 +1784,7 @@ While the AEA platform currently uses static JSON files, the architecture is des
 
 #### 2. Endpoint: `/api/v1/projects/{id}/graph`
 - **Method**: `GET`
-- **Response**: The full `data.json` for a specific project.
+- **Response**: The GEXF data for a specific project.
 - **Query Params**: `?includeSupporters=true`, `?minDegree=2`.
 
 #### 3. Endpoint: `/api/v1/nodes/{id}`
@@ -2163,13 +2148,13 @@ This script is a robust scraper built with `requests` and `BeautifulSoup4`.
     - `applicant`: Identified via keyword matching in the sidebar.
     - `supporters`: Parsed from a list of names, often cleaned of titles and whitespace.
 4. **Graph Construction**: It builds an adjacency list in memory to identify connections.
-5. **Output**: Generates a `data.json` file where keys are motion IDs and values are metadata objects.
+5. **Output**: Generates a GEXF file containing motion IDs, metadata, and calculated layout coordinates.
 
-#### Physics Pre-calculation
-Because running a D3 force simulation with 5000+ nodes can be slow on mobile devices, we use a Node.js script to pre-calculate the layout.
-1. Load `data.json`.
-2. Run a `d3-force` simulation for 300 iterations.
-3. Save the final `x` and `y` coordinates for every node into `nodes.json`.
+#### Physics Calculation
+Because running a force simulation with 5000+ nodes can be slow in the browser, we use a Node.js or Python script to pre-calculate the layout.
+1. Load the graph data.
+2. Run a force-directed simulation (e.g., ForceAtlas2).
+3. Save the final `x` and `y` coordinates for every node into the GEXF file.
 4. The frontend then simply loads these coordinates, resulting in an instant "ready" state.
 
 ---
@@ -2178,8 +2163,8 @@ Because running a D3 force simulation with 5000+ nodes can be slow on mobile dev
 
 #### Adding a New Project
 1. Create a new directory in `static/data/` (e.g., `static/data/federal_2024/`).
-2. Generate or place `data.json` and `nodes.json` in that directory.
-3. Access the project via the URL: `?project=federal_2024`.
+2. Generate or place your GEXF file in that directory.
+3. Access the project via the dashboard or URL: `?project=federal_2024`.
 
 #### Creating a New UI Tab
 1. Create a new Svelte file in `src/lib/components/aea/` (e.g., `SettingsTab.svelte`).
@@ -2228,7 +2213,7 @@ We take accessibility seriously:
 ### Troubleshooting and FAQ
 
 **Q: The graph is blank after loading.**
-A: Check the browser console. This usually happens if `data.json` is malformed or the `project` URL parameter points to a non-existent directory.
+A: Check the browser console. This usually happens if the GEXF file is malformed or the `project` URL parameter points to a non-existent directory.
 
 **Q: Scrolling feels laggy in the Detail Panel.**
 A: This can happen if the PDF viewer is rendering too many pages at once. Ensure the `IntersectionObserver` logic in `PdfViewer.svelte` is functioning.

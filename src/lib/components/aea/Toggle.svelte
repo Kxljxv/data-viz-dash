@@ -115,7 +115,7 @@
 		background-color: hsl(var(--text-200));
 		border-radius: 50%;
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 2px 4px hsla(var(--always-black) / 0.2);
 	}
 
 	.variant-industrial .aea-toggle-thumb {

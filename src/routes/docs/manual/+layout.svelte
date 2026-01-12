@@ -1,6 +1,6 @@
 <script>
     import { page } from '$app/stores';
-    import { Typography, Badge, Button } from '$lib/components/aea';
+    import { Typography, Badge, Button, ThemeToggle } from '$lib/components/aea';
     import { 
         IconBook, 
         IconNetwork, 
@@ -65,13 +65,13 @@
 
 <div class="min-h-screen bg-background text-foreground flex font-modern">
     <!-- Sidebar -->
-    <aside class="w-72 border-r border-white/5 bg-slate-900/40 backdrop-blur-xl sticky top-0 h-screen overflow-y-auto flex flex-col">
-        <div class="p-6 border-b border-white/5 flex items-center gap-3">
+    <aside class="w-72 border-r border-border/50 bg-background/40 backdrop-blur-xl sticky top-0 h-screen overflow-y-auto flex flex-col">
+        <div class="p-6 border-b border-border/50 flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand border border-brand/20 shadow-[0_0_20px_rgba(var(--brand-rgb),0.2)]">
                 <IconBook size={20} />
             </div>
             <div>
-                <Typography variant="h4" class="text-white leading-none mb-1">Handbuch</Typography>
+                <Typography variant="h4" class="leading-none mb-1">Handbuch</Typography>
                 <Typography variant="label" class="text-[8px] uppercase tracking-widest opacity-40">User Documentation</Typography>
             </div>
         </div>
@@ -79,7 +79,7 @@
         <nav class="flex-1 p-4 space-y-8 mt-4">
             {#each menuItems as section}
                 <div class="space-y-2">
-                    <Typography variant="label" class="px-4 text-[10px] text-white/20 uppercase tracking-[0.2em] font-black">{section.title}</Typography>
+                    <Typography variant="label" class="px-4 text-[10px] text-muted-foreground/30 uppercase tracking-[0.2em] font-black">{section.title}</Typography>
                     <div class="space-y-1">
                         {#each section.items as item}
                             <a 
@@ -87,7 +87,7 @@
                                 class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 group
                                     {currentPath === item.href 
                                         ? 'bg-brand/10 text-brand border border-brand/20 shadow-[0_0_15px_rgba(var(--brand-rgb),0.1)]' 
-                                        : 'text-white/40 hover:bg-white/5 hover:text-white border border-transparent'}"
+                                        : 'text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground border border-transparent'}"
                             >
                                 <item.icon size={18} class="opacity-60 group-hover:opacity-100 transition-opacity" />
                                 <span class="text-sm font-medium">{item.label}</span>
@@ -101,10 +101,15 @@
             {/each}
         </nav>
 
-        <div class="p-4 border-t border-white/5">
-            <Button variant="ghost" class="w-full justify-start text-white/40 hover:text-white" onclick={() => goto('/dashboard/graph')}>
-                <IconArrowLeft size={16} class="mr-2" />
-                Zurück zum Graph
+        <div class="p-6 border-t border-border/50 space-y-4">
+            <ThemeToggle />
+            <Button 
+                variant="outline" 
+                class="w-full justify-start gap-3 rounded-2xl border-border/50 bg-muted/20 hover:bg-muted/40"
+                onclick={() => goto('/dashboard/analysis')}
+            >
+                <IconArrowLeft size={18} />
+                Zurück zur App
             </Button>
         </div>
     </aside>

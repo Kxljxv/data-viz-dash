@@ -1,5 +1,6 @@
 import { json } from "@sveltejs/kit";
-import { AVAILABLE_PROJECTS } from "$config";
+import { isValidProject } from "$lib/server/projects";
+import { getSafeUserId } from "$lib/server/auth";
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request, platform }) {
@@ -7,7 +8,7 @@ export async function POST({ request, platform }) {
 		const { project, groups, options } = await request.json();
 
 		// 1. Validation
-		if (!AVAILABLE_PROJECTS.includes(project)) {
+		if (!isValidProject(project)) {
 			return json({ error: "Invalid project" }, { status: 400 });
 		}
 
@@ -28,20 +29,27 @@ export async function POST({ request, platform }) {
 
 		// 3. Persistence (if KV is available)
 		const projectId = `density_${project}_${Date.now()}`;
+		const safeProjectId = getSafeUserId(projectId);
 		if (platform?.env?.DATA_CACHE) {
-			await platform.env.DATA_CACHE.put(
-				`density_project:${projectId}`,
-				JSON.stringify({
-					id: projectId,
-					project,
-					timestamp: new Date().toISOString(),
-					data: densityMap,
-					metadata: {
-						groupCount: groups.length,
-						options
-					}
-				})
-			);
+			try {
+				await platform.env.DATA_CACHE.put(
+					`density_project__${safeProjectId}`,
+					JSON.stringify({
+						id: projectId,
+						project,
+						timestamp: new Date().toISOString(),
+						data: densityMap,
+						metadata: {
+							groupCount: groups.length,
+							options
+						}
+					})
+				);
+			} catch (kvError) {
+				console.error("KV PUT failed for density analysis:", kvError);
+				// We don't return an error here, just log it. 
+				// The result is still returned to the user.
+			}
 		}
 
 		return json({
@@ -65,9 +73,15 @@ export async function GET({ url, platform }) {
 	}
 
 	if (platform?.env?.DATA_CACHE) {
-		const projectData = await platform.env.DATA_CACHE.get(`density_project:${projectId}`, { type: "json" });
-		if (projectData) {
-			return json(projectData);
+		const safeProjectId = getSafeUserId(projectId);
+		try {
+			const projectData = await platform.env.DATA_CACHE.get(`density_project__${safeProjectId}`, { type: "json" });
+			if (projectData) {
+				return json(projectData);
+			}
+		} catch (kvError) {
+			console.error("KV GET failed for density analysis:", kvError);
+			return json({ error: "Storage error", details: kvError.message }, { status: 500 });
 		}
 	}
 

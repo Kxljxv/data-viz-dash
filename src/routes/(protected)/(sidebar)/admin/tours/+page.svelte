@@ -30,7 +30,7 @@
 <div class="space-y-8">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-            <Typography tag="h1" variant="h1" class="text-white">Interaktive Touren</Typography>
+            <Typography tag="h1" variant="h1" class="text-foreground">Interaktive Touren</Typography>
             <Typography variant="body" class="opacity-70 mt-1">Erstelle und verwandle geführte Touren für die Graph-Visualisierungen.</Typography>
         </div>
     </div>
@@ -50,7 +50,7 @@
                             <Badge variant="outline" class="opacity-50">Keine Tour</Badge>
                         {/if}
                     </div>
-                    <Typography variant="h3" class="text-white">{project.name}</Typography>
+                    <Typography variant="h3" class="text-foreground">{project.name}</Typography>
                     <Typography variant="label" class="line-clamp-2 mt-1 opacity-50">{project.description}</Typography>
                 {/snippet}
 

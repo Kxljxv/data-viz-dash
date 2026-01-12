@@ -133,7 +133,7 @@
 		visibility: hidden;
 		transition: all 0.2s ease;
 		z-index: 1100;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+		box-shadow: 0 4px 12px hsla(var(--always-black) / 0.5);
 		pointer-events: none;
 	}
 

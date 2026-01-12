@@ -13,6 +13,7 @@
     } from "$lib/components/aea";
     import { UserCircle2, MapPin } from "lucide-svelte";
     import { invalidateAll } from "$app/navigation";
+    import { onMount } from "svelte";
 
     let { user } = $props();
     
@@ -20,6 +21,20 @@
     let kreisverband = $state("");
     let isSaving = $state(false);
     let error = $state("");
+    let isHidden = $state(false);
+
+    onMount(() => {
+        if (typeof sessionStorage !== 'undefined') {
+            isHidden = sessionStorage.getItem('onboarding_hidden') === 'true';
+        }
+    });
+
+    function handleLater() {
+        isHidden = true;
+        if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('onboarding_hidden', 'true');
+        }
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -53,7 +68,8 @@
         }
     }
 </script>
-
+ 
+{#if !isHidden}
 <div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-sm p-4">
     <Card variant="glass" class="w-full max-w-md shadow-2xl border-primary/20">
         <CardHeader class="space-y-1">
@@ -96,7 +112,7 @@
                     />
                 </div>
             </CardContent>
-            <CardFooter>
+            <CardFooter class="flex-col gap-2">
                 <Button type="submit" variant="primary" class="w-full gap-2" disabled={isSaving}>
                     {#if isSaving}
                         <Spinner size="sm" />
@@ -105,7 +121,11 @@
                         Profil vervollständigen & Starten
                     {/if}
                 </Button>
+                <Button type="button" variant="ghost" class="w-full text-xs opacity-50 hover:opacity-100" onclick={handleLater}>
+                    Vielleicht später
+                </Button>
             </CardFooter>
         </form>
     </Card>
 </div>
+{/if}

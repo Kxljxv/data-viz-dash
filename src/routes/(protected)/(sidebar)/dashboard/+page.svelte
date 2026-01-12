@@ -6,8 +6,6 @@
 		Typography 
 	} from "$lib/components/aea";
 	import { goto } from "$app/navigation";
-	import { AVAILABLE_PROJECTS } from "$config";
-
 	import { onMount } from "svelte";
 	import { 
 		IconArrowRight, 
@@ -19,6 +17,7 @@
 	} from "@tabler/icons-svelte";
 
 	let { data } = $props();
+	const projects = $derived(data.projects || []);
 	let savedAnalyses = $state([]);
 	let isLoading = $state(true);
 
@@ -52,7 +51,7 @@
 					<div class="h-1.5 w-1.5 rounded-full bg-brand animate-pulse mr-2"></div>
 					System Online
 				</Badge>
-				<Typography tag="h1" variant="display" class="mb-3 text-white">
+				<Typography tag="h1" variant="display" class="mb-3 text-foreground">
 					Hallo, {data.user.nickname.split(' ')[0]}!
 				</Typography>
 				<Typography variant="body" class="text-lg opacity-70 max-w-xl">
@@ -74,7 +73,7 @@
 				<div class="size-14 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-6 shadow-lg shadow-brand/5">
 					<IconMap size={28} />
 				</div>
-				<Typography variant="h3" class="mb-2 text-white">Graph-Visualisierung</Typography>
+				<Typography variant="h3" class="mb-2 text-foreground">Graph-Visualisierung</Typography>
 			{/snippet}
 			<Typography variant="body" class="text-sm opacity-60 leading-relaxed">
 				Interaktive Netzwerk-Visualisierung für politische Anträge und Unterstützer.
@@ -91,7 +90,7 @@
 				<div class="size-14 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-6 shadow-lg shadow-brand/5">
 					<IconChartBar size={28} />
 				</div>
-				<Typography variant="h3" class="mb-2 text-white">Analyse-Tools</Typography>
+				<Typography variant="h3" class="mb-2 text-foreground">Analyse-Tools</Typography>
 			{/snippet}
 			<Typography variant="body" class="text-sm opacity-60 leading-relaxed">
 				Erweiterte Analyse- und Inspektionstools für tiefe Dateneinblicke.
@@ -105,10 +104,10 @@
 
 		<Card interactive>
 			{#snippet header()}
-				<div class="size-14 rounded-2xl bg-white/5 text-white flex items-center justify-center mb-6 shadow-lg shadow-white/5">
+				<div class="size-14 rounded-2xl bg-muted text-foreground flex items-center justify-center mb-6 shadow-lg">
 					<IconSettings size={28} />
 				</div>
-				<Typography variant="h3" class="mb-2 text-white">Einstellungen</Typography>
+				<Typography variant="h3" class="mb-2 text-foreground">Einstellungen</Typography>
 			{/snippet}
 			<Typography variant="body" class="text-sm opacity-60 leading-relaxed">
 				Passe dein Profil und deine Präferenzen für die Nutzung an.
@@ -124,23 +123,23 @@
 	<div class="mt-16">
 		<div class="flex items-center gap-3 mb-8">
 			<IconFolder size={32} class="text-brand" />
-			<Typography variant="h2" class="text-white">Verfügbare Projekte</Typography>
+			<Typography variant="h2" class="text-foreground">Verfügbare Projekte</Typography>
 		</div>
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			{#each AVAILABLE_PROJECTS as project}
+			{#each projects as project}
 				<Card 
 					interactive 
 					class="card-glass"
-					onclick={() => goto(`/dashboard/graph?project=${project}`)}
+					onclick={() => goto(`/dashboard/graph/project/${project.id}`)}
 				>
 					{#snippet header()}
-						<Typography variant="h3" class="capitalize text-white flex items-center justify-between">
-							{project}
+						<Typography variant="h3" class="capitalize text-foreground flex items-center justify-between">
+							{project.name}
 							<IconArrowRight size={16} class="text-brand" />
 						</Typography>
 					{/snippet}
 					<Typography variant="label" class="text-[10px] opacity-40">
-						Netzwerk-Datenbank
+						{project.description || 'Netzwerk-Datenbank'}
 					</Typography>
 				</Card>
 			{/each}

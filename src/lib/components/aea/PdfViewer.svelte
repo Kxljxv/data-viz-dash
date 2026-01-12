@@ -239,7 +239,7 @@
                     <IconFileText size={48} class="text-[hsl(var(--text-400))]" />
                     <p class="text-sm text-[hsl(var(--text-200))] font-medium leading-relaxed">{error}</p>
                     <button 
-                        class="px-6 py-2.5 bg-[hsla(var(--always-white)/0.05)] hover:bg-[hsla(var(--always-white)/0.1)] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 border border-[hsla(var(--border-300)/0.1)]"
+                        class="px-6 py-2.5 bg-muted/50 hover:bg-muted rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 border border-border/10"
                         onclick={loadPdf}
                     >
                         Erneut versuchen
@@ -256,7 +256,7 @@
                 style:min-height="{842 * scale}px"
                 style:width="{595 * scale}px"
             >
-                <canvas class="rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></canvas>
+                <canvas class="rounded-sm shadow-[0_20px_50px_hsla(var(--always-black)/0.5)]"></canvas>
                 <div class="page-number-hint">{i + 1}</div>
             </div>
         {/each}
@@ -266,10 +266,10 @@
 <style>
     .pdf-page-wrapper {
         position: relative;
-        background-color: white;
+        background-color: hsl(var(--always-white));
         transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
         flex-shrink: 0;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        border: 1px solid hsla(var(--always-black) / 0.1);
     }
 
     .pdf-page-wrapper:hover {
@@ -290,6 +290,6 @@
 
     canvas {
         display: block;
-        background-color: white;
+        background-color: hsl(var(--always-white));
     }
 </style>

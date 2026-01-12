@@ -5,73 +5,60 @@
 @layer base {
     :root {
         /* shadcn-svelte variables mapped to AEA HSL variables */
-        --background: 0 0% 14%; /* --bg-100 */
-        --foreground: 0 0% 98%; /* --text-000 */
+        --background: var(--bg-100);
+        --foreground: var(--text-000);
         
-        --muted: 0 0% 8%; /* --bg-300 */
-        --muted-foreground: 0 0% 60%; /* --text-400 */
+        --muted: var(--bg-300);
+        --muted-foreground: var(--text-400);
         
-        --popover: 0 0% 14%; /* --bg-100 */
-        --popover-foreground: 0 0% 98%; /* --text-000 */
+        --popover: var(--bg-100);
+        --popover-foreground: var(--text-000);
         
-        --card: 0 0% 14%; /* --bg-100 */
-        --card-foreground: 0 0% 98%; /* --text-000 */
+        --card: var(--bg-100);
+        --card-foreground: var(--text-000);
         
-        --border: 0 0% 85%; /* --border-300 */
-        --input: 0 0% 85%; /* --border-300 */
+        --border: var(--border-300);
+        --input: var(--border-300);
         
-        --primary: 15 63.1% 59.6%; /* --accent-brand */
-        --primary-foreground: 0 0% 100%; /* --always-white */
+        --primary: var(--accent-brand);
+        --primary-foreground: var(--always-white);
         
-        --secondary: 30 3.3% 11.8%; /* --bg-200 */
-        --secondary-foreground: 60 12% 92%; /* --text-100 */
+        --secondary: var(--bg-200);
+        --secondary-foreground: var(--text-100);
         
-        --accent: 251 40.2% 54.1%; /* --accent-pro-100 */
-        --accent-foreground: 0 0% 100%; /* --always-white */
+        --accent: var(--accent-pro-100);
+        --accent-foreground: var(--always-white);
         
-        --destructive: 0 67% 59.6%; /* --danger-100 */
-        --destructive-foreground: 0 0% 100%; /* --always-white */
+        --destructive: var(--danger-100);
+        --destructive-foreground: var(--always-white);
         
-        --ring: 15 63.1% 59.6%; /* --accent-brand */
+        --ring: var(--accent-brand);
         
         --radius: 0.75rem;
     }
 }
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is([data-mode=dark] *));
 
-.dark {
-  --background: 0 0% 7%;
-  --foreground: 0 0% 98%;
-  --card: 0 0% 9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 9%;
-  --secondary: 0 0% 12%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 65%;
-  --accent: 0 0% 12%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 0 0% 83.1%;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+[data-mode=dark] {
+  --background: var(--bg-100);
+  --foreground: var(--text-000);
+  --card: var(--bg-100);
+  --card-foreground: var(--text-000);
+  --popover: var(--bg-100);
+  --popover-foreground: var(--text-000);
+  --primary: var(--accent-brand);
+  --primary-foreground: var(--always-white);
+  --secondary: var(--bg-200);
+  --secondary-foreground: var(--text-100);
+  --muted: var(--bg-300);
+  --muted-foreground: var(--text-400);
+  --accent: var(--accent-pro-100);
+  --accent-foreground: var(--always-white);
+  --destructive: var(--danger-100);
+  --border: var(--border-300);
+  --input: var(--border-300);
+  --ring: var(--accent-brand);
 }
 
 @theme inline {
@@ -94,6 +81,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -111,8 +99,13 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-success: hsl(var(--success-100));
+  --color-success-foreground: var(--always-white);
   --color-danger: hsl(var(--danger-100));
+  --color-danger-foreground: var(--always-white);
+  --color-warning: hsl(var(--warning-100));
+  --color-warning-foreground: var(--always-white);
   --color-brand: hsl(var(--accent-brand));
+  --color-brand-foreground: var(--always-white);
 }
 
 @layer base {

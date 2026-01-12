@@ -213,7 +213,7 @@
         backdrop-filter: blur(16px);
         border: 1px solid hsla(var(--border-300) / 0.2);
         border-radius: 1rem;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 25px 50px -12px hsla(var(--always-black) / 0.5);
         z-index: 2000;
         overflow: visible;
     }

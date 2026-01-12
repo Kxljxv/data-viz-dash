@@ -153,7 +153,7 @@
                         <div class="w-10 h-10 rounded-xl bg-[hsl(var(--accent-pro-100))]/10 flex items-center justify-center text-[hsl(var(--accent-pro-100))]">
                             <IconSettings size={20} />
                         </div>
-                        <Typography variant="h4" class="text-white">Allgemein</Typography>
+                        <Typography variant="h4" class="text-foreground">Allgemein</Typography>
                     </div>
 
                     <div class="space-y-4">
@@ -165,18 +165,18 @@
                         />
 
                         <div class="space-y-3">
-                            <div class="text-[10px] font-black text-white/30 uppercase tracking-widest block ml-1">Farbschema</div>
-                            <div class="flex flex-wrap gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                            <div class="text-[10px] font-black text-muted-foreground/30 uppercase tracking-widest block ml-1">Farbschema</div>
+                            <div class="flex flex-wrap gap-3 p-4 rounded-2xl bg-muted/5 border border-border/20">
                                 {#each presets as p}
                                     <button 
                                         onclick={() => color = p}
                                         class="w-8 h-8 rounded-full border-2 transition-all duration-300 hover:scale-110"
-                                        style="background-color: {p}; border-color: {color === p ? 'white' : 'transparent'}; box-shadow: {color === p ? `0 0 15px ${p}` : 'none'}"
+                                        style="background-color: {p}; border-color: {color === p ? 'hsl(var(--oncolor-100))' : 'transparent'}; box-shadow: {color === p ? `0 0 15px ${p}` : 'none'}"
                                         aria-label={`Farbe ${p}`}
                                     ></button>
                                 {/each}
-                                <div class="w-1 px-1 bg-white/10 mx-1"></div>
-                                <div class="relative w-8 h-8 rounded-full overflow-hidden border-2 border-white/5 hover:border-white/20 transition-all">
+                                <div class="w-1 px-1 bg-border/40 mx-1"></div>
+                                <div class="relative w-8 h-8 rounded-full overflow-hidden border-2 border-border/20 hover:border-border/60 transition-all">
                                     <input 
                                         type="color" 
                                         bind:value={color}
@@ -188,20 +188,20 @@
                     </div>
                 </section>
 
-                <section class="p-6 rounded-3xl bg-white/[0.02] border border-white/5 space-y-5">
+                <section class="p-6 rounded-3xl bg-muted/5 border border-border/20 space-y-5">
                     <div class="flex items-center justify-between">
                         <div class="flex flex-col">
-                            <Typography variant="label" class="text-white/40 mb-1">Datenverwaltung</Typography>
-                            <Typography variant="body" class="text-[9px] text-white/20 uppercase tracking-widest">JSON Format</Typography>
+                            <Typography variant="label" class="text-muted-foreground/40 mb-1">Datenverwaltung</Typography>
+                            <Typography variant="body" class="text-[9px] text-muted-foreground/20 uppercase tracking-widest">JSON Format</Typography>
                         </div>
-                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/20">
+                        <div class="w-8 h-8 rounded-lg bg-muted/10 flex items-center justify-center text-muted-foreground/20">
                             <IconFileText size={16} />
                         </div>
                     </div>
                     
                     <div class="grid grid-cols-2 gap-3">
-                        <Button variant="outline" size="sm" onclick={handleExport} class="w-full h-11 flex items-center justify-center gap-2 text-[10px] font-bold border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-white/10 transition-all">
-                            <IconDownload size={14} class="text-white/40" /> EXPORT
+                        <Button variant="outline" size="sm" onclick={handleExport} class="w-full h-11 flex items-center justify-center gap-2 text-[10px] font-bold border-border/20 bg-muted/5 hover:bg-muted/10 hover:border-border/40 transition-all">
+                            <IconDownload size={14} class="text-muted-foreground/40" /> EXPORT
                         </Button>
                         <div class="relative">
                             <input 
@@ -210,8 +210,8 @@
                                 onchange={handleImport}
                                 class="absolute inset-0 opacity-0 cursor-pointer z-10"
                             />
-                            <Button variant="outline" size="sm" class="w-full h-11 flex items-center justify-center gap-2 text-[10px] font-bold border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-white/10 transition-all">
-                                <IconUpload size={14} class="text-white/40" /> IMPORT
+                            <Button variant="outline" size="sm" class="w-full h-11 flex items-center justify-center gap-2 text-[10px] font-bold border-border/20 bg-muted/5 hover:bg-muted/10 hover:border-border/40 transition-all">
+                                <IconUpload size={14} class="text-muted-foreground/40" /> IMPORT
                             </Button>
                         </div>
                     </div>
@@ -224,8 +224,8 @@
                             <IconUsers size={24} />
                         </div>
                         <div>
-                            <Typography variant="body" class="text-xs text-white/40">Mitglieder insgesamt</Typography>
-                            <Typography variant="h3" class="text-white leading-none">{groupNodes.length}</Typography>
+                            <Typography variant="body" class="text-xs text-muted-foreground/40">Mitglieder insgesamt</Typography>
+                            <Typography variant="h3" class="text-foreground leading-none">{groupNodes.length}</Typography>
                         </div>
                     </div>
                 </section>
@@ -238,32 +238,32 @@
                         <div class="w-10 h-10 rounded-xl bg-[hsl(var(--accent-pro-100))]/10 flex items-center justify-center text-[hsl(var(--accent-pro-100))]">
                             <IconUsers size={20} />
                         </div>
-                        <Typography variant="h4" class="text-white">Mitglieder</Typography>
+                        <Typography variant="h4" class="text-foreground">Mitglieder</Typography>
                     </div>
                     <Badge variant="brand" class="px-3 py-1">{groupNodes.length} Knoten</Badge>
                 </div>
 
                 <!-- Search Input -->
                 <div class="relative mb-6">
-                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-white/20">
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground/20">
                         <IconSearch size={18} />
                     </div>
                     <input 
                         type="text"
                         bind:value={searchQuery}
                         placeholder="Knoten suchen und hinzufügen..."
-                        class="w-full bg-white/[0.03] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent-pro-100))]/50 transition-all placeholder:text-white/20 shadow-inner"
+                        class="w-full bg-muted/10 border border-border/40 rounded-2xl py-4 pl-12 pr-4 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-[hsl(var(--accent-pro-100))]/50 transition-all placeholder:text-muted-foreground/20 shadow-inner"
                     />
 
                     {#if searchQuery.length > 0 && filteredNodes.length > 0}
-                        <div class="absolute z-20 w-full mt-2 bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
+                        <div class="absolute z-20 w-full mt-2 bg-popover/95 backdrop-blur-xl border border-border/40 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                             {#each filteredNodes as node}
                                 <button 
                                     onclick={() => { addNode(node.id); searchQuery = ''; }}
-                                    class="w-full text-left px-5 py-4 hover:bg-white/5 transition-all flex items-center justify-between group"
+                                    class="w-full text-left px-5 py-4 hover:bg-muted/10 transition-all flex items-center justify-between group"
                                 >
                                     <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">
+                                        <div class="w-8 h-8 rounded-lg bg-muted/10 flex items-center justify-center text-muted-foreground/40 group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">
                                             {#if node.type === 'supporter'}
                                                 <IconUser size={16} />
                                             {:else}
@@ -271,8 +271,8 @@
                                             {/if}
                                         </div>
                                         <div class="flex flex-col">
-                                            <span class="text-xs font-bold text-white group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">{node.label}</span>
-                                            <span class="text-[10px] text-white/30 uppercase tracking-widest">{node.type}</span>
+                                            <span class="text-xs font-bold text-foreground group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">{node.label}</span>
+                                            <span class="text-[10px] text-muted-foreground/30 uppercase tracking-widest">{node.type}</span>
                                         </div>
                                     </div>
                                     <div class="w-6 h-6 rounded-full bg-[hsl(var(--accent-pro-100))]/20 flex items-center justify-center text-[hsl(var(--accent-pro-100))] opacity-0 group-hover:opacity-100 transition-opacity">
@@ -285,9 +285,9 @@
                 </div>
 
                 <!-- Current Members Scroll Area -->
-                <div class="flex-1 bg-white/[0.01] border border-white/5 rounded-3xl overflow-hidden flex flex-col shadow-inner">
-                    <div class="p-4 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">
-                        <Typography variant="label" class="text-[10px] text-white/30 font-black uppercase tracking-widest">Aktuelle Auswahl</Typography>
+                <div class="flex-1 bg-muted/2 border border-border/20 rounded-3xl overflow-hidden flex flex-col shadow-inner">
+                    <div class="p-4 border-b border-border/20 bg-muted/5 flex items-center justify-between">
+                        <Typography variant="label" class="text-[10px] text-muted-foreground/30 font-black uppercase tracking-widest">Aktuelle Auswahl</Typography>
                         {#if groupNodes.length > 0}
                             <button 
                                 onclick={() => groupNodes = []}
@@ -301,7 +301,7 @@
                     <div class="flex-1 overflow-y-auto p-4 custom-scrollbar">
                         {#if groupNodes.length === 0}
                             <div class="h-full flex flex-col items-center justify-center text-center space-y-4 opacity-20 p-10">
-                                <div class="w-20 h-20 rounded-full border-2 border-dashed border-white/20 flex items-center justify-center">
+                                <div class="w-20 h-20 rounded-full border-2 border-dashed border-border/20 flex items-center justify-center">
                                     <IconUsers size={40} stroke-width={1} />
                                 </div>
                                 <div class="max-w-[200px] space-y-1">
@@ -314,17 +314,17 @@
                                 {#each groupNodes as nodeId}
                                     {@const node = allNodes.find(n => n.id === nodeId)}
                                     {#if node}
-                                        <div class="flex items-center justify-between p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 group hover:bg-white/5 hover:border-white/10 transition-all hover:shadow-lg">
+                                        <div class="flex items-center justify-between p-3.5 rounded-2xl bg-muted/10 border border-border/20 group hover:bg-muted/20 hover:border-border/40 transition-all hover:shadow-lg">
                                             <div class="flex items-center gap-3 overflow-hidden">
                                                 <div class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: {color}; box-shadow: 0 0 10px {color}"></div>
                                                 <div class="flex flex-col min-w-0">
-                                                    <span class="text-[11px] font-bold text-white/90 truncate">{node.label}</span>
-                                                    <span class="text-[9px] text-white/20 uppercase tracking-tighter">{node.id}</span>
+                                                    <span class="text-[11px] font-bold text-foreground/90 truncate">{node.label}</span>
+                                                    <span class="text-[9px] text-muted-foreground/20 uppercase tracking-tighter">{node.id}</span>
                                                 </div>
                                             </div>
                                             <button 
                                                 onclick={() => removeNode(nodeId)}
-                                                class="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center text-white/20 hover:bg-red-500/10 hover:text-red-400 transition-all opacity-0 group-hover:opacity-100"
+                                                class="w-7 h-7 rounded-lg bg-muted/10 flex items-center justify-center text-muted-foreground/20 hover:bg-red-500/10 hover:text-red-400 transition-all opacity-0 group-hover:opacity-100"
                                                 title="Entfernen"
                                             >
                                                 <IconX size={14} />
@@ -342,14 +342,14 @@
 
     {#snippet footer()}
         <div class="flex items-center justify-between w-full">
-            <Typography variant="body" class="text-[10px] text-white/20 uppercase tracking-[0.2em] hidden sm:block">
+            <Typography variant="body" class="text-[10px] text-muted-foreground/20 uppercase tracking-[0.2em] hidden sm:block">
                 AEA Data Viz Engine v2.4
             </Typography>
             <div class="flex gap-4 w-full sm:w-auto">
-                <Button variant="ghost" onclick={onClose} class="flex-1 sm:flex-none px-8 h-12 text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white transition-all">
+                <Button variant="ghost" onclick={onClose} class="flex-1 sm:flex-none px-8 h-12 text-[10px] font-black uppercase tracking-widest text-muted-foreground/40 hover:text-foreground transition-all">
                     Abbrechen
                 </Button>
-                <Button onclick={handleSave} class="flex-1 sm:flex-none px-12 h-12 text-[10px] font-black uppercase tracking-widest bg-[hsl(var(--accent-pro-100))] hover:bg-[hsl(var(--accent-pro-100))]/80 text-white shadow-[0_0_20px_hsla(var(--accent-pro-100),0.3)] transition-all">
+                <Button onclick={handleSave} class="flex-1 sm:flex-none px-12 h-12 text-[10px] font-black uppercase tracking-widest bg-[hsl(var(--accent-pro-100))] hover:bg-[hsl(var(--accent-pro-100))]/80 text-oncolor-100 shadow-[0_0_20px_hsla(var(--accent-pro-100),0.3)] transition-all">
                     Änderungen speichern
                 </Button>
             </div>
@@ -365,10 +365,10 @@
         background: transparent;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.1);
+        background: hsla(var(--border-300) / 0.1);
         border-radius: 10px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: hsla(var(--border-300) / 0.2);
     }
 </style>

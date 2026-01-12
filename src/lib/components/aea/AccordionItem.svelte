@@ -118,7 +118,7 @@
     .accordion-item.is-open {
         background-color: hsla(var(--bg-100) / 0.8);
         border-color: hsla(var(--accent-brand) / 0.3);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 15px -3px hsla(var(--always-black) / 0.1);
     }
 
     .accordion-header {

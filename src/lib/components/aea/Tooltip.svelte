@@ -140,7 +140,7 @@
         font-weight: 700;
         white-space: nowrap;
         pointer-events: none;
-        box-shadow: 0 4px 12px -2px rgba(0,0,0,0.4);
+        box-shadow: 0 4px 12px -2px hsla(var(--always-black) / 0.4);
     }
 
     .tooltip-arrow {

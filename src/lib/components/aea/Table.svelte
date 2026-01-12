@@ -61,7 +61,7 @@
 		scrollbar-width: thin;
 		scrollbar-color: hsla(var(--text-400) / 0.2) transparent;
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		box-shadow: 0 4px 6px -1px hsla(var(--always-black) / 0.1), 0 2px 4px -1px hsla(var(--always-black) / 0.06);
 	}
 
 	.aea-table-container.has-height {
@@ -70,7 +70,7 @@
 
 	.aea-table-container:focus-within {
 		border-color: hsla(var(--accent-brand) / 0.3);
-		box-shadow: 0 0 0 4px hsla(var(--accent-brand) / 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 0 4px hsla(var(--accent-brand) / 0.1), 0 10px 15px -3px hsla(var(--always-black) / 0.1);
 	}
 
 	.aea-table {

@@ -82,6 +82,18 @@
                         onchange={(checked) => onUpdate('linearZoom', checked)}
                     />
                 </div>
+
+                <div class="gap-5 flex items-center justify-between p-4 rounded-2xl bg-[var(--text-primary)]/5 border border-[hsl(var(--text-500)/0.1)] hover:bg-[var(--text-primary)]/10 transition-all group">
+                    <div class="flex flex-col">
+                        <Typography tag="label" for="disableHover" variant="label" class="text-xs font-bold text-[var(--text-primary)] cursor-pointer font-modern uppercase tracking-wider">Hover deaktivieren</Typography>
+                        <Typography variant="body" class="text-[9px] text-[var(--text-tertiary)] font-medium leading-tight mt-1">Interaktion erfolgt nur noch bei Klick</Typography>
+                    </div>
+                    <Checkbox 
+                        id="disableHover"
+                        checked={settings.disableHover}
+                        onchange={(checked) => onUpdate('disableHover', checked)}
+                    />
+                </div>
             </div>
 
             <div class="space-y-4 px-2">

@@ -4,7 +4,7 @@
 </script>
 
 <button 
-    class="p-2 hover:bg-white/10 rounded-lg transition-colors text-muted-foreground hover:text-brand"
+    class="p-2 hover:bg-muted/10 rounded-lg transition-colors text-muted-foreground hover:text-brand"
     onclick={() => onclick(project, id)}
 >
     <IconExternalLink size={16} />

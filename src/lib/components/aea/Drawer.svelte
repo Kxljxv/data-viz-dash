@@ -90,7 +90,7 @@
     .aea-drawer-backdrop {
         position: absolute;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: hsla(var(--always-black) / 0.5);
         backdrop-filter: blur(4px);
     }
 
@@ -103,18 +103,18 @@
         backdrop-filter: blur(20px);
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 25px hsla(var(--always-black) / 0.3);
     }
 
     .aea-drawer-right {
         right: 0;
         border-left: 1px solid hsla(var(--border-300) / 0.1);
-        box-shadow: -10px 0 25px -5px rgba(0, 0, 0, 0.3);
+        box-shadow: -10px 0 25px -5px hsla(var(--always-black) / 0.3);
     }
 
     .aea-drawer-left {
         left: 0;
         border-right: 1px solid hsla(var(--border-300) / 0.1);
-        box-shadow: 10px 0 25px -5px rgba(0, 0, 0, 0.3);
+        box-shadow: 10px 0 25px -5px hsla(var(--always-black) / 0.3);
     }
 </style>

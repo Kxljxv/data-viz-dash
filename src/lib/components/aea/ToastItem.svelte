@@ -70,7 +70,7 @@
         border: 1px solid hsla(var(--border-300) / 0.2);
         border-radius: 1.25rem;
         box-shadow: 
-            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 25px 50px -12px hsla(var(--always-black) / 0.5),
             0 0 1px 1px hsla(var(--always-white) / 0.05) inset;
         color: hsl(var(--text-100));
         font-family: 'ModernDense', sans-serif;

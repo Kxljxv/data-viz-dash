@@ -1,15 +1,87 @@
 import Graph from 'graphology';
 import * as gexf from 'graphology-gexf';
-import Sigma from 'sigma';
-import { NodeCircleProgram, EdgeArrowProgram, EdgeRectangleProgram } from 'sigma/rendering';
+import type Sigma from 'sigma';
 import type { GraphNode, GraphLink, GraphSettings, GraphGroup } from '$lib/types/graph';
-import * as d3 from 'd3'; // Used for types and compatibility
+import { color as d3Color, hsl as d3Hsl } from 'd3';
 
-// Old color palette constants
-const COLOR_AMENDMENT = '#d86b74';
-const COLOR_SUPPORTER = '#7dff00';
-const COLOR_LINK = 'rgba(70,70,70,0.005)';
-const COLOR_LABEL = 'hsl(50, 9%, 73.7%)';
+// Dynamic imports for Sigma to avoid SSR issues
+let SigmaClass: any;
+let NodeCircleProgram: any;
+let EdgeArrowProgram: any;
+let EdgeRectangleProgram: any;
+
+const loadSigma = async () => {
+    if (typeof window === 'undefined') return;
+    if (SigmaClass) return;
+    
+    const sigmaMod = await import('sigma');
+    SigmaClass = sigmaMod.default;
+    
+    const renderingMod = await import('sigma/rendering');
+    NodeCircleProgram = renderingMod.NodeCircleProgram;
+    EdgeArrowProgram = renderingMod.EdgeArrowProgram;
+    EdgeRectangleProgram = renderingMod.EdgeRectangleProgram;
+};
+
+// Helper to get CSS variables
+const getCSSVar = (name: string) => {
+    if (typeof window === 'undefined') return '';
+    // Try documentElement first, then body as fallback
+    let val = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    if (!val) {
+        val = getComputedStyle(document.body).getPropertyValue(name).trim();
+    }
+    return val;
+};
+
+const getThemeColor = (name: string, alpha?: number): string => {
+    const isDark = typeof window !== 'undefined' ? document.documentElement.getAttribute('data-mode') === 'dark' : true;
+    let hslValue = getCSSVar(name);
+    
+    // Default fallbacks if CSS variables aren't resolved
+    if (!hslValue) {
+        if (name === '--danger-100') return '#dc2626';
+        if (name === '--success-100') return '#16a34a';
+        if (name === '--pictogram-200') return isDark ? '#444444' : '#cccccc';
+        if (name === '--graph-label') return isDark ? '#f5f5f5' : '#141414';
+        return isDark ? '#333333' : '#cccccc';
+    }
+    
+    try {
+        let colorString: string;
+        
+        if (hslValue.includes('hsl') || hslValue.includes('rgb') || hslValue.startsWith('#')) {
+            colorString = hslValue;
+        } else {
+            // Standardize the HSL string for D3
+            const parts = hslValue.split(/[\s,+/]+/).filter(p => p.length > 0);
+            if (parts.length >= 3) {
+                const h = parts[0];
+                const s = parts[1].includes('%') ? parts[1] : `${parts[1]}%`;
+                const l = parts[2].includes('%') ? parts[2] : `${parts[2]}%`;
+                const a = alpha ?? (parts[3] || 1);
+                
+                colorString = `hsla(${h}, ${s}, ${l}, ${a})`;
+            } else {
+                colorString = `hsl(${hslValue})`;
+            }
+        }
+        
+        const normalized = d3Color(colorString);
+        if (normalized) {
+            return normalized.formatHex();
+        }
+        return isDark ? '#333333' : '#cccccc';
+    } catch (e) {
+        return isDark ? '#333333' : '#cccccc';
+    }
+};
+
+// Old color palette constants - now dynamic
+const getCOLOR_AMENDMENT = () => getThemeColor('--danger-100');
+const getCOLOR_SUPPORTER = () => getThemeColor('--success-100');
+const getCOLOR_LINK = () => getThemeColor('--pictogram-200');
+const getCOLOR_LABEL = () => getThemeColor('--graph-label');
 const FONT_LABEL = 'ModernDense, sans-serif';
 
 export default class GraphVisualization {
@@ -26,6 +98,9 @@ export default class GraphVisualization {
     hoveredNode: any | null = null;
     highlightedNodeId: string | null = null;
     groups: GraphGroup[] = [];
+    graphDimming: number = 0;
+    private groupLookup: Map<string, string> = new Map();
+    private dimmedColorCache: Map<string, string> = new Map();
     
     // Settings
     settings: GraphSettings = {
@@ -34,7 +109,8 @@ export default class GraphVisualization {
         showAntraege: true,
         showSupporters: true,
         nodeSize: 1,
-        linearZoom: true
+        linearZoom: false,
+        disableHover: false
     };
 
     // Transform state (D3-like for compatibility)
@@ -56,17 +132,26 @@ export default class GraphVisualization {
 
     get allLinks() {
         if (!this.graph) return [];
-        return this.graph.mapEdges((id, attr, source, target) => ({
-            id,
-            source,
-            target,
-            ...attr
-        }));
+        return this.graph.mapEdges((id, attr, source, target) => {
+            const sourceAttr = this.graph.getNodeAttributes(source);
+            const targetAttr = this.graph.getNodeAttributes(target);
+            return {
+                id,
+                source: { id: source, ...sourceAttr },
+                target: { id: target, ...targetAttr },
+                ...attr
+            };
+        });
     }
 
-    constructor(projectName: string | null = null, containerId: string = 'graph-container') {
+    constructor(projectName: string | null = null, containerId: string = 'graph-container', initialSettings: Partial<GraphSettings> = {}) {
         this.projectName = projectName;
         this.containerId = containerId;
+        
+        // Merge initial settings if provided
+        if (initialSettings) {
+            this.settings = { ...this.settings, ...initialSettings };
+        }
         
         // Handle different import behaviors for Graphology
         const GraphConstructor = (Graph as any).default || Graph;
@@ -77,6 +162,11 @@ export default class GraphVisualization {
     }
 
     async init() {
+        if (typeof window === 'undefined') return;
+        
+        // Ensure Sigma is loaded
+        await loadSigma();
+        
         const container = document.getElementById(this.containerId);
         if (!container) {
             console.warn(`Container #${this.containerId} not found. Retrying...`);
@@ -108,24 +198,32 @@ export default class GraphVisualization {
             return;
         }
 
+        console.log(`Initializing Sigma on container ${this.containerId} with ${this.graph.order} nodes`);
+
         // Initialize Sigma
-        const SigmaConstructor = (Sigma as any).default || Sigma;
-        this.renderer = new SigmaConstructor(this.graph, container, {
+        this.renderer = new SigmaClass(this.graph, container, {
             minCameraRatio: 0.1,
             maxCameraRatio: 10,
             allowInvalidContainer: true,
             renderLabels: true,
             labelFont: FONT_LABEL,
-            labelColor: { color: COLOR_LABEL },
-            defaultEdgeColor: COLOR_LINK,
+            labelSize: 11,
+            labelWeight: 'bold',
+            labelColor: { color: getCOLOR_LABEL() },
+            defaultEdgeColor: getCOLOR_LINK(),
+            defaultNodeType: "circle",
+            defaultNodeColor: "#999",
             defaultEdgeType: "line",
-            edgeColor: "attribute", // Force use of the attributes we set in loadData
+            edgeProgramClasses: {
+                line: EdgeRectangleProgram,
+            },
+            edgeColor: "default", // Use default color unless overridden by reducer
             enableEdgeEvents: false, 
             zIndex: true,
             // Linear zoom settings
             nodeSizeReference: this.settings.linearZoom ? "positions" : "pixels",
             edgeSizeReference: this.settings.linearZoom ? "positions" : "pixels",
-            zoomToSizeRatioFunction: this.settings.linearZoom ? (x: number) => x : () => 1,
+            zoomToSizeRatioFunction: this.settings.linearZoom ? () => 1 : (x: number) => x,
             autoRescale: !this.settings.linearZoom,
             // Disable label background and ensure label is shown on hover
             hoverRenderer: (context, data, settings) => {
@@ -134,7 +232,7 @@ export default class GraphVisualization {
 
                 const font = settings.labelFont;
                 const weight = settings.labelWeight;
-                const colorLabel = settings.labelColor.color || COLOR_LABEL;
+                const colorLabel = settings.labelColor.color || getCOLOR_LABEL();
 
                 context.fillStyle = colorLabel;
                 context.font = `${weight} ${size}px ${font}`;
@@ -154,6 +252,10 @@ export default class GraphVisualization {
 
         this.setupEventsSigma();
         this.setupUIListeners();
+        this.setupThemeListener();
+        
+        // Apply initial settings via reducers
+        this.refreshReducers();
         
         // Dispatch loaded event
         window.dispatchEvent(new CustomEvent('aea-data-loaded', {
@@ -166,6 +268,13 @@ export default class GraphVisualization {
         // Hide loading screen
         const loadingEl = document.getElementById('loading');
         if (loadingEl) loadingEl.style.display = 'none';
+
+        // Auto-center the graph at the start
+        this.centerGraph();
+    }
+
+    render() {
+        this.refreshReducers();
     }
 
     async loadData() {
@@ -175,6 +284,8 @@ export default class GraphVisualization {
             
             // Potential paths to try - prioritize the flat structure in static/data
             const pathsToTry = [
+                `/data/${project}/${project}.gexf.gz`,
+                `/data/${project}/${project}.gexf`,
                 `/data/${project}.gexf.gz`,
                 `/data/${project}.gexf`,
                 `/data/${project}/algorithms/forceatlas/graph.gexf.gz`,
@@ -253,34 +364,60 @@ export default class GraphVisualization {
             const GraphConstructor = (Graph as any).default || Graph;
             this.graph = parser(GraphConstructor, gexfString);
             
-            console.log(`Loaded graph with ${this.graph.order} nodes and ${this.graph.size} edges`);
+            console.log(`%c GRAPH LOADED: ${this.graph.order} nodes, ${this.graph.size} edges `, 'background: #222; color: #bada55');
+            
+            if (this.graph.order > 0) {
+                const firstNode = this.graph.nodes()[0];
+                console.log("First node sample:", this.graph.getNodeAttributes(firstNode));
+            }
 
-            // Post-process: Apply colors based on type and preserve original size from GEXF
+            // Post-process: Apply colors and sizes based on defined rules
             this.graph.forEachNode((node, attr) => {
-                // Ensure size from GEXF is used. If not present, default to 5.
-                if (!attr.size) {
+                // Ensure x and y are present
+                if (attr.x === undefined) this.graph.setNodeAttribute(node, 'x', 0);
+                if (attr.y === undefined) this.graph.setNodeAttribute(node, 'y', 0);
+
+                // Calculate connections (degree)
+                const connections = this.graph.degree(node);
+                this.graph.setNodeAttribute(node, 'connections', connections);
+
+                // Determine type more robustly
+                const rawType = (attr.type || attr.attr_type || "").toLowerCase();
+                const isAmendment = rawType === 'amendment' || rawType === 'antrag' || !node.startsWith('prs-');
+                const isPerson = rawType === 'person' || rawType === 'prs' || rawType === 'supporter' || node.startsWith('prs-');
+
+                // Set default colors based on type
+                if (isAmendment && !isPerson) {
+                    this.graph.setNodeAttribute(node, 'type', 'amendment');
+                    this.graph.setNodeAttribute(node, 'color', getCOLOR_AMENDMENT());
+                    // size = amount of supporters (degree in bipartite graph)
+                    this.graph.setNodeAttribute(node, 'size', Math.sqrt(connections)/2 > 2 ? Math.sqrt(connections)/2 : 2);
+                } else if (isPerson) {
+                    this.graph.setNodeAttribute(node, 'type', 'person');
+                    this.graph.setNodeAttribute(node, 'color', getCOLOR_SUPPORTER());
+                    
+                    // size = 5 * amendments_initiated + amendments_supported
+                    const initiated = attr.initiated || 0;
+                    const supported = attr.supported || (connections - initiated);
+                    if ((Math.sqrt(5 * initiated + supported)/2) > 1) {
+                        const size = Math.sqrt(5 * initiated + supported)/2;
+                        this.graph.setNodeAttribute(node, 'size', size);
+                    } else {
+                        this.graph.setNodeAttribute(node, 'size', 1);
+                    }
+                } else {
+                    const isDark = document.documentElement.getAttribute('data-mode') === 'dark';
+                    this.graph.setNodeAttribute(node, 'color', isDark ? '#333333' : '#cccccc');
                     this.graph.setNodeAttribute(node, 'size', 5);
                 }
-                
-                // Set default colors based on type
-                if (attr.type === 'antrag' || attr.type === 'amendment') {
-                    this.graph.setNodeAttribute(node, 'color', COLOR_AMENDMENT);
-                } else if (attr.type === 'supporter' || attr.type === 'person' || attr.type === 'prs') {
-                    this.graph.setNodeAttribute(node, 'color', COLOR_SUPPORTER);
-                } else if (!attr.color) {
-                    this.graph.setNodeAttribute(node, 'color', '#999');
-                }
-                
-                // Ensure label exists
-                if (!attr.label) this.graph.setNodeAttribute(node, 'label', attr.name || node);
             });
 
-            // Post-process edges: apply colors and types for density visualization
-            this.graph.forEachEdge((edge) => {
-                this.graph.setEdgeAttribute(edge, 'color', COLOR_LINK);
-                this.graph.setEdgeAttribute(edge, 'size', 0.1);
-                this.graph.setEdgeAttribute(edge, 'type', 'line');
-            });
+        // Post-process edges: apply colors and types for density visualization
+        this.graph.forEachEdge((edge) => {
+            this.graph.setEdgeAttribute(edge, 'color', getCOLOR_LINK());
+            this.graph.setEdgeAttribute(edge, 'size', 0.1);
+            this.graph.setEdgeAttribute(edge, 'type', 'line');
+        });
 
         } catch (error) {
             console.error('Error loading graph data:', error);
@@ -307,11 +444,13 @@ export default class GraphVisualization {
 
         // Hover Node
         this.renderer.on('enterNode', (event) => {
+            if (this.settings.disableHover) return;
             this.hoveredNode = event.node;
             this.refreshReducers();
         });
 
         this.renderer.on('leaveNode', () => {
+            if (this.settings.disableHover) return;
             this.hoveredNode = null;
             this.refreshReducers();
         });
@@ -361,10 +500,12 @@ export default class GraphVisualization {
             this.applyOgmaStyles();
         });
         this.ogma.events.on('hover:node', (event: any) => {
+            if (this.settings.disableHover) return;
             this.hoveredNode = event.target.getId();
             this.applyOgmaStyles();
         });
         this.ogma.events.on('leave:node', () => {
+            if (this.settings.disableHover) return;
             this.hoveredNode = null;
             this.applyOgmaStyles();
         });
@@ -450,19 +591,44 @@ export default class GraphVisualization {
         });
     }
 
+    private setupThemeListener() {
+        window.addEventListener('aea-theme-change', () => {
+            this.dimmedColorCache.clear();
+            this.updateNodeStyles();
+            if (this.renderer) {
+                this.renderer.setSetting("labelColor", { color: getCOLOR_LABEL() });
+                this.renderer.refresh();
+            }
+        });
+    }
+
     updateNodeStyles() {
         if (this.isUsingOgma) this.applyOgmaStyles();
         else this.refreshReducers();
     }
 
     private dimColor(color: string): string {
+        const isDark = document.documentElement.getAttribute('data-mode') === 'dark';
+        const cacheKey = `${color}-${isDark ? 'dark' : 'light'}`;
+        
+        if (this.dimmedColorCache.has(cacheKey)) {
+            return this.dimmedColorCache.get(cacheKey)!;
+        }
+
         try {
-            const c = d3.hsl(color);
-            c.s *= 0.3; // Desaturate
-            c.l *= 0.2; // Darken
-            return c.toString();
+            const c = d3Hsl(color);
+            if (isDark) {
+                c.s *= 0.3; // Desaturate
+                c.l *= 0.2; // Darken
+            } else {
+                c.s *= 0.2; // More desaturate
+                c.l = 0.92; // Very light
+            }
+            const dimmed = c.formatHex();
+            this.dimmedColorCache.set(cacheKey, dimmed);
+            return dimmed;
         } catch (e) {
-            return "#222";
+            return isDark ? "#222222" : "#eeeeee";
         }
     }
 
@@ -470,79 +636,99 @@ export default class GraphVisualization {
         if (this.isUsingOgma) return;
         if (!this.renderer) return;
 
+        // 1. Pre-calculate group lookup for O(1) access
+        this.groupLookup.clear();
+        for (const group of this.groups) {
+            for (const nodeId of group.nodes) {
+                this.groupLookup.set(nodeId, group.color);
+            }
+        }
+
+        // 2. Pre-calculate active node context for O(1) neighbor check
+        const activeNodeId = this.selectedNode?.id || this.highlightedNodeId;
+        const neighborSet = new Set<string>();
+        if (activeNodeId) {
+            this.graph.forEachNeighbor(activeNodeId, (neighbor) => {
+                neighborSet.add(neighbor);
+            });
+        }
+
+        const showAntraege = this.settings.showAntraege;
+        const showSupporters = this.settings.showSupporters;
+        const showLabels = this.settings.showLabels;
+        const nodeSizeMultiplier = this.settings.nodeSize;
+        const hoveredNode = this.hoveredNode;
+        const selectedNodeId = this.selectedNode?.id;
+
         // Node Reducer
         this.renderer.setSetting("nodeReducer", (node, data) => {
             const res = { ...data };
             const attr = this.graph.getNodeAttributes(node);
             
-            // 1. Visibility Filters
-            if (!this.settings.showAntraege && (attr.type === 'antrag' || attr.type === 'amendment')) {
+            // 1. Visibility Filters (Fast check)
+            const type = (attr.type || attr.attr_type || "").toLowerCase();
+            const isAmendment = type === 'amendment' || type === 'antrag' || !node.startsWith('prs-');
+            const isPerson = type === 'person' || type === 'prs' || type === 'supporter' || node.startsWith('prs-');
+
+            if (!showAntraege && isAmendment && !isPerson) {
                 res.hidden = true;
                 return res;
             }
-            if (!this.settings.showSupporters && (attr.type === 'supporter' || attr.type === 'person')) {
+            if (!showSupporters && isPerson) {
                 res.hidden = true;
                 return res;
             }
 
-            // 2. Base Color & Group Inheritance
-            const group = this.groups.find(g => g.nodes.includes(node));
-            if (group) {
-                res.color = group.color;
+            // 2. Base Color & Group Inheritance (O(1) lookup)
+            const groupColor = this.groupLookup.get(node);
+            if (groupColor) {
+                res.color = groupColor;
             } else {
-                // Default color based on type
-                if (attr.type === 'antrag' || attr.type === 'amendment') res.color = COLOR_AMENDMENT;
-                else if (attr.type === 'supporter' || attr.type === 'person') res.color = COLOR_SUPPORTER;
-                else res.color = attr.color || '#999';
+                // Default color based on type - OVERRIDING GEXF COLORS
+                if (isPerson) {
+                    res.color = getCOLOR_SUPPORTER();
+                } else {
+                    // Default to amendment color for everything else
+                    res.color = getCOLOR_AMENDMENT();
+                }
             }
 
-            // 3. Selection & Highlighting logic
-            if (this.selectedNode) {
-                const isSelected = node === this.selectedNode.id;
-                const isNeighbor = this.graph.areNeighbors(node, this.selectedNode.id);
+            // 3. Selection & Highlighting logic (O(1) check)
+            if (activeNodeId) {
+                const isMain = node === activeNodeId;
+                const isNeighbor = neighborSet.has(node);
 
-                if (isSelected) {
-                    res.highlighted = true;
-                    res.zIndex = 90; // Just below links
-                } else if (isNeighbor) {
-                    res.zIndex = 60; // Below selected node
-                    // Keep original color
-                } else {
-                    // Background layer (dimmed)
-                    res.color = this.dimColor(res.color || "#999"); 
-                    res.label = "";
-                    res.zIndex = 0;
-                    res.alpha = 0.3;
-                }
-            } else if (this.highlightedNodeId) {
-                const isHighlighted = node === this.highlightedNodeId;
-                const isNeighbor = this.graph.areNeighbors(node, this.highlightedNodeId);
-
-                if (isHighlighted) {
+                if (isMain) {
                     res.highlighted = true;
                     res.zIndex = 90;
                 } else if (isNeighbor) {
                     res.zIndex = 60;
                 } else {
-                    res.color = this.dimColor(res.color || "#999");
+                    // Background layer (dimmed)
+                    const isDark = document.documentElement.getAttribute('data-mode') === 'dark';
+                    res.color = this.dimColor(res.color || (isDark ? '#333' : '#ccc')); 
                     res.label = "";
                     res.zIndex = 0;
+                    res.alpha = 0.3 * (1 - this.graphDimming);
                 }
+            } else if (this.graphDimming > 0) {
+                // Global dimming
+                res.alpha = 1 - this.graphDimming;
+                if (this.graphDimming > 0.5) res.label = "";
             }
 
             // 4. Hover logic (ensure label is shown)
-            if (this.hoveredNode === node) {
+            if (hoveredNode === node) {
                 res.label = attr.label || attr.name || node;
-                res.zIndex = 20;
+                res.zIndex = 100; // Bring to front
+                res.alpha = 1.0;
             }
 
             // 5. Node size multiplier
-            if (this.settings.nodeSize !== 1) {
-                res.size = (attr.size || 5) * this.settings.nodeSize;
-            }
+            res.size = (attr.size || 5) * nodeSizeMultiplier;
 
             // 6. Labels (global toggle)
-            if (!this.settings.showLabels && this.hoveredNode !== node && (!this.selectedNode || this.selectedNode.id !== node)) {
+            if (!showLabels && hoveredNode !== node && selectedNodeId !== node && !res.highlighted) {
                 res.label = "";
             }
 
@@ -560,21 +746,21 @@ export default class GraphVisualization {
             }
 
             // 2. Selection/Highlighting Filter
-            const activeNodeId = (this.selectedNode?.id) || this.highlightedNodeId;
             if (activeNodeId) {
                 if (!this.graph.hasExtremity(edge, activeNodeId)) {
-                    // Dim non-connected edges to be virtually invisible
-                    res.color = 'rgba(70,70,70,0.001)';
+                    // Dim non-connected edges
+                    res.color = getThemeColor('--graph-edge-dimmed');
                     res.zIndex = 0;
+                    res.alpha = 0.1 * (1 - this.graphDimming);
                 } else {
-                    // Highlighted edges connected to the active node
-                    res.color = 'rgba(153,153,153,0.6)';
-                    res.zIndex = 100;
+                    res.color = getThemeColor('--graph-edge-highlighted');
+                    res.zIndex = 50;
+                    res.alpha = 1.0;
                 }
             } else {
-                // Ensure default color is applied even if not in attributes
-                res.color = COLOR_LINK;
+                res.color = getCOLOR_LINK();
                 res.zIndex = 0;
+                res.alpha = 1 - this.graphDimming;
             }
 
             return res;
@@ -631,6 +817,20 @@ export default class GraphVisualization {
 
     // API for UI to control the graph
     
+    getRenderer() {
+        return this.renderer;
+    }
+
+    viewportToGraph(x: number, y: number) {
+        if (!this.renderer) return { x: 0, y: 0 };
+        return this.renderer.viewportToGraph({ x, y });
+    }
+
+    graphToViewport(x: number, y: number) {
+        if (!this.renderer) return { x: 0, y: 0 };
+        return this.renderer.graphToViewport({ x, y });
+    }
+
     setTransform(transform: any) {
         if (this.isUsingOgma) {
             if (!this.ogma) return;
@@ -664,6 +864,10 @@ export default class GraphVisualization {
     updateSettings(newSettings: Partial<GraphSettings>) {
         this.settings = { ...this.settings, ...newSettings };
         
+        if (this.settings.disableHover) {
+            this.hoveredNode = null;
+        }
+
         if (this.isUsingOgma) {
             this.applyOgmaStyles();
         } else {
@@ -671,7 +875,7 @@ export default class GraphVisualization {
             if (newSettings.linearZoom !== undefined) {
                 this.renderer.setSetting("nodeSizeReference", this.settings.linearZoom ? "positions" : "pixels");
                 this.renderer.setSetting("edgeSizeReference", this.settings.linearZoom ? "positions" : "pixels");
-                this.renderer.setSetting("zoomToSizeRatioFunction", this.settings.linearZoom ? (x: number) => x : () => 1);
+                this.renderer.setSetting("zoomToSizeRatioFunction", this.settings.linearZoom ? () => 1 : (x: number) => x);
                 this.renderer.setSetting("autoRescale", !this.settings.linearZoom);
             }
             this.refreshReducers();
@@ -692,11 +896,11 @@ export default class GraphVisualization {
         if (!this.ogma) return;
         const selectedId = this.selectedNode?.id || null;
         const rules: any[] = [];
-        rules.push({ selector: 'edge', style: { color: COLOR_LINK, width: this.settings.showLinks ? 0.1 : 0 } });
-        rules.push({ selector: 'node[type="antrag"], node[type="amendment"]', style: { color: COLOR_AMENDMENT } });
-        rules.push({ selector: 'node[type="supporter"], node[type="person"], node[type="prs"]', style: { color: COLOR_SUPPORTER } });
+        rules.push({ selector: 'edge', style: { color: getCOLOR_LINK(), width: this.settings.showLinks ? 0.1 : 0 } });
+        rules.push({ selector: 'node[type="antrag"], node[type="amendment"]', style: { color: getCOLOR_AMENDMENT() } });
+        rules.push({ selector: 'node[type="supporter"], node[type="person"], node[type="prs"]', style: { color: getCOLOR_SUPPORTER() } });
         if (selectedId) {
-            rules.push({ selector: `edge[source="${selectedId}"], edge[target="${selectedId}"]`, style: { color: 'rgba(153,153,153,0.6)', width: 1 } });
+            rules.push({ selector: `edge[source="${selectedId}"], edge[target="${selectedId}"]`, style: { color: getThemeColor('--graph-edge-highlighted'), width: 1 } });
         }
         this.ogma.styles.clear();
         this.ogma.styles.addRules(rules);

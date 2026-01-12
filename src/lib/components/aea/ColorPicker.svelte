@@ -378,7 +378,7 @@
 		border: 1px solid hsla(var(--border-300) / 0.15);
 		border-radius: 1rem;
 		padding: 0.75rem;
-		box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 10px 25px -5px hsla(var(--always-black) / 0.3);
 	}
 
 	.aea-color-picker-saturation {
@@ -394,23 +394,23 @@
 	.aea-color-picker-white-grad {
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(to right, #fff, transparent);
+		background: linear-gradient(to right, hsl(var(--always-white)), transparent);
 	}
 
 	.aea-color-picker-black-grad {
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(to top, #000, transparent);
+		background: linear-gradient(to top, hsl(var(--always-black)), transparent);
 	}
 
 	.aea-color-picker-reticle {
 		position: absolute;
 		width: 12px;
 		height: 12px;
-		border: 2px solid #fff;
+		border: 2px solid hsl(var(--always-white));
 		border-radius: 50%;
 		transform: translate(-50%, -50%);
-		box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0 5px hsla(var(--always-black) / 0.5);
 		pointer-events: none;
 	}
 
@@ -443,11 +443,11 @@
 		top: 50%;
 		width: 14px;
 		height: 14px;
-		background-color: #fff;
+		background-color: hsl(var(--always-white));
 		border: 2px solid hsla(var(--bg-100) / 0.8);
 		border-radius: 50%;
 		transform: translate(-50%, -50%);
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 2px 4px hsla(var(--always-black) / 0.3);
 		pointer-events: none;
 	}
 

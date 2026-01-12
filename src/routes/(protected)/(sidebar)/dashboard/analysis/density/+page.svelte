@@ -9,15 +9,26 @@
 		Typography,
 		Spinner
 	} from "$lib/components/aea";
-	import { AVAILABLE_PROJECTS } from "$config";
 	import { goto } from "$app/navigation";
 	import FileUploadStatus from "$components/aea/FileUploadStatus.svelte";
 	import { AlertCircle, CheckCircle2, Download, Info, Eye, EyeOff, Save, FolderOpen, Trash2 } from "lucide-svelte";
     import DensityMap from "$lib/components/analysis/DensityMap.svelte";
-    import GraphVisualization from "$components/graph/GraphVisualization";
     import * as d3 from 'd3';
     import { onMount } from 'svelte';
     import { page } from "$app/state";
+    import { browser } from "$app/environment";
+    import Graph from 'graphology';
+    import * as gexf from 'graphology-gexf';
+
+    let GraphVisualization;
+    if (browser) {
+        import("$components/graph/GraphVisualization").then(mod => {
+            GraphVisualization = mod.default;
+        });
+    }
+
+	let { data } = $props();
+    const projects = $derived(data.projects || []);
 
     let step = $state(1); // 1: Select Graph, 2: Upload group.json, 3: Result
 	let selectedProject = $state("");
@@ -32,8 +43,8 @@
     let densityRadius = $state(15);
     let visualizationType = $state('hexbin');
     let overlayOpacity = $state(1.0);
-    let weightMultiplier = $state(1.0);
-    let weightExponent = $state(1.0);
+    let weightMultiplier = $state(5.0);
+    let weightExponent = $state(2.0);
     let contourBandwidth = $state(30);
     let contourThresholds = $state(15);
     let showForceGraph = $state(false);
@@ -136,36 +147,85 @@
 
     async function loadProject(project) {
         isProcessing = true;
+        error = "";
         try {
             // 1. Restore base project data
             selectedProject = project.selectedProject;
             
-            // Re-load simulated nodes for coordinates (needed for processing and context)
-            const simResponse = await fetch(`/data/${selectedProject}/simulated/nodes.json`);
-            if (simResponse.ok) {
-                simulatedNodes = await simResponse.json();
-            } else {
-                const nodesResponse = await fetch(`/data/${selectedProject}/nodes.json`);
-                if (nodesResponse.ok) simulatedNodes = await nodesResponse.json();
-                else simulatedNodes = [];
+            // 2. Load GEXF file for coordinates
+            let gexfData = null;
+            const pathsToTry = [
+                `/data/${selectedProject}/${selectedProject}.gexf.gz`,
+                `/data/${selectedProject}/${selectedProject}.gexf`,
+                `/data/${selectedProject}.gexf.gz`,
+                `/data/${selectedProject}.gexf`,
+                `/data/${selectedProject}/${selectedProject}.gexf.xml`
+            ];
+
+            for (const path of pathsToTry) {
+                const response = await fetch(path);
+                if (response.ok) {
+                    if (path.endsWith('.gz')) {
+                        const arrayBuffer = await response.arrayBuffer();
+                        const uint8Array = new Uint8Array(arrayBuffer);
+                        try {
+                            const stream = new ReadableStream({
+                                start(controller) {
+                                    controller.enqueue(uint8Array);
+                                    controller.close();
+                                }
+                            });
+                            const decompressionStream = new DecompressionStream('gzip');
+                            const decompressedResponse = new Response(stream.pipeThrough(decompressionStream));
+                            gexfData = await decompressedResponse.text();
+                        } catch (e) {
+                            gexfData = new TextDecoder().decode(uint8Array);
+                        }
+                    } else {
+                        gexfData = await response.text();
+                    }
+                    break;
+                }
             }
 
-            // 2. Restore analysis results
-            analysisResults = project.analysisResults;
+            if (gexfData) {
+                const graph = gexf.parse(Graph, gexfData);
+                simulatedNodes = graph.nodes().map(id => {
+                    const attr = graph.getNodeAttributes(id);
+                    return {
+                        id,
+                        x: attr.x || 0,
+                        y: attr.y || 0,
+                        label: attr.label || id,
+                        ...attr
+                    };
+                });
+            } else {
+                // Fallback to saved nodes if GEXF fails
+                simulatedNodes = project.simulatedNodes || [];
+            }
 
-            // 3. Restore parameters
+            // 3. Restore project data (data.json is deprecated)
+            projectData = project.projectData || { nodes: simulatedNodes, links: [] };
+
+            // 4. Restore analysis results
+            analysisResults = project.analysisResults || [];
+
+            // 5. Restore parameters
             const p = project.parameters;
-            densityOpacity = p.densityOpacity;
-            densityRadius = p.densityRadius;
-            visualizationType = p.visualizationType;
-            overlayOpacity = p.overlayOpacity;
-            weightMultiplier = p.weightMultiplier;
-            weightExponent = p.weightExponent;
-            contourBandwidth = p.contourBandwidth;
-            contourThresholds = p.contourThresholds;
-            showForceGraph = p.showForceGraph;
+            if (p) {
+                densityOpacity = p.densityOpacity ?? densityOpacity;
+                densityRadius = p.densityRadius ?? densityRadius;
+                visualizationType = p.visualizationType ?? visualizationType;
+                overlayOpacity = p.overlayOpacity ?? overlayOpacity;
+                weightMultiplier = p.weightMultiplier ?? weightMultiplier;
+                weightExponent = p.weightExponent ?? weightExponent;
+                contourBandwidth = p.contourBandwidth ?? contourBandwidth;
+                contourThresholds = p.contourThresholds ?? contourThresholds;
+                showForceGraph = p.showForceGraph ?? showForceGraph;
+            }
 
-            // 4. Restore transform (will be applied via effect)
+            // 6. Restore transform (will be applied via effect)
             globalTransform = project.globalTransform;
 
             step = 3;
@@ -180,6 +240,7 @@
             }, 500);
 
         } catch (e) {
+            console.error("LoadProject Error:", e);
             error = "Fehler beim Laden des Projekts: " + e.message;
         } finally {
             isProcessing = false;
@@ -273,28 +334,80 @@
 	async function selectProject(project) {
 		selectedProject = project;
         isProcessing = true;
+        error = "";
         try {
-            // Load main data
-            const response = await fetch(`/data/${project}/data.json`);
-            if (!response.ok) throw new Error("Projekt-Daten konnten nicht geladen werden.");
-            projectData = await response.json();
+            // 1. Load GEXF file
+            // Try different possible paths for the GEXF file
+            let gexfData = null;
+            let loadedPath = "";
+            const pathsToTry = [
+                `/data/${project}/${project}.gexf.gz`,
+                `/data/${project}/${project}.gexf`,
+                `/data/${project}.gexf.gz`,
+                `/data/${project}.gexf`,
+                `/data/${project}/${project}.gexf.xml`
+            ];
 
-            // Load simulated nodes for coordinates
-            const simResponse = await fetch(`/data/${project}/simulated/nodes.json`);
-            if (simResponse.ok) {
-                simulatedNodes = await simResponse.json();
-            } else {
-                // Fallback to nodes.json
-                const nodesResponse = await fetch(`/data/${project}/nodes.json`);
-                if (nodesResponse.ok) {
-                    simulatedNodes = await nodesResponse.json();
-                } else {
-                    simulatedNodes = [];
+            for (const path of pathsToTry) {
+                const response = await fetch(path);
+                if (response.ok) {
+                    loadedPath = path;
+                    if (path.endsWith('.gz')) {
+                        const arrayBuffer = await response.arrayBuffer();
+                        const uint8Array = new Uint8Array(arrayBuffer);
+                        try {
+                            const stream = new ReadableStream({
+                                start(controller) {
+                                    controller.enqueue(uint8Array);
+                                    controller.close();
+                                }
+                            });
+                            const decompressionStream = new DecompressionStream('gzip');
+                            const decompressedResponse = new Response(stream.pipeThrough(decompressionStream));
+                            gexfData = await decompressedResponse.text();
+                        } catch (e) {
+                            console.error("Decompression failed:", e);
+                            gexfData = new TextDecoder().decode(uint8Array);
+                        }
+                    } else {
+                        gexfData = await response.text();
+                    }
+                    break;
                 }
             }
 
+            if (!gexfData) {
+                throw new Error("GEXF-Datei konnte nicht gefunden werden.");
+            }
+
+            // 2. Parse GEXF
+            const graph = gexf.parse(Graph, gexfData);
+            
+            // 3. Extract nodes and coordinates
+            simulatedNodes = graph.nodes().map(id => {
+                const attr = graph.getNodeAttributes(id);
+                return {
+                    id,
+                    x: attr.x || 0,
+                    y: attr.y || 0,
+                    label: attr.label || id,
+                    ...attr
+                };
+            });
+
+            // 4. Create projectData from graph (data.json is deprecated)
+            projectData = {
+                nodes: simulatedNodes,
+                links: graph.edges().map(id => ({
+                    source: graph.source(id),
+                    target: graph.target(id),
+                    ...graph.getEdgeAttributes(id)
+                }))
+            };
+
             step = 2;
         } catch (e) {
+            console.error("SelectProject Error:", e);
             error = e.message;
         } finally {
             isProcessing = false;
@@ -404,14 +517,13 @@
                 }
 
                 if (node && node.x !== undefined && node.y !== undefined) {
-                    let weight = 1;
-                    if (node.size) {
-                        weight = node.size;
-                    } else if (node.linkCount !== undefined) {
-                        const baseRadius = Math.sqrt(node.linkCount) * 1.5 + 0.25;
-                        weight = Math.pow(baseRadius, 2);
-                    }
-                    nodes.push({ id: node.id, x: node.x, y: node.y, weight: weight });
+                    nodes.push({ 
+                        id: node.id, 
+                        x: node.x, 
+                        y: node.y, 
+                        initiated: node.initiated || 0,
+                        supported: node.supported || 0
+                    });
                 }
             });
 
@@ -420,28 +532,16 @@
                 return;
             }
 
-			const response = await fetch("/api/density-analysis", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					project: selectedProject,
-					groups: nodes,
-					options: { quality: "high" }
-				})
-			});
+            // Client-side processing: just pass the nodes to the component
+            analysisResults = [...analysisResults, {
+                success: true,
+                projectId: selectedProject,
+                fileName,
+                groups: nodes,
+                backgroundNodes: simulatedNodes.map(n => ({ x: n.x, y: n.y, type: n.type }))
+            }];
+            step = 3;
 
-			const result = await response.json();
-			if (result.success) {
-				analysisResults = [...analysisResults, {
-                    ...result,
-                    fileName,
-                    groups: nodes,
-                    backgroundNodes: simulatedNodes.map(n => ({ x: n.x, y: n.y, type: n.type }))
-                }];
-				step = 3;
-			} else {
-				error = result.error || "Analyse fehlgeschlagen";
-			}
 		} catch (e) {
             console.error("ProcessDensity Error:", e);
 			error = "Fehler bei der Verarbeitung: " + e.message;
@@ -517,25 +617,17 @@
                     Basis-Graph wählen
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {#each AVAILABLE_PROJECTS as project}
-                        <Card 
-                            variant="glass"
-                            interactive
-                            class="cursor-pointer hover:border-[hsl(var(--accent-pro-100))] transition-all group overflow-hidden rounded-3xl"
-                            onclick={() => selectProject(project)}
+                    {#each projects as project}
+                        <button 
+                            class="flex flex-col items-start p-6 rounded-2xl border-2 transition-all text-left gap-2 group {selectedProject === project.id ? 'border-[hsl(var(--accent-pro-100))] bg-[hsl(var(--accent-pro-100))]/5' : 'border-border/50 hover:border-[hsl(var(--accent-pro-100))]/30'}"
+                            onclick={() => selectProject(project.id)}
                         >
-                            <CardHeader>
-                                <CardTitle class="capitalize group-hover:text-[hsl(var(--accent-pro-100))] transition-colors text-xl">
-                                    {project}
-                                </CardTitle>
-                                <CardDescription>Basis-Graph für die Analyse wählen</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <div class="aspect-video bg-muted/30 rounded-2xl flex items-center justify-center group-hover:bg-[hsl(var(--accent-pro-100))]/10 transition-colors">
-                                    <span class="text-[10px] text-muted-foreground uppercase font-black tracking-[0.3em] group-hover:text-[hsl(var(--accent-pro-100))] transition-colors">Vorschau</span>
-                                </div>
-                            </CardContent>
-                        </Card>
+                            <div class="p-2 rounded-lg {selectedProject === project.id ? 'bg-[hsl(var(--accent-pro-100))] text-white' : 'bg-muted text-muted-foreground group-hover:bg-[hsl(var(--accent-pro-100))]/10 group-hover:text-[hsl(var(--accent-pro-100))]'}">
+                                <FolderOpen size={20} />
+                            </div>
+                            <div class="font-bold text-foreground">{project.name}</div>
+                            <div class="text-xs opacity-50 line-clamp-1">{project.id}</div>
+                        </button>
                     {/each}
                 </div>
             </section>
@@ -639,34 +731,32 @@
                                 </div>
                             </CardHeader>
                             <CardContent class="p-0 bg-slate-950 aspect-square relative">
-                                <div class="absolute inset-0 z-0 pointer-events-none opacity-20">
-                                    <!-- Background nodes visualization could be added here if needed -->
-                                </div>
-
-                                <DensityMap 
-                                    bind:this={mapComponents[i]}
-                                    data={result} 
-                                    opacity={densityOpacity}
-                                    type={visualizationType}
-                                    weightMultiplier={weightMultiplier}
-                                    weightExponent={weightExponent}
-                                    options={{ 
-                                        quality: 'high', 
-                                        radius: densityRadius,
-                                        bandwidth: contourBandwidth,
-                                        thresholds: contourThresholds
-                                    }} 
-                                    class="relative z-10 pointer-events-none"
-                                />
-
                                 {#if showForceGraph}
                                     <div class="absolute inset-0 z-0 pointer-events-none">
-                                        <canvas id="graph-canvas-{i}" class="w-full h-full pointer-events-auto"></canvas>
+                                        <div id="graph-canvas-{i}" class="w-full h-full pointer-events-auto"></div>
                                     </div>
                                 {/if}
 
+                                <div class="absolute inset-0 z-10 pointer-events-none">
+                                    <DensityMap 
+                                        bind:this={mapComponents[i]}
+                                        data={result} 
+                                        opacity={densityOpacity}
+                                        type={visualizationType}
+                                        weightMultiplier={weightMultiplier}
+                                        weightExponent={weightExponent}
+                                        options={{ 
+                                            quality: 'high', 
+                                            radius: densityRadius,
+                                            bandwidth: contourBandwidth,
+                                            thresholds: contourThresholds
+                                        }} 
+                                        class="w-full h-full"
+                                    />
+                                </div>
+
                                 <div class="absolute bottom-3 right-3 z-20 pointer-events-none">
-                                    <div class="bg-black/60 backdrop-blur-md border border-white/10 p-2 rounded-lg text-[8px] text-white/40 font-mono">
+                                    <div class="bg-background/60 backdrop-blur-md border border-border/10 p-2 rounded-lg text-[8px] text-foreground/40 font-mono">
                                         POINTS: {result.groups.length}
                                     </div>
                                 </div>
@@ -711,7 +801,7 @@
                             <Button 
                                 variant="outline" 
                                 size="sm" 
-                                class="w-full h-9 border-[hsl(var(--accent-pro-100))]/30 text-[hsl(var(--accent-pro-100))] hover:bg-[hsl(var(--accent-pro-100))] hover:text-white transition-all gap-2"
+                                class="w-full h-9 border-[hsl(var(--accent-pro-100))]/30 text-[hsl(var(--accent-pro-100))] hover:bg-[hsl(var(--accent-pro-100))] hover:text-oncolor-100 transition-all gap-2"
                                 onclick={saveProject}
                                 disabled={isSaving}
                             >

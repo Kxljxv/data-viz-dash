@@ -137,7 +137,7 @@
         backdrop-filter: blur(24px);
         border: 1px solid hsla(var(--border-300) / 0.15);
         border-radius: 1rem;
-        box-shadow: 0 10px 30px -5px rgba(0,0,0,0.5), 
+        box-shadow: 0 10px 30px -5px hsla(var(--always-black) / 0.5), 
                     0 0 20px -5px hsla(var(--accent-brand) / 0.1);
         z-index: 50;
         opacity: 0;

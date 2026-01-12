@@ -18,7 +18,7 @@
 		<div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
 
 			
-			<Typography tag="h1" variant="display" class="text-white leading-tight">
+			<Typography tag="h1" variant="display" class="text-foreground leading-tight">
 				Interaktive Netzwerk-Visualisierung
 				<span class="text-brand"> für politische Daten</span>
 			</Typography>
@@ -46,14 +46,14 @@
 	<section class="container mx-auto px-4 py-24">
 		<div class="max-w-6xl mx-auto">
 			<div class="text-center mb-16">
-				<Typography tag="h2" variant="h1" class="text-white mb-4">Plattform-Features</Typography>
+				<Typography tag="h2" variant="h1" class="text-foreground mb-4">Plattform-Features</Typography>
 				<Typography variant="body" class="opacity-40">Moderne Tools für komplexe Datenanalysen</Typography>
 			</div>
 			
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				<Card interactive class="card-glass">
 					{#snippet header()}
-						<Typography variant="h3" class="text-white">Interaktive Visualisierung</Typography>
+						<Typography variant="h3" class="text-foreground">Interaktive Visualisierung</Typography>
 						<Typography variant="label" class="opacity-40 text-[10px]">Visualisierung</Typography>
 					{/snippet}
 					<Typography variant="body" class="text-sm opacity-60">
@@ -63,7 +63,7 @@
 
 				<Card interactive class="card-glass">
 					{#snippet header()}
-						<Typography variant="h3" class="text-white">Analyse-Tools</Typography>
+						<Typography variant="h3" class="text-foreground">Analyse-Tools</Typography>
 						<Typography variant="label" class="opacity-40 text-[10px]">Analyse</Typography>
 					{/snippet}
 					<Typography variant="body" class="text-sm opacity-60">
@@ -75,7 +75,7 @@
 
 				<Card interactive class="card-glass">
 					{#snippet header()}
-						<Typography variant="h3" class="text-white">Multi-Projekt</Typography>
+						<Typography variant="h3" class="text-foreground">Multi-Projekt</Typography>
 						<Typography variant="label" class="opacity-40 text-[10px]">Projekte</Typography>
 					{/snippet}
 					<Typography variant="body" class="text-sm opacity-60">

@@ -1,6 +1,7 @@
 // Simplified session management for Auth0 hybrid integration
 import { dev } from "$app/environment";
 import { SESSION_TOKEN_TTL, SESSION_COOKIE_NAME } from "$config";
+import { getSafeUserId } from "./auth";
 
 const app_env = dev ? "development" : "production";
 const place = "session";
@@ -32,8 +33,9 @@ export async function write_login_session(platform, headers, sessionInfo, sessio
 			expire_at: Date.now() + (ttl * 1000)
 		};
 
+		const safeKey = getSafeUserId(sessionId);
 		await platform.env.LOGIN_SESSION_CACHE.put(
-			sessionId,
+			safeKey,
 			JSON.stringify(sessionData),
 			{ expirationTtl: ttl }
 		);
@@ -62,7 +64,8 @@ export async function get_login_session(platform, sessionId) {
 	}
 
 	try {
-		const kvRes = await platform.env.LOGIN_SESSION_CACHE.get(sessionId, { type: "json" });
+		const safeKey = getSafeUserId(sessionId);
+		const kvRes = await platform.env.LOGIN_SESSION_CACHE.get(safeKey, { type: "json" });
 		
 		if (kvRes !== null) {
 			return {
@@ -71,7 +74,10 @@ export async function get_login_session(platform, sessionId) {
 			};
 		}
 	} catch (err) {
-		console.error(`[${place}] KV get error:`, err);
+		// Only log error if not in development or if it's not a common dev-time KV error
+		if (!dev || !err.message.includes("400")) {
+			console.error(`[${place}] KV get error:`, err);
+		}
 	}
 
 	return { existed: false };
@@ -93,7 +99,8 @@ export async function delete_login_session(platform, sessionId) {
 	}
 
 	try {
-		await platform.env.LOGIN_SESSION_CACHE.delete(sessionId);
+		const safeKey = getSafeUserId(sessionId);
+		await platform.env.LOGIN_SESSION_CACHE.delete(safeKey);
 		console.log(`[${place}] Session deleted from KV: ${sessionId.substring(0, 20)}...`);
 		return { success: true };
 	} catch (err) {

@@ -320,7 +320,7 @@
 		transform: translateY(10px) scale(0.98);
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		box-shadow: 
-			0 10px 30px -5px rgba(0, 0, 0, 0.5),
+			0 10px 30px -5px hsla(var(--always-black) / 0.5),
 			0 0 20px -5px hsla(var(--accent-brand) / 0.1);
 		width: 300px;
 	}
@@ -403,7 +403,7 @@
 
 	.aea-datepicker-day.is-selected {
 		background-color: hsl(var(--accent-brand));
-		color: #fff;
+		color: hsl(var(--oncolor-100));
 		font-weight: 700;
 		box-shadow: 0 0 10px hsla(var(--accent-brand) / 0.5);
 	}

@@ -138,12 +138,12 @@
                         type="text" 
                         bind:value={name}
                         placeholder="Gruppenname eingeben..."
-                        class="bg-white/5 border-white/10 focus:border-brand/50 transition-colors"
+                        class="bg-muted/20 border-border/50 focus:border-brand/50 transition-colors"
                     />
                 </div>
                 <div>
-                    <label for="group-color" class="block text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-3">Farbe</label>
-                    <div class="flex items-center space-x-3 p-2 bg-white/5 border border-white/10 rounded-2xl">
+                    <label for="group-color" class="block text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.2em] mb-3">Farbe</label>
+                    <div class="flex items-center space-x-3 p-2 bg-muted/20 border border-border/50 rounded-2xl">
                         <input 
                             id="group-color"
                             type="color" 
@@ -151,7 +151,7 @@
                             class="w-10 h-10 rounded-xl cursor-pointer bg-transparent border-0 p-0 overflow-hidden"
                             title="Farbe wählen"
                         />
-                        <span class="text-[10px] font-mono text-white/60">{color.toUpperCase()}</span>
+                        <span class="text-[10px] font-mono text-muted-foreground/80">{color.toUpperCase()}</span>
                     </div>
                 </div>
             </div>
@@ -159,7 +159,7 @@
             <!-- Node Management Section -->
             <div class="space-y-4">
                 <div class="flex justify-between items-center">
-                    <span class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Mitglieder ({groupNodes.length})</span>
+                    <span class="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.2em]">Mitglieder ({groupNodes.length})</span>
                     {#if groupNodes.length > 0}
                         <button 
                             onclick={() => groupNodes = []}
@@ -171,15 +171,15 @@
                 </div>
                 
                 <!-- Current Nodes -->
-                <div class="flex flex-wrap gap-2 min-h-[60px] p-4 bg-white/5 border border-white/5 rounded-2xl">
+                <div class="flex flex-wrap gap-2 min-h-[60px] p-4 bg-muted/20 border border-border/50 rounded-2xl">
                     {#each groupNodes as nodeId}
                         {@const node = allNodes.find(n => n.id === nodeId)}
                         {#if node}
                             <div class="flex items-center space-x-2 px-3 py-1.5 bg-brand/10 border border-brand/20 rounded-xl group transition-all hover:border-brand/40">
-                                <span class="text-[11px] font-medium text-white/90">{node.label}</span>
+                                <span class="text-[11px] font-medium text-foreground/90">{node.label}</span>
                                 <button 
                                     onclick={() => removeNode(nodeId)}
-                                    class="text-white/30 hover:text-danger-100 transition-colors"
+                                    class="text-muted-foreground/40 hover:text-danger-100 transition-colors"
                                     aria-label={`Entferne ${node.label}`}
                                 >
                                     <IconX size={14} />
@@ -189,7 +189,7 @@
                     {/each}
                     {#if groupNodes.length === 0}
                         <div class="w-full flex flex-col items-center justify-center py-4 text-center">
-                            <span class="text-[10px] font-medium text-white/20 uppercase tracking-widest">Keine Knoten ausgewählt</span>
+                            <span class="text-[10px] font-medium text-muted-foreground/40 uppercase tracking-widest">Keine Knoten ausgewählt</span>
                         </div>
                     {/if}
                 </div>
@@ -201,22 +201,22 @@
                         bind:value={searchQuery}
                         placeholder="Nach Knoten suchen..."
                         aria-label="Knoten suchen"
-                        class="bg-white/5 border-white/10 pr-10"
+                        class="bg-muted/20 border-border/50 pr-10"
                     />
                     <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
-                        <IconSearch size={16} class="text-white" />
+                        <IconSearch size={16} class="text-muted-foreground/60" />
                     </div>
 
                     {#if searchQuery.length > 0 && filteredNodes.length > 0}
-                        <div class="absolute z-50 w-full mt-2 bg-background/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
+                        <div class="absolute z-50 w-full mt-2 bg-background/95 backdrop-blur-2xl border border-border/50 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2">
                             {#each filteredNodes as node}
                                 <button 
                                     onclick={() => { addNode(node.id); searchQuery = ''; }}
-                                    class="w-full text-left px-5 py-4 text-xs text-white/80 hover:bg-white/5 hover:text-white transition-all flex items-center justify-between group"
+                                    class="w-full text-left px-5 py-4 text-xs text-muted-foreground/80 hover:bg-muted/20 hover:text-foreground transition-all flex items-center justify-between group"
                                 >
                                     <div class="flex flex-col">
                                         <span class="font-medium">{node.label}</span>
-                                        <span class="text-[9px] text-white/40 uppercase tracking-tighter">{node.id}</span>
+                                        <span class="text-[9px] text-muted-foreground/40 uppercase tracking-tighter">{node.id}</span>
                                     </div>
                                     <span class="w-6 h-6 rounded-lg bg-brand/10 text-brand flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                         <IconPlus size={14} />
@@ -229,8 +229,8 @@
             </div>
 
             <!-- Import/Export -->
-            <div class="pt-6 border-t border-white/5 flex gap-3">
-                <Button variant="ghost" size="sm" onclick={handleExport} class="flex-1 h-11 text-[10px] font-black uppercase tracking-[0.2em] border border-white/5 bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all" aria-label="Gruppe exportieren">
+            <div class="pt-6 border-t border-border/50 flex gap-3">
+                <Button variant="ghost" size="sm" onclick={handleExport} class="flex-1 h-11 text-[10px] font-black uppercase tracking-[0.2em] border border-border/50 bg-muted/20 hover:bg-muted/40 text-muted-foreground/60 hover:text-foreground transition-all" aria-label="Gruppe exportieren">
                     <IconDownload size={14} class="mr-2 opacity-50" />
                     Exportieren
                 </Button>
@@ -243,7 +243,7 @@
                         class="absolute inset-0 opacity-0 cursor-pointer z-10"
                         aria-label="Gruppe importieren"
                     />
-                    <Button variant="ghost" size="sm" class="w-full h-11 text-[10px] font-black uppercase tracking-[0.2em] border border-white/5 bg-white/5 group-hover:bg-white/10 text-white/60 group-hover:text-white transition-all">
+                    <Button variant="ghost" size="sm" class="w-full h-11 text-[10px] font-black uppercase tracking-[0.2em] border border-border/50 bg-muted/20 group-hover:bg-muted/40 text-muted-foreground/60 group-hover:text-foreground transition-all">
                         <IconUpload size={14} class="mr-2 opacity-50" />
                         Importieren
                     </Button>
@@ -254,11 +254,11 @@
 
     {#snippet footer()}
         <div class="flex w-full gap-3">
-            <Button variant="ghost" onclick={onClose} class="flex-1 h-12 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors" aria-label="Abbrechen">
+            <Button variant="ghost" onclick={onClose} class="flex-1 h-12 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60 hover:text-foreground transition-colors" aria-label="Abbrechen">
                 Abbrechen
             </Button>
-            <Button onclick={handleSave} class="flex-1 h-12 text-[10px] font-black uppercase tracking-[0.2em] bg-brand hover:bg-brand/80 text-white transition-all shadow-lg shadow-brand/20" aria-label="Speichern">
-                Änderungen speichern
+            <Button onclick={handleSave} class="flex-1 h-12 text-[10px] font-black uppercase tracking-[0.2em] bg-brand hover:bg-brand/80 text-oncolor-100 transition-all shadow-lg shadow-brand/20" aria-label="Speichern">
+                Gruppe speichern
             </Button>
         </div>
     {/snippet}

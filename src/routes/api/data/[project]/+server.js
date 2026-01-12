@@ -1,17 +1,19 @@
 import { json } from "@sveltejs/kit";
-import { AVAILABLE_PROJECTS } from "$config";
+import { isValidProject } from "$lib/server/projects";
+import { getSafeUserId } from "$lib/server/auth";
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params, platform, url }) {
 	const { project } = params;
 
 	// Validate project
-	if (!AVAILABLE_PROJECTS.includes(project)) {
+	if (!isValidProject(project)) {
 		return json({ error: "Invalid project" }, { status: 400 });
 	}
 
 	// Check cache first (if KV is available)
-	const cacheKey = `data:${project}:centrality`;
+	const safeProject = getSafeUserId(project);
+	const cacheKey = `data__${safeProject}__centrality`;
 	
 	if (platform?.env?.DATA_CACHE) {
 		try {
@@ -37,12 +39,13 @@ export async function POST({ params, request, platform }) {
 	const { project } = params;
 	const { centrality } = await request.json();
 
-	if (!AVAILABLE_PROJECTS.includes(project)) {
+	if (!isValidProject(project)) {
 		return json({ error: "Invalid project" }, { status: 400 });
 	}
 
 	if (platform?.env?.DATA_CACHE) {
-		const cacheKey = `data:${project}:centrality`;
+		const safeProject = getSafeUserId(project);
+		const cacheKey = `data__${safeProject}__centrality`;
 		try {
 			await platform.env.DATA_CACHE.put(cacheKey, JSON.stringify(centrality));
 			return json({ success: true });

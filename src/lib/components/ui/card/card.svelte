@@ -24,7 +24,7 @@
 	data-slot="card"
 	class={cn(
 		"bg-card text-card-foreground flex flex-col rounded-2xl border border-border/10 shadow-sm transition-all duration-300 pb-6 pt-6",
-		variant === "glass" && "bg-background/40 backdrop-blur-md border-white/10",
+		variant === "glass" && "bg-background/40 backdrop-blur-md border-border/10",
 		interactive && "hover:shadow-md hover:border-border/20 cursor-pointer active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-primary/20 outline-none",
 		className
 	)}

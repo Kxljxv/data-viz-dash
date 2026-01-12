@@ -12,7 +12,7 @@
     </div>
     <div class="flex items-center gap-2">
         <button 
-            class="p-1.5 hover:bg-white/10 rounded-lg transition-all border border-transparent hover:border-white/10 {isSorted ? 'text-brand' : 'text-muted-foreground/30'}"
+            class="p-1.5 hover:bg-muted/10 rounded-lg transition-all border border-transparent hover:border-border/10 {isSorted ? 'text-brand' : 'text-muted-foreground/30'}"
             onclick={(e) => { e.stopPropagation(); column.toggleSorting(isSorted === "asc") }}
             title="Sortieren"
         >

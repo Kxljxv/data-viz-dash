@@ -155,7 +155,7 @@
             accessorKey: "id",
             header: (ctx) => renderComponent(HeaderCell, { label: "ID", column: ctx.column }),
             cell: (ctx) => renderSnippet(createRawSnippet(() => ({
-                render: () => `<code class="text-[10px] opacity-70 bg-white/5 px-1 rounded">${ctx.getValue()}</code>`
+                render: () => `<code class="text-[10px] opacity-70 bg-muted/20 px-1 rounded">${ctx.getValue()}</code>`
             }))),
             meta: { description: "Antrags-ID" }
         },
@@ -259,7 +259,7 @@
                 <Input 
                     type="search"
                     placeholder="Suche..." 
-                    class="pl-9 bg-muted border-white/10 focus:bg-background transition-colors"
+                    class="pl-9 bg-muted border-border/10 focus:bg-background transition-colors"
                     value={activeTab === 'supporters' ? supporterGlobalFilter : amendmentGlobalFilter}
                     oninput={(e) => {
                         if (activeTab === 'supporters') {
@@ -323,7 +323,7 @@
     <div class="space-y-4">
         <div class="max-h-[60vh] overflow-y-auto pr-2 space-y-2">
             {#each modalItems as item}
-                <div class="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10 hover:border-brand/30 transition-all group">
+                <div class="flex items-center justify-between p-3 rounded-lg bg-muted/20 border border-border/10 hover:border-brand/30 transition-all group">
                     <div class="flex flex-col gap-0.5">
                         <span class="text-sm font-medium">{item.label || item.id}</span>
                         {#if item.id && item.label}

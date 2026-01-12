@@ -59,11 +59,11 @@
     }
 
     /* Variant Colors - Solid */
-    .badge-brand { background-color: hsl(var(--accent-brand)); color: white; }
-    .badge-info { background-color: hsl(var(--accent-pro-100)); color: white; }
-    .badge-success { background-color: hsl(var(--success-100)); color: white; }
-    .badge-warning { background-color: hsl(var(--warning-100)); color: black; }
-    .badge-danger { background-color: hsl(var(--danger-100)); color: white; }
+    .badge-brand { background-color: hsl(var(--accent-brand)); color: hsl(var(--oncolor-100)); }
+    .badge-info { background-color: hsl(var(--accent-pro-100)); color: hsl(var(--oncolor-100)); }
+    .badge-success { background-color: hsl(var(--success-100)); color: hsl(var(--oncolor-100)); }
+    .badge-warning { background-color: hsl(var(--warning-100)); color: hsl(var(--text-000)); }
+    .badge-danger { background-color: hsl(var(--danger-100)); color: hsl(var(--oncolor-100)); }
     .badge-neutral { background-color: hsla(var(--bg-100) / 0.8); color: hsl(var(--text-200)); }
 
     /* Outline Styles */

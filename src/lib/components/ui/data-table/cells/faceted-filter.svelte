@@ -20,7 +20,7 @@
 
 <div class="relative w-full">
     <Select.Root type="single" value={filterValue || "all"} onValueChange={onValueChange}>
-        <Select.Trigger class="w-full h-7 text-[10px] bg-muted border-white/10 px-2 py-1 hover:bg-muted/80 transition-colors">
+        <Select.Trigger class="w-full h-7 text-[10px] bg-muted border-border/10 px-2 py-1 hover:bg-muted/80 transition-colors">
             <div class="flex items-center gap-2 truncate">
                 <IconFilter size={12} class={filterValue ? 'text-brand' : 'text-muted-foreground/30'} />
                 <span class="truncate">
@@ -28,7 +28,7 @@
                 </span>
             </div>
         </Select.Trigger>
-        <Select.Content class="max-h-[200px] bg-[#1a1a1a] border-white/10 shadow-2xl backdrop-blur-md">
+        <Select.Content class="max-h-[200px] bg-popover border-border/10 shadow-2xl backdrop-blur-md">
             <Select.Item value="all" label="Alle" class="text-xs" />
             {#each sortedUniqueValues as value}
                 <Select.Item value={String(value)} label={String(value)} class="text-xs" />

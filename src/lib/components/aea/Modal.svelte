@@ -131,9 +131,9 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: hsla(var(--always-black) / 0.6);
         backdrop-filter: blur(4px);
-        z-index: 2000;
+        z-index: 10000;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -159,7 +159,7 @@
         display: flex;
         flex-direction: column;
         box-shadow: 
-            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 25px 50px -12px hsla(var(--always-black) / 0.5),
             0 0 40px -10px hsla(var(--accent-brand) / 0.1);
         transform: scale(0.95) translateY(10px);
         transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);

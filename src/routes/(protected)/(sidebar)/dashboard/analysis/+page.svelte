@@ -47,7 +47,7 @@
 				</CardDescription>
 			</CardHeader>
 			<CardContent class="mt-auto">
-				<Button onclick={() => goto("/dashboard/analysis/density")} class="w-full bg-[hsl(var(--accent-pro-100))] hover:bg-[hsl(var(--accent-pro-100)/0.9)] text-white">
+				<Button onclick={() => goto("/dashboard/analysis/density")} class="w-full bg-[hsl(var(--accent-pro-100))] hover:bg-[hsl(var(--accent-pro-100)/0.9)] text-oncolor-100">
 					Neue Analyse starten
 				</Button>
 			</CardContent>

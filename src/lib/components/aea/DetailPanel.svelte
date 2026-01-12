@@ -43,14 +43,22 @@
     });
 
     /** @type {any[]} - Reactive derived list of neighbor nodes connected to the current node. */
-    let connections = $derived(
-        allLinks
-            .filter(l => (l.source.id === node?.id) || (l.target.id === node?.id))
-            .map(l => {
-                const neighbor = l.source.id === node.id ? l.target : l.source;
-                return neighbor;
+    let connections = $derived.by(() => {
+        if (!node || !allLinks) return [];
+        
+        const nodeId = String(node.id);
+        return allLinks
+            .filter(l => {
+                const sourceId = String(l.source?.id || l.source);
+                const targetId = String(l.target?.id || l.target);
+                return sourceId === nodeId || targetId === nodeId;
             })
-    );
+            .map(l => {
+                const sourceId = String(l.source?.id || l.source);
+                return sourceId === nodeId ? l.target : l.source;
+            })
+            .filter(neighbor => neighbor !== null && neighbor !== undefined);
+    });
 
     /** @type {string|null} - Reactive derived path to the PDF document for 'antrag' type nodes. */
     let pdfPath = $derived(
@@ -72,7 +80,7 @@
 <Modal 
     open={!!node} 
     onclose={onClose}
-    size={isPdfOpen ? 'lg' : 'sm'}
+    size={isPdfOpen ? 'xl' : 'md'}
     accent={node.type === 'antrag' ? 'brand' : 'success'}
     title={node.label}
 >
@@ -144,7 +152,7 @@
                                                 <div class={`w-2 h-2 rounded-full ${neighbor.type === 'antrag' ? 'bg-[hsl(var(--accent-secondary-100))]' : 'bg-[hsl(var(--success-100))]'} opacity-60`}></div>
                                             </TableCell>
                                             <TableCell>
-                                                <span class="text-xs text-[var(--text-primary)] truncate block max-w-[120px] font-modern font-bold">{neighbor.label}</span>
+                                                <span class="text-xs text-[var(--text-primary)] truncate block font-modern font-bold">{neighbor.label}</span>
                                             </TableCell>
                                             <TableCell class="text-right">
                                                 <IconArrowRight size={14} class="text-[hsl(var(--accent-pro-100))] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1 inline-block" />

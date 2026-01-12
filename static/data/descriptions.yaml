@@ -5,11 +5,11 @@
   nodes: 5000
   edges: 30000
 bdk_all:
-  short: "43.-51. BDK's"
-  medium: "43.-51. Bundesdelegiertenkonferenzen"
-  long: "43.-51. Bundesdelegiertenkonferenzen kombiniert"
-  nodes: 22000
-  edges: 210000
+  short: "41.-51. BDK's"
+  medium: "41.-51. Bundesdelegiertenkonferenzen"
+  long: "41.-51. Bundesdelegiertenkonferenzen kombiniert"
+  nodes: 23220
+  edges: 239131
 ldk_la:
   short: "LDK's & LA's"
   medium: "LDK's & LA's seit 2020"

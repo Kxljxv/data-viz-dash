@@ -189,7 +189,7 @@
 		text-transform: uppercase;
 		color: hsl(var(--accent-success, 142, 71%, 45%));
 		white-space: nowrap;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 4px 12px hsla(var(--always-black) / 0.3);
 		pointer-events: none;
 		animation: tooltip-in 0.2s ease-out;
 	}

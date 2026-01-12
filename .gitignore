@@ -26,9 +26,9 @@ vite.config.ts.timestamp-*
 !.dev.vars.example
 
 # Data Processing
-data_processing/old/
+data_processing/
 design_library/
 html_design_library/
-#*.gexf
+*.gexf
 #!*.gexf.gz
 

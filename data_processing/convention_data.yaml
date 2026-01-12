@@ -1,0 +1,3087 @@
+ao-bdk:
+  title: 'Außerordentliche Bundesdelegiertenkonferenz '
+  title_short: 'Außerordentliche BDK '
+  date_published: '2017-11-03T09:04:00+00:00'
+  url_path: ao-bdk
+  url_json: https://antraege.gruene.de/rest/ao-bdk
+  url_html: https://antraege.gruene.de/ao-bdk
+  content:
+    motions:
+    - '527':
+        type: motion
+        id: 527
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: S-12 Beschluss
+        title: 'Umbenennung zwei weitere Mitglieder im Bundesvorstand in zwei stellvertretende
+          Vorsitzende '
+        title_with_intro: 'Umbenennung zwei weitere Mitglieder im Bundesvorstand in
+          zwei stellvertretende Vorsitzende '
+        title_with_prefix: 'S-12 Beschluss: Umbenennung zwei weitere Mitglieder im
+          Bundesvorstand in zwei stellvertretende Vorsitzende '
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 26.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Änderung der
+              Satzung §15 (2)</p>
+
+              <p>ersetze: „4. zwei weitere Mitglieder.“</p>
+
+              <p>durch: „4. zwei stellvertretende Vorsitzende.“</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: '<div class="text motionTextFormattings textOrig"><p>Der Bundesvorstand
+              besteht aus sechs mit gleichem Stimmrecht ausgestatteten Mitgliedern.
+              Denn wir leisten uns als Partei richtigerweise einen hauptamtlichen
+              Bundesvorstand, in dem jedes Vorstandsmitglied auch eigene Mitarbeiter*innen
+              hat. Der Bundesvorstand soll die Interessen der Partei in der Öffentlichkeit
+              vertreten wie auch gegenüber der Bundestags- und Europafraktion und
+              den Ländern. Als Partei haben wir ein Interesse an einem starken und
+              arbeitsfähigen Bundesvorstand. Insbesondere die unklare öffentliche
+              Wahrnehmung der zwei „weiteren Mitglieder“ im Bundesvorstand, nutzt
+              nicht die Möglichkeiten diese zwei Bundesvorstandsmitglieder im Interesse
+              des gesamten Bundesvorstandes aber auch der Gesamtpartei optimal einzusetzen.
+              Dienen in anderen Parteien die „einfachen“ Bundesvorstandsmitglieder
+              vor allem dem Regionalproporz und Einbindung spezieller Interessengruppen,
+              sind und waren sie im Grünen Bundesvorstand immer integraler Bestandteil
+              der inhaltlichen Partei- und Vorstandsarbeit. Durch die Übernahme spezieller
+              Verantwortlichkeiten wie die „frauenpolitische Sprecherin“ oder als
+              „europäische und internationale Koordinator*in“ wie auch diverser inhaltlicher
+              Schwerpunktsetzungen, tragen und trugen sie zur Profilbildung unserer
+              Partei bei.</p>
+
+              <p>Durch die Umbenennung dieser Position in stellvertretende Vorsitzende,
+              soll einerseits die wichtige Arbeit die von ihnen geleistet wird und
+              wurde eine Anerkennung erhalten und andererseits die Rolle in der öffentlichen
+              Wahrnehmung gestärkt werden. Sie stehen von der Verantwortung und Einbindung
+              in die Arbeits- und Entscheidungsprozesse mindestens auf einer Stufe
+              mit den stellvertretenden Vorsitzenden der anderen im Bundestag vertretenen
+              Parteien. Andererseits soll die Umbenennung auch eine bessere Arbeits-
+              und Lastenverteilung im Bundesvorstand ermöglichen. Nicht nur im Sinne
+              der Vereinbarkeit von Familie und Beruf, die es ermöglichen muss, Arbeitsbelastungen
+              besser in einem Team wie dem Bundesvorstand zu verteilen, sondern auch
+              um die politische Präsenz unserer Partei gegenüber anderen Organisationen,
+              bei Demonstrationen, in der Bündnisarbeit und bei öffentlichen Veranstaltungen
+              zu verbessern.</p></div>'
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '526':
+        type: motion
+        id: 526
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: S-13 Beschluss
+        title: Satzungsänderung § 3 Mitgliedschaft Grüne Jugend
+        title_with_intro: Satzungsänderung § 3 Mitgliedschaft Grüne Jugend
+        title_with_prefix: 'S-13 Beschluss: Satzungsänderung § 3 Mitgliedschaft Grüne
+          Jugend'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 26.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Einfügen in
+              §3 der Satzung:</p>
+
+              <p>&quot;(3) Bis zur Vollendung des 28. Lebensjahres ist jedes Mitglied
+              von BÜNDNIS90/DIEGRÜNEN gleichzeitig Mitglied der GRÜNEN JUGEND. Ein
+              Widerruf ist möglich und muss gegenüber der jeweils für die Mitgliedschaft
+              zuständigen Ebene schriftlich erklärt werden.&quot;</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '534':
+        type: motion
+        id: 534
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-01 Beschluss
+        title: Grüne Eckpunkte für die Gemeinsame Agrarpolitik der EU nach 2020
+        title_with_intro: Grüne Eckpunkte für die Gemeinsame Agrarpolitik der EU nach
+          2020
+        title_with_prefix: 'V-01 Beschluss: Grüne Eckpunkte für die Gemeinsame Agrarpolitik
+          der EU nach 2020'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Wir Grüne stehen
+              für konsequenten Umwelt-, Tier- und Klimaschutz und kämpfen für gute
+              Qualität der Böden, sauberes Wasser und reine Luft. Wir machen uns stark
+              für den Schutz der Arten, die auf unserem Planeten leben. Auf diese
+              Grundlage beruht Grüne Agrarpolitik. Verbraucher*innen sind auf gesunde
+              und bezahlbare Nahrungsmittel angewiesen und Bäuer*innen in Europa wie
+              in anderen Ländern auch auf faire Bedingungen am Markt. Daher brauchen
+              wir eine global gerechte Agrarwende hin zu einer ökologischen europäischen
+              Landwirtschaft, die die Vielfalt der Regionen Europas berücksichtigt.
+              Wir wollen eine konsequente Umsetzung der 17 Ziele der Agenda 2030 der
+              UNO (Sustainable Development Goals). Insbesondere ist die Umsetzung
+              der Ziele nachhaltige Landwirtschaft, verantwortungsvoller Konsum und
+              das Leben auf dem Land für eine europäische nachhaltige und faire Landwirtschaft
+              wichtig.</p>
+
+              <p>Wir streiten seit langem dafür, bestehende Spielräume für die Agrarwende
+              im Rahmen der Umsetzung der Gemeinsamen Agrarpolitik der EU (GAP) auf
+              mitgliedsstaatlicher Ebene auszunutzen. Für die GAP nach 2020 fordern
+              wir eine ziel- und leistungsorientierte Förderpolitik, die mit Instrumenten
+              des Fachrechts, der Marktordnung und der Handelspolitik abgestimmt ist.
+              Solch eine Neuausrichtung der GAP muss die gesamte Wertschöpfungskette
+              von den landwirtschaftlichen Vorstufen über die Produktion, den Handel
+              und die Verarbeitung bis hin zu den Verbraucher*innen in den Blick nehmen.
+              Unser agrar- und ernährungspolitisches Ziel ist es, alle Menschen mit
+              gesunden Lebensmitteln zu versorgen, die Grenzen unseres Planeten zu
+              respektieren und dabei regionale Wirtschaftspotentiale hier wie außerhalb
+              der EU zu entwickeln.</p>
+
+              <p>Europas gemeinsame Agrarpolitik wurde eingeführt, um unter anderem
+              eine stabile Versorgung mit bezahlbaren Lebensmitteln sicherzustellen.
+              Seit 2003 werden 70 Prozent der GAP-Subventionen, also rund 40 Milliarden,
+              über die so genannte 1. Säule als pauschale Flächenprämie an die Betriebe
+              ausgeschüttet. Diese leistungsungebundenen Zahlungen belohnen lediglich
+              Besitz und Größe und verstärken so das „Wachsen oder Weichen“ in der
+              Landwirtschaft. Durch das sogenannte Greening wurde zwar ein Teil der
+              Zahlungen seit 2013 an Umweltleistungen gekoppelt, die Anforderungen
+              wurden jedoch im Zuge der Verhandlungen stark aufgeweicht. Die anderen
+              30 Prozent des GAP-Budgets werden als leistungsgebundene 2. Säule für
+              Maßnahmen zur Entwicklung des ländlichen Raumes und für Klima-, Tier-,
+              Arten- oder Naturschutz verwendet. So entspricht die 2. Säule stärker
+              dem Grundsatz „öffentliches Geld für öffentliche Güter“. Diese Gelder
+              müssen im Gegensatz zu den Direktzahlungen der 1. Säule durch die Bundesländer
+              kofinanziert werden.</p>
+
+              <p>Auch nach der GAP-Reform von 2013 gingen der dramatische Strukturwandel
+              hin zu immer weniger und immer größeren Betrieben und das Höfesterben
+              in der bäuerlichen Landwirtschaft weiter. Die Ausrichtung der GAP auf
+              Kostenführerschaft und Export erwies sich als Sackgasse für viele Betriebe.
+              Zudem zeigte sich, dass die Maßnahmen zum Schutz des Klimas, des Bodens,
+              der Gewässer und der Arten bei weitem nicht ausreichen. Denn Billigessen
+              ist nur an der Kasse billig. Die Folgekosten der fortschreitende Intensivierung
+              der Landwirtschaft etwa durch Trinkwasseraufbereitung, Sanierung von
+              Gewässern, Naturschutzmaßnahmen zum Ausgleich für die schwindende Artenvielfalt
+              oder Kosten im Gesundheitssystem, tragen nicht die Verursacher*innen
+              sondern die öffentliche Hand. Somit zahlen Steuerzahler*innen dreifach
+              für Lebensmittel: An der Ladentheke, durch Steuergelder im Rahmen der
+              GAP und durch Steuergelder für die externalisierten Kosten industrieller
+              Landwirtschaft. Viele kleine Betriebe hingegen können im Wettbewerb
+              mit der Agrarindustrie oft nicht mithalten – obwohl sie produzieren,
+              was europäische Verbraucher*innen zunehmend nachfragen: regional, saisonal
+              oder bio.</p>
+
+              <p>Die gemeinsamen Herausforderungen der EU wie beispielsweise die Bekämpfung
+              der Jugendarbeitslosigkeit und der Brexit, durch den die EU einen Nettozahler
+              verlieren wird, erhöhen den Druck auf den EU-Haushalt und somit auch
+              den Druck zu Ausgabenkürzungen im Agrarhaushalt. Für uns ist aber klar:
+              Die europäische Agrarwende braucht die Unterstützung der öffentlichen
+              Hand - allerdings anders als bisher. Landwirt*innen sollen vergütet
+              werden - wenn sie gesellschaftliche Ziele umsetzen, die über den gesetzlichen
+              Standard hinausgehen<em>.</em> Zentral ist die Schaffung von zusätzlichen
+              ökologischen Vorrangflächen. Zudem sollen mehr biodiversitätsfördernde
+              Maßnahmen wie z.B. Blühstreifen, Hecken und Feldlerchenfenster gefördert
+              werden.<br>
+
+              In einer Politik unter dieser Prämisse kann die klassische Agrarförderung
+              als unkonditionierte Leistung nicht erhalten bleiben. Um die GAP neu
+              zu legitimieren, soll sie folgende Eckpunkte umfassen.</p>
+
+              <h2>Zehn Eckpunkte für die GAP nach 2020</h2><h3><strong>1. Schutz der
+              Artenvielfalt, Gewässer und Böden</strong></h3><p>Monokulturen, Pestizide,
+              ein zu hoher Nährstoffeinsatz, schwere Geräte auf den Äckern und Flächenverbrauch
+              schädigen unsere Natur besorgniserregend. Die Zahl an ausgestorbenen
+              und bedrohten Arten hat dramatische Ausmaße angenommen. Bisherige Bemühungen
+              um Greening, Förderung von Blühstreifen, Fruchtfolgeauflagen oder integrierter
+              Pflanzenschutz wurden regelmäßig soweit aufgeweicht, dass die Maßnahmen
+              nicht den notwendigen Erfolg gezeigt haben. Eine Ökologisierung der
+              Landwirtschaft soll grundlegende Zielsetzung der GAP sein, damit unsere
+              Landschaft nicht weiter in Schutz- und Schmutzgebiete auseinander driftet.
+              Landwirtschaftliche Flächen müssen gleichzeitig Lebensraum für Vögel,
+              Insekten, wildlebende Kleintiere und Wildkräuter sein. Maßnahmen zum
+              Erhalt und Verbesserung der natürlichen Bodenfruchtbarkeit und Gewässerreinhaltung
+              müssen honoriert werden. Es müssen deutliche Regeln für den Verzicht
+              auf Pestizide, für weniger Nährstoffeinsatz, Fruchtfolgen und natürliche
+              Flächen wie zum Beispiel Gewässerrand- oder Blühstreifen sowie Hecken
+              gesetzt werden. Auch in Naturschutzgebieten wird Landwirtschaft betrieben.
+              Das widerspricht dem Ziel des Naturschutzes, daher soll der Einsatz
+              von Pestiziden in Naturschutzgebieten nicht mehr gestattet sein.</p>
+
+              <h3><strong>2. Klimaschutz</strong></h3><p>18 Prozent der durch den
+              Menschen verursachten Treibhausgase werden in der Landwirtschaft erzeugt.
+              Die industrielle Tierhaltung verursacht große Mengen klimaschädlicher
+              Gase wie Lachgas und Methan. Zudem setzen großflächige Urwaldabholzung
+              für Futtersoja und Palmöl, die Zerstörung von Moorböden und der ungezielte
+              und übermäßige Einsatz von Stickstoffdünger in der Agrarwirtschaft große
+              Mengen an Treibhausgasen frei. Politisch muss deshalb die gentechnikfreie
+              Futtermittelerzeugung vor Ort, der Schutz von Wäldern, Mooren und klimaschützender
+              Ackerbau ohne CO2-intensive Inputs unterstützt werden. Massentierhaltung
+              muss beendet werden. Die Tierhaltung muss flächengebunden an die naturräumlichen
+              Voraussetzungen angepasst werden - dort, wo das Futter von weit her
+              gekarrt werden muss, sollten weniger Tiere gehalten werden. Für die
+              gegenwärtig praktizierte Tierhaltung haben wir weder die Ackerflächen,
+              um Futtermittel umweltverträglich anzubauen. Noch wird es uns gelingen,
+              die anfallenden Güllemassen so auszubringen, dass sie von Pflanzen und
+              Boden tatsächlich in einem verträglichen Maß aufgenommen werden können.</p>
+
+              <h3><strong>3. Tierschutz</strong></h3><p>Die rasante Veränderung landwirtschaftlicher
+              Betriebe hat in den letzten Jahrzehnten zu großem Tierleid geführt.
+              Es sind Haltungsformen und Zuchtlinien entstanden, die Qualzuchten darstellen,
+              die Tiergesundheit negativ beeinflussen und ethisch nicht tolerierbar
+              sind. Zudem wird die Erhaltung vielfältiger und regional angepasster
+              Tierrassen, der Beitrag von Tieren zu Kulturlandschaften und die biodiversitätsfördernde
+              und besonders tiergerechte Beweidung nicht ausreichend honoriert. Den
+              Umbau zu einer gesellschaftlich akzeptierten Tierhaltung soll ein besonderes
+              Augenmerk eingeräumt werden. Wir fordern deshalb, die GAP-Mittel verstärkt
+              für den Umbau der Tierhaltung einzusetzen. Dabei sollen keine kosmetischen
+              Korrekturen, sondern große Schritte für bessere Haltungsbedingugen gefördert
+              werden, beispielsweise durch ganzjährige Weidehaltung von Robustrassen.
+              Weiterhin sollen mobile Schlachteinrichtungen gefördert werden, um Lebendtransporte
+              von Schlachttieren zu vermeiden.</p>
+
+              <h3><strong>4. Ausbau ökologischer Landwirtschaft</strong></h3><p>Wir
+              wollen den ökologischen Landbau fördern. Denn die ökologische Landwirtschaft
+              erfüllt durch ihr Kreislaufdenken und ihren Verzicht auf Pestizide und
+              Kunstdünger den höchsten Standard im Hinblick auf den Schutz von Wasser,
+              Boden, Luft und Klima. Biolebensmittel weisen zudem deutlich weniger
+              Rückstände von Pestiziden und Antibiotika auf und sind daher gesünder.
+              Dieser Goldstandard muss besonders gefördert werden, denn er ist Vision,
+              Vordenker und Innovator für eine vielfältige und nachhaltige Land- und
+              Lebensmittelwirtschaft. Durch gezielte Hilfen soll die Zahl von Biobetrieben
+              maßgeblich gesteigert werden. Derzeit wird Ökolandbau erst auf etwa
+              8% der landwirtschaftlichen Flächen betrieben. Wir wollen diese Art
+              der mensch-, tier- und umweltverträglichen Landwirtschaft erheblich
+              ausbauen. Die Förderung der Landwirtschaft soll so an ökologische Kriterien
+              geknüpft werden, dass die gesamte landwirtschaftliche Fläche in absehbarer
+              Zeit klima- und umweltgerecht bewirtschaftet wird.</p>
+
+              <h3><strong>5. Zukunft der Arbeit in der Landwirtschaft</strong></h3><p>Ausdrücklich
+              räumen wir der Arbeit in der Landwirtschaft einen besonderen Stellenwert
+              ein. Denn die ökologische Verantwortung für die Natur, die ökonomische
+              Verantwortung für den Lebensunterhalt und die regionale Verantwortung
+              der Vertriebswege stellen hohe Anforderungen. Kleinere Betriebe wirtschaften
+              zwar nicht automatisch ökologischer, erfüllen aber wichtige Funktionen
+              für ländliche Räume. Wir wollen die Vielfalt der Betriebe erhalten und
+              die Betriebe unterstützen, die durch eine ökologische Anbauweise und
+              durch tiergerechte, kreislaufbasierte Tierhaltung die Umwelt schützen,
+              anstatt sie zu belasten. Der bäuerliche Beruf soll wieder eine Zukunftsperspektive
+              auch für den Nachwuchs werden.</p>
+
+              <p>Aufwendige, bürokratische Anträge und eine ungebundene Flächenprämie
+              helfen großen, intensiven Betrieben. Daher ist es besonders wichtig,
+              die bürokratischen Anforderungen der Gelder der 2. Säule zu senken,
+              um Naturschutzmaßnahmen beispielsweise auch in Mittel- und Osteuropa
+              leichter umsetzbar zu machen. Naturschutz wird auch dann eher umgesetzt,
+              wenn die Pacht für die Flächen niedrig ist. Dem widerspricht aber die
+              Logik der 1. Säule, die die Pachten derzeit in die Höhe treibt. Für
+              eine zukunftsfähige Landwirtschaft muss die Gemeinsame Marktordnung
+              eine zentralere Position im Rahmen der GAP einnehmen und wirksame Kriseninstrumente
+              zum Beispiel zur Mengenregulierung bei Milchmarktkrisen beinhalten.
+              Diese sozial- und agrarpolitische Maßnahmen betreffen die gesamte Wertschöpfungskette,
+              in der Bäuer*innen gegenüber dem vorgelagerten Bereich, der Lebensmittelverarbeitung
+              und dem Handel sowie der Aufbau lokaler Märkte gestärkt werden müssen<em>.
+              </em></p>
+
+              <h3><strong>6. Wissenschaft, Beratung, Bildung und Information</strong></h3><p>Für
+              die Entwicklung hin zu einer ökologischen und tiergerechten Landwirtschaft
+              müssen Wissenschaft und Forschung viel mehr auf den Schutz von Boden,
+              Wasser, wildlebenden Pflanzen und Tieren sowie dem Klima abzielen. Dazu
+              muss die Forschungsförderung auf diese Fragestellungen ausgerichtet
+              und der Wissenstransfer in die Praxis gewährleistet werden. Eine fortschrittliche
+              nachhaltige Landwirtschaft kann nur durch umfassende Beratung entlang
+              der gesamten Wertschöpfungskette erreicht werden. In Ausbildung und
+              Studium muss der ökologischen Landwirtschaft sowie agroökologischen
+              Wirtschaftsweisen einen wesentlich höheren Stellenwert eingeräumt werden.
+              Das Wissen über landwirtschaftliche Produktionsprozesse und über gesunde
+              Ernährung nimmt ab und damit auch die Wertschätzung von landwirtschaftlicher
+              Arbeit und Erzeugnissen. Eine umfassende Ernährungsbildung in Kitas
+              und Schulen kann die Menschen bei der Entscheidung für das richtige
+              Lebensmittel unterstützen.</p>
+
+              <h3><strong>7. Regionale Wirtschaft in ländlichen Regionen</strong></h3><p>Viele
+              ländliche Regionen Europas stehen durch den Strukturwandel in der Landwirtschaft
+              vor großen Herausforderungen. Qualifizierte Arbeitsplätze gehen zunehmend
+              verloren, junge Menschen zieht es in die Städte und ganze Landstriche
+              drohen zu veröden. Andere ländliche Regionen Europas wie beispielsweise
+              Teile Rumäniens und Bulgariens besitzen noch viel Entwicklungspotential
+              in der Landwirtschaft. Um ländlichen Regionen hier Perspektiven zu eröffnen,
+              müssen die Gelder der GAP auch dazu beitragen, regionale Wirtschaftspotentiale
+              zu entwickeln. So kann etwa die Gründung von Regionalmarken Verbraucher*innen
+              für den heimischen Markt gewinnen. Wichtig dafür sind jedoch hohe Standards,
+              damit Verbraucher*innen bei Regionalität auf gute Qualität und ökologische
+              Erzeugung schließen können. Ein Schwerpunkt soll dabei auf dem Auf-
+              und Ausbau regionaler Wertschöpfungsketten, regionaler (Direkt-)Vermarktung
+              und handwerklicher Lebensmittelverarbeitung liegen. Wie die aktuellen
+              positiven Entwicklungen in der Biobranche und bei den Direktvermarktern
+              zeigen, hat Grüne Politik hier schon Gewinner erzeugt. Neue Modelle
+              der Stadt-Land-Kooperationen wie die solidarische Landwirtschaft oder
+              Ernährungsräte können jungen Menschen auf dem Land eine Zukunft eröffnen
+              und Menschen in der Stadt regionale Lebensmittel liefern. Wir wollen
+              den ländlichen Raum bei der Wertschöpfung der Lebensmittelbranche maßgeblich
+              beteiligen und ländliche Räume mit ihren spezifischen Traditionen und
+              Kulturlandschaften unterstützen.</p>
+
+              <h3><strong>8. Transparente Kennzeichnung</strong></h3><p>Wir wollen
+              eine bessere Kennzeichnung von Lebensmitteln, um die Agrarwende zu beschleunigen.
+              Noch klarer ist die Kennzeichnung beim Hühnerei: eine einfache Zahl
+              gibt Auskunft über Haltungsbedingungen der Legehennen und bietet Verbraucher*innen
+              somit eine echte Entscheidungsmöglichkeit beim Einkauf. Das Bio-Siegel
+              bietet eine eindeutige Orientierung an der Ladentheke, die die ökologische
+              Landwirtschaft unterstützt. Wir fordern nach diesem Vorbild eine transparente
+              und eindeutige Kennzeichnung für alle Lebensmittel, die Verbraucher*innen
+              Klarheit über Herkunft und Herstellungsweise der Produkte bringt. In
+              ganz besonderem Maße gilt dies für den Bereich der verarbeiteten Produkte:
+              Hier müssen klare Herkunftskennzeichnungen und eindeutige Angaben zur
+              Art der Erzeugung her, damit Verbraucher*innen eine bewusste Kaufentscheidung
+              treffen können. Damit schaffen wir mehr Transparenz, mehr Konsumentensouveränität
+              und auch mehr Lebensmittelsicherheit. Dabei sollen kleinere Betriebe
+              nicht mehr belastet werden als hochtechnisierte Großbetriebe. Wir wollen
+              eine verpflichtende Tierhaltungskennzeichnung schaffen und setzen uns
+              ein für eine klarere Kennzeichnung von veganen und vegetarischen Lebensmitteln.
+              Zur Agrarwende gehört für uns auch, die Lebensmittelverschwendung entlang
+              der gesamten Warenkette durch verbindliche Ziele ebenso wie die Verpackungsflut
+              zu begrenzen.</p>
+
+              <h3><strong>9. Agenda 2030 und SDG 2 konsequent umsetzen</strong></h3><p>Das
+              Menschenrecht auf Nahrung muss global gesichert werden. Die globale
+              Agrarwende und der Kampf gegen Hunger und Mangelernährung weltweit müssen
+              zusammen gedacht werden. Denn die intensive europäische Landwirtschaft
+              hat enorme Auswirkungen auf die Ernährungssicherung und die Ernährungssouveränität
+              in den Ländern des globalen Südens. Entsprechend darf auch die GAP dem
+              Grundsatz-Artikel 208 im Vertrag von Lissabon nicht widersprechen. Was
+              durch Entwicklungsprogramme in anderen Ländern aufgebaut wird, darf
+              nicht durch die negativen Folgen anderer Politikbereiche wieder zurück
+              geworfen werden. Egal ob Saatgut, Düngemittel oder Pestizide - immer
+              weniger Konzerne bestimmen in immer größerem Maße den Agrarsektor. Das
+              schadet sowohl bäuerlichen Betrieben hier in Europa als auch Kleinbäuer*innen
+              weltweit. EU-Agrarprodukte zu Dumpingpreisen dürfen nicht die Märkte
+              Afrikas, Asiens und Latein-Amerikas überfluten und so die Lebensgrundlage
+              von Millionen von Menschen zerstören. Unsere im Überschuss hergestellten
+              billigen Lebensmittel zwingen bei uns und in anderen Ländern Bäuer*innen
+              zur Betriebsaufgabe oder nehmen ihnen zumindest Entwicklungschancen.
+              Unser Überschuss wird zudem auf Kosten der Ressourcen und der Fläche
+              in den Ländern des globalen Südens produziert, die den Menschen dort
+              für den Anbau ihrer Lebensmittel fehlen.</p>
+
+              <p>Für die nächste GAP-Reform erwarten wir von der EU-Kommission mehr
+              als Lippenbekenntnisse zur Kohärenz mit entwicklungspolitischen Zielen.
+              Die EU muss zum Ziel haben, Kleinbäuer*innen in den Ländern des Globalen
+              Südens dabei zu unterstützen, mit agrarökologischen Methoden Lebensmittel
+              für lokale und regionale Märkte herzustellen und so zur Ernährungssicherung
+              beizutragen. Gleichzeitig müssen die Länder auch stärker beim Aufbau
+              von Wertschöpfungsketten für die wachsenden städtischen Märkte unterstützt
+              werden, um zur Entwicklung der Länder beizutragen. Mittels eines Beschwerdemechanismus
+              muss sichergestellt werden, dass Fällen unerwünschter Auswirkungen der
+              GAP auch nachgegangen wird, auch wenn bestehende handelsrechtliche Kategorien
+              wie Dumping nicht erfasst werden. In der Verordnung zur GAP sollte auch
+              ein systematisches Monitoring der externen Auswirkungen eingeführt werden.
+              Diese Verantwortung darf die Kommission nicht auf Dritte wie Forschungsinstitute
+              oder NGOs abwälzen.</p>
+
+              <h3><strong>10. Fairer Agrarwelthandel</strong></h3><p>Wir fordern Handelsabkommen,
+              die hohe Standards schützen, Möglichkeiten der Weiterentwicklung bieten
+              und Anreize dafür schaffen. Regionale, nachhaltige Landwirtschaft darf
+              durch Agrarhandel nicht gefährdet werden - weder in der EU noch anderswo.
+              Die transatlantischen Abkommen gefährden bäuerliche Betriebe und bedrohen
+              Umwelt- und Verbraucherstandards. Der Abschluss von CETA ermöglicht,
+              dass TTIP quasi durch die Hintertür angewendet wird. Die Interessen
+              großer Konzerne wie große Molkereien und Foodmultis stehen dabei über
+              den Interessen des Gemeinwohls. Die Möglichkeit des Importes gentechnisch
+              veränderter Pflanzen oder geklonter Tiere nach Europa muss unterbunden
+              werden. Die Art der Herstellung, Verarbeitung und Kennzeichnung von
+              Lebensmitteln muss demokratisch und nicht vor Schiedsgerichten entschieden
+              werden. Global und regional müssen wir faire und nachhaltige Spielregeln
+              im Agrarhandel schaffen. Dazu gehört auch, die Länder des Globalen Südens
+              nicht durch Handelsabkommen zur Öffnung ihrer Agrarmärkte zu zwingen
+              und sie beim Aufbau von Wertschöpfung und Erfüllung von Produktstandards
+              zu unterstützen.</p>
+
+              <h2>Für eine Neuausrichtung der GAP nach 2020</h2><p>Für konsequenten
+              Umwelt- und Klimaschutz, die Qualität der Böden, des Wassers und der
+              Luft sowie den Schutz der Arten und Tiere unseres Planeten brauchen
+              wir eine Neuausrichtung der Europäischen Agrarpolitik. Auch weil der
+              Druck auf den EU-Haushalt steigt, muss sich die GAP neu legitimieren.
+              Dabei steht für uns aber fest, dass die europäische Agrarwende öffentliche
+              Mittel braucht. Denn nur so erreichen wir den Umbau hin zu einer ökologischen
+              und tiergerechten europäischen Landwirtschaft, die den Bäuer*innen in
+              Europa und in sich entwickelnden Ländern faire Lebens- und Arbeitsbedingungen
+              ermöglicht und gesundes und bezahlbares Essen produziert.<br>
+
+              <br>
+
+              In Zukunft sollen alle GAP-Zahlungen verstärkt an landwirtschaftliche
+              Betriebe gehen, die in den Bereichen des Umwelt-, Natur, Klima- und
+              Tierschutzes nachweislich gesellschaftliche Leistungen erbringen. Die
+              Zahlungen sollen nicht nur eine Ausgleichs-, sondern auch eine Anreizkomponente
+              für umwelt-, natur-, klima- und tiergerechtes Wirtschaften enthalten.
+              Außerdem machen wir uns für einen Naturschutzfonds in Höhe von 15 Milliarden
+              Euro stark, der die Leistungen von Bäuer*innen und anderen Landnutzer*innen
+              im Bereich der Biodiversität honoriert.</p>
+
+              <p>Wir fordern eine transparente, ziel- und leistungsorientierte Förderpolitik,
+              die gesellschaftliche Ziele, die mit Instrumenten des Fachrechts, der
+              Marktordnung und einer fairen Handelspolitik abgestimmt ist und das
+              Nachhaltigkeitsziel 2 der Agenda 2030 umsetzt. Durch ein systematisches
+              Monitoring sollen die externen Effekte der GAP überprüft werden. Alle
+              staatlichen Unterstützungsmaßnahmen müssen offengelegt und für alle
+              sichtbar sein. Der Übergang zu einer neuen Förderlandschaft erfordert
+              Zeit und Planungssicherheit, um Landwirt*innen eine Umstellung zu ermöglichen.
+              Solch eine Neuausrichtung der GAP muss die gesamte Wertschöpfungskette
+              von den landwirtschaftlichen Vorstufen über die Produktion, den Handel
+              und die Verarbeitung bis hin zu den Verbraucher*innen in den Blick nehmen.
+              So erhöht sich die Akzeptanz der GAP und verbessern sich die Perspektiven
+              der ländlichen Räume.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '544':
+        type: motion
+        id: 544
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-02 Beschluss
+        title: 'Ausstieg aus fossilen Energieträgern einleiten: Grüne unterstützen
+          die Lofoten Deklaration'
+        title_with_intro: 'Ausstieg aus fossilen Energieträgern einleiten: Grüne unterstützen
+          die Lofoten Deklaration'
+        title_with_prefix: 'V-02 Beschluss: Ausstieg aus fossilen Energieträgern einleiten:
+          Grüne unterstützen die Lofoten Deklaration'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>BÜNDNIS 90/DIE
+              GRÜNEN unterstützen die Forderungen der Lofoten Deklaration, in der
+              mehr als 200 zivilgesellschaftliche Gruppen am 07.09.2017 Länder, Regionen
+              und Unternehmen auffordern, vor dem Hintergrund der Pariser Klimaziele
+              die Erkundung und Ausbeutung fossiler Energieträger zu beenden und einen
+              gemanagten Abbau des fossilen Sektors einzuleiten.</p>
+
+              <h3><strong>The Lofoten Declaration</strong></h3><h4>Climate Leadership
+              Requires a Managed Decline of Fossil Fuel Production</h4><p>Global climate
+              change is a crisis of unprecedented scale, and it will take unprecedented
+              action to avoid the worst consequences of our dependence on oil, coal,
+              and gas. Equally as critical as reducing demand and emissions is the
+              need for immediate and ambitious action to stop exploration and expansion
+              of fossil fuel projects and manage the decline of existing production
+              in line with what is necessary to achieve the Paris climate goals.</p>
+
+              <p>Clean, safe, and renewable fuels are already redefining how we see
+              energy and it is time for nations to fully embrace 21st century energy
+              and phase out fossil fuels.</p>
+
+              <p><strong>The Lofoten Declaration affirms that it is the urgent responsibility
+              and moral obligation of wealthy fossil fuel producers to lead in putting
+              an end to fossil fuel development and to manage the decline of existing
+              production.</strong></p>
+
+              <p>We stand in solidarity with, and offer our full support for, the
+              growing wave of impacted communities around the world who are taking
+              action to defend and protect their lives and livelihoods in the face
+              of fossil fuel extraction and climate change. It is a priority to elevate
+              these efforts. Frontline communities are the leaders we must look to
+              as we all work together for a safer future.</p>
+
+              <p>A global transition to a low carbon future is already well underway.
+              Continued expansion of oil, coal, and gas is only serving to hinder
+              the inevitable transition while at the same time exacerbating conflicts,
+              fuelling corruption, threatening biodiversity, clean water and air,
+              and infringing on the rights of Indigenous Peoples and vulnerable communities.</p>
+
+              <p>Energy access and demand are and must now be met fully through the
+              clean energies of the 21st century. Assertions that new fossil fuels
+              are needed for this transformation are not only inaccurate; they also
+              undermine the speed and penetration of clean energy.</p>
+
+              <p>We recognize that a full transition away from fossil fuels will take
+              decades, but also, that this shift is an opportunity more than a burden.
+              We are in a deep hole with climate. We must begin by not digging ourselves
+              any deeper.</p>
+
+              <p>Research shows that the carbon embedded in existing fossil fuel production
+              will take us far beyond safe climate limits. Thus, not only are new
+              exploration and new production incompatible with limiting global warming
+              to well below 2ºC (and as close to 1.5ºC as possible), but many existing
+              projects will need to be phased-out faster than their natural decline.</p>
+
+              <p>This task should be first addressed by countries, regions, and corporate
+              actors who are best positioned in terms of wealth and capacity to undergo
+              an ambitious just transition away from fossil fuel production. In particular,
+              leadership must come from countries that are high-income, have benefitted
+              from fossil fuel extraction, and that are historically responsible for
+              significant emissions.</p>
+
+              <p>We call on these governments and companies to recognize that continued
+              fossil fuel exploration and production without a managed decline and
+              a just transition is irreconcilable with meaningful climate action.
+              We also note that there are tremendous leadership opportunities for
+              these countries to demonstrate that moving beyond oil, coal, and gas
+              – both demand and production – is not only possible, but can be done
+              while protecting workers, communities, and economies.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '540':
+        type: motion
+        id: 540
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-10 Beschluss
+        title: 'Grüner Aufbruch für faire Mieten '
+        title_with_intro: 'Grüner Aufbruch für faire Mieten '
+        title_with_prefix: 'V-10 Beschluss: Grüner Aufbruch für faire Mieten '
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p><strong>Grüner
+              Aufbruch für faire Mieten </strong></p>
+
+              <p>Das Vorhandensein von bezahlbarem Wohnraum ist eine der zentralen
+              sozialen Fragen unserer Zeit. Immer weniger Menschen können sich die
+              hohen und steigenden Mieten in unseren Städten und Ballungsräumen noch
+              leisten. Immer mehr Menschen, auch aus der Mittelschicht, sind von Verdrängung
+              bedroht. Es vergeht kaum ein Tag, an dem nicht über die aufgeheizte
+              Situation auf unseren Wohnungsmärkten berichtet wird. Besonders alarmierend
+              sind die Zahlen über die Verdoppelung der Wohnungs- und Obachlosen seit
+              2014 auf 860 000 Menschen. Es ist für uns zentral, das Primat des Gemeinwohls
+              in der Mieten- und Wohnungspolitik wieder herzustellen.</p>
+
+              <p>Trotz der mit großem Tamtam angekündigten Mietpreisbremse steigen
+              die Mieten in den Ballungszentren ungebremst weiter. Seit ihrer Einführung
+              sogar noch schneller als vorher. Die Sondierungen mit Union und FDP
+              haben deutlich gezeigt, dass sie keinen Schwerpunkt auf die Interessen
+              von Mieterhaushalten legen. Wir Grüne waren es, die sich für eine funktionierende
+              Mietpreisbremse und für mehr Investitionen in sozialgebundenen Wohnungsbau
+              eingesetzt haben. Denn wir Grüne verstehen die Versorgung mit Wohnraum
+              als Aufgabe der öffentlichen Daseinsvorsorge.</p>
+
+              <p>Verschärft wird die Situation durch spekulative Finanzinvestoren
+              mit Sitz in Steueroasen, die oft gezielt bestehende Steuerschlupflöcher
+              nutzen, um ihre Gewinne am Allgemeinwohl vorbei zu schleusen. So werden
+              zum Beispiel in großem Umfang Immobilien in Deutschland gekauft, ohne
+              dass dafür ein Cent Grunderwerbsteuer gezahlt wird. Dazu braucht es
+              nur einen sogenannten Share Deal – dabei wird nicht das Grundstück selbst,
+              sondern das Unternehmen, in dem das Grundstück enthalten ist, gekauft.
+              Anschließend werden laufende Mieteinnahmen in Deutschland mit Hilfe
+              von Gesellschaften in Luxemburg kaum versteuert. Die bestehenden Mieterhöhungsmöglichkeiten
+              und Schutzlücken im deutschen Mietrecht werden gleichzeitig voll ausgenutzt,
+              auch um gezielt zu entmieten. Gerade die in manchen Städten massiv zunehmende
+              Umwandlung von Miet- in Eigentumswohnungen, die als Anlageobjekt dann
+              einzeln verkauft werden, sorgt für massive Mietsteigerungen und Verdrängung.
+              Mieter*innen wissen oftmals nicht, wer eigentlich ihr Vermieter ist,
+              ihre Miete landet bei Briefkastenfirmen oder Strohmännern.</p>
+
+              <p>Es klafft eine riesige Lücke zwischen den drängenden Problemen auf
+              den wachsenden Wohnungsmärkten und den politischen Maßnahmen, diese
+              Missstände zu beheben. Deshalb braucht es endlich einen Paradigmenwechsel
+              in der Wohnungspolitik. Hin zu weniger Mieterhöhungsmöglichkeiten, dem
+              Stopp von Immobilienspekulation zu dauerhaft bezahlbaren Wohnungen und
+              zu einer sozial-gerechten Bodenpolitik. Wir Grüne sind die Partei, die
+              sich für die Interessen der Mieterinnen und Mieter einsetzt, um den
+              Zusammenhalt in unserer Gesellschaft zu erhalten und zu stärken.</p>
+
+              <p>Das Mantra „Bauen, Bauen, Bauen“ von CDU/CSU, FDP und SPD allein
+              hilft eben nicht, um die Mietkosten zu bremsen. Es braucht entschlossenes
+              Handeln statt einseitiger interessengeleiteter Analysen.</p>
+
+              <p><strong>Eine Million dauerhaft günstige Wohnungen </strong></p>
+
+              <p>Die Zeit des Verkaufs und der Spekulation mit Sozialwohnungen muss
+              enden. Wir wollen eine Million zusätzliche preiswerte Wohnungen. Im
+              Neubau wie im Bestand, dauerhaft günstig und lebenswert, möglichst nicht
+              auf der grünen Wiese, sondern innerhalb unserer Städte und Dörfer. Mit
+              dem Konzept der Neuen Wohnungsgemeinnützigkeit werden wir wieder Genossenschaften,
+              kommunale Wohnungsunternehmen und private Investor*innen für den sozialen
+              Wohnungsbau gewinnen. Das Prinzip dabei ist: Zulagen und Steuerförderung
+              im Tausch gegen dauerhaft günstigen Wohnraum.</p>
+
+              <p><strong>Mietpreise und Spekulation bremsen – für ein soziales Mietrecht
+              ohne Schlupflöcher </strong></p>
+
+              <p>Die Mieten explodieren seit Jahren. Damit muss jetzt Schluss sein.
+              Die Mietpreisbremse muss endlich angezogen und unnötige Ausnahmen abgeschafft
+              werden. Ihre Geltung muss dringend verlängert werden, damit sie nicht
+              2020 ausläuft. Sie muss als ein dauerhaftes Instrument im Mietrecht
+              erhalten bleiben, dass dann zeitlich befristet zur Anwendung kommt,
+              wenn Wohnraummangelgebiete entstehen. Niemand darf unter dem Deckmantel
+              der energetischen Modernisierung verdrängt werden, beispielsweise durch
+              die Fassadendämmung von Altbauten. Die Modernisierungsumlage in ihrer
+              jetzigen Form ist schädlich. Wir Grüne werden daher prüfen, inwiefern
+              die Modernisierungsumlage in ein anderes sozial-gerechteres und ökologischeres
+              Instrument umgewandelt werden kann. Kurzfristig kappen und senken wir
+              sie deutlich ab, konzentrieren sie nur noch auf gesellschaftlich notwendige
+              Bereiche und schaffen eine neue, faire Kostenverteilung. Der Mietspiegel
+              soll die Miethöhen über einen deutlich längeren Zeitraum abbilden. Wo
+              es einen qualifizierten Mietspiegel gibt, soll er verpflichtend für
+              alle Teilnehmer*innen auf dem Wohnungsmarkt gelten. Auch die Zeitspanne
+              ohne Mieterhöhungsmöglichkeiten muss ausgeweitet werden. Ländern soll
+              es möglich sein, Mieterhöhungen ohne Wohnwertverbesserungen auf maximal
+              15 Prozent innerhalb von fünf Jahren zu kappen. Wir wollen das Instrument
+              des Milieuschutzes als Mieterschutzinstrument weiter entwickeln und
+              Mietobergrenzen ermöglichen. In angespannten Wohnungsmärkten sollen
+              die Umwandlung von Miet- in Eigentumswohnungen stadtweit und lückenlos
+              der Genehmigungspflicht unterliegen können.</p>
+
+              <p>Der Schutz der Mieter*innen vor überhöhten Mietforderungen im Wirtschaftsstrafrecht
+              soll verbessert werden. Auch der Schutz für Kündigungen wegen Eigenbedarfs,
+              unverschuldeten Mietrückständen und bei Umwandlungen in Eigentum soll
+              ausgeweitet werden. Die Mieter*innenschutzverbände wollen wir mit Gruppenklagemöglichkeiten
+              stärken. Zudem wollen wir das, den Mieter*innen beim Verkauf der Wohnung
+              zustehende Vorkaufsrecht, auch auf Genossenschaften, welche die Mieter*innen
+              gründen können, ausweiten.</p>
+
+              <p>Das Wohngeld wollen wir verdoppeln, dynamisch anpassen und die Heizkosten
+              wieder berücksichtigen. Ergänzend führen wir einen Klimazuschuss für
+              energetisch modernisierte Wohnungen ein, damit auch Wohngeldempfänger*innen
+              energieeffizient wohnen können.</p>
+
+              <p>Auch kleine Gewerbemieter und soziale Träger wollen wir bundesweit
+              mit dem Ausbau des Gewerbemietrechts (Kündigungsschutz, Erweiterung
+              des Milieuschutzes, Gewerbemietspiegel mit Mietpreisbremse, etc.) unterstützen.</p>
+
+              <p><strong>Zukunftsfähige Bodenpolitik</strong></p>
+
+              <p>Die stark steigenden Grundstückspreise sind ein riesiges Hindernis
+              für die Schaffung von bezahlbaren Wohnraum und die Bereitstellung von
+              leistbaren Mietwohnungen. Deswegen ist die Bodenpolitik eine der zentralen
+              wohnungspolitischen Handlungsfelder in den kommenden Jahren. Unser Ziel
+              ist ein zukunftsfähiger und sozial-gerechter Umgang mit der begrenzten
+              Ressource Boden, auch in unseren Städten. Wir wollen die Entwicklung
+              von bezahlbaren Bauflächen in unseren Städten stärken.</p>
+
+              <p>Für uns gilt der Grundsatz: Innen- vor Außenentwicklung. Das Baugesetzbuch
+              muss systematisch dahingehend überprüft werden, inwiefern Gemeinden
+              bei der Sicherung und Bereitstellung von Grundstücken besser unterstützt
+              werden können. Wenn immer nur der meistbietende Investor den Zuschlag
+              erhalten kann, haben Anbieter von günstigen und bezahlbaren Mietwohnungen
+              keine Chance. Hier braucht es Verbesserungen beim kommunalen Vorkaufsrecht.
+              Bei der Wertermittlung des Verkehrswertes wollen wir vom reinen Marktwert
+              weg und ein Berechnungsmodell entwickeln, das spekulative Wertsteigerungen
+              nicht mehr enthält. Auch bei Zwangsversteigerungen soll zukünftig ein
+              Vorkaufrecht bestehen. Außerdem wollen wir neue städtebauliche Instrumente,
+              mit denen kleinteilige innerstädtische Grundstücke schneller und preisgünstiger
+              nutzbar gemacht werden können. Die Einführung einer neuen Kategorie
+              „Maßnahmengebiet der Innenentwicklung“ könnte eine Möglichkeit sein,
+              verbliebene kleinteilige Flächen zu aktivieren. Innenverdichtung und
+              Aufstockung wollen wir zusätzlich durch eine nationale Holzbaustrategie
+              und eine Offensive bei seriellen und modularen Bauen erleichtern. So
+              können in Zukunft schnell, preiswert und ressourcenschonend bezahlbare
+              Wohnungen in unseren Städten entstehen. Auch bei der Wiedernutzung alter
+              Industrieflächen brauchen die Gemeinden Unterstützung von Seiten des
+              Bundes über baurechtliche Änderungen, KfW-Förderung oder Städtebaufördermittel.</p>
+
+              <p>Gemeinden unterstützen wir außerdem mit der Neuen Wohnungsgemeinnützigkeit
+              bei der Verknüpfung von neuem Baurecht mit Mindestanteilen an sozialem
+              Wohnraum und anderen wohnungs- und städtebaulichen Erfordernissen.</p>
+
+              <p>Statt zu spekulieren, muss der Bund eine Vorreiterrolle bei der Bereitstellung
+              und Sicherung von bezahlbaren Grundstücken einnehmen. Dafür wollen wir
+              das Gesetz über die Bundesanstalt für Immobilienaufgaben und die Bundeshaushalts­ordnung
+              entsprechend ändern. Grundstücke sollen für wohnungspolitische, städtebauliche
+              und strukturpolitische Ziele vergünstigt zum Verkehrswert und wo nötig
+              auch darunter an die Kommunen verkauft werden können. Damit werden preistreibende
+              Bieterverfahren vermieden und die zukünftige Nutzung der Grundstücke
+              in den Kommunen berücksichtigt. Auch die Weitergabe an gemeinwohlorientierte
+              Träger und die Verpachtung in Erbpacht sollte ermöglicht werden.</p>
+
+              <p>Damit spekulative Finanzinvestoren und große Wohnungsunternehmen
+              den gemeinwohlorientierten Akteuren auch steuerrechtlich gleichgestellt
+              werden, wollen wir die sogenannten Share Deals abschaffen. Ergänzend
+              setzen wir uns für ein zentrales vernetztes Immobilienregister ein,
+              in dem die Eigentümer der Immobilien für Behörden und für alle Betroffenen
+              (Mieter) abrufbar sind, um Geldwäsche im Immobiliensektor entgegen zu
+              treten.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '547':
+        type: motion
+        id: 547
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-14 Beschluss
+        title: Wahlrechtsausschlüsse beenden
+        title_with_intro: Wahlrechtsausschlüsse beenden
+        title_with_prefix: 'V-14 Beschluss: Wahlrechtsausschlüsse beenden'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Die Bundestagsfraktion
+              Bündnis 90/DIE GRÜNEN wird aufgefordert, eine Gesetzesinitiative für
+              eine Wahlrechtsreform zu ergreifen: Niemand darf im Zusammenhang mit
+              einer Behinderung vom Wahlrecht ausgeschlossen werden. Die Ausschlusstatbestände
+              gemäß § 13 Nummer 2 und 3 Bundeswahlgesetz sowie gemäß § 6a Europawahlgesetz
+              sind entsprechend zu streichen.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '536':
+        type: motion
+        id: 536
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-16 Beschluss
+        title: 'Jetzt erst recht: Glyphosat und Bienenkiller Neonikotinoide vom Acker
+          holen!'
+        title_with_intro: 'Jetzt erst recht: Glyphosat und Bienenkiller Neonikotinoide
+          vom Acker holen!'
+        title_with_prefix: 'V-16 Beschluss: Jetzt erst recht: Glyphosat und Bienenkiller
+          Neonikotinoide vom Acker holen!'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Mehr als zwei
+              Jahren haben wir Grüne Seite an Seite mit vielen zivilgesellschaftlichen
+              Organisationen und engagierten Bürgern gegen die erneute Wiederzulassung
+              von Glyphosat gekämpft. Am 27. November 2017 hat Noch-Landwirtschaftsminister
+              Christian Schmidt (CSU) mit seiner eigenmächtigen Zustimmung Deutschlands
+              dafür gesorgt, dass der weltweit und am häufigsten verwendete Pestizid-Wirkstoff
+              fünf weitere Jahre auf Europas Äckern versprüht werden darf. Das ist
+              zweifellos ein Skandal. Dennoch haben wir in den Auseinandersetzungen
+              um den Wiederzulassungsprozess des Ackergiftes politisch viel erreicht.</p>
+
+              <p>Millionen Menschen in Deutschland und ganz Europa haben Petitionen
+              unterschrieben, sich an Aktionen beteiligt, Fragen gestellt und sich
+              mit dem Selbstbild einer Landwirtschaft auseinandergesetzt, die das
+              Versprühen von Gift auf künftigen Lebens- und Futtermitteln für eine
+              nicht zu kritisierende Selbstverständlichkeit hält.</p>
+
+              <p>Die „Causa Glyphosat“ hat vielen Menschen zudem deutlich gemacht,
+              in welch erheblichem Maße die Bundesregierung und ihre Behörden Einfluss
+              auf europapolitische Entscheidungen nehmen oder selbst zu verantworten
+              haben.</p>
+
+              <p>All das ist uns Grünen Ansporn, jetzt erst recht dranzubleiben und
+              konkrete Ausstiegspläne für Glyphosat und besonders problematische Pestizide
+              einzufordern. Dazu zählen das vollständige Verbot aller Neonikotinoide,
+              die Insekten, Vögel und Kleinlebewesen nachweislich besonders schwer
+              schädigen, sowie von Pestiziden mit hormonschädigenden Eigenschaften.</p>
+
+              <p>Auf diesem Weg haben wir bereits viel erreicht: Trotz erneuter Genehmigung
+              wurde der agrochemische Kassenschlager Glyphosat nur für fünf statt
+              der ursprünglich geplanten fünfzehn Jahre zugelassen. Auf Initiative
+              der Grünen hat das Europaparlament einen Ausstiegsbeschluss bis Ende
+              2022 gefasst, der, wären EU-Kommission und Mitgliedsstaaten dieser Vorlage
+              gefolgt, erneute Risikobewertung gänzlich überflüssig gemacht hätte.
+              Mit dem jetzigen Beschluss sind zähe Auseinandersetzung über eine erneute
+              Zulassung in fünf Jahren vorprogrammiert. Auf Grundlage einer UN-Studie
+              strebt unsere Fraktion im Europaparlament derzeit eine Klage gegen die
+              Rechtmäßigkeit des Beschlusses und die Einsetzung eines Sonderausschusses
+              an, um am Ziel eines EU-weiten Verbots festzuhalten.</p>
+
+              <p>Die knappe, nur durch das Abstimmungsverhalten Deutschlands ermöglichte
+              EU-weite Wiederzulassung zeigt: Wir haben starke Partner in anderen
+              EU-Mitgliedsstaaten, die bereit sind, den Weg in eine Glyphosat-freie
+              Zukunft mitzugehen und eine Abkehr von dem beständig steigenden Pestizid-Einsatz
+              auf Europas Äckern einzustehen. Auch die EU-Kommission steht mit ihrem
+              Versprechen einer „pestizidfreien Zukunft“ vom 12. Dezember 2017 gegenüber
+              der Europäischen Bürgerinitiative „Stopp Glyphosat“ im Wort.</p>
+
+              <p>Diesen Weg gilt es jetzt mit einem nationalen Verbote einzuschlagen.
+              Frankreich und Österreich haben das bereits angekündigt. Auch in Deutschland
+              wollen wir ein solches Verbot erreichen. Die neue Bundesregierung wird
+              sich gegenüber ihren Wählerinnen und Wähler an der Frage messen lassen
+              müssen, ob auch sie dazu bereit ist. Als Grüne werden wir alles daran
+              setzen, sie in diese Verantwortung zu zwingen.</p>
+
+              <p>Das massive Insektensterben duldet keinen Aufschub. Es gibt zahlreiche
+              Studien, die die industrielle Landwirtschaft als wesentlichen Treiber
+              dieser Entwicklung ansehen. Seit 1980 sind in Deutschland fünfundsiebzig
+              Prozent aller Insekten- und rund die Hälfte aller Vogelbestände auf
+              landwirtschaftlichen Flächen verschwunden. Eine Landwirtschaft, die
+              ihre natürlichen Ressourcen in solcher Art und Weise schädigt, ist nicht
+              zukunftsfähig. Unser Boden, unser Wasser und unsere Luft sind unersetzliche
+              gemeinschaftliche Güter, die zu schützen jede Regierung verpflichtet
+              ist.</p>
+
+              <p>Deshalb fordern wir von der künftigen Bundesregierung,</p>
+
+              <ul>
+
+              <li>ihre nationalen Möglichkeiten für rechtsfeste Verbote und Auflagen
+              zu nutzen, um besonders problematische Pestizide wie Glyphosat zügig
+              vom Markt zu nehmen bzw. in ihrer Anwendung wirksam zu beschränken.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>sich auf europäischer für eine Reform der Risikobewertung und Zulassungsverfahren
+              für Pestizide einzusetzen. Diese müssen transparent, unabhängig von
+              Industrieeinflussnahme und alle Risiken umfassend erfolgen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>dem auf März 2018 verschobenen Verbotsvorschlag der EU-Kommission
+              für drei Neonikotinoiden zuzustimmen und für eine Ausweitung des Verbots
+              auf die gesamte Wirkstoffe-Gruppe einzutreten.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>in den 2018 anstehenden Reformen der EU-Pestizid-Gesetzgebung und
+              Gemeinsamen Agrarpolitik (GAP) für starke Zielvorgaben und Instrumente
+              zur Pestizid-Reduktion, eine Bindung von Subventionen an ökologische
+              Leistungen und zur Förderung der Artenvielfalt einzusetzen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>ein umfassendes Monitoring-Programm über die Auswirkungen von Pestiziden
+              auf die Umwelt, Artenvielfalt und Gesundheit von Mensch und Tier aufzulegen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die am 13. Dezember 2017 auf EU-Ebene beschlossenen Kriterien zum
+              Verbot hormonschädigender Pestizide national streng auszulegen und sich
+              auf EU-Ebene für die Ausarbeitung geeigneter Leitlinien zur Identifizierung
+              dieser Stoffe einzusetzen, die dem Schutz von Mensch und Umwelt gerecht
+              werden.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Investitionen in Forschung und unabhängige Beratungsstrukturen zu
+              tätigen, um Landwirte in der Umstellung auf Chemie-freie Anbaumethoden
+              zu unterstützen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Den Nationalen Aktionsplan Pflanzenschutz endlich als Instrument
+              zur Minderung von Pestizidmengen, und dem Ausbau des nicht-chemischen
+              Pflanzenschutzes zu nutzen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>den Ausbau des Ökolandbaus als Pestizid-freie und nachhaltigste
+              Form der Landwirtschaft mit einem Förderprogramm im Umfang von einer
+              Milliarde Euro über die nächsten sieben Jahre zu beschleunigen.</li>
+
+              </ul></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '546':
+        type: motion
+        id: 546
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-17 Beschluss
+        title: Weitere Demokratisierung und Europäisierung der Europawahl 2019
+        title_with_intro: Weitere Demokratisierung und Europäisierung der Europawahl
+          2019
+        title_with_prefix: 'V-17 Beschluss: Weitere Demokratisierung und Europäisierung
+          der Europawahl 2019'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Bündnis 90/Die
+              Grünen setzen sich dafür ein, dass die Europawahl 2019 noch demokratischer
+              und europäischer wird. Wir unterstützen die Idee von transnationalen
+              Listen sowie den Vorschlag, möglichst viele der voraussichtlich durch
+              den Brexit frei werdenden Sitze im Europäischen Parlament in Zukunft
+              über transnationale/europaweite Listen zu besetzen anstatt diese einfach
+              an die 27 verbleibenden Mitgliedsstaaten zu verteilen. Wir laden die
+              Bundestagsfraktion ein mit einem Antrag die Bundesregierung aufzufordern,
+              sich auf europäischer Ebene ebenfalls für transnationale/europaweite
+              Listen einzusetzen.</p>
+
+              <p>Wir unterstützen den Vorschlag des französischen Präsidenten Emmanuel
+              Macron, mittelfristig die Hälfte aller Europaabgeordneten über transnationale
+              Listen zu wählen. Ein solches Wahlverfahren würde ähnlich zur Wahl des
+              Deutschen Bundestages dafür sorgen, dass das Parlament das Wahlergebnis
+              insgesamt besser wiederspiegelt und alle Bürger*innen auch weiterhin
+              durch Wahkreisabgeordnete repräsentiert werden. Transnationale Listen
+              könnten somit einen Beitrag zur Schaffung einer europäischen Öffentlichkeit
+              und eines wirklich europäisierten Wahlkampfs liefern. Dadurch hoffen
+              wir, die europäische Politik noch demokratischer zu gestalten. Durch
+              transnationale/europaweite Listen kann im europäischen Parlament eine
+              neue Dynamik entstehen, die noch stärker zu gesamteuropäischer Verantwortung
+              und Verpflichtung der Abgeordneten führt. Dies ist uns in Zeiten des
+              erstarkenden Nationalismus überall in Europa besonders wichtig. Außerdem
+              setzen wir uns für einen weiteren Abbau von Wahlhürden aufgrund von
+              Alter, Beeinträchtigung und Staatszugehörigkeit auch auf europäischer
+              Ebene ein.</p>
+
+              <p>Wir unterstützen weiterhin das Prinzip der Europäischen Spitzenkandidat*innen.
+              Wir setzen uns dafür ein, dass die Europäische Grüne Partei (EGP) 2019
+              wieder mit einer Doppelspitze antritt. Selbstverständlich sollten die
+              beiden Spitzenkandidat*innen quotiert sein und nicht aus dem selben
+              Mitgliedsstaat kommen. Sobald die Möglichkeit einer Transnationalen
+              Liste besteht, sollten die Spitzenkandidat*innen eine Europäische Grüne
+              Liste anführen.</p>
+
+              <p>Wir bedauern, dass es diesmal keine Urwahl der Spitzenkandidat*innen
+              geben wird und werden uns als Partei innerhalb der EGP dafür stark machen,
+              dass bei der übernächsten Europawahl 2024 wieder eine europaweite Urwahl
+              stattfinden wird. Wir möchten die guten Erfahrungen aus vergangenen
+              Europawahlkämpfen ausbauen und sowohl die EGP als auch unsere europäischen
+              Grünen Schwesterparteien einladen, im Wahlkampf soviel wie möglich gemeinsame,
+              grenzüberschreitende Veranstaltungen sowie ein gemeinsames Auftreten
+              zu organisieren. Wir wünschen uns, dass die EGP in Abstimmung mit den
+              Mitgliedsparteien eine breite Rahmenkampagne mit einem klaren Online-Schwerpunkt
+              entwickelt, aber zum Beispiel auch Wahlkampfmaterialien in weiteren
+              EU-Sprachen zur Verfügung stellt, um europäische Wahlkämpfer*innen besonders
+              anzusprechen.</p>
+
+              <p>Bündnis 90/Die Grünen setzen sich für einen möglichst europäischen
+              Wahlkampf zur Europawahl 2019 ein. Der Wahlkampf sollte die Mehrsprachigkeit
+              und Diversität Europas wiederspiegeln. Viele EU-Bürger*innen, die in
+              den letzten Jahren nach Deutschland gekommen sind, sind potentielle
+              Grüne Wähler*innen und die Europawahl ist eine einzigartige Möglichkeit,
+              diese Menschen anzusprechen. Deshalb sollte mindestens eine längere
+              Zusammenfassung des Wahlprogramms auch auf Englisch bereitgestellt werden.
+              Auch das Wahlmanifesto der EGP sollte wieder als Teil unseres Wahlprogramms
+              beschlossen werden und dann im Wahlkampf allen Wähler*innen zur Verfügung
+              gestellt werden. Die Zugehörigkeit zu einer europaweiten, grünen Wahlkampagne
+              soll auch durch die Nutzung gemeinsamer Kampagnenelemente deutlich gemacht
+              werden.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '537':
+        type: motion
+        id: 537
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-18 Beschluss
+        title: Für einen neuen europäischen Aufbruch
+        title_with_intro: Für einen neuen europäischen Aufbruch
+        title_with_prefix: 'V-18 Beschluss: Für einen neuen europäischen Aufbruch'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Die Europäische
+              Union ist auf Ruinen zweier verheerender Weltkriege von Menschen aufgebaut
+              worden, die sich noch Jahre zuvor auf dem Schlachtfeld begegnet waren.
+              Ohne Visionen, Ideen und praktischen Mut wäre dieses Wunder europäischer
+              Einigung niemals möglich gewesen.</p>
+
+              <p>Das ist nun sechzig Jahre her. Wir haben weiterhin den festen Willen,
+              einen immer engeren Zusammenschluss Europas zu schaffen (ever closer
+              Union). Visionen, Ideen, Mut und Weitsicht braucht es jetzt wieder.
+              Wir brauchen einen neuen Aufbruch. Präsident Macron und Präsident Juncker
+              haben mit ihren Vorschlägen ein Fenster geöffnet. Ob diese Initiativen
+              Ausgangspunkt für eine institutionelle und politische Erneuerung der
+              EU werden hängt nicht zuletzt von Deutschlands Antwort ab. Jetzt muss
+              gehandelt werden. Wir wollen als Bündnis 90/Die Grünen dazu beitragen,
+              dass Deutschland bei der notwendigen Demokratisierung und Reform der
+              Eurozone und der Reform europäischer Institutionen eine aktive und partnerschaftliche
+              und keine blockierende Rolle einnimmt.</p>
+
+              <p>Es wäre für Bündnis 90/Die Grünen inakzeptabel, wenn das Fenster
+              der günstigen Gelegenheit für einen Aufbruch in Europa, das derzeit
+              noch offen steht, sich schließen würde, bevor Berlin aussage- und handlungsfähig
+              ist. Deshalb wollen wir, dass der Bundestag Initiativen ergreift, um
+              die ausgestreckte Hand von Präsident Macron und die Impulse aus Europäischem
+              Parlament und Europäischer Kommission willkommen zu heißen und mit eigenen
+              Beiträgen partnerschaftlich weiterzuentwickeln.</p>
+
+              <p><strong>Für uns ist 2018 das Jahr der europäischen Erneuerung</strong></p>
+
+              <p>Als Grüne sind wir geleitet von einer europäischen Vision, die auf
+              vier Zielen fußt. Wir wollen ein Europa, das die Vielfalt schätzt. Ein
+              Europa, das seine Bürgerinnen und Bürger schützt. Ein Europa, das Selbstbestimmung
+              stärkt. Ein Europa, das die globale ökologische Transformation anpackt,
+              das Frieden achtet und Menschenrechte in der Welt stärkt .</p>
+
+              <p>Vielfalt schätzen, das thematisiert kulturelle Diversität, die Genderfragen,
+              die Rechte von Minderheiten, den Umgang mit Flüchtlingen, die zu uns
+              kommen, das Prinzip der Subsidiarität und eine Kultur des Respekts.
+              Die Bürger zu schützen, durch Solidarität, das meint das Ernstnehmen
+              und den Ausbau der sozialen Säule der EU, das meint Sicherheit nach
+              innen und nach außen, es meint das Zurückschneiden übermächtiger Lobbyinteressen;
+              es meint auch Daten- und Verbraucherschutz, fairen Außenhandel und verantwortliche
+              Klimapolitik. Steuergerechtigkeit ist ein wichtiger Baustein dieser
+              Transformation. Entsolidarisierung zu Lasten des Gemeinwohls bekämpfen
+              wir. Die Stärkung von Selbstbestimmung will mehr Demokratie, die Gewährleistung
+              des Rechtsstaates, die Sicherung der Menschen- und Bürgerrechte, gerade
+              auch in Zeiten der digitalen Revolution. Selbstbestimmung stärken heißt,
+              den autoritär-nationalistisch-populistischen Bewegungen konsequent entgegentreten.
+              Es heißt auch, nicht zuzulassen, dass immer mehr Menschen sich in der
+              Demokratie nicht mehr beheimatet finden, weil sie nicht sehen, dass
+              sie selbst etwas bewegen können oder wenigstens repräsentiert werden,
+              weil sie glauben, dass sie im Prozess von Globalisierung, Digitalisierung
+              und Europäisierung abgehängt sind. Die ökologische Transformation, der
+              &quot;Green New Deal&quot;, thematisiert nicht nur Klimapolitik, Energiepolitik,
+              Landwirtschaft oder Verkehr. Sie adressiert auch die Frage der sozialen
+              Gerechtigkeit, eines fairen Übergangs und die Frage der ökonomischen
+              Perspektiven, einschließlich des Kampfes für Markt- statt Machtwirtschaft.
+              Und sie thematisiert unsere internationale Verantwortung bei der ökologischen
+              Transformation. Es heißt, internationale Institutionen zu stärken, etwa
+              die UNO. Kein Land ist allein in der Lage, internationalen Herausforderungen
+              erfolgreich zu begegnen. Es heißt, endlich eine restriktive Rüstungsexportpolitik
+              zu betreiben und durch eine gerechtere Gestaltung der Globalisierung
+              allen Staaten Wohlstand zu ermöglichen. Die EU muss verstärkt auf zivile
+              Krisenprävention, Abrüstung und Multilateralismus setzen.</p>
+
+              <p>Alle diese Fragen diskutieren und verfechten Bündnis 90/Die Grünen
+              seit langem. Wir wollen sie bewusst europäisch ansprechen. Deshalb werden
+              der Bundesvorstand und die Landesvorstände von Bündnis 90/Die Grünen
+              aufgefordert, im ersten Halbjahr 2018 bundesweit und kampagnenmäßig
+              „europäische Dialoge“ über die Gestaltung der Zukunft der EU zu organisieren.
+              Diese Bemühungen haben das Ziel, die europäische Politik demokratischer
+              und die deutsche Politik europäischer zu machen. Dazu soll gezielt die
+              Zusammenarbeit mit zivilgesellschaftlichen Gruppen, mit Verbänden oder
+              auch mit anderen Parteien gesucht werden. Ziel ist es, die Ergebnisse
+              der europäischen Dialoge in die parlamentarische Arbeit und das Europawahlprogramm
+              von Bündnis 90/Die Grünen sowie das Wahlmanifest der Europäischen Grünen
+              Partei einzuspeisen. Die Abgeordneten auf Landes-, Bundes- und Europaebene
+              werden gebeten, sich aktiv in diese Dialoge einzubringen. Nach Möglichkeit
+              wollen wir europäische Partner in unsere Diskussionen einbeziehen, ob
+              es Vertreter*innen anderer grüner Parteien sind oder Vertreter*innen
+              von Partnerstädten und Partnerhochschulen oder von Partnerunternehmen
+              in anderen Ländern. Wir wollen rechtzeitig vor dem Europawahlkampf auch
+              diskutieren, wie wir den so führen können, dass dabei für die Bürgerinnen
+              und Bürger neues Engagement, neues Vertrauen und mehr demokratische
+              Selbstbestimmung möglich werden.</p>
+
+              <p>Ziel ist es, in diesen Diskussionen mit den Bürgerinnen und Bürgern
+              Prioritäten zu erarbeiten. Ideal wäre es, wenn wir am Schluss zu einem
+              10-Punkte-Programm kämen, wie wir es in der Bundestagswahl hatten.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: <div class="text motionTextFormattings textOrig"><p></p></div>
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '545':
+        type: motion
+        id: 545
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-22 Beschluss
+        title: Europäische Kooperation im Verteidigungsbereich nutzen – Das Friedensprojekt
+          Europa stärken!
+        title_with_intro: Europäische Kooperation im Verteidigungsbereich nutzen –
+          Das Friedensprojekt Europa stärken!
+        title_with_prefix: 'V-22 Beschluss: Europäische Kooperation im Verteidigungsbereich
+          nutzen – Das Friedensprojekt Europa stärken!'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Die Europäische
+              Union ist ein Friedensprojekt. Es ist eine historische Errungenschaft,
+              dass Konflikte heute am Verhandlungstisch und nicht länger auf Schlachtfeldern
+              ausgetragen werden. 2012 wurde die EU für diesen Einsatz für Frieden,
+              Versöhnung, Demokratie und Menschenrechte in Europa mit dem Friedensnobelpreis
+              ausgezeichnet – zu Recht! Insbesondere mit dem Vertrag von Lissabon
+              hat sie es sich zur Aufgabe gemacht, auch nach außen kohärent zu wirken:
+              „Frieden zu erhalten, Konflikte zu verhüten und die internationale Sicherheit
+              zu stärken“. Kein Mitgliedsstaat der EU kann diesen Aufgaben alleine
+              gerecht werden. Will die EU bei der Reduzierung von Instabilität, der
+              Bekämpfung von massiven Menschenrechtsverletzungen und der Beendigung
+              von Krisen in ihrer unmittelbaren Nachbarschaft und darüber hinaus eine
+              wirkliche Rolle spielen, müssen ihre Mitgliedsstaaten im Bereich der
+              Außen-, Sicherheits- und Verteidigungspolitik viel stärker kooperieren
+              als bisher.</p>
+
+              <p>Erste Schritte hin zu mehr Kooperation wurden in den letzten zwei
+              Jahren gegangen. Die Hohe Vertreterin Mogherini hat 2016 die „Globale
+              Strategie für die Außen- und Sicherheitspolitik der Europäischen Union“
+              veröffentlicht. 2017 hat die Europäische Kommission das „Reflexionspapier
+              über die Zukunft der europäischen Verteidigung“ lanciert und im Dezember
+              2017 wurden 17 Kooperationsprojekten im Rahmen der Ständigen Strukturierten
+              Zusammenarbeit (Permanent Structured Cooperation, PESCO) geschaffen.
+              PESCO ist ein Format der unterschiedlichen Geschwindigkeiten, an dem
+              nur die Mitgliedsstaaten teilnehmen, die das wollen und sich bereit
+              erklären, die entsprechenden Kriterien zu erfüllen. Trotzdem haben 25
+              von 28 Mitgliedsstaaten die Kooperation unterzeichnet. PESCO ist also
+              zu einem (fast) gesamteuropäisches Projekt geworden. In einer Zeit,
+              in der Rechtspopulisten in ganz Europa das Hohelied auf den Nationalstaat
+              singen, ist eine derartige Kooperation nationaler Streitkräfte auf europäischer
+              Ebene ein beeindruckendes Symbol der Stärke des europäischen Projektes.</p>
+
+              <p>BÜNDNIS 90/DIE GRÜNEN begrüßen grundsätzlich eine verstärkte Kooperation
+              im Bereich der Sicherheits- und Verteidigungspolitik, insofern dadurch
+              das Primat des Zivilen der europäischen Außenpolitik nicht geschwächt
+              wird und es nicht zu einer Stagnation oder Reduktion notwendiger Gelder
+              für die Entwicklungszusammenarbeit und die Humanitäre Hilfe kommt. Die
+              Schere zwischen zivilen und militärischen Ausgaben in den nationalen
+              Haushalten der EU-Mitgliedsstaaten darf nicht weiter aufgehen. Nur dadurch
+              kann gewährleistet werden, dass die EU in die Lage versetzt wird, die
+              in Artikel 43(1) des Vertrags von Lissabon beschriebenen Aufgaben: „Abrüstung,
+              humanitäre Aufgaben, Aufgaben der Konfliktverhütung und Kampfeinsätze
+              im Rahmen der Krisenbewältigung einschließlich friedenschaffender Maßnahmen
+              und Operationen zur Stabilisierung der Lage nach Konflikten“ besser
+              bewältigen und verstärkt nachgehen zu können.</p>
+
+              <p>Bei einer Kooperation im Sicherheits- und Verteidigungsbereich auf
+              europäischer Ebene darf es nicht nur um die Steigerung der militärischen
+              Effizienz und den Abbau von Kooperationshemmnissen gehen. Ein derartiges
+              Projekt darf nicht missbraucht werden, um Rüstungsausgaben zu erhöhen
+              und eine ineffiziente und intransparente Rüstungsindustrie weiter zu
+              subventionieren, wie es jetzt der europäische Verteidigungsfond vorsieht.
+              Sondern es muss vor Allem darum gehen, dass die EU die Aufgaben des
+              Vertrags von Lissabon vollumfänglich erfüllen kann. Dazu fehlen derzeit
+              zivile und militärische Fähigkeiten, bspw. einsatzfähige Battle Groups,
+              Mediationsteams, Technik zur Überwachung von Waffenstillstandsabkommen,
+              Fähigkeiten zur Gewährleistung humanitärer Hilfe in Blockadelagen, ausgebildete
+              Teams zur Dokumentation von Menschenrechtsverletzungen oder eine Strategie
+              für politische Missionen zur Stabilisierung von Staaten in Nachkriegssituationen.
+              An der Frage, ob es gelingt hier vorwärts zu kommen, müssen sich aktuelle
+              und kommende Kooperationsprojekte messen lassen. Eine Vertiefung der
+              Zusammenarbeit im Verteidigungsbereich darf nicht dazu führen, dass
+              zivile Gelder sicherheitspolitisch zweckentfremdet werden, wie es u.a.
+              durch die Öffnung des Instruments für Stabilität und Frieden (IcSP)
+              für militärische Zwecke zu befürchten ist. Darüber hinaus darf die vertiefte
+              Integration der Verteidigungspolitik nicht dazu genutzt werden, Maßnahmen
+              zur Migrationsabwehr, bzw. eine europäische Abschottungspolitik voranzutreiben.
+              Zudem muss die finanzielle Trennschärfe von entwicklungspolitischen
+              und militärischen Maßnahmen zu jeder Zeit gegeben sein.</p>
+
+              <p>Für BÜNDNIS 90/DIE GRÜNEN ist klar: Eine Zusammenarbeit auf europäischer
+              Ebene muss immer strategisch auf eine präventive, auf friedliche Konfliktlösung
+              gerichtete und menschenrechtsgeleitete Außenpolitik ausgerichtet bleiben.
+              Eine verstärkte Kooperation im Verteidigungsbereich muss der EU die
+              entsprechenden Mittel zu ihrer Umsetzung an die Hand geben. Es braucht
+              nicht mehr nationale Aufrüstung der jeweiligen EU-Mitgliedstaaten, sondern
+              mehr Kooperation. Eine regelmäßige Erhöhung der nationalen Verteidigungsausgaben,
+              wie sie im Ratsbeschluss zur Einsetzung der PESCO verpflichtend festgeschrieben
+              ist, lehnen wir ab. Deswegen wollen wir Grünen die zunehmende Kooperation
+              im Verteidigungsbereich kritisch begleiten, mitgestalten und uns dafür
+              einsetzen,</p>
+
+              <ul>
+
+              <li>dass die längst fällige Debatte um die strategische Ausrichtung
+              der europäischen Sicherheits- und Verteidigungspolitik endlich nachgeholt
+              und in Anlehnung an nationale Weißbuchprozesse geführt wird; öffentlich,
+              engagiert , entlang konkreter Szenarien und begleitet von Debatten in
+              den nationalen und dem europäischen Parlament,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>dass Diplomatie, Prävention, Mediation, Dialog und Versöhnung weiterhin
+              das Fundament und den Ausgangspunkt europäischer Außen- und Sicherheitspolitik
+              bilden und diese Maßnahmen weiter gefördert werden,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>dass Militär immer nur als äußerstes Mittel eingesetzt wird. Alle
+              Einsätze müssen völkerrechts- und grundgesetzkonform sein, das heißt
+              nicht in verfassungswidrigen Koalitionen der Willigen stattfinden. Die
+              Beteiligung der Bundeswehr an bewaffneten Einsätzen im Rahmen der EU
+              darf nur mit einem Mandat der Vereinten Nationen erfolgen. Einsätze
+              müssen immer in eine umfassende zivile Gesamtstrategie eingebettet sein.
+              VN-geführte Missionen haben für uns immer Vorrang vor EU- oder NATO-geführten
+              Einsätzen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>dass Synergien zwischen den Mitgliedsstaaten genutzt werden, um
+              nationale Verteidigungsausgaben einzusparen und damit Verteidigungsprojekte
+              nicht den europäischen Haushalt belasten,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>dass die ineffiziente und intransparente europäische Rüstungsindustrie
+              grundlegend neu strukturiert und reformiert wird sowie eine restriktivere
+              und verbindliche Rüstungsexportpolitik in der EU und Deutschland gesetzlich
+              verankert wird.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>dass die Entscheidung über die Entwicklung konkreter Fähigkeiten
+              mit Hinblick auf die VN-fähigkeit der EU geschieht und das Verhältnis
+              von NATO und EU bei der Entwicklung der europäischen Verteidigungszusammenarbeit
+              geklärt wird,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>dass die zunehmende Kooperation im Verteidigungsbereich mit einer
+              Stärkung von Strukturen der parlamentarischen Kontrolle und Mitbestimmung
+              insbesondere auf europäischer Ebene einhergeht. Der Parlamentsvorbehalt
+              des Bundestags oder langfristig der des Europäischen Parlamentes darf
+              durch die europäische Kooperation weder unterlaufen noch abgebaut werden
+              und dass</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Maßnahmen zur Kohärenzförderung zwischen verschiedenen Politikfelder
+              wie Energiepolitik, Entwicklungspolitik, oder Handelspolitik, entwickelt
+              werden.</li>
+
+              </ul>
+
+              <p>Die zunehmende Kooperation der europäischen Mitgliedsländer im Verteidigungsbereich
+              ist eine einmalige Chance, das Friedensprojekt Europa zu stärken. Sie
+              setzt ein deutliches Zeichen gegen wachsenden Nationalismus und Nationalstolz.
+              BÜNDNIS 90/DIE GRÜNEN werden diesen Prozess aktiv und im Sinne des Vertrags
+              von Lissabon mitgestalten. So wird die Europäische Union der Verantwortung,
+              die aus der Annahme des Friedensnobelpreises erwächst, ein Stück gerechter.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '542':
+        type: motion
+        id: 542
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-23 Beschluss
+        title: 'Das Leid im Jemen lindern: Rüstungsexporte stoppen!'
+        title_with_intro: 'Das Leid im Jemen lindern: Rüstungsexporte stoppen!'
+        title_with_prefix: 'V-23 Beschluss: Das Leid im Jemen lindern: Rüstungsexporte
+          stoppen!'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Seit Jahren
+              leiden die Menschen im Jemen unter einem brutalen Krieg und seinen schrecklichen
+              Folgen. Er hat für eine der größten humanitären Katastrophen der Welt
+              gesorgt. Seit Kriegsbeginn sind bereits über 10.000 Menschen an den
+              direkten Folgen der Kampfhandlungen gestorben, zahllose weitere an Hunger
+              und Krankheiten. Fast eine Million Menschen sind mit Cholera infiziert
+              und können wegen fehlender medizinischer Versorgung und dem fast vollständigen
+              Kollaps öffentlicher Dienstleistungen nur unzureichend versorgt werden.
+              7 Millionen Menschen sind akut vom Hunger bedroht. Über hundert Kinder
+              sterben täglich an akuter Mangelernährung und ihren Folgen, mehr als
+              11 Millionen Kinder sind dringend auf humanitäre Hilfe angewiesen. Die
+              Trinkwasserversorgung in den großen Städten ist nahezu vollständig zusammengebrochen.
+              Diese dramatische Lage führt dazu, dass fast 20 Millionen Menschen auf
+              Hilfe angewiesen sind.</p>
+
+              <p>Dieses Ausmaß von Leid und Zerstörung im Jemen ist in erster Linie
+              durch die äußere Intervention in einen ursprünglich lokalen Konflikt
+              verursacht worden – vor allem durch die Bombenangriffe einer Staatenkoalition
+              unter Führung Saudi-Arabiens. Sie finden mit Unterstützung der USA und
+              Großbritanniens statt und durch Waffen aus europäischer Herstellung.
+              Diese Angriffe richten sich oft gezielt gegen zivile Infrastruktur wie
+              Schulen und Krankenhäuser. Fast alle Mitglieder der Staatenkoalition
+              sind Empfänger von direkten oder indirekten Waffenlieferungen aus Deutschland.
+              Zudem produziert Saudi-Arabien in Lizenz deutsche Gewehre. Auch der
+              Iran hat mit seiner Unterstützung der Houthi-Milizen zu dieser Eskalation
+              beigetragen: diese haben mit ihrem gewaltsamen Feldzug nach Sana’a und
+              Aden und dem daraus resultierenden Sturz der Regierung Hadi den Konflikt
+              zuallererst begonnen.</p>
+
+              <p>Neben den eigentlichen Kriegshandlungen ist die illegale Seeblockade
+              durch Saudi-Arabien und die Vereinigten Arabischen Emirate die bedeutendste
+              Ursache für die Mangelernährung der Bevölkerung. Trotz der Existenz
+              eines Kontrollmechanismus der Vereinten Nationen bringen diese Staaten
+              dadurch – unter dem Vorwand, Waffenschmuggel verhindern zu wollen –
+              die Versorgung großer Teile des Landes nahezu zum Erliegen. Diese Blockade,
+              ebenso wie die Schließung des Flughafens Sana’a, die Belagerung von
+              Städten und weitere Behinderungen humanitären Zugangs verstoßen gegen
+              die Bestimmungen der Sicherheitsratsresolutionen 2140 und 2216 und können
+              entsprechend sanktioniert werden. Auch der Zugang der Vereinten Nationen,
+              humanitärer Organisationen sowie von Journalistinnen und Journalisten
+              wird massiv behindert.</p>
+
+              <p>Der Wechsel des ehemaligen Präsidenten Ali Abdallah Saleh auf die
+              Seite der saudisch-geführten Koalition und seine Ermordung durch die
+              ehemals mit ihm verbündeten Houthi-Milizen stellen den Jemen vor neue
+              politische Herausforderungen. Die verschärften Auseinandersetzungen
+              haben zu noch mehr Opfern in der Zivilbevölkerung geführt. Gewaltsame
+              Angriffe auf friedliche Demonstrantinnen und Demonstranten sowie die
+              Blockade elektronischer Kommunikation gehören neben zahlreichen Fällen
+              von Verschwindenlassen, Folter und außergerichtlichen Tötungen sowie
+              dem Einsatz von Kindersoldaten zu den Vergehen aller Kriegsparteien.</p>
+
+              <p>Wir begrüßen es daher, dass der UN-Menschenrechtsrat mit der 36/31
+              des VN-Menschenrechtsrats eine unabhängige Expertenkommission zur Untersuchung
+              möglicher Kriegsverbrechen im Jemen eingesetzt hat. Wir begrüßen ebenfalls
+              den auch auf Betreiben der Grünen Fraktion im Europäischen Parlament
+              zustandegekommenen Beschluss 2017/2849, der unter anderem die Forderung
+              nach einem Exportstopp von Rüstungsgütern an die kriegsführenden Staaten
+              enthält.</p>
+
+              <p>Nun muss die Bundesregierung handeln. Wir fordern sie auf:</p>
+
+              <ul>
+
+              <li>im Sinne wiederholter Beschlüsse des Europäischen Parlaments jegliche
+              Rüstungsexporte an die am Jemenkrieg beteiligten Staaten sofort zu stoppen,
+              keine neuen Genehmigungen an diese Staaten zu erteilen, erfolgte Genehmigungen
+              zu widerrufen und auch keine Ausfuhrgenehmigungen zu erteilen;</li>
+
+              </ul>
+
+              <ul>
+
+              <li>in Zusammenarbeit mit den VN die Initiative für neue Friedensgespräche
+              zu übernehmen, deren erstes Ziel ein schnellstmöglicher Waffenstillstand
+              und die Gewährung humanitären Zugangs sein muss;</li>
+
+              </ul>
+
+              <ul>
+
+              <li>sich in diesem Zusammenhang auch gegenüber der US-amerikanischen
+              und britischen Regierungen für ein Ende der militärischen Unterstützung
+              der arabischen Koalition einzusetzen;</li>
+
+              </ul>
+
+              <ul>
+
+              <li>auf alle Kriegsparteien einzuwirken, den Zugang für Hilfs- und Lebensmittellieferungen
+              uneingeschränkt sicherzustellen;</li>
+
+              </ul>
+
+              <ul>
+
+              <li>sich im Falle der Behinderung humanitären Zugangs, wie in Sicherheitsratsresolutionen
+              2140 und 2216 vorgesehen, für Sanktionen gegen die Verantwortlichen
+              aller Kriegsparteien einzusetzen;</li>
+
+              </ul>
+
+              <ul>
+
+              <li>den Jemen weiter humanitär zu unterstützen und den Nachbarstaaten
+              bei der Aufnahme und Versorgung der Flüchtlinge aus dem Jemen zu helfen;</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die Arbeit der vom VN-Menschenrechtsrat eingesetzten Expertenkommission
+              nach allen Kräften zu unterstützen und dabei besonders deren uneingeschränkten
+              Zugang zum Kriegsgebiet einzufordern;</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die Umsetzung des Beschlusses 2017/2849 des Europäischen Parlaments
+              nach Kräften zu unterstützen.</li>
+
+              </ul></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '538':
+        type: motion
+        id: 538
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-26 Beschluss
+        title: Insekten- und Vogelsterben stoppen – Maßnahmen zum Schutz der biologischen
+          Vielfalt
+        title_with_intro: Insekten- und Vogelsterben stoppen – Maßnahmen zum Schutz
+          der biologischen Vielfalt
+        title_with_prefix: 'V-26 Beschluss: Insekten- und Vogelsterben stoppen – Maßnahmen
+          zum Schutz der biologischen Vielfalt'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p><strong>Insekten-
+              und Vogelsterben stoppen – Maßnahmen zum Schutz der biologischen Vielfalt</strong></p>
+
+              <p>Wir erleben momentan ein dramatisches Insekten- und Vogelsterben.
+              Erhebungen – wie die Krefelder Studie sowie zahlreiche weitere Studien,
+              durchgeführt in unterschiedlichsten Gebieten Deutschlands und Europas
+              – zeigen Verluste von bis zu 75% der Insekten-Biomasse. Diese empirischen
+              Daten lassen sich auch praktisch erleben: wo noch vor 20, 30 Jahren
+              im Sommer nach einer längeren Autofahrt die Windschutzscheibe voller
+              Insekten war, bleibt die Windschutzscheibe heute quasi Insekten-frei.</p>
+
+              <p>Der Rückgang der Insekten hat weitreichende Folgen. Denn wo Insekten
+              fehlen, finden auch Fledermäuse und Vögel keine Nahrung mehr, ihre Population
+              ist u.a. durch den Insektenrückgang im Fortbestand bedroht: Drei von
+              vier heimischen Vogelarten gelten mittlerweile als gefährdet. Seit 1990
+              sind besonders die Vögel der Agrarlandschaft bedroht. Der Bestand des
+              Kiebitzes ist um 80 Prozent, des Braunkehlchens um 63 Prozent, der Uferschnepfe
+              um 61 Prozent und des Rebhuhns um 84 Prozent zurückgegangen. Selbst
+              „Allerweltsarten“ wie Feldlerche und Haussperling stehen mittlerweile
+              auf den Roten Listen. Insgesamt ist in der EU ein Verlust von rund 300
+              Millionen Brutpaaren seit 1980 zu beklagen.</p>
+
+              <p>Global und national herrscht seit Jahrzehnten ein dramatisches Artensterben.
+              Das Netz der Arten und Nahrungsnetze drohen zu zerreißen. Allein 39
+              Wildbienenarten sind inzwischen in Deutschland ausgestorben. Weltweit
+              sind ca. 18 000 wirbellose Arten vom Aussterben bedroht. Diese Bedrohung
+              der biologischen Vielfalt hat unabsehbare Konsequenzen für das ökologische
+              Gleichgewicht der Erde. Ähnlich wie bei der Klimakrise müssen wir jetzt
+              handeln, um nicht den Kipp-Punkt der biologischen Vielfalt zu überschreiten,
+              nach dem Naturkreisläufe nicht mehr funktionsfähig sind.</p>
+
+              <p>Denn Bienen, Wildbienen und Schmetterlinge sind zuständig für die
+              Bestäubung von Pflanzen. Vier Fünftel der bei uns heimischen Nutz- und
+              Wildpflanzen sind sie angewiesen. Seriöse Schätzungen gehen von 230
+              bis 570 Milliarden Dollar aus, die diese Bestäuberleistung weltweit
+              jährlich wert ist.</p>
+
+              <p>Schon 2007 beschloss Deutschland unter Umweltminister Sigmar Gabriel
+              eine Nationale Strategie zur biologischen Vielfalt, mit dem Ziel, bis
+              2020 das Artensterben zu stoppen. Die hehren, auch internationalen,
+              Ziele stehen jedoch in einem eklatanten Missverhältnis zu den bisher
+              umgesetzten Maßnahmen zur Bekämpfung des Artensterbens. Weil die Agrar-
+              und Naturschutzpolitik unter den letzten Regierungen wirkungslos waren,
+              sind wir diesen Zielen nicht näher gekommen.</p>
+
+              <p>Wir GRÜNE kämpfen für den Artenreichtum und die biologische Vielfalt.
+              Wir wollen die Agrar- und Naturschutz-, Umwelt- und Wirtschaftspolitik
+              so ausrichten, dass gute Rahmenbedingungen mehr Artenschutz und Erhalt
+              der Vielfalt garantieren und fordern Sofortmaßnahmen im Kampf gegen
+              das Artensterben.</p>
+
+              <p><strong>Insekten- und vogelfreundliche Landwirtschaft fördern</strong></p>
+
+              <p>In den letzten Jahrzehnten ist die Landwirtschaft vom Träger der
+              Biodiversität zu einer ihrer größten Bedrohungen geworden. Weitflächige
+              Monokulturen, die intensive und großflächige Nutzung von Grünland, häufige
+              Wiesenmahd und der Rückgang von Landschaftsstrukturelementen wie Hecken
+              und Streuobstwiesen oder Wacholderheiden haben zum Verschwinden von
+              Lebensräumen für Insekten, Vögel und anderen Tieren geführt. Fehlentwicklungen
+              wie Stickstoffüberschüsse, Erosion oder Belastungen mit Pestiziden und
+              haben unübersehbare Folgen. Drastische Verluste an Insektenbiomasse,
+              welche in Naturschutzgebieten gemessen wurden, zeigen, dass selbst Schutzgebiete
+              die bisherigen Räume für die Natur nicht für den Erhalt vieler Arten
+              ausreichen. Zentral ist deshalb die Schaffung von zusätzlichen Blühstreifen,
+              Hecken, Feldlerchenfenster, Extensiv-Grünland oder Streuobstwiesen auf
+              jedem landwirtschaftlichen Betrieb.</p>
+
+              <p><strong>Wie wir Gifte vom Acker bekommen </strong></p>
+
+              <p>Der großflächige, häufige Pestizideinsatz gehört zu den stärksten
+              Treibern des Artensterbens. Die Wirkstoffmenge ist in den letzten 20
+              Jahren um rund ein Drittel gestiegen: von 1994 bis 2015 von knapp 27.000
+              Tonnen auf knapp 35. Ackergifte treffen nicht nur die Lebewesen, gegen
+              die sie eingesetzt werden. Sie vernichten sowohl Wildkräuter als auch
+              Insekten. Die Folgen sind alarmierend: Heute leben über 50 Prozent weniger
+              Vögel als noch vor 30 Jahren auf den landwirtschaftlichen Flächen Deutschlands.
+              Auch 35 Prozent der Ackerwildkräuter sind bereits verschwunden. Auf
+              dem Land sehen wir Rückgänge bei nahezu allen Lebewesen, weil komplette
+              Nahrungsnetzwerke zusammenbrechen.</p>
+
+              <p>Dabei belegen zahlreiche Studien, dass große Einsparungen beim Pestizideinsatz
+              ohne Ertragseinbußen möglich sind. <strong>Deshalb wollen wir eine umfassende
+              Pestizidreduktionsstrategie umsetzen</strong>, um Ackergifte von unseren
+              Feldern zu bekommen und Vögel, Insekten und Wildkräuter zu schützen<strong>.
+              </strong>Dazu gehört</p>
+
+              <ul>
+
+              <li>Anreize zu schaffen für eine deutliche Senkung des Einsatzes, dazu
+              gehört auch eine Abgabe auf die Produktion von Pestiziden, um dem Verursacherprinzip
+              Rechnung zu tragen und die Unterstützung pestizidfreier Bewirtschaftungsmethoden,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>ein Verbot des Einsatzes von Pestiziden in Natur- und Trinkwasserschutzgebieten,
+              ökologisch sensiblen Bereichen und deren Pufferflächen, Vogelschutz-
+              und FFH-Gebieten und auf artenreichem Grünland,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die verbindliche, rechtssichere sowie sanktionsfähige Definition
+              der „Guten Fachlichen Praxis“ im Einklang mit ökologischen Notwendigkeiten,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die Förderung oder Festschreibung vielfältiger Fruchtfolgen,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Rand- und Pufferstreifen einrichten, um die Abdrift von Pestiziden
+              auf andere Flächen oder in Gewässer zu verhindern,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die verbindliche Umsetzung aller Vorgaben des Integrierten Pflanzenschutzes,
+              inkl. der Vorhaltung von Kontrollparzellen (und damit auch Schaffung
+              von pestizidfreien Flächen im Kulturland),</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die Verbesserung der Zulassungsverfahren, inkl. der Forderung, wirkstoffspezifische
+              Ausgleichsflächen festzuschreiben,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>der Ausbau der unabhängigen Pflanzenschutz-Beratung für Landwirte,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die Förderung des und deutlich ausgebaute Forschung für nicht-chemischen
+              Pflanzenschutz. Dafür sind mindestens 20 Prozent der Forschungsmittel
+              im Agrarbereich in den Ökolandbau zu investieren, und die Mittel für
+              die Erforschung robuster Sorten deutlich aufzustocken. Das kommt in
+              gleichem Maß auch der konventionellen Landwirtschaft, die nachhaltiger
+              wirtschaften will, zu Gute,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>die Vermarktungsförderung von Lebensmittelprodukten, die pestizidfrei
+              erzeugt wurden.</li>
+
+              </ul>
+
+              <p><strong>Glyphosatausstieg jetzt </strong></p>
+
+              <p>Glyphosat wird momentan auf 40% der deutschen Ackerfläche eingesetzt,
+              obwohl Totalherbizide wie Glyphosat, die gegen alle Pflanzen toxisch
+              wirken und diese abtöten, besonders fatal auf die Agrobiodiversität
+              wirken.</p>
+
+              <p>Der Alleingang des geschäftsführenden Bundeslandwirtschaftsministers
+              Schmidt begrub die Chance für einen EU-weiten Ausstieg aus der Nutzung
+              von Glyphosat. Deshalb muss jetzt der nationale Ausstieg eingeleitet
+              und ein Ausstiegsplan mit umweltfreundlichen Alternativen erarbeitet
+              werden. Nun geht es um Schadensbegrenzung auf nationaler Ebene. Zum
+              Schutz der Artenvielfalt, zur Wahrung des Vorsorgeprinzips und im Schulterschluss
+              mit den französischen Partner*innen wollen wir <strong>den Glyphosateinsatz
+              in Deutschland rechtssicher beenden. </strong></p>
+
+              <p>Deshalb wollen wir</p>
+
+              <ul>
+
+              <li>den Einsatz von Glyphosat für den privaten Gebrauch und auf öffentlichen
+              Flächen sofort untersagen,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>größtmögliche Anwendungsbeschränkungen für landwirtschaftliche Bereiche
+              erlassen, damit auch dort sofort deutlich weniger Glyphosat eingesetzt
+              wird,</li>
+
+              </ul>
+
+              <ul>
+
+              <li>alle rechtlichen Methoden zur Einschränkung bzw. dem Einsatzstopp
+              von Glyphosat vollständig auszuschöpfen.</li>
+
+              </ul>
+
+              <p><strong>Bienengefährliche Stoffe verbieten</strong></p>
+
+              <p>Immer mehr Studien belegen eine Vielzahl von schädlichen Auswirkungen
+              der Neonikotinoide oder ähnlich wirkender Wirkstoffe auf Bienen und
+              andere Insekten. Sind diese den besonders schädlichen Giften ausgesetzt,
+              können sie sich schlechter orientieren und fortpflanzen, schlechter
+              lernen und kommunizieren und sind anfälliger für Krankheiten. Frankreich
+              hat einen Ausstieg schon beschlossen, die EU-Kommission will inzwischen
+              den Einsatz einiger Neonikotinoid-Wirkstoffe beenden. Deutschland muss
+              den Vorschlag der EU-Kommission unterstützen. Aber das reicht nicht
+              aus: <strong>Der Einsatz sämtlicher Neonikotinoide und ähnlich wirkender
+              bienengefährdender Wirkstoffe muss beendet werden</strong>.</p>
+
+              <p><strong>Ökolandbau voranbringen</strong></p>
+
+              <p>Auf Öko-Höfen herrscht eine höhere biologische Vielfalt als auf konventionell
+              bewirtschafteten Betrieben. Damit tragen diese auch zum Ziel einer insekten-
+              und vogelfreundlichen Landwirtschaft bei. Wir brauchen deshalb einen
+              deutlichen Ausbau des ökologischen Landbaus, was Flächen- und Marktanteile
+              betrifft. <strong>Dazu wollen wir bis 2025 die ökologische Land- und
+              Lebensmittelwirtschaft mit insgesamt einer Milliarde Euro weiter entwickeln.
+              </strong>Wir brauchen daneben aber auch eine Ökologisierung der gesamten
+              Landwirtschaft und Förderung pestizidfreier Nutzungsformen wie Streuobstwiesen
+              – nicht zuletzt, weil Kontamination oder Abdrift aus konventionellen
+              Betrieben sonst genau die trifft, die auf die Anwendung von Pestiziden
+              freiwillig verzichten.</p>
+
+              <p><strong>Naturschutz in der EU-Agrarfinanzierung stärken</strong></p>
+
+              <p>Es ist dringend erforderlich, in der Agrarpolitik auch finanziell
+              drastisch umzusteuern. Wir müssen weg kommen von einer finanziellen
+              Förderung, die allein den Besitz von Fläche belohnt, wie das derzeit
+              mit den jährlich 4,8 Millionen € aus der ersten Säule der Agrarpolitik
+              passiert.</p>
+
+              <p>Wir GRÜNE setzen uns dafür ein, dass <strong>Gelder aus öffentlichen
+              Kassen nur noch für gesellschaftliche Leistungen</strong> der Landwirtschaft
+              zu verwenden. Dazu müssen schon jetzt bestehende nationale Spielräume
+              für den Schutz von Vögeln, Fledermäusen, Insekten und anderer Arten
+              genutzt werden. <strong>Wir wollen die sofortige Umschichtung des jetzt
+              schon möglichen Maximal-Anteils in die 2. Säule, um damit auch den Schutz
+              der Biologischen Vielfalt besser zu finanzieren. </strong></p>
+
+              <p>Wir werden außerdem für den <strong>Förderzeitraum nach 2020 auf
+              eine Reform der EU-Agrarpolitik dränge</strong>n, hier muss gelten „<strong>Gesellschafliche
+              Geld für gesellschaftliche Leistungen“</strong>. Wir wollen die Zahlung
+              der GAP-Mittel dann konsequent an die Erbringung von Gemeinwohlleistungen
+              durch die Landwirte (über gesetzliche Vorgaben hinaus) knüpfen. Denn
+              wir wollen eine vielfältige Landwirtschaft fördern, die ohne Gift, Gentechnik
+              und Tierleid gesundes Essen für alle erzeugt. Eine Landwirtschaft, in
+              der die Leistungen unserer nachhaltig arbeitenden Landwirt*innen gewürdigt
+              werden und die ihnen ein gutes Auskommen verschafft. Die unserem Klima
+              nützt, statt ihm zu schaden. Die mit der Natur arbeitet und nicht gegen
+              sie, die biologische Vielfalt schützt, statt zu zerstören. Landwirt*innen,
+              die öffentliche Gelder erhalten, müssen nach diesen Grundsätzen wirtschaften.<br>
+
+              Wir setzten uns für einen eigenständigen EU-Naturschutzfonds in Höhe
+              von mindestens 15 Mrd. Euro jährlich ein. Dieser dient der Förderung
+              von freiwilligen Naturschutzmaßnahmen beispielsweise zur Schaffung und
+              Pflege zusätzlicher naturschutzfachlich wertvoller Bereiche bzw. Nutzungsverzichte
+              etwa zum Schutz von Feld- und Wiesenvogelarten, die von Landnutzer*innen
+              geleistet werden.</p>
+
+              <p><strong>Grünland schützen</strong></p>
+
+              <p>Knapp ein Drittel der landwirtschaftlichen Nutzfläche Deutschlands
+              besteht aus Grünland. Grünlandstandorte beherbergen über die Hälfte
+              aller in Deutschland vorkommenden Tier- und Pflanzenarten und haben
+              somit auch große Bedeutung für den Schutz und den Erhalt der Artenvielfalt.
+              Der Umbruch von Grünland und die Intensivierung der Nutzung auf den
+              verbleibenden Flächen haben gravierende Auswirkungen auf die Artenvielfalt.
+              So stehen heute z. B. fast alle typischen Wiesenvogelarten wie Kiebitz,
+              Uferschnepfe und Braunkehlchen auf der Roten Liste der bedrohten Tierarten.
+              Denn nur noch etwa 14 % der gesamten Grünlandfläche können als artenreiches
+              Grünland eingestuft werden. Dabei haben artenreiche Flächen eine überaus
+              hohe Bedeutung für den Erhalt der biologischen Vielfalt sowie den Gewässer-,
+              Boden- und Klimaschutz.</p>
+
+              <p>Wir setzen uns für eine umfassende <strong>Grünlandstrategie</strong>
+              ein. Dazu gehört ein generelles Umbruchverbot auf sensiblen Standorten
+              wie Niedermoorböden, Überschwemmungsgebieten, Standorten mit hohem Grundwasserstand,
+              erosionsgefährdeten Flächen, Streuobstwiesen und artenreichem Grünland.
+              Weiterhin die Einführung einer allgemeinen Genehmigungspflicht des Grünlandumbruchs
+              auf allen Standorten mit Beurteilung durch Fachbehörden des Natur- und
+              Wasserschutzes sowie die Verbesserung des Vollzugs bestehender rechtlicher
+              Vorgaben vor allem in sensiblen Gebieten. Es braucht eine bessere Förderkulisse
+              für den Erhalt von artenreichem Grünland durch höhere Weideprämien,
+              Ausgleichszahlungen für benachteiligte Gebiete auf extensiv bewirtschafteten
+              Flächen und Fördermaßnahmen zur Renaturierung und extensiven Nutzung
+              von Mooren sowie eine flächengebundene Tierhaltung.</p>
+
+              <p><strong>Bienen und Vögel brauchen unsere Kenntnis und unseren Schutz
+              </strong></p>
+
+              <p>Insekten sind die artenreichste Gruppe an Organismen und machen 70
+              Prozent aller Tierarten in Deutschland aus. Doch die Datenlage ist schlecht
+              – viele Arten sind noch gänzlich unbekannt oder ihr Vorkommen ist unzureichend
+              dokumentiert. Eine flächendeckende Beobachtung und Zählung für Insekten
+              gibt es nicht. Wir brauchen aber ein Bild davon, was wo lebt und wie
+              sich Bestände verändern, um sie schützen zu können. Deshalb soll ein
+              wissenschaftliches Bundesprogramm Forschung und Lehre stärken und interdisziplinär
+              und problemorientiert zum Biodiversitätsschutz beitragen. Ein Bund-Länder-Programm
+              zum <strong>Biodiversitätsmonitoring</strong> soll unverzüglich auf
+              den Weg gebracht werden. Die gesammelten Erkenntnisse sollen über Open
+              Data verfügbar gemacht werden. Dazu braucht es die Gründung eines nationalen
+              Monitoringzentrums und im Rahmen dessen auch die Schaffung eines Kompetenznetzwerks
+              für integrative Taxonomie.</p>
+
+              <p><strong>Vielfältige und artenreiche Kulturlandschaft</strong></p>
+
+              <p>Hecken, Blühstreifen, Knicks, Alleen und Wildwiesen bieten Insekten
+              und Vögeln ein zu Hause – leider werden diese Lebensräume immer weniger,
+              denn unsere vielfältige Landschaft wird immer monotoner. Neben der Landwirtschaft
+              gefährdet die Zerschneidung v.a. durch Infrastruktur und Zerstörung
+              von Lebensräumen die Vielfalt an Insekten und anderen Arten. Wir wollen
+              eine vielfältige Landschaft fördern und genau diese Rückzugs- und Nistorte
+              erhalten und wiederherstellen. Dazu braucht es mehr Geld. Wir wollen
+              das <strong>Bundesprogramm Biologische Vielfalt auf 50 Millionen im
+              Jahr aufstocken</strong>, damit Vögel in Hecken und Insekten in Altholz
+              wieder ein zu Hause finden.</p>
+
+              <p>Auch werden ungebremst Flächen zubetoniert. Der Flächenhunger und
+              –verbrauch ist riesig. Vom Ziel den Flächenverbrauch bis 2020 auf 30
+              Hektar pro Tag zu begrenzen, sind wir weit entfernt. Wir müssen den
+              Flächenverbrauch begrenzen und der Natur ihren Raum lassen.</p>
+
+              <p><strong>Gärten, Grünanlagen als Hort der Vielfalt</strong></p>
+
+              <p>Allein die Gärten Deutschlands decken eine Fläche ab, die größer
+              als das Saarland ist. Vielfältige Gärten, Dörfer und Grünanlagen in
+              den Städten bieten deutlich mehr Tier- und Pflanzenarten Raum als intensiv
+              genutzten Agrarlandschaften, in denen unsere Lebensmittel erzeugt werden.
+              Naturnahe Nutzung statt blütenloser Steingärten, Pestizidverzicht und
+              insektenfreundliche Blumenwiesen sowie einheimische Bäume und Sträucher
+              sind wichtige Beiträge zur Biologischen Vielfalt in Städten und Dörfern.
+              Naturerlebnisräume und Naturerfahrungsräume bieten insbesondere Kindern
+              und Jugendlichen Spiel-, Erlebnis- und Beobachtungsräume und damit prägende
+              Erfahrungen für ein positives Verhältnis zur Natur. Wir GRÜNE fordern
+              die Einrichtung solcher Räume gerade in großen Städten und Ballungsräumen.</p>
+
+              <p>Kommunen können durch Konzepte für bienenfreundliche Grünflächen-
+              und Straßenrandbewirtschaftung, und entsprechende Anlagen an öffentlichen
+              Einrichtungen (wie Kitagärten) einen wichtigen Beitrag gegen Blüten-
+              und Lebensraummangel von Bestäubern leisten. Beratung zu bestäuberfreundlichen
+              Gärten, Balkonen und Dachbegrünungen für Privatleute, ergänzt durch
+              ein entsprechendes Pflanzenangebot in Gartenmärkten und Gärtnereien,
+              würde alle unterstützen, die in ihrem direkten Umfeld etwas für Bienen
+              tun wollen.</p>
+
+              <p><strong>Mehr Wildnis in Deutschland</strong></p>
+
+              <p>Die Agrarlandschaft prägt fast die Hälfte unserer Landschaften, aber
+              Vögel und Insekten und andere Arten brauchen auch ungestörte Rückzugsorte,
+              Wildnis. Deshalb sollen 2% der Landesfläche Deutschlands Wildnis werden.
+              Dafür wollen wir konkrete Anreize schaffen und diese Gebiete als „Wildnisgebiet“
+              mit Verordnungsrahmen nach dem Bundesnaturschutzgesetz unter Schutz
+              stellen. Wir fordern einen <strong>Wildnisfonds</strong> in Höhe von
+              500 Mio. Euro in Deutschland. Außerdem fördern wir den Waldumbau zu
+              <strong>naturnahen Wäldern</strong> und werden das Ziel die natürliche
+              Waldentwicklung auf 5% des Gesamtwaldes vorantreiben.</p>
+
+              <p><strong>Artenschutz mitdenken </strong></p>
+
+              <p>Auch am Meer sind Vögel gefährdet. Stellnetze der Fischerei bedrohen
+              nicht nur Schweinwale sondern auch alle Seevögel, die tauchend ihre
+              Nahrung suchen, wie zum Beispiel Eiderente, Seetaucher. Diese verfangen
+              sich darin und ertrinken qualvoll. Stellnetzfischerei wird auch in Naturschutzgebieten
+              betrieben. Wir fordern deshalb, ein sofortiges Ende der Stellnetz- und
+              Grundschleppnetzfischerei in Naturschutzgebieten. Mittelfristig dürfen
+              in der gesamten Ost- und Nordsee nur noch selektive und umweltschonende
+              Fischfangmethoden zum Einsatz kommen, um die Fischerei in Einklang mit
+              der Meeresumwelt zu bringen.</p>
+
+              <p>Um Vögel vor tödlichen Kollisionen oder Stromschlägen an Stromleitungen
+              zu schützen, wollen wir, dass Freileitungen – zunächst in Naturschutzgebieten
+              und Vogelzugkorridoren – durch Vogelschutzmarkierungen nachgerüstet
+              werden. Auch für große Glasscheiben und –fronten muss überlegt werden,
+              wie der Vogelschlag verringert werden kann. Ebenso muss der Schutz von
+              Vögeln und Fledermäusen bei der Errichtung von Windenergieanlagen durch
+              technische Anpassungen sowie gute Planung auf der Basis unabhängiger
+              Studien gewährleistet werden. Rund 60 Prozent der wirbellosen Arten
+              weltweit sind nachtaktiv. Zum Schutz insbesondere von Insekten setzen
+              wir uns für weniger Lichtverschmutzung ein – u.a. indem wir moderne
+              Techniken wie nächtliche Abschaltmechanismen stärken.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '525':
+        type: motion
+        id: 525
+        agenda_item: Beschlüsse (vorläufig)
+        prefix: V-36 NEU Beschluss
+        title: Einmarsch der Türkei in Syrien ist völkerrechtswidrig – Rüstungsexporte
+          an die Türkei umgehend stoppen
+        title_with_intro: Einmarsch der Türkei in Syrien ist völkerrechtswidrig –
+          Rüstungsexporte an die Türkei umgehend stoppen
+        title_with_prefix: 'V-36 NEU Beschluss: Einmarsch der Türkei in Syrien ist
+          völkerrechtswidrig – Rüstungsexporte an die Türkei umgehend stoppen'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Am 21. Januar
+              2018 startete die Türkei mit der „Operation Olivenzweig“ den Einmarsch
+              in die nordsyrische Region Afrin, die eines der Rückzugsgebiete für
+              Flüchtlinge und Binnenvertriebene in Syrien ist. Unzählige Menschen
+              sind bereits durch den Krieg Assads gegen seine eigene Bevölkerung und
+              die barbarischen Verbrechen vom ISIS zur Flucht in genau dieses Gebiet
+              gezwungen worden, sie dürfen nicht noch einmal den Horror von Krieg
+              und Vertreibung erleben. Der türkische Militäreinsatz richtet sich gegen
+              die YPG den militärischen Arm der kurdischen PYD, die die Autonomiebehörde
+              kontrolliert. Doch sind auch zivile Opfer zu beklagen. Nach der entscheidenden
+              Schwächung von ISIS, bei der unter anderem kurdische Milizen der YPG
+              eine entscheidende Rolle gespielt haben, tritt der Krieg in Syrien mit
+              der Invasion in eine weitere erschütternde Gewaltphase ein. Mit dem
+              Einmarsch in Nordsyrien gießt Präsident Erdogan Öl in den regionalen
+              Flächenbrand. Bündnis 90 / Die Grünen verurteilen diese Invasion als
+              eine Verletzung des Völkerrechts sowie als eine unverantwortliche militärische
+              Gewalteskalation. Das militärische Vorgehen der Türkei in Syrien wird
+              die Lage dort dramatisch verschlimmern und das Ausmaß der humanitären
+              Katastrophe weiter vergrößern. Bereits jetzt befinden sich laut UN-Angaben
+              mehr als 5.000 Menschen auf der Flucht vor der türkischen Offensive.</p>
+
+              <p>Der Einmarsch der Türkei ist einerseits innenpolitisch motiviert,
+              er soll von der schlechten wirtschaftlichen Entwicklung und der tief
+              gespaltenen Gesellschaft ablenken. Erdogans Außenpolitik der vergangenen
+              Jahre ist krachend gescheitert. Von seinem Ansatz der „null Probleme
+              mit den Nachbarn“ ist heute eine Situation voller Konflikte mit fast
+              allen Nachbarn geworden. Nach der Aufkündigung der Friedensgespräche
+              mit der PKK und einem unverhältnismäßigen militärischen Einsatz auch
+              gegen die kurdische Zivilbevölkerung im Südosten der Türkei hat Erdogan
+              es bisher nicht geschafft, eine tragfähige politische Lösung der sogenannten
+              Kurdenfrage anzubieten. Gleichzeitig kritisieren wir auch die Nähe der
+              YPG zur PKK, deren Teilorganisationen in der vergangenen Jahren schwere
+              Terroranschläge in der Türkei auch gegen Zivilisten verübt haben. Dieses
+              Anheizen der Gewaltspirale wird den innertürkischen Konflikt nicht lösen.
+              Wir verurteilen diese Gewalt scharf. Die Verbindungen zwischen der YPG
+              und der PKK rechtfertigen jedoch keinen Einmarsch in Syrien, für die
+              Türkei sind sie aber ein berechtigter Grund zur Sorge.</p>
+
+              <p>Andererseits nutzt der türkische Einmarsch vor allem den syrischen
+              und russischen Kriegsinteressen, denn er richtet sich gegen die innenpolitische
+              Opposition Assads und treibt einen Keil zwischen die Türkei und ihre
+              NATO-Partner – allen voran die USA, die bislang die kurdischen Einheiten
+              auch mit Waffen unterstützt haben. Damit rückt eine politische Lösung
+              des Syrienkonflikts in weite Ferne.</p>
+
+              <p>Der türkische Einmarsch zeigt zudem auch das Scheitern der deutschen
+              und europäischen Türkeipolitik auf. Viel zu lange wurde kaum oder viel
+              zu leise Kritik an den zunehmend autokratischen und unberechenbaren
+              Kapriolen der türkischen Innen- und Außenpolitik geübt. Mit dem Flüchtlingsdeal
+              hat sich die EU durch Erdogan erpressbar gemacht. Präsident Erdogan
+              fühlt sich offensichtlich immun genug, um sich eine ganze Reihe innen-
+              und außenpolitischer Eskalationen zu erlauben, ohne laute Kritik aus
+              Berlin und Brüssel befürchten zu müssen. Die Bilder von offenkundig
+              deutschen Leopard-2-Panzern in Syrien sind eine drastische Illustration
+              der fehlgeleiten deutschen Rüstungsexportpolitik in Krisen- und Konfliktländer
+              der letzten Jahre. Bundesaußenminister Sigmar Gabriel hat der Türkei
+              gerade erst die Modernisierung der Panzer in Aussicht gestellt. Erneut
+              rücken Menschenrechte und Demokratie in den Hintergrund, weil ein lukratives
+              Angebot für Rheinmetall winkt.</p>
+
+              <p>Auch die vermeintliche Entspannung der deutsch-türkischen Beziehungen
+              ist nur Fassade, solange Deniz Yücel und andere politische Geiseln unschuldig
+              in Haft sitzen. Deniz Yücel verdient unseren größten Respekt dafür,
+              dass er in seinem letzten Interview deutlich gemacht hat, nicht durch
+              schmutzige Deals mit der Türkei freikommen zu wollen. Es muss der deutschen
+              und europäischen Außenpolitik gelingen, gegenüber der Türkei aus dem
+              Teufelskreis aus Abhängigkeit und Eskalation auszubrechen.</p>
+
+              <p>Wir GRÜNE haben intensiv über den Umgang mit den entstandenen Konflikten
+              und deren mögliche Deeskalation diskutiert und sind nicht den leichten
+              Weg vieler anderer gegangen, einfache Antworten auf komplizierte Fragen
+              zu geben. Wir haben uns für umfassende zivile und politische Lösungen
+              stark gemacht. Die kann es aber nur geben, wenn die internationale Gemeinschaft
+              ihren politischen Willen dazu deutlich erhöht.</p>
+
+              <p>Die Entwicklung hat der letzten Woche in erschreckender Eindeutigkeit
+              gezeigt, dass Frieden im Mittleren Osten ohne eine Einbeziehung kurdischer
+              Interessen nicht machbar sein wird. Schon jetzt versuchen Menschen in
+              der Region - seien es Kurd*innen, Alevit*innen, Araber*innen, Christ*innen,
+              Jesid*innen, Assyrer*innen oder Armenier*innen - unter widrigen Umständen
+              eine demokratische Gesellschaft aufzubauen. Vertreibungen, Diskriminierungen
+              von Minderheiten und Menschenrechtsverletzungen, die nach wie vor stattfinden,
+              verurteilen wir.</p>
+
+              <p>Wir bekennen uns zu einem friedlichen, international getragenen Umgang
+              mit der Kurdenfrage. Eine Lösung kann nicht in einer weiteren Eskalation
+              des Krieges und weiterer militärischer Aufrüstung liegen, sondern muss
+              friedlich, unter Einbeziehung der betroffenen Staaten und Interessengruppen
+              sowie unter Wahrung des Völkerrechts erreicht werden.</p>
+
+              <p>Wir kritisieren den Aufruf des türkischen Religionsattachés an die
+              Gläubigen der DITIB- Gemeinden, die Sieg-Sure (Fetih) zu beten, in der
+              es um das Ziel der Eroberung geht. Verherrlichung von Krieg und nationalistische
+              Stimmungsmache lehnen wir ausdrücklich ab. Wir appellieren, die Diskussion
+              über die aktuellen Entwicklungen in Syrien mit Argumenten und friedlich
+              zu führen. Angriffe auf Moscheen oder kurdische Einrichtungen in Deutschland
+              verurteilen wir.</p>
+
+              <p>Mit Blick auf die jüngsten Entwicklungen fordern BÜNDNIS 90 / DIE
+              GRÜNEN:</p>
+
+              <ul>
+
+              <li>Die Bundesregierung muss sich für einen sofortigen Stopp des türkischen
+              Angriffs in Nordsyrien einsetzen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Die Bundesregierung muss umgehend die völkerrechtswidrige Intervention
+              der Türkei innerhalb der NATO auf den Tisch bringen und darauf drängen,
+              dass die NATO endlich geeignete Konsequenzen zieht - auch mit Blick
+              auf die Awacs-Aufklärungsflüge.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Mehr denn je müssen Deutschland und Europa klare Kante für Demokratie
+              und Menschenrechte in der Türkei und in der Region zeigen. Das politische
+              Handeln muss konsequent auf die Unterstützung der verbleibenden demokratischen
+              Kräfte in der Türkei ausgerichtet werden.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Alle deutschen Rüstungsexporte in die Türkei müssen umgehend gestoppt
+              werden, bis die Türkei zu Demokratie und Rechtsstaatlichkeit zurückkehrt.
+              Das gilt auch für die von der türkischen Regierung geforderte Aufrüstung
+              der Leopard-II-Panzer, die offenkundig in der gegenwärtigen türkischen
+              Militäroffensive eingesetzt werden. Ebenso gehören Pläne zur Beteiligung
+              deutscher Unternehmen an Rüstungskonsortien, wie sie jüngst im Fall
+              des Rheinmetallvorhabens zur Unterstützung des Aufbaus einer Panzerfabrik
+              in der Türkei öffentlich wurden, ausnahmslos beendet. Die Gesetzeslücke,
+              die solche Pläne ermöglicht, muss dringend geschlossen werden.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Es braucht eine diplomatische Offensive gegenüber der Türkei und
+              Vertreterinnen und Vertretern der kurdischen Bevölkerung in der Region,
+              um Druck für eine politische Lösung der Kurdenfrage zu erreichen. Für
+              die Zukunft der Region kann es nur eine friedliche und politische Lösung
+              geben.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Der Flüchtlingsdeal mit der Türkei schirmt Europa nicht nur vor
+              Verantwortung, sondern Präsident Erdogan auch vor Kritik ab. Die EU
+              hat sich dadurch gegenüber der Türkei erpressbar gemacht. Diesen Türkei-Deal
+              wollen wir beenden. Zugleich sollte damit die europäische Unterstützung
+              der über drei Millionen Flüchtlinge in der Türkei nicht abbrechen. Deren
+              Versorgung nach humanitären Standards muss oberste Priorität haben.
+              Auch braucht es dringend Kontingente zur Entlastung der dortigen Strukturen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Die Bundesregierung muss den politischen und wirtschaftlichen Druck
+              auf die AKP- Regierung erhöhen, damit Deniz Yücel und alle anderen politischen
+              Gefangenen endlich ein rechtsstaatliches Verfahren erhalten und alle
+              unschuldig Inhaftierten frei kommen.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Verhandlungen über eine Ausweitung der Zollunion kann es erst geben,
+              wenn die Türkei eine Kehrtwende zurück zu Demokratie und Rechtsstaatlichkeit
+              vollzieht. Das gilt auch für die Fortführung der Beitrittsgespräche,
+              die de facto bereits auf Eis liegen. Europäische Heranführungshilfen
+              sollten ausschließlich an zivilgesellschaftliche, pro- demokratische
+              Organisationen ausgezahlt werden. Die Beitrittsgespräche jetzt aber
+              komplett abzubrechen, würde das falsche Signal an die proeuropäischen
+              und demokratischen Kräfte in der Türkei senden. Für eine demokratische
+              und weltoffene Türkei müssen die Türen zur EU offen bleiben.</li>
+
+              </ul>
+
+              <ul>
+
+              <li>Wir stehen an der Seite derer die für eine friedvolle Lösung auf
+              der Grundlage von Völkerrecht und Menschenrechten in Deutschland gewaltfrei
+              demonstrieren.</li>
+
+              </ul></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure:
+          status_id: 11
+          status_title: Abstimmung (Angenommen)
+        ammendments: []
+    - '521':
+        type: motion
+        id: 521
+        agenda_item: 'Aktuelle Debatte: Zukunft ist, was wir draus machen '
+        prefix: A-01 Beschluss
+        title: Zukunft GRÜN gestalten
+        title_with_intro: Zukunft GRÜN gestalten
+        title_with_prefix: 'A-01 Beschluss: Zukunft GRÜN gestalten'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 26.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Die Erfahrung
+              der letzten Wochen zeigt, wie wichtig eine engagierte, kontinuierliche
+              und beharrliche grüne Politik ist. Durch den Wahlkampf und die anschließenden
+              Jamaika-Sondierungsgespräche ist es uns gelungen, Klimaschutz und einer
+              ökologisch-sozialen Politik einen hohen Stellenwert zu geben. Doch die
+              sich abzeichnende Große Koalition versagt beim Klimaschutz. Jetzt ist
+              es unsere Aufgabe, der Großen Koalition eine progressive grüne Politik
+              entgegen zu stellen und unseren Themen mit Visionen und Konzepten Einfluss
+              und Geltung zu verschaffen.</p>
+
+              <p>Schon mit bündnisgrüner Regierungsbeteiligung wäre es sehr schwierig
+              geworden, die deutschen Klimaziele zu erreichen. Ohne uns sind sie faktisch
+              verloren. Denn alle anderen politischen Kräfte scheuen konkrete Vorschläge
+              wie einen schnellen Kohleausstieg, eine emissionsfreie Mobilität oder
+              klimaneutrale Städte. Und auch in vielen anderen Bereichen gilt: Grün
+              macht den Unterschied. Wenn es um eine starke weltoffene Gesellschaft
+              geht, in der wir Integration fördern, Einwanderung als Chance verstehen
+              und die sich durch eine humane und rechtsstaatliche Flüchtlingspolitik
+              auszeichnet. Wie wir eine menschenrechtsbasierte Außenpolitik verwirklichen
+              können, die die Globalisierung gerecht gestaltet, Fluchtursachen bekämpft
+              und auf eine faire Handelspolitik setzt. Bei der Aufgabe, den Zusammenhalt
+              eines starken und vereinten Europas zu sichern. Dabei, wie eine gerechte
+              Verteilung zwischen starken und schwachen Schultern aussieht, wie die
+              skandalöse Kinderarmut in unserem vermögenden Land beendet und gerechte
+              Bildungschancen für alle Kinder – egal aus welchem Elternhaus – erreicht
+              werden können. Dabei, die Folgen der Digitalisierung ökologisch, sozial
+              und demokratisch zu gestalten, indem wir Freiheitsrechte stärken und
+              uns für Arbeitnehmer*innen einsetzen. Und nicht zuletzt dabei, wie wir
+              die sozialen Sicherungssysteme fit für die Zukunft machen, die Zweiklassenmedizin
+              abschaffen, Altersarmut beenden und zu gleichen Rechten und Möglichkeiten
+              für Alle kommen – überall sind unsere Antworten gefordert wie nie.</p>
+
+              <p>Und auch das haben die Sondierungen gezeigt: Es kann keine Rede davon
+              sein, dass alle Parteien mehr oder weniger gleich sind. Die Unterschiede
+              zwischen den Parteien in wichtigen Feldern sind teilweise tiefgreifend.
+              Es ist ein großer Gewinn für unsere Demokratie, wenn diese Unterschiede
+              zum Ausdruck kommen. Es gibt wahrhaft keinen Grund für Verdruss an der
+              Demokratie. Meinungsstreit und Wertekonkurrenz sind so lebendig wie
+              selten. Unser Anspruch ist es, langfristige Visionen und konkretes Handeln
+              zusammenzubringen, um unsere Zukunft zu gestalten. Wir wollen Verantwortung
+              für gesellschaftlichen Fortschritt übernehmen. Dafür ist unser Maßstab
+              im Handeln: Wie können wir das Leben der Menschen heute und in Zukunft
+              konkret verbessern und unsere Lebensgrundlagen schützen? Als progressive
+              Kraft der linken Mitte haben wir den Anspruch, die Debatten in diesem
+              Land, in Europa und weltweit in diesem Sinne voranzutreiben. Wir wollen
+              den Menschen in Zeiten der Verunsicherung Orientierung bieten, mögliche
+              Weichenstellungen aufzeigen. Wir setzen auf ein starkes Gemeinwesen
+              als Rahmen, in dem sich Einzelinteressen entfalten. Wir schützen unseren
+              Planeten. Wir schauen nicht nur auf Deutschland, sondern haben Europa
+              und die ganze Welt im Blick.</p>
+
+              <p>Es muss auch und gerade unsere Aufgabe sein, Orientierung und Halt
+              zu geben, um dem Erstarken der antidemokratischen Kräfte und autoritären
+              Tendenzen entgegenzuwirken. Indem wir daran arbeiten, dass unsere Gesellschaft
+              durch Solidarität und Zusammenhalt gewinnt, statt dass sie durch Ausgrenzung
+              und gnadenlosen Wettbewerb verliert. Durch eine Vielfalt an spannenden
+              politischen Alternativen. Und nicht zuletzt durch ein starkes grünes
+              Angebot. Wie auch immer sich der politische Prozess in diesem Land weitergestalten
+              wird, wir stehen bereit, ihm einen starken grünen Stempel aufzudrücken.
+              Egal ob aus der Opposition, in Regierungsverantwortung, bei einer Minderheitsregierung
+              oder auch, falls es zu Neuwahlen kommen sollte: Wir werden entschieden
+              für unsere Inhalte eintreten. Wir Grünen werden in den Ländern und Kommunen,
+              im Bund und in Europa für die grüne Sache kämpfen – mit unseren Mitgliedern,
+              mit unseren Abgeordneten und Regierungsmitgliedern, mit Unterstützer*innen
+              in allen gesellschaftlichen Bereichen.</p>
+
+              <p>Wir bleiben eine Partei in Bewegung. Wir werden weiterhin den engen
+              Schulterschluss mit unseren Bündnispartner*innen suchen und noch intensivieren.
+              Die sich abzeichnenden ökologischen Katastrophen im Klimabereich oder
+              beim Artensterben, aber auch die Umsetzung einer humanitären Flüchtlingspolitik
+              und die Verringerung der sozialen Spaltung in diesem Land brauchen Druck
+              im Parlament und durch die Zivilgesellschaft. Für unsere Positionen
+              werben wir auf der Straße und im Netz gemeinsam mit vielen anderen,
+              die für die gleichen Ziele streiten. Wir setzen auf Bündnisse mit den
+              Umweltverbänden, mit den vielen - oft ehrenamtlichen - Flüchtlingshelfer*innen,
+              mit den fortschrittlichen Gewerkschaften und Unternehmen, die erkannt
+              haben, dass eine Wirtschaft auf Kosten der Umwelt keine Zukunft hat,
+              mit Menschen, die sich für eine gerechte Welt einsetzen, die Menschenrechte,
+              Gleichberechtigung und Rechtsstaatlichkeit hoch halten, die Nazis und
+              Rassist*innen die rote Karte zeigen, die sich für gleiche Rechte von
+              allen Menschen, egal welchen Geschlechts, einsetzen und sich für die
+              körperliche und sexuelle Selbstbestimmung von Frauen stark machen. Darüber
+              hinaus sind wir als Partei Ansprechpartnerin für alle, die gemeinsam
+              mit uns die ökologisch-soziale Modernisierung vorantreiben und unser
+              Land innovativer und kreativer machen wollen. Wir haben in den letzten
+              beiden Jahren einen deutlichen Mitgliederzuwachs verzeichnet und sind
+              so viele Grüne wie noch nie. Gemeinsam können wir der Politikverdrossenheit
+              entgegenwirken und so noch mehr Menschen für Grün begeistern.</p>
+
+              <p>Auch wenn die Bundesregierung noch nicht gebildet ist, dreht sich
+              die Welt weiter. Im Bundestag stehen wichtige Entscheidungen an. Im
+              März 2018 läuft endlich die Aussetzung des Familiennachzugs für subsidiär
+              Geschützte aus. Diese Aussetzung des Familiennachzugs widerspricht nicht
+              nur dem Schutz der Familie im Grundgesetz und humanitären Grundwerten,
+              sondern sie steht einer gelingenden Integration im Wege. Eine Trennung
+              von Müttern, Vätern und ihren Kindern über den März 2018 hinaus wird
+              von uns Grünen keine Zustimmung erhalten. Wir werden mit einem breiten
+              gesellschaftlichen Bündnis die gesellschaftliche Mehrheit für den Familiennachzug
+              in eine politische Mehrheit übersetzen und die Regelung auslaufen lassen.
+              Wir streiten für eine menschenrechtsorientierte Flüchtlingspolitik,
+              Rechtsstaatlichkeit und das uneingeschränkte Grundrecht auf Asyl, also
+              ohne eine Obergrenze und ohne Asylrechtsverschärfungen. Unseren Ansatz
+              einer humanen Asylpolitik wollen wir mit einer progressiven Einwanderungspolitik
+              ergänzen, die nicht nur Hochqualifizierten offen steht, sondern auch
+              Geflüchteten oder geringer qualifizierten Menschen Chancen für langfristige
+              oder temporäre Arbeits- und Bildungsmigration bieten.</p>
+
+              <p>Nach dem unverantwortlichen Alleingang von CSU-Landwirtschaftsminister
+              Schmidt in Brüssel geht es uns jetzt darum, in den Bundesländern und
+              Kommunen aktiv zu werden und die Nutzung vom Glyphosat und anderen gesundheits-
+              und umweltschädlichen Pestiziden zu unterbinden. Auch wenn nationales
+              Handeln nur der zweitbeste Weg ist, müssen wir jetzt in Deutschland
+              den Glyphosatausstieg einleiten, so wie es andere europäische Länder
+              bereits angekündigt haben. Wir brauchen Anwendungsverbote von Glyphosat
+              beispielsweise auf öffentlichen Grünanlagen auf Spielplätzen und Bahnflächen.
+              Doch das Hauptproblem ist der massive Glyphosateinsatz auf den Äckern.
+              Unser Ziel ist den Glyphosateinsatz deutlich zu reduzieren und nach
+              einer Übergangszeit mit den Landwirt*innen ganz auf umweltfreundliche
+              Alternativen umzusteigen. Für uns zählt jeder Acker, jede Kommune, jeder
+              Grünstreifen in jedem Bundesland: Wir werden gegen Gift kämpfen, damit
+              Verbraucher*innen pestizidfreie Lebensmittel auf dem Teller haben und
+              dem Artensterben Einhalt geboten werden kann.</p>
+
+              <p><strong>Kommende Aufgaben</strong></p>
+
+              <p><strong>Wahlergebnis weiter auswerten</strong></p>
+
+              <p>Wir haben damit begonnen, unser grünes Wahlergebnis mit vielen Aktiven
+              auszuwerten. Das werden wir fortsetzen und daraus für kommende Wahlen
+              Konsequenzen ziehen. Dabei reflektieren wir, warum wir als Grüne trotz
+              eines engagierten Wahlkampfes unsere Ziele nicht erreichen konnten.
+              Die Erfahrungen aus dem Programmprozess zur Bundestagswahl werden wir
+              bei der Erarbeitung des Europawahl- und des Grundsatzprogrammes berücksichtigen.
+              Die Einbindung von Fachgremien und -politiker*innen in die Programmprozesse
+              wollen wir weiter verbessern. Die Urwahl der Spitzenkandidat*innen wollen
+              wir technisch fortentwickeln und einen Vorschlag entwickeln, wie auch
+              bei einer Urwahl mit mehreren Kandidat*innen die Wahlentscheidung mit
+              mehr als der Hälfte der abgegebenen Stimmen erfolgen kann.</p>
+
+              <p><strong>Bündnisgrün in den Ländern stärken</strong></p>
+
+              <p>In den kommenden Jahren stehen wichtige Wahlen an. 2018 werden die
+              Landtage in Bayern und Hessen gewählt. Unsere Freund*innen in den wahlkämpfenden
+              Landesverbänden werden wir als Gesamtpartei mit aller Kraft unterstützen.
+              Denn es geht um viel. In Bayern wollen wir einen kraftvollen, eigenen
+              Gestaltungsanspruch erheben. Unser Ziel ist es, erstmals in Bayern ein
+              gutes, zweistelliges Ergebnis zu erreichen und unsere grünen Ideen in
+              Regierungsverantwortung umzusetzen. Wir werden die CSU deutlich in ihre
+              Schranken weisen und sie inhaltlich stellen - in der Integrationspolitik,
+              beim maßlosen Flächenverbrauch und der damit einhergehenden Zerstörung
+              der Natur und zeigen, wie es besser geht.‎ Die CSU ist nicht Bayern.
+              Unser grünes Bayern ist Heimat, die nicht ausgrenzt, zu der alle dazu
+              gehören und gebraucht werden. Die Menschen in Bayern haben die ewige
+              Quertreiberei der CSU in der Bundespolitik satt.‎ In Hessen wollen wir
+              als eine starke eigenständige Gestaltungskraft in die Wahlauseinandersetzung
+              gehen. Mit einem starken Ergebnis haben wir die Chance, Teil einer Landesregierung
+              zu bleiben. Wir haben die Richtung der Politik in Hessen geändert und
+              wir sind noch nicht am Ziel. Unser Motto lautet: „Grün wirkt weiter
+              - #Hessen 2025“. Hessen soll weiter grüner und gerechter werden und
+              weltoffen bleiben.</p>
+
+              <p><strong>Bündnisgrüne als gesamtdeutsche Partei</strong></p>
+
+              <p>2019 stehen die Landtagswahlen von Sachsen, Brandenburg und Thüringen
+              an, dazu kommen Kommunalwahlen im Frühjahr 2019 in allen fünf ostdeutschen
+              Bundesländern. Viele Menschen vertrauen auf uns Bündnisgrüne in den
+              Parlamenten, als Verbündete für ihre Anliegen und darauf, gemeinsam
+              für eine ökologische, soziale und demokratische Gesellschaft einzutreten.
+              2019 werden wir alles geben, damit wir auch weiterhin erfolgreich aus
+              den ostdeutschen Kommunalparlamenten und den Landtagen von Sachsen,
+              Brandenburg und Thüringen heraus die progressive Zivilgesellschaft stützen
+              können, und wir wollen unseren Charakter als gesamtdeutsche Partei verteidigen.
+              Daher begreifen wir die Unterstützung der ostdeutschen Landesverbände
+              als zentrale Aufgabe der Partei. Gemeinsam mit den Landesverbänden werden
+              wir frühzeitig diese Wahlen auf Grundlage der Analyse der ostdeutschen
+              Bundestagswahlergebnisse vorbereiten. Das bedeutet vor allem auch, die
+              bündnisgrünen Strukturen in diesen Bundesländern personell wie organisatorisch
+              zu stärken, damit wir bei den anstehenden Wahlen und darüber hinaus
+              zulegen und uns entschieden für die bündnisgrüne Sache einsetzen können.</p>
+
+              <p><strong>Europawahl vorbereiten</strong></p>
+
+              <p>Wir bereiten uns intensiv auf die Europawahl im Frühjahr 2019 vor.
+              Diese Wahl wird entscheidend sein, wie sich die EU in den kommenden
+              Jahren entwickeln wird. Wir Grüne bekennen uns klar zur Europäischen
+              Union und wollen die europäische Idee stärken und demokratisch fortentwickeln.
+              Dazu gehört für uns die Diskussion über die Vorschläge von Frankreichs
+              Präsident Macron. Wir wollen nicht zulassen, dass der Brexit die verbliebenen
+              Mitglieder der EU auseinandertreibt. Wir schlagen ein sozial-ökologisches
+              Modernisierungsprojekt für Europa vor, weg von Austerität hin zu mehr
+              Investitionen und Reformen. Wir stehen für eine starke EU, die auch
+              in Zeiten von Globalisierung und Digitalisierung soziale und ökologische
+              Rechte setzen kann. Wir stellen uns Rechtspopulist*innen, völkischen
+              Nationalist*innen und Europafeind*innen entgegen. Diesen bieten wir
+              die Stirn und setzen auf eine bessere EU, die Umwelt- und Klimaschutz,
+              den Abbau sozialer Ungleichheit, Demokratie und Rechtstaatlichkeit,
+              Freiheit und Frieden, Humanität, Solidarität und Weltoffenheit ins Zentrum
+              stellt. Unser Ziel für die Europawahl 2019 ist es, das bisher beste
+              grüne Ergebnis bei bundesweiten Wahlen zu erreichen, um wieder eine
+              starke und gesamteuropäische Grüne Fraktion in Brüssel zu stellen. Dafür
+              werden wir auf einer BDK bis Ende 2018 ein zukunftsorientiertes Europawahlprogramm
+              beschließen (mit den gleichen Antragsfristen wie bei der letzten Bundestags-
+              und Europawahl) und eine schlagkräftige Liste aufstellen. Dazu wollen
+              wir auf europäischer Ebene mit einem Programm der European Green Party
+              und europäischen Spitzenkandidat*innen in einer grün-europäischen Kampagne
+              einen klar proeuropäischen Wahlkampf führen. Wir wollen für ein besseres
+              Europa kämpfen - an der Seite von progressiven Bewegungen und über die
+              Landesgrenzen hinweg. Wir sind die Europapartei.</p>
+
+              <p><strong>Demokratie stärken, Rechtsextremismus bekämpfen</strong></p>
+
+              <p>In einem breiten Bündnis gegen Rechts stehen wir an der Seite der
+              Zivilgesellschaft, mit der wir zusammen gegen Rechtsextremismus und
+              für eine freiheitliche, plurale, demokratische und weltoffene Gesellschaft
+              streiten. Antisemitismus in all seinen Erscheinungsformen und anderen
+              Formen gruppenbezogener Menschenfeindlichkeit treten wir entschieden
+              entgegen. Gewalt als Mittel der politischen Auseinandersetzung lehnen
+              wir ab.</p>
+
+              <p>Die Grüne Rechtsextremismuskommission des Bundesvorstandes wird auch
+              in den kommenden Jahren zusammen mit grünen Rechtsextremismusexpert*innen
+              aus Bund und Ländern, der Wissenschaft und Zivilgesellschaft Strategien
+              gegen Rechts erarbeiten und evaluieren.</p>
+
+              <p>Das Ziel der extremen Rechten ist es nicht, am demokratischen Diskurs
+              teilzunehmen. Ganz im Gegenteil versuchen sie demokratische Prozesse
+              grundsätzlich in Frage zu stellen mit dem Ziel, die Gesellschaft autoritär
+              und völkisch zu gestalten. Dem werden wir uns an allen Orten und zu
+              jeder Zeit klar entgegen stellen. Wir fordern alle Parteien zu einer
+              klaren Grenzziehung zu antidemokratischen Kräften und einer Ablehnung
+              rechtsextremer Rhetorik auf. Mit Schulungen, Seminaren und konkreten
+              Handreichungen wollen wir unsere Mitglieder fortbilden, damit sie gruppenbezogene
+              Menschenfeindlichkeit, Antisemitismus und rechtsextreme Narrative erkennen
+              und dagegen halten können. Auch die zahlreichen zivilgesellschaftlichen
+              Institutionen in diesem Bereich verdienen staatliche und politische
+              Unterstützung und Anerkennung. Jeglichen staatlichen Generalverdacht
+              und Druck gegen zivilgesellschaftliche Akteure, etwa anlasslose Überwachungen
+              durch den Verfassungsschutz, lehnen wir ab.</p>
+
+              <p><strong>Programmatik neu vermessen und Beteiligung stärken </strong></p>
+
+              <p>Für uns als Partei steht 2020 der 40. Geburtstag an. Auf der BDK
+              im November 2016 haben wir beschlossen, dass wir aus diesem Anlass ein
+              neues Grundsatzprogramm erarbeiten und unsere Beteiligungsmöglichkeiten
+              durch die Chancen von Digitalisierung ausweiten. Unser aktuelles Grundsatzprogramm
+              „Die Zukunft ist Grün“ hat uns gute Dienste geleistet. Aber seit dem
+              Beschluss im Jahr 2002 hat sich die Welt weitergedreht. Die Digitalisierung
+              und Automatisierung stellt unsere Gesellschaften vor neue Herausforderungen
+              und bietet gleichzeitig neue Chancen. Der gesellschaftliche Zusammenhalt
+              ist brüchiger geworden, während die Globalisierung die Welt näher zusammenwachsen
+              hat lassen. Die Klimakrise und das Artensterben haben sich beschleunigt.
+              Die globalen Machtverhältnisse haben sich verändert. Europa steht vor
+              neuen Aufgaben. Für uns gilt es, unsere grünen Antworten auf diese Herausforderungen
+              anzupassen und mit neuen Visionen zu begeistern.</p>
+
+              <p>Im Prozess zum Grundsatzproramm werden wir alle Ebenen der Partei
+              einbinden und die Beteiligungsmöglichkeiten deutlich ausweiten. Zur
+              Steuerung und Koordinierung des Prozesses bitten wir den Bundesvorstand,
+              eine Grundsatzkommission einzusetzen. Der Startschuss für die Erarbeitung
+              soll in der ersten Jahreshälfte 2018 gegeben werden. Die Mitglieder,
+              die Landesverbände und Bundesarbeitsgemeinschaften sollen in zwei Diskussionsphasen
+              eingebunden werden. Der gesamte Prozess soll durch einen online-gestützten
+              Beteiligungsprozess begleitet werden. Dabei sollen mit inhaltlichen
+              Mitgliederbefragungen und elektronischen Mitgliederbegehren neue Wege
+              der Beteiligung gegangen werden. Wir werden dabei auf die gleichberechtigte
+              Beteiligung von Frauen achten. Als Bewegungspartei wollen wir auch unsere
+              Bündnispartner in den Prozess einbeziehen und uns mit ihren Forderungen
+              auseinandersetzen.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure:
+          status_id: 11
+          status_title: Abstimmung (Angenommen)
+        ammendments: []
+    - '807':
+        type: motion
+        id: 807
+        agenda_item: 'Aktuelle Debatte: Zukunft ist, was wir draus machen '
+        prefix: 'Beschluss A-01 '
+        title: Zukunft GRÜN gestalten
+        title_with_intro: Zukunft GRÜN gestalten
+        title_with_prefix: 'Beschluss A-01 : Zukunft GRÜN gestalten'
+        status_id: 26
+        status_title: Beschluss
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 26.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Die Erfahrung
+              der letzten Wochen zeigt, wie wichtig eine engagierte, kontinuierliche
+              und beharrliche grüne Politik ist. Durch den Wahlkampf und die anschließenden
+              Jamaika-Sondierungsgespräche ist es uns gelungen, Klimaschutz und einer
+              ökologisch-sozialen Politik einen hohen Stellenwert zu geben. Doch die
+              sich abzeichnende Große Koalition versagt beim Klimaschutz. Jetzt ist
+              es unsere Aufgabe, der Großen Koalition eine progressive grüne Politik
+              entgegen zu stellen und unseren Themen mit Visionen und Konzepten Einfluss
+              und Geltung zu verschaffen.</p>
+
+              <p>Schon mit bündnisgrüner Regierungsbeteiligung wäre es sehr schwierig
+              geworden, die deutschen Klimaziele zu erreichen. Ohne uns sind sie faktisch
+              verloren. Denn alle anderen politischen Kräfte scheuen konkrete Vorschläge
+              wie einen schnellen Kohleausstieg, eine emissionsfreie Mobilität oder
+              klimaneutrale Städte. Und auch in vielen anderen Bereichen gilt: Grün
+              macht den Unterschied. Wenn es um eine starke weltoffene Gesellschaft
+              geht, in der wir Integration fördern, Einwanderung als Chance verstehen
+              und die sich durch eine humane und rechtsstaatliche Flüchtlingspolitik
+              auszeichnet. Wie wir eine menschenrechtsbasierte Außenpolitik verwirklichen
+              können, die die Globalisierung gerecht gestaltet, Fluchtursachen bekämpft
+              und auf eine faire Handelspolitik setzt. Bei der Aufgabe, den Zusammenhalt
+              eines starken und vereinten Europas zu sichern. Dabei, wie eine gerechte
+              Verteilung zwischen starken und schwachen Schultern aussieht, wie die
+              skandalöse Kinderarmut in unserem vermögenden Land beendet und gerechte
+              Bildungschancen für alle Kinder – egal aus welchem Elternhaus – erreicht
+              werden können. Dabei, die Folgen der Digitalisierung ökologisch, sozial
+              und demokratisch zu gestalten, indem wir Freiheitsrechte stärken und
+              uns für Arbeitnehmer*innen einsetzen. Und nicht zuletzt dabei, wie wir
+              die sozialen Sicherungssysteme fit für die Zukunft machen, die Zweiklassenmedizin
+              abschaffen, Altersarmut beenden und zu gleichen Rechten und Möglichkeiten
+              für Alle kommen – überall sind unsere Antworten gefordert wie nie.</p>
+
+              <p>Und auch das haben die Sondierungen gezeigt: Es kann keine Rede davon
+              sein, dass alle Parteien mehr oder weniger gleich sind. Die Unterschiede
+              zwischen den Parteien in wichtigen Feldern sind teilweise tiefgreifend.
+              Es ist ein großer Gewinn für unsere Demokratie, wenn diese Unterschiede
+              zum Ausdruck kommen. Es gibt wahrhaft keinen Grund für Verdruss an der
+              Demokratie. Meinungsstreit und Wertekonkurrenz sind so lebendig wie
+              selten. Unser Anspruch ist es, langfristige Visionen und konkretes Handeln
+              zusammenzubringen, um unsere Zukunft zu gestalten. Wir wollen Verantwortung
+              für gesellschaftlichen Fortschritt übernehmen. Dafür ist unser Maßstab
+              im Handeln: Wie können wir das Leben der Menschen heute und in Zukunft
+              konkret verbessern und unsere Lebensgrundlagen schützen? Als progressive
+              Kraft der linken Mitte haben wir den Anspruch, die Debatten in diesem
+              Land, in Europa und weltweit in diesem Sinne voranzutreiben. Wir wollen
+              den Menschen in Zeiten der Verunsicherung Orientierung bieten, mögliche
+              Weichenstellungen aufzeigen. Wir setzen auf ein starkes Gemeinwesen
+              als Rahmen, in dem sich Einzelinteressen entfalten. Wir schützen unseren
+              Planeten. Wir schauen nicht nur auf Deutschland, sondern haben Europa
+              und die ganze Welt im Blick.</p>
+
+              <p>Es muss auch und gerade unsere Aufgabe sein, Orientierung und Halt
+              zu geben, um dem Erstarken der antidemokratischen Kräfte und autoritären
+              Tendenzen entgegenzuwirken. Indem wir daran arbeiten, dass unsere Gesellschaft
+              durch Solidarität und Zusammenhalt gewinnt, statt dass sie durch Ausgrenzung
+              und gnadenlosen Wettbewerb verliert. Durch eine Vielfalt an spannenden
+              politischen Alternativen. Und nicht zuletzt durch ein starkes grünes
+              Angebot. Wie auch immer sich der politische Prozess in diesem Land weitergestalten
+              wird, wir stehen bereit, ihm einen starken grünen Stempel aufzudrücken.
+              Egal ob aus der Opposition, in Regierungsverantwortung, bei einer Minderheitsregierung
+              oder auch, falls es zu Neuwahlen kommen sollte: Wir werden entschieden
+              für unsere Inhalte eintreten. Wir Grünen werden in den Ländern und Kommunen,
+              im Bund und in Europa für die grüne Sache kämpfen – mit unseren Mitgliedern,
+              mit unseren Abgeordneten und Regierungsmitgliedern, mit Unterstützer*innen
+              in allen gesellschaftlichen Bereichen.</p>
+
+              <p>Wir bleiben eine Partei in Bewegung. Wir werden weiterhin den engen
+              Schulterschluss mit unseren Bündnispartner*innen suchen und noch intensivieren.
+              Die sich abzeichnenden ökologischen Katastrophen im Klimabereich oder
+              beim Artensterben, aber auch die Umsetzung einer humanitären Flüchtlingspolitik
+              und die Verringerung der sozialen Spaltung in diesem Land brauchen Druck
+              im Parlament und durch die Zivilgesellschaft. Für unsere Positionen
+              werben wir auf der Straße und im Netz gemeinsam mit vielen anderen,
+              die für die gleichen Ziele streiten. Wir setzen auf Bündnisse mit den
+              Umweltverbänden, mit den vielen - oft ehrenamtlichen - Flüchtlingshelfer*innen,
+              mit den fortschrittlichen Gewerkschaften und Unternehmen, die erkannt
+              haben, dass eine Wirtschaft auf Kosten der Umwelt keine Zukunft hat,
+              mit Menschen, die sich für eine gerechte Welt einsetzen, die Menschenrechte,
+              Gleichberechtigung und Rechtsstaatlichkeit hoch halten, die Nazis und
+              Rassist*innen die rote Karte zeigen, die sich für gleiche Rechte von
+              allen Menschen, egal welchen Geschlechts, einsetzen und sich für die
+              körperliche und sexuelle Selbstbestimmung von Frauen stark machen. Darüber
+              hinaus sind wir als Partei Ansprechpartnerin für alle, die gemeinsam
+              mit uns die ökologisch-soziale Modernisierung vorantreiben und unser
+              Land innovativer und kreativer machen wollen. Wir haben in den letzten
+              beiden Jahren einen deutlichen Mitgliederzuwachs verzeichnet und sind
+              so viele Grüne wie noch nie. Gemeinsam können wir der Politikverdrossenheit
+              entgegenwirken und so noch mehr Menschen für Grün begeistern.</p>
+
+              <p>Auch wenn die Bundesregierung noch nicht gebildet ist, dreht sich
+              die Welt weiter. Im Bundestag stehen wichtige Entscheidungen an. Im
+              März 2018 läuft endlich die Aussetzung des Familiennachzugs für subsidiär
+              Geschützte aus. Diese Aussetzung des Familiennachzugs widerspricht nicht
+              nur dem Schutz der Familie im Grundgesetz und humanitären Grundwerten,
+              sondern sie steht einer gelingenden Integration im Wege. Eine Trennung
+              von Müttern, Vätern und ihren Kindern über den März 2018 hinaus wird
+              von uns Grünen keine Zustimmung erhalten. Wir werden mit einem breiten
+              gesellschaftlichen Bündnis die gesellschaftliche Mehrheit für den Familiennachzug
+              in eine politische Mehrheit übersetzen und die Regelung auslaufen lassen.
+              Wir streiten für eine menschenrechtsorientierte Flüchtlingspolitik,
+              Rechtsstaatlichkeit und das uneingeschränkte Grundrecht auf Asyl, also
+              ohne eine Obergrenze und ohne Asylrechtsverschärfungen. Unseren Ansatz
+              einer humanen Asylpolitik wollen wir mit einer progressiven Einwanderungspolitik
+              ergänzen, die nicht nur Hochqualifizierten offen steht, sondern auch
+              Geflüchteten oder geringer qualifizierten Menschen Chancen für langfristige
+              oder temporäre Arbeits- und Bildungsmigration bieten.</p>
+
+              <p>Nach dem unverantwortlichen Alleingang von CSU-Landwirtschaftsminister
+              Schmidt in Brüssel geht es uns jetzt darum, in den Bundesländern und
+              Kommunen aktiv zu werden und die Nutzung vom Glyphosat und anderen gesundheits-
+              und umweltschädlichen Pestiziden zu unterbinden. Auch wenn nationales
+              Handeln nur der zweitbeste Weg ist, müssen wir jetzt in Deutschland
+              den Glyphosatausstieg einleiten, so wie es andere europäische Länder
+              bereits angekündigt haben. Wir brauchen Anwendungsverbote von Glyphosat
+              beispielsweise auf öffentlichen Grünanlagen auf Spielplätzen und Bahnflächen.
+              Doch das Hauptproblem ist der massive Glyphosateinsatz auf den Äckern.
+              Unser Ziel ist den Glyphosateinsatz deutlich zu reduzieren und nach
+              einer Übergangszeit mit den Landwirt*innen ganz auf umweltfreundliche
+              Alternativen umzusteigen. Für uns zählt jeder Acker, jede Kommune, jeder
+              Grünstreifen in jedem Bundesland: Wir werden gegen Gift kämpfen, damit
+              Verbraucher*innen pestizidfreie Lebensmittel auf dem Teller haben und
+              dem Artensterben Einhalt geboten werden kann.</p>
+
+              <p><strong>Kommende Aufgaben</strong></p>
+
+              <p><strong>Wahlergebnis weiter auswerten</strong></p>
+
+              <p>Wir haben damit begonnen, unser grünes Wahlergebnis mit vielen Aktiven
+              auszuwerten. Das werden wir fortsetzen und daraus für kommende Wahlen
+              Konsequenzen ziehen. Dabei reflektieren wir, warum wir als Grüne trotz
+              eines engagierten Wahlkampfes unsere Ziele nicht erreichen konnten.
+              Die Erfahrungen aus dem Programmprozess zur Bundestagswahl werden wir
+              bei der Erarbeitung des Europawahl- und des Grundsatzprogrammes berücksichtigen.
+              Die Einbindung von Fachgremien und -politiker*innen in die Programmprozesse
+              wollen wir weiter verbessern. Die Urwahl der Spitzenkandidat*innen wollen
+              wir technisch fortentwickeln und einen Vorschlag entwickeln, wie auch
+              bei einer Urwahl mit mehreren Kandidat*innen die Wahlentscheidung mit
+              mehr als der Hälfte der abgegebenen Stimmen erfolgen kann.</p>
+
+              <p><strong>Bündnisgrün in den Ländern stärken</strong></p>
+
+              <p>In den kommenden Jahren stehen wichtige Wahlen an. 2018 werden die
+              Landtage in Bayern und Hessen gewählt. Unsere Freund*innen in den wahlkämpfenden
+              Landesverbänden werden wir als Gesamtpartei mit aller Kraft unterstützen.
+              Denn es geht um viel. In Bayern wollen wir einen kraftvollen, eigenen
+              Gestaltungsanspruch erheben. Unser Ziel ist es, erstmals in Bayern ein
+              gutes, zweistelliges Ergebnis zu erreichen und unsere grünen Ideen in
+              Regierungsverantwortung umzusetzen. Wir werden die CSU deutlich in ihre
+              Schranken weisen und sie inhaltlich stellen - in der Integrationspolitik,
+              beim maßlosen Flächenverbrauch und der damit einhergehenden Zerstörung
+              der Natur und zeigen, wie es besser geht.‎ Die CSU ist nicht Bayern.
+              Unser grünes Bayern ist Heimat, die nicht ausgrenzt, zu der alle dazu
+              gehören und gebraucht werden. Die Menschen in Bayern haben die ewige
+              Quertreiberei der CSU in der Bundespolitik satt.‎ In Hessen wollen wir
+              als eine starke eigenständige Gestaltungskraft in die Wahlauseinandersetzung
+              gehen. Mit einem starken Ergebnis haben wir die Chance, Teil einer Landesregierung
+              zu bleiben. Wir haben die Richtung der Politik in Hessen geändert und
+              wir sind noch nicht am Ziel. Unser Motto lautet: „Grün wirkt weiter
+              - #Hessen 2025“. Hessen soll weiter grüner und gerechter werden und
+              weltoffen bleiben.</p>
+
+              <p><strong>Bündnisgrüne als gesamtdeutsche Partei</strong></p>
+
+              <p>2019 stehen die Landtagswahlen von Sachsen, Brandenburg und Thüringen
+              an, dazu kommen Kommunalwahlen im Frühjahr 2019 in allen fünf ostdeutschen
+              Bundesländern. Viele Menschen vertrauen auf uns Bündnisgrüne in den
+              Parlamenten, als Verbündete für ihre Anliegen und darauf, gemeinsam
+              für eine ökologische, soziale und demokratische Gesellschaft einzutreten.
+              2019 werden wir alles geben, damit wir auch weiterhin erfolgreich aus
+              den ostdeutschen Kommunalparlamenten und den Landtagen von Sachsen,
+              Brandenburg und Thüringen heraus die progressive Zivilgesellschaft stützen
+              können, und wir wollen unseren Charakter als gesamtdeutsche Partei verteidigen.
+              Daher begreifen wir die Unterstützung der ostdeutschen Landesverbände
+              als zentrale Aufgabe der Partei. Gemeinsam mit den Landesverbänden werden
+              wir frühzeitig diese Wahlen auf Grundlage der Analyse der ostdeutschen
+              Bundestagswahlergebnisse vorbereiten. Das bedeutet vor allem auch, die
+              bündnisgrünen Strukturen in diesen Bundesländern personell wie organisatorisch
+              zu stärken, damit wir bei den anstehenden Wahlen und darüber hinaus
+              zulegen und uns entschieden für die bündnisgrüne Sache einsetzen können.</p>
+
+              <p><strong>Europawahl vorbereiten</strong></p>
+
+              <p>Wir bereiten uns intensiv auf die Europawahl im Frühjahr 2019 vor.
+              Diese Wahl wird entscheidend sein, wie sich die EU in den kommenden
+              Jahren entwickeln wird. Wir Grüne bekennen uns klar zur Europäischen
+              Union und wollen die europäische Idee stärken und demokratisch fortentwickeln.
+              Dazu gehört für uns die Diskussion über die Vorschläge von Frankreichs
+              Präsident Macron. Wir wollen nicht zulassen, dass der Brexit die verbliebenen
+              Mitglieder der EU auseinandertreibt. Wir schlagen ein sozial-ökologisches
+              Modernisierungsprojekt für Europa vor, weg von Austerität hin zu mehr
+              Investitionen und Reformen. Wir stehen für eine starke EU, die auch
+              in Zeiten von Globalisierung und Digitalisierung soziale und ökologische
+              Rechte setzen kann. Wir stellen uns Rechtspopulist*innen, völkischen
+              Nationalist*innen und Europafeind*innen entgegen. Diesen bieten wir
+              die Stirn und setzen auf eine bessere EU, die Umwelt- und Klimaschutz,
+              den Abbau sozialer Ungleichheit, Demokratie und Rechtstaatlichkeit,
+              Freiheit und Frieden, Humanität, Solidarität und Weltoffenheit ins Zentrum
+              stellt. Unser Ziel für die Europawahl 2019 ist es, das bisher beste
+              grüne Ergebnis bei bundesweiten Wahlen zu erreichen, um wieder eine
+              starke und gesamteuropäische Grüne Fraktion in Brüssel zu stellen. Dafür
+              werden wir auf einer BDK bis Ende 2018 ein zukunftsorientiertes Europawahlprogramm
+              beschließen (mit den gleichen Antragsfristen wie bei der letzten Bundestags-
+              und Europawahl) und eine schlagkräftige Liste aufstellen. Dazu wollen
+              wir auf europäischer Ebene mit einem Programm der European Green Party
+              und europäischen Spitzenkandidat*innen in einer grün-europäischen Kampagne
+              einen klar proeuropäischen Wahlkampf führen. Wir wollen für ein besseres
+              Europa kämpfen - an der Seite von progressiven Bewegungen und über die
+              Landesgrenzen hinweg. Wir sind die Europapartei.</p>
+
+              <p><strong>Demokratie stärken, Rechtsextremismus bekämpfen</strong></p>
+
+              <p>In einem breiten Bündnis gegen Rechts stehen wir an der Seite der
+              Zivilgesellschaft, mit der wir zusammen gegen Rechtsextremismus und
+              für eine freiheitliche, plurale, demokratische und weltoffene Gesellschaft
+              streiten. Antisemitismus in all seinen Erscheinungsformen und anderen
+              Formen gruppenbezogener Menschenfeindlichkeit treten wir entschieden
+              entgegen. Gewalt als Mittel der politischen Auseinandersetzung lehnen
+              wir ab.</p>
+
+              <p>Die Grüne Rechtsextremismuskommission des Bundesvorstandes wird auch
+              in den kommenden Jahren zusammen mit grünen Rechtsextremismusexpert*innen
+              aus Bund und Ländern, der Wissenschaft und Zivilgesellschaft Strategien
+              gegen Rechts erarbeiten und evaluieren.</p>
+
+              <p>Das Ziel der extremen Rechten ist es nicht, am demokratischen Diskurs
+              teilzunehmen. Ganz im Gegenteil versuchen sie demokratische Prozesse
+              grundsätzlich in Frage zu stellen mit dem Ziel, die Gesellschaft autoritär
+              und völkisch zu gestalten. Dem werden wir uns an allen Orten und zu
+              jeder Zeit klar entgegen stellen. Wir fordern alle Parteien zu einer
+              klaren Grenzziehung zu antidemokratischen Kräften und einer Ablehnung
+              rechtsextremer Rhetorik auf. Mit Schulungen, Seminaren und konkreten
+              Handreichungen wollen wir unsere Mitglieder fortbilden, damit sie gruppenbezogene
+              Menschenfeindlichkeit, Antisemitismus und rechtsextreme Narrative erkennen
+              und dagegen halten können. Auch die zahlreichen zivilgesellschaftlichen
+              Institutionen in diesem Bereich verdienen staatliche und politische
+              Unterstützung und Anerkennung. Jeglichen staatlichen Generalverdacht
+              und Druck gegen zivilgesellschaftliche Akteure, etwa anlasslose Überwachungen
+              durch den Verfassungsschutz, lehnen wir ab.</p>
+
+              <p><strong>Programmatik neu vermessen und Beteiligung stärken </strong></p>
+
+              <p>Für uns als Partei steht 2020 der 40. Geburtstag an. Auf der BDK
+              im November 2016 haben wir beschlossen, dass wir aus diesem Anlass ein
+              neues Grundsatzprogramm erarbeiten und unsere Beteiligungsmöglichkeiten
+              durch die Chancen von Digitalisierung ausweiten. Unser aktuelles Grundsatzprogramm
+              „Die Zukunft ist Grün“ hat uns gute Dienste geleistet. Aber seit dem
+              Beschluss im Jahr 2002 hat sich die Welt weitergedreht. Die Digitalisierung
+              und Automatisierung stellt unsere Gesellschaften vor neue Herausforderungen
+              und bietet gleichzeitig neue Chancen. Der gesellschaftliche Zusammenhalt
+              ist brüchiger geworden, während die Globalisierung die Welt näher zusammenwachsen
+              hat lassen. Die Klimakrise und das Artensterben haben sich beschleunigt.
+              Die globalen Machtverhältnisse haben sich verändert. Europa steht vor
+              neuen Aufgaben. Für uns gilt es, unsere grünen Antworten auf diese Herausforderungen
+              anzupassen und mit neuen Visionen zu begeistern.</p>
+
+              <p>Im Prozess zum Grundsatzproramm werden wir alle Ebenen der Partei
+              einbinden und die Beteiligungsmöglichkeiten deutlich ausweiten. Zur
+              Steuerung und Koordinierung des Prozesses bitten wir den Bundesvorstand,
+              eine Grundsatzkommission einzusetzen. Der Startschuss für die Erarbeitung
+              soll in der ersten Jahreshälfte 2018 gegeben werden. Die Mitglieder,
+              die Landesverbände und Bundesarbeitsgemeinschaften sollen in zwei Diskussionsphasen
+              eingebunden werden. Der gesamte Prozess soll durch einen online-gestützten
+              Beteiligungsprozess begleitet werden. Dabei sollen mit inhaltlichen
+              Mitgliederbefragungen und elektronischen Mitgliederbegehren neue Wege
+              der Beteiligung gegangen werden. Wir werden dabei auf die gleichberechtigte
+              Beteiligung von Frauen achten. Als Bewegungspartei wollen wir auch unsere
+              Bündnispartner in den Prozess einbeziehen und uns mit ihren Forderungen
+              auseinandersetzen.</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '804':
+        type: motion
+        id: 804
+        agenda_item: Haushalt
+        prefix: Beschluss H-05
+        title: Beiträge der Mandatsträger*innen an den Bundesverband
+        title_with_intro: Beiträge der Mandatsträger*innen an den Bundesverband
+        title_with_prefix: 'Beschluss H-05: Beiträge der Mandatsträger*innen an den
+          Bundesverband'
+        status_id: 26
+        status_title: Beschluss
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Die Bundespartei
+              macht von ihrem durch das Parteiengesetz formulierten und in der Bundessatzung
+              hinterlegten Recht Gebrauch, Mandatsträger*innen-Beiträge von ihren
+              Mandatsträger*innen und Inhaber*innen von Regierungsämtern auf Bundes-
+              und Europaebene zu erheben.</p>
+
+              <ol><li>Mandatsträger*innen-Beiträge werden von den Abgeordneten des
+              Deutschen Bundestages und des Europaparlaments, von Mitgliedern der
+              Regierung der Bundesrepublik Deutschland und EU-Kommissar*innen, von
+              Parlamentarischen Staatssekretär*innen und Staatssekretär*innen sowie
+              Präsdent*innen und Vizepräsident*innen des Deutschen Bundestages bzw.
+              des EU-Parlamentes erhoben.</li>
+
+              <li>Bemessungsgrundlage für die Ermittlung der Mandatsträger*innen-Beiträge
+              sind die jeweiligen Diäten, die Abgeordnetenentschädigungen bzw. Besoldungsbeträge.</li>
+
+              <li>Die Höhe des Mandatsträger*innen-Beitrages beträgt grundsätzlich
+              19% der Bemessungsgrundlage.</li>
+
+              <li>Je kindergeldberechtigendem Kind können 250,00 € pro Monate in Abzug
+              gebracht werden.</li>
+
+              <li>Unterhaltsverpflichtungen bzw. tatsächliche Unterhaltsleistungen
+              können ebenfalls abgezogen werden. Darüber entscheidet bei Bundestagsabgeordneten
+              der/die Bundesschatzmeister*in mit einem Mitglied des geschäftsführenden
+              Fraktionsvorstandes, bei Europaabgeordneten der/die Bundesschatzmeister*in
+              mit einer/m Vertreter*in der Europagruppe DIE GRÜNEN. Für andere Beitragsverpflichtete
+              gilt diese Zuständigkeitsregelung entsprechend.</li>
+
+              <li>Ist eine beitragspflichtige Person gleichzeitig Mitglied des Bundesvorstandes
+              von BÜNDNIS 90/ DIE GRÜNEN, bezieht sie nach der Finanzordnung des Bundesvorstandes
+              keine Vergütung von der Partei. Als Ausgleich für die Doppelbelastung
+              werden in diesen Fällen keine Mandatsträger*innen-Beiträge erhoben.</li>
+
+              <li>Die endgültige Höhe der abzuführenden Beiträge ergibt sich nach
+              Berücksichtigung der Regelungen der Absätze 3) bis 6).</li>
+
+              <li>Die Erhebung der Beträge nach Absatz 7) erfolgt grundsätzlich durch
+              die Bundespartei. Davon ausgenommen sind die Beiträge der Mitglieder
+              des Deutschen Bundestages (MdB). Diese werden von den jeweiligen Landesverbänden
+              von BÜNDNIS 90/DIE GRÜNEN erhoben.</li>
+
+              <li>Von den Beiträgen der MdB nach Absatz 7), die an die Landesverbände
+              abgeführt werden, erhält die Bundespartei 73 % pro MdB und Monat. Dies
+              gilt nur für MdBs ohne Regierungsamt.</li>
+
+              </ol></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '550':
+        type: motion
+        id: 550
+        agenda_item: Haushalt
+        prefix: H-04 Beschluss
+        title: Fortführung des Fonds zur Unterstützung von Wahlkämpfen („Solifonds“)
+        title_with_intro: Fortführung des Fonds zur Unterstützung von Wahlkämpfen
+          („Solifonds“)
+        title_with_prefix: 'H-04 Beschluss: Fortführung des Fonds zur Unterstützung
+          von Wahlkämpfen („Solifonds“)'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: "<div class=\"text motionTextFormattings textOrig\"><ol><li>Der\
+              \ 2010 durch BDK-Beschluss eingerichtete Fonds zur Unterstützung von\
+              \ Wahlkämpfen und Volksentscheiden („Solifonds“) hat sich bewährt und\
+              \ wird weitergeführt.</li>\n<li>Der Solifonds speist sich aus einem\
+              \ Anteil von 2% an den staatlichen Mitteln, die vom Bundesverband an\
+              \ die Landesverbände ausgeschüttet werden.</li>\n<li>Die Verwaltung\
+              \ des Solifonds erfolgt durch das in der Satzung dafür vorgesehene Gremium;\
+              \ es wird ein jährlicher Bericht über die Verwendung der Mittel vorgelegt.</li>\n\
+              <li>Der Fonds wird vom Bundesverband buchhalterisch verwaltet und als\
+              \ eigener Posten in seinem Jahresabschluss ausgewiesen. Dies gilt für\
+              \ alle Zweige dieses Fonds (zur Zeit: Weiterbildungsfonds).</li>\n<li>Anträge\
+              \ für die Unterstützung können von Landesverbänden und dem Bundesverband\
+              \ in folgenden Fällen gestellt werden:\n<ol><li>für Wahlkämpfe von Landesverbänden\
+              \ ohne Landtagsfraktion</li>\n <li>für Wahlkämpfe von anderen Landesverbänden\
+              \ in begründen Ausnahmenfällen</li>\n <li>für Volksentscheide auf Landesebene,\
+              \ wenn diese eine hinreichende Erfolgsaussicht und eine bundesweite\
+              \ Bedeutung haben</li>\n <li>zur einmaligen Unterstützung beim Erhalt\
+              \ wichtiger Strukturen in Landesverbänden ohne Landtagsfraktion</li>\n\
+              \ <li>zur einmaligen Finanzierung oder Co-Finanzierung von Projekten,\
+              \ die der Partei zur Vorbereitung und Unterstützung in Wahlkämpfen dienen.</li>\n\
+              </ol></li>\n<li>\n<p>Das in der Satzung dafür vorgesehene Gremium entscheidet\
+              \ über Anträge nach Vorlage einer aktuellen mittelfristigen Finanzplanung\
+              \ inklusive (Wahlkampf-)Haushaltsplanung der zu unterstützenden Gliederung.</p>\n\
+              </li>\n<li>\n<p>Das in der Satzung dafür vorgesehene Gremium entscheidet,\
+              \ ob und in welcher Höhe ein Teil der Unterstützung als Darlehen gewährt\
+              \ wird.</p>\n</li>\n<li>\n<p>Der Solifonds, sowie seine Verwaltungs-\
+              \ und Vergabeverfahren werden nach fünf Jahren evaluiert und für die\
+              \ BDK ausgewertet.</p>\n</li>\n<li>\n<p>Aus diesem Solifonds sollen\
+              \ wie von der BDK 2014 beschlossen weiterhin jährlich 85.000 Euro in\
+              \ den Weiterbildungsfonds zugeführt werden. Zur Aufteilung und Kontrolle\
+              \ dieser Mittel ist das in der Satzung dafür vorgesehene Gremium zuständig.</p>\n\
+              </li>\n<li>\n<p>Der Bundesfinanzrat wird beauftragt, den Verteilungsschlüssel\
+              \ für die staatliche Grundfinanzierung zwischen Bundesverband und Landesverbänden\
+              \ sowie zwischen den Landesverbänden bis zur BDK 2019 zu evaluieren\
+              \ und so ausrichten, dass überall auf Landesebene die Finanzierung einer\
+              \ Grundstruktur möglich ist. Die regelmäßigen Anträge von Ost-Landesverbänden\
+              \ an den Solifonds deuten darauf hin, dass es hier strukturelle Probleme\
+              \ gibt, die zügig angegangen werden sollten.</p>\n</li>\n</ol></div>"
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '801':
+        type: motion
+        id: 801
+        agenda_item: Haushalt
+        prefix: H-04 BeschlussNEU
+        title: Fortführung des Fonds zur Unterstützung von Wahlkämpfen („Solifonds“)
+        title_with_intro: Fortführung des Fonds zur Unterstützung von Wahlkämpfen
+          („Solifonds“)
+        title_with_prefix: 'H-04 BeschlussNEU: Fortführung des Fonds zur Unterstützung
+          von Wahlkämpfen („Solifonds“)'
+        status_id: 26
+        status_title: Beschluss
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: "<div class=\"text motionTextFormattings textOrig\"><ol><li>Der\
+              \ 2010 durch BDK-Beschluss eingerichtete Fonds zur Unterstützung von\
+              \ Wahlkämpfen und Volksentscheiden („Solifonds“) hat sich bewährt und\
+              \ wird weitergeführt.</li>\n<li>Der Solifonds speist sich aus einem\
+              \ Anteil von 2% an den staatlichen Mitteln, die vom Bundesverband an\
+              \ die Landesverbände ausgeschüttet werden.</li>\n<li>Die Verwaltung\
+              \ des Solifonds erfolgt durch das in der Satzung dafür vorgesehene Gremium;\
+              \ es wird ein jährlicher Bericht über die Verwendung der Mittel vorgelegt.</li>\n\
+              <li>Der Fonds wird vom Bundesverband buchhalterisch verwaltet und als\
+              \ eigener Posten in seinem Jahresabschluss ausgewiesen. Dies gilt für\
+              \ alle Zweige dieses Fonds (zur Zeit: Weiterbildungsfonds).</li>\n<li>Anträge\
+              \ für die Unterstützung können von Landesverbänden und dem Bundesverband\
+              \ in folgenden Fällen gestellt werden:\n<ol><li>für Wahlkämpfe von Landesverbänden\
+              \ ohne Landtagsfraktion</li>\n <li>für Wahlkämpfe von anderen Landesverbänden\
+              \ in begründen Ausnahmenfällen</li>\n <li>für Volksentscheide auf Landesebene,\
+              \ wenn diese eine hinreichende Erfolgsaussicht und eine bundesweite\
+              \ Bedeutung haben</li>\n <li>zur einmaligen Unterstützung beim Erhalt\
+              \ wichtiger Strukturen in Landesverbänden ohne Landtagsfraktion</li>\n\
+              \ <li>zur einmaligen Finanzierung oder Co-Finanzierung von Projekten,\
+              \ die der Partei zur Vorbereitung und Unterstützung in Wahlkämpfen dienen.\n\
+              \ <p></p>\n</li>\n</ol></li>\n<li>\n<p>Das in der Satzung dafür vorgesehene\
+              \ Gremium entscheidet über Anträge nach Vorlage einer aktuellen mittelfristigen\
+              \ Finanzplanung inklusive (Wahlkampf-)Haushaltsplanung der zu unterstützenden\
+              \ Gliederung.</p>\n</li>\n<li>\n<p>Das in der Satzung dafür vorgesehene\
+              \ Gremium entscheidet, ob und in welcher Höhe ein Teil der Unterstützung\
+              \ als Darlehen gewährt wird.</p>\n</li>\n<li>\n<p>Der Solifonds, sowie\
+              \ seine Verwaltungs- und Vergabeverfahren werden nach fünf Jahren evaluiert\
+              \ und für die BDK ausgewertet.</p>\n</li>\n<li>\n<p>Aus diesem Solifonds\
+              \ sollen wie von der BDK 2014 beschlossen weiterhin jährlich 85.000\
+              \ Euro in den Weiterbildungsfonds zugeführt werden. Zur Aufteilung und\
+              \ Kontrolle dieser Mittel ist das in der Satzung dafür vorgesehene Gremium\
+              \ zuständig.</p>\n</li>\n<li>\n<p>Der Bundesfinanzrat wird beauftragt,\
+              \ den Verteilungsschlüssel für die staatliche Grundfinanzierung zwischen\
+              \ Bundesverband und Landesverbänden sowie zwischen den Landesverbänden\
+              \ bis zur BDK 2019 zu evaluieren und so ausrichten, dass überall auf\
+              \ Landesebene die Finanzierung einer Grundstruktur möglich ist. Die\
+              \ regelmäßigen Anträge von Ost-Landesverbänden an den Solifonds deuten\
+              \ darauf hin, dass es hier strukturelle Probleme gibt, die zügig angegangen\
+              \ werden sollten.</p>\n</li>\n</ol></div>"
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '552':
+        type: motion
+        id: 552
+        agenda_item: Haushalt
+        prefix: H-05 Beschluss
+        title: Beiträge der Mandatsträger*innen an den Bundesverband
+        title_with_intro: Beiträge der Mandatsträger*innen an den Bundesverband
+        title_with_prefix: 'H-05 Beschluss: Beiträge der Mandatsträger*innen an den
+          Bundesverband'
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 27.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>Die Bundespartei
+              macht von ihrem durch das Parteiengesetz formulierten und in der Bundessatzung
+              hinterlegten Recht Gebrauch, Mandatsträger*innen-Beiträge von ihren
+              Mandatsträger*innen und Inhaber*innen von Regierungsämtern auf Bundes-
+              und Europaebene zu erheben.</p>
+
+              <ol><li>Mandatsträger*innen-Beiträge werden von den Abgeordneten des
+              Deutschen Bundestages und des Europaparlaments, von Mitgliedern der
+              Regierung der Bundesrepublik Deutschland und EU-Kommissar*innen, von
+              Parlamen-tarischen Staatssekretär*innen und Staatssekretär*innen sowie
+              Präsi-dent*innen und Vizepräsident*innen des Deutschen Bundestages bzw.
+              des EU-Parlamentes erhoben.</li>
+
+              <li>Bemessungsgrundlage für die Ermittlung der Mandatsträger*innen-Beiträge
+              sind die jeweiligen Diäten, die Abgeordnetenentschädigungen bzw. Besoldungsbeträge.</li>
+
+              <li>Die Höhe des Mandatsträger*innen-Beitrages beträgt grundsätzlich
+              19% der Bemessungsgrundlage.</li>
+
+              <li>Je kindergeld-berechtigendem Kind können 250,00 € pro Monate in
+              Abzug gebracht werden.</li>
+
+              <li>Unterhaltsverpflichtungen bzw. tatsächliche Unterhaltsleistungen
+              können ebenfalls abgezogen werden. Darüber entscheidet bei Bundestags-abgeordneten
+              der/die Bundesschatzmeister*in mit einem Mitglied des geschäftsführenden
+              Fraktionsvorstandes, bei Europaabgeordneten der/die Bundesschatzmeister*in
+              mit einer/m Vertreter*in der Europagruppe DIE GRÜNEN. Für andere Beitragsverpflichtete
+              gilt diese Zuständigkeitsregelung entsprechend.</li>
+
+              <li>Ist eine beitragspflichtige Person gleichzeitig Mitglied des Bundesvorstandes
+              von BÜNDNIS 90/ DIE GRÜNEN, bezieht sie nach der Finanzordnung des Bundesvorstandes
+              keine Vergütung von der Partei. Als Ausgleich für die Doppelbelastung
+              werden in diesen Fällen keine Mandatsträger*innen-Beiträge erhoben.</li>
+
+              <li>Die endgültige Höhe der abzuführenden Beiträge ergibt sich nach
+              Berücksichtigung der Regelungen der Absätze 3) bis 6).</li>
+
+              <li>Die Erhebung der Beträge nach Absatz 7) erfolgt grundsätzlich durch
+              die Bundespartei. Davon ausgenommen sind die Beiträge der Mitglieder
+              des Deutschen Bundestages (MdB). Diese werden von den jeweiligen Landes-verbänden
+              von BÜNDNIS 90/DIE GRÜNEN erhoben.</li>
+
+              <li>Von den Beiträgen der MdB nach Absatz 7), die an die Landesverbände
+              abgeführt werden, erhält die Bundespartei 73 % pro MdB und Monat. Dies
+              gilt nur für MdBs ohne Regierungsamt.</li>
+
+              </ol></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []
+    - '528':
+        type: motion
+        id: 528
+        agenda_item: Satzung
+        prefix: S-07 Beschluss
+        title: 'Mitgliedschaft im Bundesvorstand und Mandat '
+        title_with_intro: 'Mitgliedschaft im Bundesvorstand und Mandat '
+        title_with_prefix: 'S-07 Beschluss: Mitgliedschaft im Bundesvorstand und Mandat '
+        status_id: 3
+        status_title: Eingereicht
+        date_published: null
+        supporters: []
+        initiators:
+          type: null
+          name: null
+          organization: null
+        initiators_html: 'Bundesdelegiertenkonferenz (beschlossen am: 26.01.2018)'
+        sections:
+        - Antragstext:
+            type: TextSimple
+            title: Antragstext
+            html: '<div class="text motionTextFormattings textOrig"><p>§ 15 Abs. 4
+              der Satzung des Bundesverbandes Bündnis 90/Die Grünen wird zur Konkretisierung
+              um einen Satz 3 erweitert, der wie folgt lautet: „Werden in Satz 2 bezeichnete
+              Personen in den Bundesvorstand gewählt oder erlangen Mitglieder des
+              Bundesvorstandes ein solches Amt, so haben sie eines der Ämter in einer
+              Übergangsfrist von acht Monaten niederzulegen.“</p></div>'
+            layout_right: false
+        - Begründung:
+            type: TextSimple
+            title: Begründung
+            html: ''
+            layout_right: false
+        proposed_procedure: null
+        ammendments: []

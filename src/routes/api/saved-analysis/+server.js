@@ -23,13 +23,19 @@ export async function GET({ platform, cookies }) {
         try {
             data = await kv.get(key, { type: "json" });
         } catch (kvError) {
-            console.error("KV GET failed, likely local dev issue:", kvError);
-            return json({ analyses: [], warning: "KV_ERROR", details: kvError.message, development: true });
+            console.error("KV GET failed:", kvError);
+            // Return empty list with warning so frontend can use localStorage
+            return json({ 
+                analyses: [], 
+                warning: "KV_ERROR", 
+                details: kvError.message, 
+                development: true 
+            });
         }
         return json({ analyses: data || [] });
     } catch (err) {
-        console.error("Error fetching saved analyses:", err);
-        return json({ error: "Internal server error" }, { status: 500 });
+        console.error("Unexpected error fetching saved analyses:", err);
+        return json({ analyses: [], error: "Internal server error" });
     }
 }
 
@@ -62,9 +68,11 @@ export async function POST({ request, platform, cookies }) {
             await kv.put(key, JSON.stringify(analyses));
         } catch (kvError) {
             console.error("KV PUT failed:", kvError);
+            // Don't return 500, return success: false with error details
             return json({ 
                 success: false, 
                 error: "KV_ERROR", 
+                details: kvError.message,
                 development: true,
                 message: "Speichern im Cloudflare KV fehlgeschlagen. Daten werden nur lokal im Browser gespeichert." 
             });
@@ -72,7 +80,11 @@ export async function POST({ request, platform, cookies }) {
         
         return json({ success: true });
     } catch (err) {
-        console.error("Error saving analyses:", err);
-        return json({ error: "Internal server error" }, { status: 500 });
+        console.error("Unexpected error saving analyses:", err);
+        return json({ 
+            success: false, 
+            error: "INTERNAL_ERROR",
+            message: "Ein unerwarteter Fehler ist aufgetreten." 
+        });
     }
 }

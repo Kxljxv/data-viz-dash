@@ -479,11 +479,15 @@ export default class GraphVisualization {
             this.transform = {
                 x: state.x,
                 y: state.y,
-                k: 1 / state.ratio
+                k: 1 / state.ratio,
+                angle: state.angle || 0
             };
             
             window.dispatchEvent(new CustomEvent('aea-graph-zoom', {
-                detail: { transform: this.transform }
+                detail: { 
+                    transform: this.transform,
+                    sourceId: this.containerId
+                }
             }));
         });
     }
@@ -520,10 +524,14 @@ export default class GraphVisualization {
             this.transform = {
                 x: state.center.x,
                 y: state.center.y,
-                k: state.zoom
+                k: state.zoom,
+                angle: state.angle || 0
             };
             window.dispatchEvent(new CustomEvent('aea-graph-zoom', {
-                detail: { transform: this.transform }
+                detail: { 
+                    transform: this.transform,
+                    sourceId: this.containerId
+                }
             }));
         });
     }
@@ -831,22 +839,38 @@ export default class GraphVisualization {
         return this.renderer.graphToViewport({ x, y });
     }
 
-    setTransform(transform: any) {
+    setTransform(transform: any, animate: boolean = false) {
         if (this.isUsingOgma) {
             if (!this.ogma) return;
-            const { x, y, k } = transform;
+            const { x, y, k, angle } = transform;
             if (x !== undefined && y !== undefined && k !== undefined) {
-                this.ogma.view.animate({ center: { x, y }, zoom: k }, { duration: 500 });
+                if (animate) {
+                    this.ogma.view.animate({ 
+                        center: { x, y }, 
+                        zoom: k,
+                        angle: angle || 0
+                    }, { duration: 500 });
+                } else {
+                    this.ogma.view.setCenter({ x, y });
+                    this.ogma.view.setZoom(k);
+                    this.ogma.view.setAngle(angle || 0);
+                }
             }
         } else {
             if (!this.renderer) return;
-            const { x, y, k } = transform;
+            const { x, y, k, angle } = transform;
             if (x !== undefined && y !== undefined && k !== undefined) {
-                this.renderer.getCamera().animate({
+                const state = {
                     x: x,
                     y: y,
-                    ratio: 1 / k
-                }, { duration: 500 });
+                    ratio: 1 / k,
+                    angle: angle || 0
+                };
+                if (animate) {
+                    this.renderer.getCamera().animate(state, { duration: 500 });
+                } else {
+                    this.renderer.getCamera().setState(state);
+                }
             }
         }
     }
@@ -880,6 +904,18 @@ export default class GraphVisualization {
             }
             this.refreshReducers();
         }
+    }
+
+    getBounds() {
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        this.graph.forEachNode((_, attr) => {
+            if (attr.x < minX) minX = attr.x;
+            if (attr.x > maxX) maxX = attr.x;
+            if (attr.y < minY) minY = attr.y;
+            if (attr.y > maxY) maxY = attr.y;
+        });
+        if (minX === Infinity) return { minX: 0, maxX: 1, minY: 0, maxY: 1 };
+        return { minX, maxX, minY, maxY };
     }
 
     destroy() {

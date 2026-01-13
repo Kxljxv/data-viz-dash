@@ -79,7 +79,7 @@
 						<Typography variant="label" class="opacity-40 text-[10px]">Projekte</Typography>
 					{/snippet}
 					<Typography variant="body" class="text-sm opacity-60">
-						Vollständige Unterstützung für alle BDK's seit Juni 2017.
+						Vollständige Unterstützung für verschiedene Konferenzen und Projekte wie BDK, LA und LDK.
 					</Typography>
 				</Card>
 

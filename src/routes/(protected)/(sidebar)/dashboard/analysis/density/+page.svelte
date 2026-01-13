@@ -40,13 +40,10 @@
     let mapComponents = $state([]); // Array of map component instances
     let globalTransform = $state(null); // Shared zoom/pan transform
     let densityOpacity = $state(0.8);
-    let densityRadius = $state(15);
-    let visualizationType = $state('hexbin');
     let overlayOpacity = $state(1.0);
     let weightMultiplier = $state(5.0);
     let weightExponent = $state(2.0);
     let contourBandwidth = $state(30);
-    let contourThresholds = $state(15);
     let showForceGraph = $state(false);
     let projectData = $state(null);
     let simulatedNodes = $state([]);
@@ -129,13 +126,10 @@
             analysisResults,
             parameters: {
                 densityOpacity,
-                densityRadius,
-                visualizationType,
                 overlayOpacity,
                 weightMultiplier,
                 weightExponent,
                 contourBandwidth,
-                contourThresholds,
                 showForceGraph
             },
             globalTransform
@@ -168,17 +162,25 @@
                     if (path.endsWith('.gz')) {
                         const arrayBuffer = await response.arrayBuffer();
                         const uint8Array = new Uint8Array(arrayBuffer);
-                        try {
-                            const stream = new ReadableStream({
-                                start(controller) {
-                                    controller.enqueue(uint8Array);
-                                    controller.close();
-                                }
-                            });
-                            const decompressionStream = new DecompressionStream('gzip');
-                            const decompressedResponse = new Response(stream.pipeThrough(decompressionStream));
-                            gexfData = await decompressedResponse.text();
-                        } catch (e) {
+                        
+                        // Check for GZIP magic numbers (1f 8b)
+                        if (uint8Array[0] === 0x1f && uint8Array[1] === 0x8b) {
+                            try {
+                                const stream = new ReadableStream({
+                                    start(controller) {
+                                        controller.enqueue(uint8Array);
+                                        controller.close();
+                                    }
+                                });
+                                const decompressionStream = new DecompressionStream('gzip');
+                                const decompressedResponse = new Response(stream.pipeThrough(decompressionStream));
+                                gexfData = await decompressedResponse.text();
+                            } catch (e) {
+                                console.warn("Decompression via DecompressionStream failed, falling back to TextDecoder", e);
+                                gexfData = new TextDecoder().decode(uint8Array);
+                            }
+                        } else {
+                            // Not actually gzipped despite extension
                             gexfData = new TextDecoder().decode(uint8Array);
                         }
                     } else {
@@ -215,13 +217,10 @@
             const p = project.parameters;
             if (p) {
                 densityOpacity = p.densityOpacity ?? densityOpacity;
-                densityRadius = p.densityRadius ?? densityRadius;
-                visualizationType = p.visualizationType ?? visualizationType;
                 overlayOpacity = p.overlayOpacity ?? overlayOpacity;
                 weightMultiplier = p.weightMultiplier ?? weightMultiplier;
                 weightExponent = p.weightExponent ?? weightExponent;
                 contourBandwidth = p.contourBandwidth ?? contourBandwidth;
-                contourThresholds = p.contourThresholds ?? contourThresholds;
                 showForceGraph = p.showForceGraph ?? showForceGraph;
             }
 
@@ -254,6 +253,8 @@
         }
     }
 
+    let graphBounds = $state(null);
+
     // Sync overlayOpacity with graph instances dimming
     $effect(() => {
         graphInstances.forEach(instance => {
@@ -262,6 +263,20 @@
                 instance.render();
             }
         });
+    });
+
+    // Derived bounds from simulated nodes for consistent normalization
+    $effect(() => {
+        if (simulatedNodes.length > 0) {
+            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+            simulatedNodes.forEach(n => {
+                if (n.x < minX) minX = n.x;
+                if (n.x > maxX) maxX = n.x;
+                if (n.y < minY) minY = n.y;
+                if (n.y > maxY) maxY = n.y;
+            });
+            graphBounds = { minX, maxX, minY, maxY };
+        }
     });
 
     // Effect to initialize/cleanup graphs and sync transforms
@@ -309,7 +324,8 @@
                         });
                         
                         graphInstances = newInstances;
-                        // Expose first instance for debugging/compatibility
+                        
+                        // Capture reference for window debugging
                         if (graphInstances.length > 0) {
                             window.graph = graphInstances[0];
                         }
@@ -355,18 +371,25 @@
                     if (path.endsWith('.gz')) {
                         const arrayBuffer = await response.arrayBuffer();
                         const uint8Array = new Uint8Array(arrayBuffer);
-                        try {
-                            const stream = new ReadableStream({
-                                start(controller) {
-                                    controller.enqueue(uint8Array);
-                                    controller.close();
-                                }
-                            });
-                            const decompressionStream = new DecompressionStream('gzip');
-                            const decompressedResponse = new Response(stream.pipeThrough(decompressionStream));
-                            gexfData = await decompressedResponse.text();
-                        } catch (e) {
-                            console.error("Decompression failed:", e);
+                        
+                        // Check for GZIP magic numbers (1f 8b)
+                        if (uint8Array[0] === 0x1f && uint8Array[1] === 0x8b) {
+                            try {
+                                const stream = new ReadableStream({
+                                    start(controller) {
+                                        controller.enqueue(uint8Array);
+                                        controller.close();
+                                    }
+                                });
+                                const decompressionStream = new DecompressionStream('gzip');
+                                const decompressedResponse = new Response(stream.pipeThrough(decompressionStream));
+                                gexfData = await decompressedResponse.text();
+                            } catch (e) {
+                                console.warn("Decompression via DecompressionStream failed, falling back to TextDecoder", e);
+                                gexfData = new TextDecoder().decode(uint8Array);
+                            }
+                        } else {
+                            // Not actually gzipped despite extension
                             gexfData = new TextDecoder().decode(uint8Array);
                         }
                     } else {
@@ -742,14 +765,14 @@
                                         bind:this={mapComponents[i]}
                                         data={result} 
                                         opacity={densityOpacity}
-                                        type={visualizationType}
                                         weightMultiplier={weightMultiplier}
                                         weightExponent={weightExponent}
+                                        bounds={graphBounds}
                                         options={{ 
                                             quality: 'high', 
-                                            radius: densityRadius,
                                             bandwidth: contourBandwidth,
-                                            thresholds: contourThresholds
+                                            thresholds: 20,
+                                            resolution: 1000
                                         }} 
                                         class="w-full h-full"
                                     />
@@ -836,55 +859,20 @@
 					<CardHeader>
 						<CardTitle class="text-[10px] font-black uppercase tracking-[0.2em]">Analyse-Parameter</CardTitle>
 					</CardHeader>
-					<CardContent class="space-y-4">
-						<div class="space-y-2">
-							<div class="flex items-center justify-between">
-								<label class="text-[10px] font-black uppercase tracking-wider text-muted-foreground" for="viz-type">Typ</label>
-							</div>
-							<select 
-                                id="viz-type" 
-                                class="w-full bg-muted/50 border-none rounded-lg text-xs p-2"
-                                bind:value={visualizationType}
-                            >
-								<option value="hexbin">Hexbin Aggregation</option>
-								<option value="voronoi">Voronoi Diagramm</option>
-								<option value="delaunay">Delaunay Triangulierung</option>
-								<option value="contours">Kontur-Polygone</option>
-								<option value="density">Dichteschätzung (Heatmap)</option>
-							</select>
-						</div>
-
-                        {#if visualizationType === 'hexbin'}
-                            <div class="space-y-2">
-                                <div class="flex items-center justify-between">
-                                    <label for="hex-radius" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Hex-Radius</label>
-                                    <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{densityRadius}px</span>
-                                </div>
-                                <input 
-                                    id="hex-radius"
-                                    type="range" 
-                                    min="2" max="50" step="1" 
-                                    bind:value={densityRadius}
-                                    class="w-full"
-                                />
+					<CardContent class="space-y-6">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <label for="bandwidth" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Bandbreite (Smooth)</label>
+                                <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{contourBandwidth}px</span>
                             </div>
-                        {/if}
-
-                        {#if visualizationType === 'contours' || visualizationType === 'density'}
-                             <div class="space-y-2">
-                                <div class="flex items-center justify-between">
-                                    <label for="bandwidth" class="text-[10px] font-black uppercase tracking-wider text-muted-foreground">Bandbreite (Smooth)</label>
-                                    <span class="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded text-muted-foreground">{contourBandwidth}px</span>
-                                </div>
-                                <input 
-                                    id="bandwidth"
-                                    type="range" 
-                                    min="5" max="100" step="1" 
-                                    bind:value={contourBandwidth}
-                                    class="w-full"
-                                />
-                            </div>
-                        {/if}
+                            <input 
+                                id="bandwidth"
+                                type="range" 
+                                min="5" max="100" step="1" 
+                                bind:value={contourBandwidth}
+                                class="w-full accent-[hsl(var(--accent-pro-100))]"
+                            />
+                        </div>
                         
 						<div class="space-y-2">
 							<div class="flex items-center justify-between">
@@ -896,7 +884,7 @@
                                 type="range" 
                                 min="0.1" max="10" step="0.1" 
                                 bind:value={weightMultiplier}
-                                class="w-full"
+                                class="w-full accent-[hsl(var(--accent-pro-100))]"
                             />
 						</div>
 
@@ -910,7 +898,7 @@
                                 type="range" 
                                 min="1" max="5" step="0.1" 
                                 bind:value={weightExponent}
-                                class="w-full"
+                                class="w-full accent-[hsl(var(--accent-pro-100))]"
                             />
 						</div>
 
@@ -924,7 +912,7 @@
                                 type="range" 
                                 min="0" max="1" step="0.01" 
                                 bind:value={densityOpacity}
-                                class="w-full"
+                                class="w-full accent-[hsl(var(--accent-pro-100))]"
                             />
 						</div>
 					</CardContent>

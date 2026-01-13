@@ -1,0 +1,74 @@
+<url_path, found on /rest, string>:
+  title: "<title, found on /rest, string>"
+  title_short: "<title_short, found on /rest, string>"
+  date_published: "<date_published, found on /rest, string>"
+  url_path: "<url_path, found on /rest, string>"
+  url_json: "<url_json, found on /rest, string>"
+  url_html: "<url_html, found on /rest, string>"
+  content:
+    motions: 
+      - <id (of the individual motion), found on /rest/[convention_id]/, string>:
+          type: "<type, found on /rest/[convention_id]/motion/[motion_id], string>"
+          id: <id, found on /rest/[convention_id]/motion/[motion_id], number>
+          agenda_item: "<agenda_item, found on /rest/[convention_id]/motion/[motion_id], string>"
+          prefix: "<prefix, found on /rest/[convention_id]/motion/[motion_id], string>"
+          title: "<title, found on /rest/[convention_id]/motion/[motion_id], string>"
+          title_with_intro: "<title_with_intro, found on /rest/[convention_id]/motion/[motion_id], string>"
+          title_with_prefix: "<title_with_prefix, found on /rest/[convention_id]/motion/[motion_id], string>"
+          status_id: "<status_id, found on /rest/[convention_id]/motion/[motion_id], string>"
+          status_title: "<status_title, found on /rest/[convention_id]/motion/[motion_id], string>"
+          date_published: "<date_published, found on /rest/[convention_id]/motion/[motion_id], string>"
+          supporters: # list
+            - "<supporter_1, found on /rest/[convention_id]/motion/[motion_id], string>"
+            - "<supporter_2, found on /rest/[convention_id]/motion/[motion_id], string>"
+            - "<supporter_3, found on /rest/[convention_id]/motion/[motion_id], string>"
+            - ...
+          initiators:
+            type: "<type, found on /rest/[convention_id]/motion/[motion_id], string>"
+            name: "<name, found on /rest/[convention_id]/motion/[motion_id], string>"
+            organization: "<organization, found on /rest/[convention_id]/motion/[motion_id], string>"
+          initiators_html: "<initiators_html, found on /rest/[convention_id]/motion/[motion_id], string>"
+          sections:
+            - <title (of the individual section), found on /rest/[convention_id]/motion/[motion_id], string>:
+              type: "<type, found on /rest/[convention_id]/motion/[motion_id], string>"
+              title: "<title, found on /rest/[convention_id]/motion/[motion_id], string>"
+              html: "<html, found on /rest/[convention_id]/motion/[motion_id], string>"
+              layout_right: <layout_right, found on /rest/[convention_id]/motion/[motion_id], boolean>
+            - <title (of the individual section), found on /rest/[convention_id]/motion/[motion_id], string>:
+              type: "<type, found on /rest/[convention_id]/motion/[motion_id], string>"
+              title: "<title, found on /rest/[convention_id]/motion/[motion_id], string>"
+              html: "<html, found on /rest/[convention_id]/motion/[motion_id], string>"
+              layout_right: <layout_right, found on /rest/[convention_id]/motion/[motion_id], boolean>
+            - ...
+          proposed_procedure: "<proposed_procedure, found on /rest/[convention_id]/motion/[motion_id], string>"
+          amendments:
+            - <id (of the individual amendment), found on /rest/[convention_id]/motion/[motion_id], number>:
+              type: "<type, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              id: <id, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], number>
+              prefix: "<prefix, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              title: "<title, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              title_with_prefix: "<title_with_prefix, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              first_line: <first_line, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], number>
+              status_id: <status_id, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], number>
+              status_title: "<status_title, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              date_published: "<date_published, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              supporters: # list
+                - "<supporter_1, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                - "<supporter_2, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                - "<supporter_3, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                - ...
+              initiators:
+                type: "<type, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                name: "<name, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                organization: "<organization, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              initiators_html: "<initiators_html, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              sections:
+                - <title (of the individual section), found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>:
+                  type: "<type, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                  title: "<title, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                  html: "<html, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+                - ...
+              proposed_procedure: "<proposed_procedure, found on /rest/[convention_id]/motion/[motion_id]/amendment/[amendment_id], string>"
+              url_json: "<url_json, found on /rest/[convention_id]/motion/[motion_id], string>"
+              url_html: "<url_html, found on /rest/[convention_id]/motion/[motion_id], string>"
+            - ...

@@ -1,0 +1,17 @@
+# Ignore virtual env
+venv/
+env/
+.env
+
+# Ignore models
+*.gguf
+*.bin
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local data (if copied)
+*.sqlite
+*.gexf
+*.pkl

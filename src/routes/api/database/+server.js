@@ -3,36 +3,71 @@ import path from "node:path";
 import { getProjects } from "$lib/server/projects";
 
 /** @type {import('./$types').RequestHandler} */
-export async function GET({ url }) {
-    let Database;
-    try {
-        const mod = await import("better-sqlite3");
-        Database = mod.default || mod;
-    } catch (e) {
-        return new Response(
-            JSON.stringify({ error: "SQLite not available in this runtime" }),
-            { status: 501, headers: { "content-type": "application/json" } }
-        );
-    }
+export async function GET({ url, platform }) {
+    const useD1 = !!platform?.env?.AEA_DB;
 
     const availableProjects = getProjects();
     const defaultProject = availableProjects.find(p => p.id === 'bdk_all')?.id || availableProjects[0]?.id || "bdk_all";
     const requestedProject = url.searchParams.get('project') || defaultProject;
 
-    const dbDir = path.join(process.cwd(), "static", "data", "database");
-    const amendmentsPath = path.join(dbDir, "amendments.sqlite");
-    const personsPath = path.join(dbDir, "persons.sqlite");
+    let amendmentsRows = [];
+    let personsRows = [];
 
-    const amendDb = new Database(amendmentsPath, { readonly: true });
-    const personsDb = new Database(personsPath, { readonly: true });
-
-    const amendmentsRows = amendDb
-        .prepare("SELECT amendment_id as id, convention_id as convention, amendment_url_html as url, amendment_title_with_prefix as label, amendment_initiators as applicant_id, amendment_supporters as supporter_ids FROM amendments")
-        .all();
-
-    const personsRows = personsDb
-        .prepare("SELECT person_id as id, person_name as name, person_organization as kv, initiated_amendments as applicated_ids, person_initiated_amount as applicated_count, supported_amendments as supported_ids, person_supported_amount as supported_count FROM persons")
-        .all();
+    if (useD1) {
+        try {
+            const amendRes = await platform.env.AEA_DB.prepare(
+                "SELECT amendment_id as id, convention_id as convention, amendment_url_html as url, amendment_title_with_prefix as label, amendment_initiators as applicant_id, amendment_supporters as supporter_ids FROM amendments"
+            ).all();
+            const personsRes = await platform.env.AEA_DB.prepare(
+                "SELECT person_id as id, person_name as name, person_organization as kv, initiated_amendments as applicated_ids, person_initiated_amount as applicated_count, supported_amendments as supported_ids, person_supported_amount as supported_count FROM persons"
+            ).all();
+            amendmentsRows = amendRes.results || amendRes || [];
+            personsRows = personsRes.results || personsRes || [];
+        } catch (e) {
+            // Fallback to local SQLite if D1 is not fully initialized
+            amendmentsRows = [];
+            personsRows = [];
+            const mod = await import("better-sqlite3");
+            const Database = mod.default || mod;
+            const dbDir = path.join(process.cwd(), "static", "data", "database");
+            const amendmentsPath = path.join(dbDir, "amendments.sqlite");
+            const personsPath = path.join(dbDir, "persons.sqlite");
+            const amendDb = new Database(amendmentsPath, { readonly: true });
+            const personsDb = new Database(personsPath, { readonly: true });
+            amendmentsRows = amendDb
+                .prepare("SELECT amendment_id as id, convention_id as convention, amendment_url_html as url, amendment_title_with_prefix as label, amendment_initiators as applicant_id, amendment_supporters as supporter_ids FROM amendments")
+                .all();
+            personsRows = personsDb
+                .prepare("SELECT person_id as id, person_name as name, person_organization as kv, initiated_amendments as applicated_ids, person_initiated_amount as applicated_count, supported_amendments as supported_ids, person_supported_amount as supported_count FROM persons")
+                .all();
+            amendDb.close();
+            personsDb.close();
+        }
+    } else {
+        let Database;
+        try {
+            const mod = await import("better-sqlite3");
+            Database = mod.default || mod;
+        } catch (e) {
+            return new Response(
+                JSON.stringify({ error: "SQLite not available in this runtime" }),
+                { status: 501, headers: { "content-type": "application/json" } }
+            );
+        }
+        const dbDir = path.join(process.cwd(), "static", "data", "database");
+        const amendmentsPath = path.join(dbDir, "amendments.sqlite");
+        const personsPath = path.join(dbDir, "persons.sqlite");
+        const amendDb = new Database(amendmentsPath, { readonly: true });
+        const personsDb = new Database(personsPath, { readonly: true });
+        amendmentsRows = amendDb
+            .prepare("SELECT amendment_id as id, convention_id as convention, amendment_url_html as url, amendment_title_with_prefix as label, amendment_initiators as applicant_id, amendment_supporters as supporter_ids FROM amendments")
+            .all();
+        personsRows = personsDb
+            .prepare("SELECT person_id as id, person_name as name, person_organization as kv, initiated_amendments as applicated_ids, person_initiated_amount as applicated_count, supported_amendments as supported_ids, person_supported_amount as supported_count FROM persons")
+            .all();
+        amendDb.close();
+        personsDb.close();
+    }
 
     const personById = new Map();
     for (const p of personsRows) {
@@ -143,9 +178,6 @@ export async function GET({ url }) {
             url: a.url || "",
         };
     });
-
-    amendDb.close();
-    personsDb.close();
 
     return json({ supporters, amendments });
 }

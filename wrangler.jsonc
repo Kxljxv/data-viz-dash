@@ -18,6 +18,13 @@
 	"observability": {
 		"enabled": true
 	},
+	"d1_databases": [
+		{
+			"binding": "AEA_DB",
+			"database_name": "aea-data",
+			"database_id": "REPLACE_WITH_ID"
+		}
+	],
 	"kv_namespaces": [
 		{
 			"binding": "DATA_CACHE",

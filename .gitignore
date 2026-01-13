@@ -31,4 +31,7 @@ design_library/
 html_design_library/
 *.gexf
 #!*.gexf.gz
+ 
+# Local DB dumps
+d1-import.sql
 

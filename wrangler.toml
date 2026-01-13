@@ -26,6 +26,12 @@ binding = "DATA_CACHE"
 id = "aaeb0d26bfef4fa2b688efede12a0603"
 preview_id = "aaeb0d26bfef4fa2b688efede12a0603"
 
+# D1 Database binding (fill database_id after creation)
+[[d1_databases]]
+binding = "AEA_DB"
+database_name = "aea-data"
+database_id = "REPLACE_WITH_ID"
+
 # To create KV namespaces:
 # npx wrangler kv:namespace create "LOGIN_SESSION_CACHE"
 # npx wrangler kv:namespace create "DATA_CACHE"

@@ -22,7 +22,13 @@
 		{
 			"binding": "AEA_DB",
 			"database_name": "aea-data",
-			"database_id": "REPLACE_WITH_ID"
+			"database_id": "0f846c1b-4a0f-4cdc-bbd1-c7b4c57d49c8"
+		},
+		{
+			"binding": "aea_data",
+			"database_name": "aea-data",
+			"database_id": "0f846c1b-4a0f-4cdc-bbd1-c7b4c57d49c8",
+			"remote": true
 		}
 	],
 	"kv_namespaces": [
